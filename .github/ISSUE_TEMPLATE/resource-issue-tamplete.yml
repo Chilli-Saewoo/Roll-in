@@ -1,6 +1,6 @@
 name: Resource Tamplate
 description: Resource를 추가하거나, 변경, 삭제했을 때 사용하는 템플릿
-title: "[Resource]: Feature Title"
+title: "[resource]: Feature Title"
 labels: ["resource"]
 
 body:

@@ -1,6 +1,6 @@
 name: Chore Template
 description: 기타 사항에 대한 이슈 템플릿
-title: "[Chore]: 이슈 제목"
+title: "[chore]: 이슈 제목"
 labels: ["chore"]
 
 body:
