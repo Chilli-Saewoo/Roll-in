@@ -16,6 +16,7 @@
 		AB759051290264CA0088F5E7 /* RollInTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB759050290264CA0088F5E7 /* RollInTests.swift */; };
 		AB75905B290264CA0088F5E7 /* RollInUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB75905A290264CA0088F5E7 /* RollInUITests.swift */; };
 		AB75905D290264CA0088F5E7 /* RollInUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB75905C290264CA0088F5E7 /* RollInUITestsLaunchTests.swift */; };
+		AB75906A290292E10088F5E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB759069290292E10088F5E7 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		AB759056290264CA0088F5E7 /* RollInUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RollInUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB75905A290264CA0088F5E7 /* RollInUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollInUITests.swift; sourceTree = "<group>"; };
 		AB75905C290264CA0088F5E7 /* RollInUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollInUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AB759069290292E10088F5E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				AB759042290264CA0088F5E7 /* Assets.xcassets */,
 				AB759044290264CA0088F5E7 /* LaunchScreen.storyboard */,
 				AB759047290264CA0088F5E7 /* Info.plist */,
+				AB759069290292E10088F5E7 /* GoogleService-Info.plist */,
 			);
 			path = RollIn;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB759046290264CA0088F5E7 /* LaunchScreen.storyboard in Resources */,
+				AB75906A290292E10088F5E7 /* GoogleService-Info.plist in Resources */,
 				AB759043290264CA0088F5E7 /* Assets.xcassets in Resources */,
 				AB759041290264C90088F5E7 /* Main.storyboard in Resources */,
 			);
@@ -453,7 +457,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.junhong.RollIn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chillisaewoo.RollIn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -487,7 +491,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.junhong.RollIn;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chillisaewoo.RollIn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
