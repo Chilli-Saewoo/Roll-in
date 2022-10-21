@@ -132,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				AB7590842902B4AA0088F5E7 /* App */,
-				AB7590852902B4E40088F5E7 /* Entity */,
+				AB7590852902B4E40088F5E7 /* Model */,
 				AB7590862902B4F40088F5E7 /* Screens */,
 				AB7590872902B5250088F5E7 /* Resources */,
 				AB759047290264CA0088F5E7 /* Info.plist */,
@@ -168,12 +168,12 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		AB7590852902B4E40088F5E7 /* Entity */ = {
+		AB7590852902B4E40088F5E7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				AB7590882902B5480088F5E7 /*  ImmerZumLachen.swift */,
 			);
-			path = Entity;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		AB7590862902B4F40088F5E7 /* Screens */ = {
