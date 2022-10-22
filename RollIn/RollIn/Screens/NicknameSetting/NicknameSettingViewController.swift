@@ -14,6 +14,7 @@ final class NicknameSettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNicknameMessageLabel()
+        configureNicknameTextField()
     }
 }
 
@@ -30,7 +31,7 @@ private extension NicknameSettingViewController {
         nicknameMessageLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             nicknameMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 175),
-            nicknameMessageLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20)
+            nicknameMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
         ])
     }
 }
@@ -39,5 +40,16 @@ private extension NicknameSettingViewController {
 private extension NicknameSettingViewController {
     func configureNicknameTextField() {
         view.addSubview(nicknameTextField)
+        setNicknameTextFieldLayout()
+    }
+    
+    func setNicknameTextFieldLayout() {
+        nicknameTextField.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            nicknameTextField.topAnchor.constraint(equalTo: nicknameMessageLabel.bottomAnchor, constant: 30),
+            nicknameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            nicknameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            nicknameTextField.heightAnchor.constraint(equalToConstant: 30)
+        ])
     }
 }
