@@ -25,6 +25,7 @@ final class RollingpaperTableViewCell: UITableViewCell {
 private extension RollingpaperTableViewCell {
     func setUpView() {
         setWriterNickname()
+        setMessage()
     }
     
     func setWriterNickname() {
@@ -35,12 +36,21 @@ private extension RollingpaperTableViewCell {
         NSLayoutConstraint.activate([
             writerNickname.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 30),
             writerNickname.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            writerNickname.widthAnchor.constraint(equalToConstant: 100),
+            writerNickname.widthAnchor.constraint(equalToConstant: 80),
             writerNickname.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
     
     func setMessage() {
-        
+        self.contentView.addSubview(message)
+        message.translatesAutoresizingMaskIntoConstraints = false
+        message.font = .preferredFont(forTextStyle: .body)
+        message.textColor = .black
+        NSLayoutConstraint.activate([
+            message.leadingAnchor.constraint(equalTo: writerNickname.trailingAnchor, constant: 15),
+            message.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            message.widthAnchor.constraint(equalToConstant: 200),
+            message.heightAnchor.constraint(equalToConstant: 50)
+        ])
     }
 }
