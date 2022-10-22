@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2A03F49A2903E8E1004C57B3 /* Preview+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03F4992903E8E1004C57B3 /* Preview+.swift */; };
-		2A3CE3F42903E8BA00D0D033 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A3CE3F32903E8BA00D0D033 /* GoogleService-Info.plist */; };
 		AB3AF1EE2902D3DC00BBF3E7 /* NicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1ED2902D3DC00BBF3E7 /* NicknameSettingViewController.swift */; };
 		AB3AF1F12902D81000BBF3E7 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F02902D81000BBF3E7 /* UserDefaults+.swift */; };
 		AB3AF1F429037E7100BBF3E7 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F329037E7100BBF3E7 /* UIApplication+.swift */; };
@@ -57,7 +56,6 @@
 
 /* Begin PBXFileReference section */
 		2A03F4992903E8E1004C57B3 /* Preview+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview+.swift"; sourceTree = "<group>"; };
-		2A3CE3F32903E8BA00D0D033 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../AppleDeveloperAcademy/MacC_ChilliSaewoo/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB3AF1ED2902D3DC00BBF3E7 /* NicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewController.swift; sourceTree = "<group>"; };
 		AB3AF1F02902D81000BBF3E7 /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
 		AB3AF1F329037E7100BBF3E7 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 				AB7590862902B4F40088F5E7 /* Screens */,
 				AB7590872902B5250088F5E7 /* Resources */,
 				AB759047290264CA0088F5E7 /* Info.plist */,
-				2A3CE3F32903E8BA00D0D033 /* GoogleService-Info.plist */,
 			);
 			path = RollIn;
 			sourceTree = "<group>";
@@ -370,7 +367,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB759046290264CA0088F5E7 /* LaunchScreen.storyboard in Resources */,
-				2A3CE3F42903E8BA00D0D033 /* GoogleService-Info.plist in Resources */,
 				AB759043290264CA0088F5E7 /* Assets.xcassets in Resources */,
 				AB759041290264C90088F5E7 /* Main.storyboard in Resources */,
 			);
