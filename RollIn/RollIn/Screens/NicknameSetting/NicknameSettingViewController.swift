@@ -17,6 +17,7 @@ final class NicknameSettingViewController: UIViewController {
         super.viewDidLoad()
         configureMessageLabel()
         configureNicknameTextField()
+        nicknameTextField.delegate = self
         configureConfirmButton()
         nicknameTextField.becomeFirstResponder()
     }
@@ -43,6 +44,23 @@ final class NicknameSettingViewController: UIViewController {
         let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "QRCodeEnrollVC") ?? UIViewController()
         self.navigationController?.pushViewController(pushVC, animated: true)
         
+    }
+}
+
+extension NicknameSettingViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let text = textField.text else { return false }
+        let maxLength = 10
+        if text.count >= maxLength {
+            if let char = string.cString(using: String.Encoding.utf8) {
+                let isBackSpace = strcmp(char, "\\b")
+                if isBackSpace == -92 {
+                    return true
+                }
+            }
+            return false
+        }
+        return true
     }
 }
 
