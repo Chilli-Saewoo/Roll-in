@@ -10,6 +10,7 @@ import UIKit
 final class NicknameSettingViewController: UIViewController {
     private let nicknameMessageLabel = UILabel()
     private let nicknameTextField = UITextField()
+    private let nicknameTextFieldBottomLine = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +41,11 @@ private extension NicknameSettingViewController {
 private extension NicknameSettingViewController {
     func configureNicknameTextField() {
         view.addSubview(nicknameTextField)
+        view.addSubview(nicknameTextFieldBottomLine)
         setNicknameTextFieldLayout()
+        setNicknameTextFieldBottomLineLayout()
+        nicknameTextFieldBottomLine.backgroundColor = .black
+        
     }
     
     func setNicknameTextFieldLayout() {
@@ -50,6 +55,16 @@ private extension NicknameSettingViewController {
             nicknameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             nicknameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             nicknameTextField.heightAnchor.constraint(equalToConstant: 30)
+        ])
+    }
+    
+    func setNicknameTextFieldBottomLineLayout() {
+        nicknameTextFieldBottomLine.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            nicknameTextFieldBottomLine.topAnchor.constraint(equalTo: nicknameTextField.bottomAnchor, constant: 5),
+            nicknameTextFieldBottomLine.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            nicknameTextFieldBottomLine.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            nicknameTextFieldBottomLine.heightAnchor.constraint(equalToConstant: 1)
         ])
     }
 }
