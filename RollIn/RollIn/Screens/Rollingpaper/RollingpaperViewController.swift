@@ -17,6 +17,16 @@ final class RollingpaperViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setRollingpaperView()
+    }
+}
+
+private extension RollingpaperViewController {
+    func setRollingpaperView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(RollingpaperTableViewCell.classForCoder(), forCellReuseIdentifier: "RollingpaperCell")
+        self.view.addSubview(tableView)
     }
 }
 
@@ -30,4 +40,7 @@ extension RollingpaperViewController: UITableViewDataSource {
         
         return cell
     }
+}
+
+extension RollingpaperViewController: UITableViewDelegate {
 }
