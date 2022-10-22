@@ -27,6 +27,7 @@ private extension RollingpaperViewController {
         tableView.delegate = self
         tableView.register(RollingpaperTableViewCell.classForCoder(), forCellReuseIdentifier: "RollingpaperCell")
         self.view.addSubview(tableView)
+        setRollingpaperTableViewLayout()
     }
 }
 
@@ -43,4 +44,17 @@ extension RollingpaperViewController: UITableViewDataSource {
 }
 
 extension RollingpaperViewController: UITableViewDelegate {
+}
+
+private extension RollingpaperViewController {
+    func setRollingpaperTableViewLayout() {
+        print("set")
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+            tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor)
+        ])
+    }
 }
