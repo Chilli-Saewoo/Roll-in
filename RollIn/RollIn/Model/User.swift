@@ -8,10 +8,11 @@
 import Foundation
 
 struct User: Equatable {
-    let id = UUID()
+    let id: UUID
     let nickname: String
     
-    init(nickname: String) {
+    init(id: UUID, nickname: String) {
+        self.id = id
         self.nickname = nickname
     }
 }
