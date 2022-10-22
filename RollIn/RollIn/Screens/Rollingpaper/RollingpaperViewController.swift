@@ -8,6 +8,12 @@
 import UIKit
 
 final class RollingpaperViewController: UIViewController {
+    private var tableView: UITableView!
+    
+    override func loadView() {
+        super.loadView()
+        tableView = UITableView(frame: .zero, style: .insetGrouped)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
