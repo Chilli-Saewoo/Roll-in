@@ -51,7 +51,6 @@ extension RollingpaperViewController: UITableViewDelegate {
 
 private extension RollingpaperViewController {
     func setRollingpaperTableViewLayout() {
-        print("set")
         tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: self.view.topAnchor),
