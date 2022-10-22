@@ -44,6 +44,9 @@ extension RollingpaperViewController: UITableViewDataSource {
 }
 
 extension RollingpaperViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
 }
 
 private extension RollingpaperViewController {
@@ -58,3 +61,13 @@ private extension RollingpaperViewController {
         ])
     }
 }
+
+// MARK: - Preview
+#if DEBUG
+import SwiftUI
+struct RollingpaperVCPreview: PreviewProvider {
+    static var previews: some View {
+        RollingpaperViewController().toPreview()
+    }
+}
+#endif
