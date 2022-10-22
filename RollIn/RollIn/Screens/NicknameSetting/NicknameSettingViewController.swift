@@ -16,6 +16,7 @@ final class NicknameSettingViewController: UIViewController {
         super.viewDidLoad()
         configureNicknameMessageLabel()
         configureNicknameTextField()
+        nicknameTextField.becomeFirstResponder()
     }
 }
 
