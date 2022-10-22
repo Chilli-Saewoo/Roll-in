@@ -24,6 +24,20 @@ final class NicknameSettingViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
+    
+    @objc func textFieldDidChange(_ sender: UITextField) {
+        guard let text = sender.text else {
+            nicknameConfirmButton.backgroundColor = .gray
+            nicknameConfirmButton.isEnabled = false
+            return
+        }
+        nicknameConfirmButton.isEnabled = text.count > 0 ? true : false
+        nicknameConfirmButton.backgroundColor = text.count > 0 ? .orange : .gray
+    }
+    
+    @objc func confirmButtonPressed(_ sender: UIButton) {
+        
+    }
 }
 
 // MARK: - nick name message를 세팅합니다.
@@ -51,6 +65,7 @@ private extension NicknameSettingViewController {
         view.addSubview(nicknameTextFieldBottomLine)
         setNicknameTextFieldLayout()
         setNicknameTextFieldBottomLineLayout()
+        nicknameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         nicknameTextFieldBottomLine.backgroundColor = .black
         
     }
@@ -84,6 +99,7 @@ private extension NicknameSettingViewController {
         nicknameConfirmButton.layer.cornerRadius = 8.0
         nicknameConfirmButton.setTitle("다음", for: .normal)
         nicknameConfirmButton.backgroundColor = .gray
+        nicknameConfirmButton.addTarget(self, action: #selector(confirmButtonPressed), for: .touchUpInside)
     }
     
     func setNicknameConfirmButtonLayout() {
