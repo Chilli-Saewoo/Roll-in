@@ -11,12 +11,18 @@ final class NicknameSettingViewController: UIViewController {
     private let nicknameMessageLabel = UILabel()
     private let nicknameTextField = UITextField()
     private let nicknameTextFieldBottomLine = UIView()
-
+    private let nicknameConfirmButton = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNicknameMessageLabel()
         configureNicknameTextField()
+        configureNicknameConfirmButton()
         nicknameTextField.becomeFirstResponder()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 }
 
@@ -66,6 +72,27 @@ private extension NicknameSettingViewController {
             nicknameTextFieldBottomLine.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             nicknameTextFieldBottomLine.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             nicknameTextFieldBottomLine.heightAnchor.constraint(equalToConstant: 1)
+        ])
+    }
+}
+
+// MARK: - nick name confirm Button을 세팅합니다.
+private extension NicknameSettingViewController {
+    func configureNicknameConfirmButton() {
+        view.addSubview(nicknameConfirmButton)
+        setNicknameConfirmButtonLayout()
+        nicknameConfirmButton.layer.cornerRadius = 8.0
+        nicknameConfirmButton.setTitle("다음", for: .normal)
+        nicknameConfirmButton.backgroundColor = .gray
+    }
+    
+    func setNicknameConfirmButtonLayout() {
+        nicknameConfirmButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            nicknameConfirmButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
+            nicknameConfirmButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
+            nicknameConfirmButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            nicknameConfirmButton.heightAnchor.constraint(equalToConstant: 60)
         ])
     }
 }
