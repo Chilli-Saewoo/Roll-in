@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2A03F49A2903E8E1004C57B3 /* Preview+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03F4992903E8E1004C57B3 /* Preview+.swift */; };
+		2A1A9F2029041D1600BA2764 /* RollingpaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A9F1F29041D1600BA2764 /* RollingpaperViewController.swift */; };
+		2A1A9F2329041D3400BA2764 /* RollingpaperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A9F2229041D3400BA2764 /* RollingpaperTableViewCell.swift */; };
 		AB3AF1EE2902D3DC00BBF3E7 /* NicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1ED2902D3DC00BBF3E7 /* NicknameSettingViewController.swift */; };
 		AB3AF1F12902D81000BBF3E7 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F02902D81000BBF3E7 /* UserDefaults+.swift */; };
 		AB3AF1F429037E7100BBF3E7 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F329037E7100BBF3E7 /* UIApplication+.swift */; };
@@ -58,6 +60,8 @@
 
 /* Begin PBXFileReference section */
 		2A03F4992903E8E1004C57B3 /* Preview+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview+.swift"; sourceTree = "<group>"; };
+		2A1A9F1F29041D1600BA2764 /* RollingpaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingpaperViewController.swift; sourceTree = "<group>"; };
+		2A1A9F2229041D3400BA2764 /* RollingpaperTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingpaperTableViewCell.swift; sourceTree = "<group>"; };
 		AB3AF1ED2902D3DC00BBF3E7 /* NicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewController.swift; sourceTree = "<group>"; };
 		AB3AF1F02902D81000BBF3E7 /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
 		AB3AF1F329037E7100BBF3E7 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
@@ -118,6 +122,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A1A9F1E29041D0300BA2764 /* Rollingpaper */ = {
+			isa = PBXGroup;
+			children = (
+				2A1A9F2129041D2200BA2764 /* Views */,
+				2A1A9F1F29041D1600BA2764 /* RollingpaperViewController.swift */,
+			);
+			path = Rollingpaper;
+			sourceTree = "<group>";
+		};
+		2A1A9F2129041D2200BA2764 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				2A1A9F2229041D3400BA2764 /* RollingpaperTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		AB3AF1EC2902D3A500BBF3E7 /* NicknameSetting */ = {
 			isa = PBXGroup;
 			children = (
@@ -224,6 +245,7 @@
 		AB7590862902B4F40088F5E7 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2A1A9F1E29041D0300BA2764 /* Rollingpaper */,
 				AB75903F290264C90088F5E7 /* Main.storyboard */,
 				AB75908A2902B81A0088F5E7 /* HoffeDuBistGlücklich */,
 				AB3AF1EC2902D3A500BBF3E7 /* NicknameSetting */,
@@ -407,11 +429,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A1A9F2329041D3400BA2764 /* RollingpaperTableViewCell.swift in Sources */,
 				AB3AF1F12902D81000BBF3E7 /* UserDefaults+.swift in Sources */,
 				AB75903E290264C90088F5E7 /* ExampleViewController.swift in Sources */,
 				AB3AF1EE2902D3DC00BBF3E7 /* NicknameSettingViewController.swift in Sources */,
 				AB75903A290264C90088F5E7 /* AppDelegate.swift in Sources */,
 				AB75903C290264C90088F5E7 /* SceneDelegate.swift in Sources */,
+				2A1A9F2029041D1600BA2764 /* RollingpaperViewController.swift in Sources */,
 				ABAF591C2902BE840002794E /* SomeOneView.swift in Sources */,
 				AB3AF1F429037E7100BBF3E7 /* UIApplication+.swift in Sources */,
 				AB7590892902B5480088F5E7 /*  ImmerZumLachen.swift in Sources */,
