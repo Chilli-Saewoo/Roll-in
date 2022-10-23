@@ -9,7 +9,7 @@ import UIKit
 import Firebase
 
 final class NicknameSettingViewController: UIViewController {
-    private let messageLabel = UILabel()
+    private let titleLabel = UILabel()
     private let nicknameTextField = UITextField()
     private let textFieldBottomLine = UIView()
     private let confirmButton = UIButton()
@@ -17,12 +17,15 @@ final class NicknameSettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        initalizeUserInfo()
         configureMessageLabel()
         configureNicknameTextField()
         nicknameTextField.delegate = self
         configureConfirmButton()
         nicknameTextField.becomeFirstResponder()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        initalizeUserInfo()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -48,8 +51,7 @@ final class NicknameSettingViewController: UIViewController {
     @objc func confirmButtonPressed(_ sender: UIButton) {
         UserDefaults.nickname = nicknameTextField.text
         UserDefaults.userId = UUID().uuidString
-        // TODO: firebase에 User 모델을 저장하는 로직이 필요합니다.
-        uploadNewUserData()
+//        uploadNewUserData()
         let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "QRCodeEnrollVC") ?? UIViewController()
         self.navigationController?.pushViewController(pushVC, animated: true)
         
@@ -82,17 +84,17 @@ extension NicknameSettingViewController: UITextFieldDelegate {
 // MARK: - nick name message를 세팅합니다.
 private extension NicknameSettingViewController {
     func configureMessageLabel() {
-        view.addSubview(messageLabel)
+        view.addSubview(titleLabel)
         setMessageLabelLayout()
-        messageLabel.text = "이름을 설정해주세요"
-        messageLabel.font = .systemFont(ofSize: 20, weight: .semibold)
+        titleLabel.text = "이름을 설정해주세요"
+        titleLabel.font = .systemFont(ofSize: 20, weight: .semibold)
     }
     
     func setMessageLabelLayout() {
-        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            messageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 175),
-            messageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 175),
+            titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
         ])
     }
 }
@@ -112,7 +114,7 @@ private extension NicknameSettingViewController {
     func setNicknameTextFieldLayout() {
         nicknameTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            nicknameTextField.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 30),
+            nicknameTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 30),
             nicknameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             nicknameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             nicknameTextField.heightAnchor.constraint(equalToConstant: 30)
