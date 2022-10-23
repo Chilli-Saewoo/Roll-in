@@ -11,6 +11,8 @@
 		AB3AF1EE2902D3DC00BBF3E7 /* NicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1ED2902D3DC00BBF3E7 /* NicknameSettingViewController.swift */; };
 		AB3AF1F12902D81000BBF3E7 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F02902D81000BBF3E7 /* UserDefaults+.swift */; };
 		AB3AF1F429037E7100BBF3E7 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F329037E7100BBF3E7 /* UIApplication+.swift */; };
+		AB3AF1F62903D24800BBF3E7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F52903D24800BBF3E7 /* User.swift */; };
+		AB3AF1F929043AE100BBF3E7 /* QRCodeEnrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F829043AE100BBF3E7 /* QRCodeEnrollViewController.swift */; };
 		AB75903A290264C90088F5E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB759039290264C90088F5E7 /* AppDelegate.swift */; };
 		AB75903C290264C90088F5E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB75903B290264C90088F5E7 /* SceneDelegate.swift */; };
 		AB75903E290264C90088F5E7 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB75903D290264C90088F5E7 /* ExampleViewController.swift */; };
@@ -59,6 +61,8 @@
 		AB3AF1ED2902D3DC00BBF3E7 /* NicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewController.swift; sourceTree = "<group>"; };
 		AB3AF1F02902D81000BBF3E7 /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
 		AB3AF1F329037E7100BBF3E7 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
+		AB3AF1F52903D24800BBF3E7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AB3AF1F829043AE100BBF3E7 /* QRCodeEnrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeEnrollViewController.swift; sourceTree = "<group>"; };
 		AB759036290264C90088F5E7 /* RollIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RollIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB759039290264C90088F5E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB75903B290264C90088F5E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +144,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		AB3AF1F729043A9800BBF3E7 /* QRCodeEnroll */ = {
+			isa = PBXGroup;
+			children = (
+				AB3AF1F829043AE100BBF3E7 /* QRCodeEnrollViewController.swift */,
+			);
+			path = QRCodeEnroll;
+			sourceTree = "<group>";
+		};
 		AB75902D290264C90088F5E7 = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				AB7590882902B5480088F5E7 /*  ImmerZumLachen.swift */,
+				AB3AF1F52903D24800BBF3E7 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -214,6 +227,7 @@
 				AB75903F290264C90088F5E7 /* Main.storyboard */,
 				AB75908A2902B81A0088F5E7 /* HoffeDuBistGlücklich */,
 				AB3AF1EC2902D3A500BBF3E7 /* NicknameSetting */,
+				AB3AF1F729043A9800BBF3E7 /* QRCodeEnroll */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -401,8 +415,10 @@
 				ABAF591C2902BE840002794E /* SomeOneView.swift in Sources */,
 				AB3AF1F429037E7100BBF3E7 /* UIApplication+.swift in Sources */,
 				AB7590892902B5480088F5E7 /*  ImmerZumLachen.swift in Sources */,
+				AB3AF1F62903D24800BBF3E7 /* User.swift in Sources */,
 				2A03F49A2903E8E1004C57B3 /* Preview+.swift in Sources */,
 				ABAF591E2902BE8D0002794E /* SomeTwoView.swift in Sources */,
+				AB3AF1F929043AE100BBF3E7 /* QRCodeEnrollViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

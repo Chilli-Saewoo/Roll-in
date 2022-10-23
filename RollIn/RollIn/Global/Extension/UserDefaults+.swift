@@ -21,4 +21,18 @@ extension UserDefaults {
             return nickname
         }
     }
+    
+    static var userId: String? {
+        set(newVal) {
+            let defaults = UserDefaults.standard
+            defaults.set(newVal, forKey: "userId")
+        }
+        get {
+            guard let nickname = UserDefaults.standard.string(forKey: "userId")
+            else {
+                return nil
+            }
+            return nickname
+        }
+    }
 }
