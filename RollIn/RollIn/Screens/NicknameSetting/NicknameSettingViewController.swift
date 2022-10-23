@@ -6,15 +6,18 @@
 //
 
 import UIKit
+import Firebase
 
 final class NicknameSettingViewController: UIViewController {
     private let messageLabel = UILabel()
     private let nicknameTextField = UITextField()
     private let textFieldBottomLine = UIView()
     private let confirmButton = UIButton()
+    private let ref = Database.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initalizeUserInfo()
         configureMessageLabel()
         configureNicknameTextField()
         nicknameTextField.delegate = self
@@ -24,6 +27,11 @@ final class NicknameSettingViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    private func initalizeUserInfo() {
+        UserDefaults.nickname = nil
+        UserDefaults.userId = nil
     }
     
     @objc func textFieldDidChange(_ sender: UITextField) {
@@ -41,9 +49,16 @@ final class NicknameSettingViewController: UIViewController {
         UserDefaults.nickname = nicknameTextField.text
         UserDefaults.userId = UUID().uuidString
         // TODO: firebase에 User 모델을 저장하는 로직이 필요합니다.
+        uploadNewUserData()
         let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "QRCodeEnrollVC") ?? UIViewController()
         self.navigationController?.pushViewController(pushVC, animated: true)
         
+    }
+    
+    private func uploadNewUserData() {
+        guard let userId = UserDefaults.userId else { return }
+        guard let nickname = UserDefaults.nickname else { return }
+        self.ref.child("users").child(userId).setValue(["nickname": nickname])
     }
 }
 
