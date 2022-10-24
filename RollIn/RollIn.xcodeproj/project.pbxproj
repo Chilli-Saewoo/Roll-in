@@ -39,6 +39,7 @@
 		AB7590892902B5480088F5E7 /*  ImmerZumLachen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7590882902B5480088F5E7 /*  ImmerZumLachen.swift */; };
 		ABAF591C2902BE840002794E /* SomeOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAF591B2902BE840002794E /* SomeOneView.swift */; };
 		ABAF591E2902BE8D0002794E /* SomeTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAF591D2902BE8D0002794E /* SomeTwoView.swift */; };
+		ABF943CD2906D4580045148B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABF943CC2906D4580045148B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		AB7590882902B5480088F5E7 /*  ImmerZumLachen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " ImmerZumLachen.swift"; sourceTree = "<group>"; };
 		ABAF591B2902BE840002794E /* SomeOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeOneView.swift; sourceTree = "<group>"; };
 		ABAF591D2902BE8D0002794E /* SomeTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeTwoView.swift; sourceTree = "<group>"; };
+		ABF943CC2906D4580045148B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 				AB7590862902B4F40088F5E7 /* Screens */,
 				AB7590872902B5250088F5E7 /* Resources */,
 				AB759047290264CA0088F5E7 /* Info.plist */,
+				ABF943CC2906D4580045148B /* GoogleService-Info.plist */,
 			);
 			path = RollIn;
 			sourceTree = "<group>";
@@ -245,11 +248,11 @@
 		AB7590862902B4F40088F5E7 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				2A1A9F1E29041D0300BA2764 /* Rollingpaper */,
 				AB75903F290264C90088F5E7 /* Main.storyboard */,
 				AB75908A2902B81A0088F5E7 /* HoffeDuBistGlücklich */,
 				AB3AF1EC2902D3A500BBF3E7 /* NicknameSetting */,
 				AB3AF1F729043A9800BBF3E7 /* QRCodeEnroll */,
+				2A1A9F1E29041D0300BA2764 /* Rollingpaper */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -403,6 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB759046290264CA0088F5E7 /* LaunchScreen.storyboard in Resources */,
+				ABF943CD2906D4580045148B /* GoogleService-Info.plist in Resources */,
 				AB759043290264CA0088F5E7 /* Assets.xcassets in Resources */,
 				AB759041290264C90088F5E7 /* Main.storyboard in Resources */,
 			);
