@@ -25,15 +25,17 @@ final class NicknameSettingViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        if UserDefaults.userId != nil {
-            guard let userId = UserDefaults.userId else { return }
-            self.ref.child("users").child(userId).removeValue()
-        }
+        removeUserIfExist()
         initalizeUserInfo()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    private func removeUserIfExist() {
+        guard let userId = UserDefaults.userId else { return }
+        self.ref.child("users").child(userId).removeValue()
     }
     
     private func initalizeUserInfo() {
