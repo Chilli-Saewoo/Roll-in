@@ -248,11 +248,11 @@
 		AB7590862902B4F40088F5E7 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				2A1A9F1E29041D0300BA2764 /* Rollingpaper */,
 				AB75903F290264C90088F5E7 /* Main.storyboard */,
 				AB75908A2902B81A0088F5E7 /* HoffeDuBistGlücklich */,
 				AB3AF1EC2902D3A500BBF3E7 /* NicknameSetting */,
 				AB3AF1F729043A9800BBF3E7 /* QRCodeEnroll */,
+				2A1A9F1E29041D0300BA2764 /* Rollingpaper */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
