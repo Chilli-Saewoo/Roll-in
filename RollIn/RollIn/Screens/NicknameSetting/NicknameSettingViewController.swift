@@ -51,7 +51,7 @@ final class NicknameSettingViewController: UIViewController {
     @objc func confirmButtonPressed(_ sender: UIButton) {
         UserDefaults.nickname = nicknameTextField.text
         UserDefaults.userId = UUID().uuidString
-//        uploadNewUserData()
+        uploadNewUserData()
         let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "QRCodeEnrollVC") ?? UIViewController()
         self.navigationController?.pushViewController(pushVC, animated: true)
         

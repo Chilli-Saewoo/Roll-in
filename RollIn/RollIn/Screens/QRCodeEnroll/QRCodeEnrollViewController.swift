@@ -8,14 +8,18 @@
 import UIKit
 
 final class QRCodeEnrollViewController: UIViewController {
-    
     private let qrImageView = UIImageView()
     private let filter = CIFilter(name: "CIQRCodeGenerator")
+    private let titleLabel = UILabel()
+    private let descriptionLabel = UILabel()
+    private let startButton = UIButton()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureQRImageView()
+        configureLabelsView()
+        configureStartButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -24,6 +28,7 @@ final class QRCodeEnrollViewController: UIViewController {
         setQRCodeImage(url)
     }
     
+    // https://gyuios.tistory.com/78
     private func setQRCodeImage(_ string: String) {
         guard let filter = filter, let data = string.data(using: .isoLatin1, allowLossyConversion: false) else { return }
         filter.setValue(data, forKey: "inputMessage")
@@ -58,3 +63,60 @@ private extension QRCodeEnrollViewController {
         ])
     }
 }
+
+private extension QRCodeEnrollViewController {
+    func configureLabelsView() {
+        view.addSubview(titleLabel)
+        view.addSubview(descriptionLabel)
+        setTitleLabelLayout()
+        setDescriptionLabelLayout()
+        guard let nickname = UserDefaults.nickname else { return }
+        titleLabel.text = "\(nickname)님의 QR 코드 생성 완료"
+        titleLabel.textAlignment = .center
+        titleLabel.font = .systemFont(ofSize: 20, weight: .medium)
+        descriptionLabel.text = "누구나 \(nickname)께 롤링페이퍼를 전송할 수 있어요 \n QR을 공유해서 롤링페이퍼를 받아보세요"
+        descriptionLabel.textAlignment = .center
+        descriptionLabel.font = .systemFont(ofSize: 16, weight: .regular)
+        descriptionLabel.lineBreakMode = .byWordWrapping
+        descriptionLabel.numberOfLines = 0
+        
+    }
+    
+    func setTitleLabelLayout() {
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleLabel.topAnchor.constraint(equalTo: qrImageView.bottomAnchor, constant: 41),
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        ])
+    }
+    
+    func setDescriptionLabelLayout() {
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 18),
+            descriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            descriptionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+        ])
+    }
+}
+
+private extension QRCodeEnrollViewController {
+    func configureStartButton() {
+        view.addSubview(startButton)
+        setStartButtonLayout()
+        startButton.setTitle("시작하기", for: .normal)
+        startButton.backgroundColor = .orange
+        startButton.layer.cornerRadius = 16.0
+    }
+    
+    func setStartButtonLayout() {
+        startButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            startButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -54),
+            startButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            startButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            startButton.heightAnchor.constraint(equalToConstant: 56),
+        ])
+    }
+}
+
