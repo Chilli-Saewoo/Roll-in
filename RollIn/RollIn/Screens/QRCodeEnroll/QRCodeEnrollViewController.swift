@@ -28,6 +28,11 @@ final class QRCodeEnrollViewController: UIViewController {
         setQRCodeImage(url)
     }
     
+    @objc func startButtonPressed(_ sender: UIButton) {
+        let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "RollingPaperVC") ?? UIViewController()
+        self.navigationController?.pushViewController(pushVC, animated: true)
+    }
+    
     // https://gyuios.tistory.com/78
     private func setQRCodeImage(_ string: String) {
         guard let filter = filter, let data = string.data(using: .isoLatin1, allowLossyConversion: false) else { return }
@@ -107,6 +112,7 @@ private extension QRCodeEnrollViewController {
         startButton.setTitle("시작하기", for: .normal)
         startButton.backgroundColor = .orange
         startButton.layer.cornerRadius = 16.0
+        startButton.addTarget(self, action: #selector(startButtonPressed), for: .touchUpInside)
     }
     
     func setStartButtonLayout() {

@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: scene)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if UserDefaults.userId == nil {
-            let vc = storyboard.instantiateViewController(withIdentifier: "CreateUserNVC") as! UINavigationController
+            let vc = storyboard.instantiateViewController(withIdentifier: "CreateUserNVC") as? UINavigationController
             self.window?.rootViewController = vc
             self.window?.makeKeyAndVisible()
             
