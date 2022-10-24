@@ -40,10 +40,10 @@
             </objects>
             <point key="canvasLocation" x="1960" y="4"/>
         </scene>
-        <!--Rolling Paper View Controller-->
+        <!--Rollingpaper View Controller-->
         <scene sceneID="pK8-TP-UHz">
             <objects>
-                <viewController storyboardIdentifier="RollingPaperVC" id="NKz-WU-zi9" customClass="RollingPaperViewController" customModule="RollIn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RollingPaperVC" id="NKz-WU-zi9" customClass="RollingpaperViewController" customModule="RollIn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hb9-pc-eII">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
