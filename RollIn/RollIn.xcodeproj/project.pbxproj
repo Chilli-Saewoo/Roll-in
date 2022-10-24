@@ -15,6 +15,7 @@
 		AB3AF1F429037E7100BBF3E7 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F329037E7100BBF3E7 /* UIApplication+.swift */; };
 		AB3AF1F62903D24800BBF3E7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F52903D24800BBF3E7 /* User.swift */; };
 		AB3AF1F929043AE100BBF3E7 /* QRCodeEnrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F829043AE100BBF3E7 /* QRCodeEnrollViewController.swift */; };
+		AB50CD3A2906DAA60089C314 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB50CD392906DAA60089C314 /* GoogleService-Info.plist */; };
 		AB75903A290264C90088F5E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB759039290264C90088F5E7 /* AppDelegate.swift */; };
 		AB75903C290264C90088F5E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB75903B290264C90088F5E7 /* SceneDelegate.swift */; };
 		AB75903E290264C90088F5E7 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB75903D290264C90088F5E7 /* ExampleViewController.swift */; };
@@ -39,7 +40,6 @@
 		AB7590892902B5480088F5E7 /*  ImmerZumLachen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7590882902B5480088F5E7 /*  ImmerZumLachen.swift */; };
 		ABAF591C2902BE840002794E /* SomeOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAF591B2902BE840002794E /* SomeOneView.swift */; };
 		ABAF591E2902BE8D0002794E /* SomeTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAF591D2902BE8D0002794E /* SomeTwoView.swift */; };
-		ABF943CD2906D4580045148B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABF943CC2906D4580045148B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +68,7 @@
 		AB3AF1F329037E7100BBF3E7 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		AB3AF1F52903D24800BBF3E7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AB3AF1F829043AE100BBF3E7 /* QRCodeEnrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeEnrollViewController.swift; sourceTree = "<group>"; };
+		AB50CD392906DAA60089C314 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB759036290264C90088F5E7 /* RollIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RollIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB759039290264C90088F5E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB75903B290264C90088F5E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 		AB7590882902B5480088F5E7 /*  ImmerZumLachen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " ImmerZumLachen.swift"; sourceTree = "<group>"; };
 		ABAF591B2902BE840002794E /* SomeOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeOneView.swift; sourceTree = "<group>"; };
 		ABAF591D2902BE8D0002794E /* SomeTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeTwoView.swift; sourceTree = "<group>"; };
-		ABF943CC2906D4580045148B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,7 +204,7 @@
 				AB7590862902B4F40088F5E7 /* Screens */,
 				AB7590872902B5250088F5E7 /* Resources */,
 				AB759047290264CA0088F5E7 /* Info.plist */,
-				ABF943CC2906D4580045148B /* GoogleService-Info.plist */,
+				AB50CD392906DAA60089C314 /* GoogleService-Info.plist */,
 			);
 			path = RollIn;
 			sourceTree = "<group>";
@@ -406,7 +406,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB759046290264CA0088F5E7 /* LaunchScreen.storyboard in Resources */,
-				ABF943CD2906D4580045148B /* GoogleService-Info.plist in Resources */,
+				AB50CD3A2906DAA60089C314 /* GoogleService-Info.plist in Resources */,
 				AB759043290264CA0088F5E7 /* Assets.xcassets in Resources */,
 				AB759041290264C90088F5E7 /* Main.storyboard in Resources */,
 			);

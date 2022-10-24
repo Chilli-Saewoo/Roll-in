@@ -17,7 +17,9 @@ final class RollingpaperViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
         setRollingpaperView()
+        
     }
 }
 
