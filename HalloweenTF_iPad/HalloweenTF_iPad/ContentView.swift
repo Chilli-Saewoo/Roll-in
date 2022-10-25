@@ -43,7 +43,7 @@ struct ContentView: View {
                         .frame(width: 100, height: 100)
                         .tint(.brown)
                         .foregroundColor(.green)
-                    Text(user.id)
+                    
                     Text(user.nickname)
                 }
             }
