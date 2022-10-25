@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import UIKit
 
 struct User: Identifiable, Hashable {
     let id: String
@@ -16,10 +17,32 @@ struct User: Identifiable, Hashable {
 struct ContentView: View {
     @State var users: [User] = []
     private let ref = Database.database().reference()
+    var ciContext = CIContext()
+
+    func qrCodeImage(for string: String) -> Image? {
+        let data = string.data(using: String.Encoding.utf8)
+        guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return nil }
+        qrFilter.setValue(data, forKey: "inputMessage")
+        guard let ciImage = qrFilter.outputImage else { return nil }
+        let cgImage = ciContext.createCGImage(ciImage, from: ciImage.extent)
+        let uiImage = UIImage(cgImage: cgImage!)
+        let image = Image(uiImage: uiImage)
+        return image
+    }
+    
     var body: some View {
         VStack {
-            ForEach(users, id: \.self) { user in
-                HStack(spacing: 10) {
+            HStack(spacing: 10) {
+                ForEach(users, id: \.self) { user in
+                    
+                    let url = "https://chilli-saewoo.github.io/rollin.github.io/write?id=" + user.id
+                    let image = qrCodeImage(for: url)!
+                
+                    image
+                        .resizable()
+                        .frame(width: 100, height: 100)
+                        .tint(.brown)
+                        .foregroundColor(.green)
                     Text(user.id)
                     Text(user.nickname)
                 }
