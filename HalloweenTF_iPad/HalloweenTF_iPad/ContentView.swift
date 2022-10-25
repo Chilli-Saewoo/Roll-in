@@ -31,30 +31,35 @@ struct ContentView: View {
     }
     
     var body: some View {
-        VStack {
-            HStack(spacing: 10) {
-                ForEach(users, id: \.self) { user in
+        ZStack{
+            Image("background")
+                .resizable()
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                HStack(spacing: 10) {
+                    ForEach(users, id: \.self) { user in
+                        
+                        let url = "https://chilli-saewoo.github.io/rollin.github.io/write?id=" + user.id
+                        let image = qrCodeImage(for: url)!
                     
-                    let url = "https://chilli-saewoo.github.io/rollin.github.io/write?id=" + user.id
-                    let image = qrCodeImage(for: url)!
-                
-                    image
-                        .resizable()
-                        .frame(width: 100, height: 100)
-                        .tint(.brown)
-                        .foregroundColor(.green)
-                    
-                    Text(user.nickname)
+                        image
+                            .resizable()
+                            .frame(width: 100, height: 100)
+                            .tint(.brown)
+                            .foregroundColor(.green)
+                        
+                        Text(user.nickname)
+                    }
                 }
             }
-        }
-        .onAppear {
-            self.ref.child("users").observe(.value) { snapshot in
-                let value = snapshot.value as? [String: [String: AnyObject]] ?? [:]
-                users = value.map { user in
-                    let id = user.key
-                    let nickname = user.value["nickname"] as? String ?? ""
-                    return User(id: id, nickname: nickname)
+            .onAppear {
+                self.ref.child("users").observe(.value) { snapshot in
+                    let value = snapshot.value as? [String: [String: AnyObject]] ?? [:]
+                    users = value.map { user in
+                        let id = user.key
+                        let nickname = user.value["nickname"] as? String ?? ""
+                        return User(id: id, nickname: nickname)
+                    }
                 }
             }
         }
@@ -64,5 +69,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewInterfaceOrientation(.landscapeRight)
     }
 }
