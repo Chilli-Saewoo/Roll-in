@@ -6,9 +6,19 @@
 //
 
 import UIKit
+import Firebase
+
+struct Note {
+    let id: String
+    let timeStamp: Int
+    let sender: String
+    let image: Int
+    let message: String
+}
 
 final class RollingpaperViewController: UIViewController {
     private var tableView: UITableView!
+    private let ref = Database.database().reference()
     
     override func loadView() {
         super.loadView()
@@ -19,7 +29,11 @@ final class RollingpaperViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
         setRollingpaperView()
-        
+        guard let userId = UserDefaults.userId else { return }
+        self.ref.child("users").child(userId).child("notes").observe(.value) { snapshot in
+            let value = snapshot.value as? [String: AnyObject] ?? [:]
+            print(value)
+        }
     }
 }
 

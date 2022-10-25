@@ -127,8 +127,8 @@
 		2A1A9F1E29041D0300BA2764 /* Rollingpaper */ = {
 			isa = PBXGroup;
 			children = (
-				2A1A9F2129041D2200BA2764 /* Views */,
 				2A1A9F1F29041D1600BA2764 /* RollingpaperViewController.swift */,
+				2A1A9F2129041D2200BA2764 /* Views */,
 			);
 			path = Rollingpaper;
 			sourceTree = "<group>";
