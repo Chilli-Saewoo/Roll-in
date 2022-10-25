@@ -28,7 +28,6 @@ struct ContentView: View {
         .onAppear {
             self.ref.child("users").observe(.value) { snapshot in
                 let value = snapshot.value as? [String: [String: AnyObject]] ?? [:]
-                // [User]바꿔주는 로직
                 users = value.map { user in
                     let id = user.key
                     let nickname = user.value["nickname"] as? String ?? ""
