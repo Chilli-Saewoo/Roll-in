@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol RollingpaperViewDelegate: AnyObject {
+    func handleOpacityValue(newVal: Float)
+}
+
+
 final class RollingpaperView: UIView {
     //기기의 화면 크기
     private let viewWidth: CGFloat = UIScreen.main.bounds.width
@@ -15,10 +20,12 @@ final class RollingpaperView: UIView {
     private var recognizerScale: CGFloat = 1.0
     private var maxScale: CGFloat = 4.0
     private var minScale: CGFloat = 1.0
-    private var isRunningAnimation = false
+    
+    weak var delegate: RollingpaperViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        self.backgroundColor = .CustomBackgroundColor
         addGesture()
     }
     
@@ -35,29 +42,27 @@ final class RollingpaperView: UIView {
     }
     //https://zeddios.tistory.com/343
     @objc private func didPinch(_ gesture: UIPinchGestureRecognizer) {
-        print(recognizerScale)
-        // && (gesture.state == .began || gesture.state == .changed)
-        if !isRunningAnimation {
+        if (gesture.state == .began || gesture.state == .changed) {
             if(recognizerScale < maxScale && gesture.scale > 1.0) {
                 self.transform = self.transform.scaledBy(x: gesture.scale, y: gesture.scale)
-                //                rollinStickerView.layer.opacity = Float(2.0 - recognizerScale)
-                //                rollinView.layer.opacity = Float(recognizerScale - 1.0)
+                if let delegate = delegate {
+                    delegate.handleOpacityValue(newVal: Float(2.5 - recognizerScale))
+                }
                 recognizerScale *= gesture.scale
                 gesture.scale = 1.0
             }
             else if (recognizerScale > minScale && gesture.scale < 1.0) {
                 self.transform = self.transform.scaledBy(x: gesture.scale, y: gesture.scale)
-                //                rollinStickerView.layer.opacity = Float(2.0 - recognizerScale)
-                //                rollinView.layer.opacity = Float(recognizerScale - 1.0)
+                if let delegate = delegate {
+                    delegate.handleOpacityValue(newVal: Float(2.5 - recognizerScale))
+                }
                 recognizerScale *= gesture.scale
                 gesture.scale = 1.0
             }
             if recognizerScale < 1.0 {
-                self.isRunningAnimation = true
                 let setVal = 1.0 / self.recognizerScale
                 self.transform = self.transform.scaledBy(x: setVal, y: setVal)
                 self.recognizerScale *= setVal
-                self.isRunningAnimation = false
                 self.relocateView()
             } else {
                 relocateView()
@@ -84,7 +89,7 @@ final class RollingpaperView: UIView {
     @objc private func didDrag(sender: UIPanGestureRecognizer) {
         let translation = sender.translation(in: self)
         if (sender.view!.frame.width > viewWidth && sender.view!.frame.height > viewHeight) {
-            sender.view!.center = CGPoint(x: sender.view!.center.x + translation.x, y: sender.view!.center.y + translation.y)
+            sender.view!.center = CGPoint(x: sender.view!.center.x + (translation.x * recognizerScale), y: sender.view!.center.y + (translation.y * recognizerScale))
             sender.setTranslation(.zero, in: self)
         }
         if(sender.view!.frame.origin.x > 0.0) {
