@@ -10,8 +10,8 @@
 		2A03F49A2903E8E1004C57B3 /* Preview+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03F4992903E8E1004C57B3 /* Preview+.swift */; };
 		2A1A9F2029041D1600BA2764 /* RollingpaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A9F1F29041D1600BA2764 /* RollingpaperViewController.swift */; };
 		2A1A9F2329041D3400BA2764 /* RollingpaperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A9F2229041D3400BA2764 /* RollingpaperTableViewCell.swift */; };
-		79C61CB0290907D3002ECF26 /* UIColor＋.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C61CAF290907D3002ECF26 /* UIColor＋.swift */; };
 		795CA1BB290962BF00497365 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795CA1BA290962BF00497365 /* UILabel+.swift */; };
+		79C61CB0290907D3002ECF26 /* UIColor＋.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C61CAF290907D3002ECF26 /* UIColor＋.swift */; };
 		AB3AF1EE2902D3DC00BBF3E7 /* NicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1ED2902D3DC00BBF3E7 /* NicknameSettingViewController.swift */; };
 		AB3AF1F12902D81000BBF3E7 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F02902D81000BBF3E7 /* UserDefaults+.swift */; };
 		AB3AF1F429037E7100BBF3E7 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F329037E7100BBF3E7 /* UIApplication+.swift */; };
@@ -70,8 +70,8 @@
 		2A03F4992903E8E1004C57B3 /* Preview+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview+.swift"; sourceTree = "<group>"; };
 		2A1A9F1F29041D1600BA2764 /* RollingpaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingpaperViewController.swift; sourceTree = "<group>"; };
 		2A1A9F2229041D3400BA2764 /* RollingpaperTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingpaperTableViewCell.swift; sourceTree = "<group>"; };
-		79C61CAF290907D3002ECF26 /* UIColor＋.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor＋.swift"; path = "RollIn/App/UIColor＋.swift"; sourceTree = SOURCE_ROOT; };
 		795CA1BA290962BF00497365 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		79C61CAF290907D3002ECF26 /* UIColor＋.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor＋.swift"; path = "RollIn/App/UIColor＋.swift"; sourceTree = SOURCE_ROOT; };
 		AB3AF1ED2902D3DC00BBF3E7 /* NicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewController.swift; sourceTree = "<group>"; };
 		AB3AF1F02902D81000BBF3E7 /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
 		AB3AF1F329037E7100BBF3E7 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
@@ -665,7 +665,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Roll - in";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = Main.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -699,7 +699,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Roll - in";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = Main.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";

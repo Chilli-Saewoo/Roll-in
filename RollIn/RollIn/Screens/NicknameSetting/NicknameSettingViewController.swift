@@ -24,7 +24,7 @@ final class NicknameSettingViewController: UIViewController {
         configureNicknameTextDescriptionLabel()
         configureConfirmButton()
         nicknameTextField.becomeFirstResponder()
-        self.view.backgroundColor = UIColor(red: 0.42, green: 0.42, blue: 0.42, alpha: 0)
+        self.view.backgroundColor = .CustomBackgroundColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,13 +48,13 @@ final class NicknameSettingViewController: UIViewController {
     
     @objc func textFieldDidChange(_ sender: UITextField) {
         guard let text = sender.text else {
-            confirmButton.backgroundColor = .gray
+            confirmButton.backgroundColor = .hwOrangeInactive
             confirmButton.isEnabled = false
             return
         }
         let count = text.count
         confirmButton.isEnabled = count > 0 ? true : false
-        confirmButton.backgroundColor = count > 0 ? .orange : .gray
+        confirmButton.backgroundColor = count > 0 ? .hwOrange : .hwOrangeInactive
     }
     
     @objc func confirmButtonPressed(_ sender: UIButton) {
@@ -130,7 +130,7 @@ private extension NicknameSettingViewController {
         nicknameTextDescriptionLabel.text = "닉네임은 QR코드와 함께 표시됩니다 \n최대 10자까지 가능합니다"
         nicknameTextDescriptionLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         nicknameTextDescriptionLabel.numberOfLines = 2
-        nicknameTextDescriptionLabel.textColor = .gray
+        nicknameTextDescriptionLabel.textColor = .lightGray
     }
     
     func setNicknameTextFieldLayout() {
@@ -169,7 +169,7 @@ private extension NicknameSettingViewController {
         setConfirmButtonLayout()
         confirmButton.layer.cornerRadius = 8.0
         confirmButton.setTitle("다음", for: .normal)
-        confirmButton.backgroundColor = .gray
+        confirmButton.backgroundColor = .hwOrangeInactive
         confirmButton.addTarget(self, action: #selector(confirmButtonPressed), for: .touchUpInside)
     }
     
