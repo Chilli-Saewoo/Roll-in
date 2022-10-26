@@ -20,6 +20,7 @@ final class QRCodeEnrollViewController: UIViewController {
         configureQRImageView()
         configureLabelsView()
         configureStartButton()
+        configureUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,6 +50,10 @@ final class QRCodeEnrollViewController: UIViewController {
             qrImageView.backgroundColor = .black
             qrImageView.image = UIImage(ciImage: ouputImage, scale: 2.0, orientation: .up).withRenderingMode(.alwaysTemplate)
         } else { return }
+    }
+    
+    private func configureUI() {
+        view.backgroundColor = .darkGray
     }
 }
 
