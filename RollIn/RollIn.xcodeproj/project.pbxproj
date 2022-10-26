@@ -16,6 +16,8 @@
 		AB3AF1F62903D24800BBF3E7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F52903D24800BBF3E7 /* User.swift */; };
 		AB3AF1F929043AE100BBF3E7 /* QRCodeEnrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F829043AE100BBF3E7 /* QRCodeEnrollViewController.swift */; };
 		AB50CD3A2906DAA60089C314 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB50CD392906DAA60089C314 /* GoogleService-Info.plist */; };
+		AB50CD3C2907D6C80089C314 /* RollingpaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50CD3B2907D6C80089C314 /* RollingpaperView.swift */; };
+		AB50CD3E2908DAF10089C314 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50CD3D2908DAF10089C314 /* Note.swift */; };
 		AB75903A290264C90088F5E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB759039290264C90088F5E7 /* AppDelegate.swift */; };
 		AB75903C290264C90088F5E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB75903B290264C90088F5E7 /* SceneDelegate.swift */; };
 		AB75903E290264C90088F5E7 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB75903D290264C90088F5E7 /* ExampleViewController.swift */; };
@@ -69,6 +71,8 @@
 		AB3AF1F52903D24800BBF3E7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AB3AF1F829043AE100BBF3E7 /* QRCodeEnrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeEnrollViewController.swift; sourceTree = "<group>"; };
 		AB50CD392906DAA60089C314 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AB50CD3B2907D6C80089C314 /* RollingpaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingpaperView.swift; sourceTree = "<group>"; };
+		AB50CD3D2908DAF10089C314 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		AB759036290264C90088F5E7 /* RollIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RollIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB759039290264C90088F5E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB75903B290264C90088F5E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				2A1A9F2229041D3400BA2764 /* RollingpaperTableViewCell.swift */,
+				AB50CD3B2907D6C80089C314 /* RollingpaperView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -241,6 +246,7 @@
 			children = (
 				AB7590882902B5480088F5E7 /*  ImmerZumLachen.swift */,
 				AB3AF1F52903D24800BBF3E7 /* User.swift */,
+				AB50CD3D2908DAF10089C314 /* Note.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -444,9 +450,11 @@
 				AB3AF1F429037E7100BBF3E7 /* UIApplication+.swift in Sources */,
 				AB7590892902B5480088F5E7 /*  ImmerZumLachen.swift in Sources */,
 				AB3AF1F62903D24800BBF3E7 /* User.swift in Sources */,
+				AB50CD3E2908DAF10089C314 /* Note.swift in Sources */,
 				2A03F49A2903E8E1004C57B3 /* Preview+.swift in Sources */,
 				ABAF591E2902BE8D0002794E /* SomeTwoView.swift in Sources */,
 				AB3AF1F929043AE100BBF3E7 /* QRCodeEnrollViewController.swift in Sources */,
+				AB50CD3C2907D6C80089C314 /* RollingpaperView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
