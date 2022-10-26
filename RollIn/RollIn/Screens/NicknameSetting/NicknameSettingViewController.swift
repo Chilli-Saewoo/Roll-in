@@ -88,8 +88,14 @@ extension NicknameSettingViewController: UITextFieldDelegate {
         }
         return true
     }
+    
+    
 }
 
+// MARK: - Background Color를 세팅합니다.
+func backgroundColor() {
+    
+}
 
 // MARK: - nick name message를 세팅합니다.
 private extension NicknameSettingViewController {
@@ -119,8 +125,8 @@ private extension NicknameSettingViewController {
         setTextFieldBottomLineLayout()
         nicknameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         nicknameTextField.textColor = .white
-        textFieldBottomLine.backgroundColor = .gray
-        nicknameTextField.clearButtonMode = .always
+        textFieldBottomLine.backgroundColor = .white
+        nicknameTextField.setClearButton(with: UIImage(systemName: "xmark.circle.fill") ?? UIImage(), mode: .always)
         
     }
     
@@ -167,7 +173,6 @@ private extension NicknameSettingViewController {
     func configureConfirmButton() {
         view.addSubview(confirmButton)
         setConfirmButtonLayout()
-        confirmButton.layer.cornerRadius = 8.0
         confirmButton.setTitle("다음", for: .normal)
         confirmButton.backgroundColor = .hwOrangeInactive
         confirmButton.addTarget(self, action: #selector(confirmButtonPressed), for: .touchUpInside)
@@ -176,10 +181,38 @@ private extension NicknameSettingViewController {
     func setConfirmButtonLayout() {
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            confirmButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -80),
-            confirmButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 25),
-            confirmButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -25),
+            confirmButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            confirmButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            confirmButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             confirmButton.heightAnchor.constraint(equalToConstant: 60)
         ])
+        self.view.layoutIfNeeded()
+        subscribeToShowKeyboardNotifications()
+        nicknameTextField.becomeFirstResponder()
+    }
+    
+    //    override func didReceiveMemoryWarning() {
+    //           super.didReceiveMemoryWarning()
+    //           // Dispose of any resources that can be recreated.
+    //       }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
+        let keyboardHeight = keyboardSize.cgRectValue.height
+        confirmButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant:  (-keyboardHeight)).isActive = true
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        confirmButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
+    }
+    
+    func subscribeToShowKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func buttonAction() {
+        nicknameTextField.resignFirstResponder()
     }
 }
