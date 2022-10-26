@@ -58,6 +58,7 @@ final class QRCodeEnrollViewController: UIViewController {
     
     private func configureUI() {
         view.backgroundColor = .darkGray
+        navigationController?.navigationBar.tintColor = .orange
     }
 }
 
