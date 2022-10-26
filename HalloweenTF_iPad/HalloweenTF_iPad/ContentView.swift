@@ -19,7 +19,7 @@ struct User: Identifiable, Hashable, Comparable {
 }
 
 struct ContentView: View {
-    let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 7, on: .main, in: .common).autoconnect()
     @State var tempTwoDimUsers: [[User]] = [[]]
     @State var twoDimUsers: [[User]] = [[]]
     @State var showingUsers: [User] = []
@@ -46,7 +46,7 @@ struct ContentView: View {
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
             VStack{
-                LazyVGrid(columns: columns, spacing: 20) {
+                LazyVGrid(columns: columns, spacing: 29) {
                     ForEach(showingUsers, id: \.self) { user in
                         VStack{
                             
@@ -56,16 +56,19 @@ struct ContentView: View {
                             qrimage
                                 .resizable()
                                 .frame(width: 107, height: 107)
+                                .padding(EdgeInsets(top: 0, leading: 0, bottom:13, trailing: 0))
                             
                             Text(user.nickname)
                                 .foregroundColor(.white)
-                                .font(.system(size: 12))
+                                .font(.system(size: 12, weight: .semibold))
                         }
                         .padding(.horizontal)
                     }
                 }
-                .frame(width: 931, height: 458)
+                
             }
+            .frame(width: 931, height: 458, alignment: .topLeading)
+            .padding(EdgeInsets(top: 250, leading: 120, bottom:142, trailing: 120))
             
         }
         .onAppear {
