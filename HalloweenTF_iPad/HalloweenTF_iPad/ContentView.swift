@@ -50,7 +50,7 @@ struct ContentView: View {
                     ForEach(showingUsers, id: \.self) { user in
                         VStack{
                             
-                            let url = "https://chilli-saewoo.github.io/rollin.github.io/write?id=" + user.id
+                            let url = "https://chilli-saewoo.github.io/rollin.github.io/write/id=" + user.id
                             let qrimage = qrCodeImage(for: url)!
                             
                             qrimage
