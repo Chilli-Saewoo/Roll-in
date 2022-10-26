@@ -125,7 +125,7 @@ private extension NicknameSettingViewController {
         setTextFieldBottomLineLayout()
         nicknameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         nicknameTextField.textColor = .white
-        textFieldBottomLine.backgroundColor = .gray
+        textFieldBottomLine.backgroundColor = .white
         nicknameTextField.setClearButton(with: UIImage(systemName: "xmark.circle.fill") ?? UIImage(), mode: .always)
         
     }
