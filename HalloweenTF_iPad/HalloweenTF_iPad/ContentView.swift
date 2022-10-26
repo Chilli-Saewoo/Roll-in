@@ -9,16 +9,26 @@ import SwiftUI
 import Firebase
 import UIKit
 
-struct User: Identifiable, Hashable {
+struct User: Identifiable, Hashable, Comparable {
     let id: String
     let nickname: String
+    
+    static func < (lhs: User, rhs: User) -> Bool {
+        lhs.nickname < rhs.nickname
+    }
 }
 
 struct ContentView: View {
-    @State var users: [User] = []
+    let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
+    @State var tempTwoDimUsers: [[User]] = [[]]
+    @State var twoDimUsers: [[User]] = [[]]
+    @State var showingUsers: [User] = []
+    @State var currentIndex = 0
     private let ref = Database.database().reference()
     var ciContext = CIContext()
-
+    
+    var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 5)
+    
     func qrCodeImage(for string: String) -> Image? {
         let data = string.data(using: String.Encoding.utf8)
         guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return nil }
@@ -35,33 +45,66 @@ struct ContentView: View {
             Image("background")
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
-            VStack {
-                HStack(spacing: 10) {
-                    ForEach(users, id: \.self) { user in
-                        
-                        let url = "https://chilli-saewoo.github.io/rollin.github.io/write?id=" + user.id
-                        let image = qrCodeImage(for: url)!
-                    
-                        image
-                            .resizable()
-                            .frame(width: 100, height: 100)
-                            .tint(.brown)
-                            .foregroundColor(.green)
-                        
-                        Text(user.nickname)
+            VStack{
+                LazyVGrid(columns: columns, spacing: 20) {
+                    ForEach(showingUsers, id: \.self) { user in
+                        VStack{
+                            
+                            let url = "https://chilli-saewoo.github.io/rollin.github.io/write?id=" + user.id
+                            let qrimage = qrCodeImage(for: url)!
+                            
+                            qrimage
+                                .resizable()
+                                .frame(width: 107, height: 107)
+                                .tint(.brown)
+                                .foregroundColor(.green)
+                            
+                            Text(user.nickname)
+                                .foregroundColor(.white)
+                                .font(.system(size: 12))
+                        }
+                        .padding(.horizontal)
                     }
                 }
+                .frame(width: 931, height: 458)
             }
-            .onAppear {
-                self.ref.child("users").observe(.value) { snapshot in
-                    let value = snapshot.value as? [String: [String: AnyObject]] ?? [:]
-                    users = value.map { user in
-                        let id = user.key
-                        let nickname = user.value["nickname"] as? String ?? ""
-                        return User(id: id, nickname: nickname)
-                    }
+            
+        }
+        .onAppear {
+            var isFirstAppeared = true
+            self.ref.child("users").observe(.value) { snapshot in
+                let values = snapshot.value as? [String: [String: AnyObject]] ?? [:]
+                let users: [User] = values.map {
+                    let id = $0.key
+                    let nickname = $0.value["nickname"] as? String ?? ""
+                    return User(id: id, nickname: nickname)
+                }.sorted(by: <)
+                
+                var newIdx = users.count / 15
+                if users.count != 0 && users.count % 15 == 0 {
+                    newIdx -= 1
+                }
+                let twoDimArray = Array(repeating: Array(repeating: 0, count: 15), count: newIdx + 1)
+                var iter = users.makeIterator()
+                let newArray = twoDimArray.map { $0.compactMap{ _ in iter.next() }}
+                tempTwoDimUsers = newArray
+                if isFirstAppeared == true {
+                    showingUsers = newArray.first ?? []
+                    twoDimUsers = newArray
+                    isFirstAppeared = false
                 }
             }
+        }
+        .onReceive(timer) { _ in
+            
+            currentIndex += 1
+            if currentIndex >= twoDimUsers.count {
+                currentIndex = 0
+            }
+            if currentIndex == 0 {
+                twoDimUsers = tempTwoDimUsers
+            }
+            showingUsers = twoDimUsers[currentIndex]
         }
     }
 }
