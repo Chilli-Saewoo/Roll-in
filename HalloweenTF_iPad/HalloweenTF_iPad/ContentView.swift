@@ -6,11 +6,35 @@
 //
 
 import SwiftUI
+import Firebase
+
+struct User: Identifiable, Hashable {
+    let id: String
+    let nickname: String
+}
 
 struct ContentView: View {
+    @State var users: [User] = []
+    private let ref = Database.database().reference()
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            ForEach(users, id: \.self) { user in
+                HStack(spacing: 10) {
+                    Text(user.id)
+                    Text(user.nickname)
+                }
+            }
+        }
+        .onAppear {
+            self.ref.child("users").observe(.value) { snapshot in
+                let value = snapshot.value as? [String: [String: AnyObject]] ?? [:]
+                users = value.map { user in
+                    let id = user.key
+                    let nickname = user.value["nickname"] as? String ?? ""
+                    return User(id: id, nickname: nickname)
+                }
+            }
+        }
     }
 }
 
