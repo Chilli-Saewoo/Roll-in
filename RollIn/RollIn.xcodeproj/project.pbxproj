@@ -20,6 +20,7 @@
 		AB50CD3C2907D6C80089C314 /* RollingpaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50CD3B2907D6C80089C314 /* RollingpaperView.swift */; };
 		AB50CD3E2908DAF10089C314 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50CD3D2908DAF10089C314 /* Note.swift */; };
 		AB50CD40290903DC0089C314 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50CD3F290903DC0089C314 /* NoteView.swift */; };
+		AB50CD432909889E0089C314 /* QRShowingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50CD422909889E0089C314 /* QRShowingViewController.swift */; };
 		AB75903A290264C90088F5E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB759039290264C90088F5E7 /* AppDelegate.swift */; };
 		AB75903C290264C90088F5E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB75903B290264C90088F5E7 /* SceneDelegate.swift */; };
 		AB75903E290264C90088F5E7 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB75903D290264C90088F5E7 /* ExampleViewController.swift */; };
@@ -77,6 +78,7 @@
 		AB50CD3B2907D6C80089C314 /* RollingpaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingpaperView.swift; sourceTree = "<group>"; };
 		AB50CD3D2908DAF10089C314 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		AB50CD3F290903DC0089C314 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		AB50CD422909889E0089C314 /* QRShowingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRShowingViewController.swift; sourceTree = "<group>"; };
 		AB759036290264C90088F5E7 /* RollIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RollIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB759039290264C90088F5E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB75903B290264C90088F5E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -186,6 +188,14 @@
 			path = QRCodeEnroll;
 			sourceTree = "<group>";
 		};
+		AB50CD41290988770089C314 /* QRShowing */ = {
+			isa = PBXGroup;
+			children = (
+				AB50CD422909889E0089C314 /* QRShowingViewController.swift */,
+			);
+			path = QRShowing;
+			sourceTree = "<group>";
+		};
 		AB75902D290264C90088F5E7 = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +275,7 @@
 				AB3AF1EC2902D3A500BBF3E7 /* NicknameSetting */,
 				AB3AF1F729043A9800BBF3E7 /* QRCodeEnroll */,
 				2A1A9F1E29041D0300BA2764 /* Rollingpaper */,
+				AB50CD41290988770089C314 /* QRShowing */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -463,6 +474,7 @@
 				ABAF591E2902BE8D0002794E /* SomeTwoView.swift in Sources */,
 				AB3AF1F929043AE100BBF3E7 /* QRCodeEnrollViewController.swift in Sources */,
 				AB50CD3C2907D6C80089C314 /* RollingpaperView.swift in Sources */,
+				AB50CD432909889E0089C314 /* QRShowingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
