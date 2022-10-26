@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "batPurple.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

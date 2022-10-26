@@ -24,7 +24,7 @@ final class QRCodeEnrollViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         guard let userId = UserDefaults.userId else { return }
-        let url = "https://chilli-saewoo.github.io/rollin.github.io/write?id=" + userId
+        let url = "https://chilli-saewoo.github.io/rollin.github.io/write/id=" + userId
         setQRCodeImage(url)
     }
     
