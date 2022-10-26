@@ -34,7 +34,8 @@ struct ContentView: View {
         guard let qrFilter = CIFilter(name: "CIQRCodeGenerator") else { return nil }
         qrFilter.setValue(data, forKey: "inputMessage")
         guard let ciImage = qrFilter.outputImage else { return nil }
-        let cgImage = ciContext.createCGImage(ciImage, from: ciImage.extent)
+        let transformed = ciImage.transformed(by: CGAffineTransform.init(scaleX: 20, y: 20))
+        let cgImage = ciContext.createCGImage(transformed, from: transformed.extent)
         let uiImage = UIImage(cgImage: cgImage!)
         let image = Image(uiImage: uiImage)
         return image
