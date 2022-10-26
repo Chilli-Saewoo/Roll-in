@@ -11,6 +11,7 @@
 		2A1A9F2029041D1600BA2764 /* RollingpaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A9F1F29041D1600BA2764 /* RollingpaperViewController.swift */; };
 		2A1A9F2329041D3400BA2764 /* RollingpaperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A9F2229041D3400BA2764 /* RollingpaperTableViewCell.swift */; };
 		795CA1BB290962BF00497365 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795CA1BA290962BF00497365 /* UILabel+.swift */; };
+		79C61CB0290907D3002ECF26 /* UIColor＋.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C61CAF290907D3002ECF26 /* UIColor＋.swift */; };
 		AB3AF1EE2902D3DC00BBF3E7 /* NicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1ED2902D3DC00BBF3E7 /* NicknameSettingViewController.swift */; };
 		AB3AF1F12902D81000BBF3E7 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F02902D81000BBF3E7 /* UserDefaults+.swift */; };
 		AB3AF1F429037E7100BBF3E7 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F329037E7100BBF3E7 /* UIApplication+.swift */; };
@@ -18,6 +19,8 @@
 		AB3AF1F929043AE100BBF3E7 /* QRCodeEnrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F829043AE100BBF3E7 /* QRCodeEnrollViewController.swift */; };
 		AB50CD3C2907D6C80089C314 /* RollingpaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50CD3B2907D6C80089C314 /* RollingpaperView.swift */; };
 		AB50CD3E2908DAF10089C314 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50CD3D2908DAF10089C314 /* Note.swift */; };
+		AB50CD40290903DC0089C314 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50CD3F290903DC0089C314 /* NoteView.swift */; };
+		AB50CD432909889E0089C314 /* QRShowingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB50CD422909889E0089C314 /* QRShowingViewController.swift */; };
 		AB75903A290264C90088F5E7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB759039290264C90088F5E7 /* AppDelegate.swift */; };
 		AB75903C290264C90088F5E7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB75903B290264C90088F5E7 /* SceneDelegate.swift */; };
 		AB75903E290264C90088F5E7 /* ExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB75903D290264C90088F5E7 /* ExampleViewController.swift */; };
@@ -68,6 +71,7 @@
 		2A1A9F1F29041D1600BA2764 /* RollingpaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingpaperViewController.swift; sourceTree = "<group>"; };
 		2A1A9F2229041D3400BA2764 /* RollingpaperTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingpaperTableViewCell.swift; sourceTree = "<group>"; };
 		795CA1BA290962BF00497365 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
+		79C61CAF290907D3002ECF26 /* UIColor＋.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor＋.swift"; path = "RollIn/App/UIColor＋.swift"; sourceTree = SOURCE_ROOT; };
 		AB3AF1ED2902D3DC00BBF3E7 /* NicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewController.swift; sourceTree = "<group>"; };
 		AB3AF1F02902D81000BBF3E7 /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
 		AB3AF1F329037E7100BBF3E7 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
@@ -75,6 +79,8 @@
 		AB3AF1F829043AE100BBF3E7 /* QRCodeEnrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeEnrollViewController.swift; sourceTree = "<group>"; };
 		AB50CD3B2907D6C80089C314 /* RollingpaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingpaperView.swift; sourceTree = "<group>"; };
 		AB50CD3D2908DAF10089C314 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		AB50CD3F290903DC0089C314 /* NoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
+		AB50CD422909889E0089C314 /* QRShowingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRShowingViewController.swift; sourceTree = "<group>"; };
 		AB759036290264C90088F5E7 /* RollIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RollIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB759039290264C90088F5E7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB75903B290264C90088F5E7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +150,7 @@
 		2A1A9F2129041D2200BA2764 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AB50CD3F290903DC0089C314 /* NoteView.swift */,
 				2A1A9F2229041D3400BA2764 /* RollingpaperTableViewCell.swift */,
 				AB50CD3B2907D6C80089C314 /* RollingpaperView.swift */,
 			);
@@ -172,6 +179,7 @@
 				AB3AF1F329037E7100BBF3E7 /* UIApplication+.swift */,
 				AB3AF1F02902D81000BBF3E7 /* UserDefaults+.swift */,
 				2A03F4992903E8E1004C57B3 /* Preview+.swift */,
+				79C61CAF290907D3002ECF26 /* UIColor＋.swift */,
 				F64EA70429098A0B00409924 /* UITextField+.swift */,
 				795CA1BA290962BF00497365 /* UILabel+.swift */,
 			);
@@ -184,6 +192,14 @@
 				AB3AF1F829043AE100BBF3E7 /* QRCodeEnrollViewController.swift */,
 			);
 			path = QRCodeEnroll;
+			sourceTree = "<group>";
+		};
+		AB50CD41290988770089C314 /* QRShowing */ = {
+			isa = PBXGroup;
+			children = (
+				AB50CD422909889E0089C314 /* QRShowingViewController.swift */,
+			);
+			path = QRShowing;
 			sourceTree = "<group>";
 		};
 		AB75902D290264C90088F5E7 = {
@@ -265,6 +281,7 @@
 				AB3AF1EC2902D3A500BBF3E7 /* NicknameSetting */,
 				AB3AF1F729043A9800BBF3E7 /* QRCodeEnroll */,
 				2A1A9F1E29041D0300BA2764 /* Rollingpaper */,
+				AB50CD41290988770089C314 /* QRShowing */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -446,6 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2A1A9F2329041D3400BA2764 /* RollingpaperTableViewCell.swift in Sources */,
+				79C61CB0290907D3002ECF26 /* UIColor＋.swift in Sources */,
 				AB3AF1F12902D81000BBF3E7 /* UserDefaults+.swift in Sources */,
 				AB75903E290264C90088F5E7 /* ExampleViewController.swift in Sources */,
 				AB3AF1EE2902D3DC00BBF3E7 /* NicknameSettingViewController.swift in Sources */,
@@ -458,11 +476,13 @@
 				AB7590892902B5480088F5E7 /*  ImmerZumLachen.swift in Sources */,
 				AB3AF1F62903D24800BBF3E7 /* User.swift in Sources */,
 				AB50CD3E2908DAF10089C314 /* Note.swift in Sources */,
+				AB50CD40290903DC0089C314 /* NoteView.swift in Sources */,
 				2A03F49A2903E8E1004C57B3 /* Preview+.swift in Sources */,
 				795CA1BB290962BF00497365 /* UILabel+.swift in Sources */,
 				ABAF591E2902BE8D0002794E /* SomeTwoView.swift in Sources */,
 				AB3AF1F929043AE100BBF3E7 /* QRCodeEnrollViewController.swift in Sources */,
 				AB50CD3C2907D6C80089C314 /* RollingpaperView.swift in Sources */,
+				AB50CD432909889E0089C314 /* QRShowingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,7 +665,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Roll - in";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = Main.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -679,7 +699,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Roll - in";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = Main.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";

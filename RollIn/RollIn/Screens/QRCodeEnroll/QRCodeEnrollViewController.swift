@@ -29,7 +29,7 @@ final class QRCodeEnrollViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         guard let userId = UserDefaults.userId else { return }
-        let url = "https://chilli-saewoo.github.io/rollin.github.io/write?id=" + userId
+        let url = "https://chilli-saewoo.github.io/rollin.github.io/write/id=" + userId
         setQRCodeImage(url)
     }
     
@@ -57,8 +57,8 @@ final class QRCodeEnrollViewController: UIViewController {
     }
     
     private func configureUI() {
-        view.backgroundColor = .darkGray
-        navigationController?.navigationBar.tintColor = .orange
+        view.backgroundColor = .CustomBackgroundColor
+        navigationController?.navigationBar.tintColor = .hwOrange
     }
 }
 
@@ -95,7 +95,7 @@ private extension QRCodeEnrollViewController {
         descriptionLabel.text = "QR을 공유해서 롤링페이퍼를 받아보세요"
         descriptionLabel.textAlignment = .center
         descriptionLabel.font = .systemFont(ofSize: 16, weight: .regular)
-        descriptionLabel.textColor = .gray
+        descriptionLabel.textColor = .lightGray
         descriptionLabel.lineBreakMode = .byWordWrapping
         descriptionLabel.numberOfLines = 0
         
@@ -125,7 +125,7 @@ private extension QRCodeEnrollViewController {
         setStartButtonLayout()
         startButton.setTitle("시작하기", for: .normal)
         startButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
-        startButton.backgroundColor = .orange
+        startButton.backgroundColor = .hwOrange
         startButton.layer.cornerRadius = 8
         startButton.addTarget(self, action: #selector(startButtonPressed), for: .touchUpInside)
     }
@@ -143,12 +143,12 @@ private extension QRCodeEnrollViewController {
         startDescriptionStackView.addArrangedSubview(qrSFImageView)
         startDescriptionStackView.addArrangedSubview(startDescriptionLabel)
         qrSFImageView.contentMode = .scaleAspectFit
-        qrSFImageView.tintColor = .orange
+        qrSFImageView.tintColor = .hwTextOrange
         setQrSFImageViewLayout()
         setStartDescriptionLabelLayout()
         startDescriptionLabel.text = "해당 QR은 부스 모니터와 앱 내에서 다시 확인할 수 있습니다"
         startDescriptionLabel.textAlignment = .center
-        startDescriptionLabel.textColor = .orange
+        startDescriptionLabel.textColor = .hwTextOrange
         startDescriptionLabel.font = .systemFont(ofSize: 12, weight: .regular)
     }
     
