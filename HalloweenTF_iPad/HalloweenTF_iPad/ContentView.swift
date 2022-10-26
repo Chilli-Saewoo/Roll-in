@@ -56,8 +56,6 @@ struct ContentView: View {
                             qrimage
                                 .resizable()
                                 .frame(width: 107, height: 107)
-                                .tint(.brown)
-                                .foregroundColor(.green)
                             
                             Text(user.nickname)
                                 .foregroundColor(.white)
