@@ -114,7 +114,7 @@ private extension QRCodeEnrollViewController {
         setStartButtonLayout()
         startButton.setTitle("시작하기", for: .normal)
         startButton.backgroundColor = .orange
-        startButton.layer.cornerRadius = 16.0
+        startButton.layer.cornerRadius = 8
         startButton.addTarget(self, action: #selector(startButtonPressed), for: .touchUpInside)
     }
     
