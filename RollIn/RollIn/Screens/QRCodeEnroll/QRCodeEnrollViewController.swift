@@ -77,7 +77,7 @@ private extension QRCodeEnrollViewController {
         setDescriptionLabelLayout()
         guard let nickname = UserDefaults.nickname else { return }
         titleLabel.text = "\(nickname)님의 \n QR 코드가 생성되었어요"
-        titleLabel.font.lineHeight
+        titleLabel.addLabelSpacing(lineSpacing: 4)
         titleLabel.numberOfLines = 2
         titleLabel.textAlignment = .center
         titleLabel.font = .systemFont(ofSize: 18, weight: .medium)
@@ -93,7 +93,7 @@ private extension QRCodeEnrollViewController {
     func setTitleLabelLayout() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: qrImageView.bottomAnchor, constant: 41),
+            titleLabel.topAnchor.constraint(equalTo: qrImageView.bottomAnchor, constant: 39),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }
