@@ -12,6 +12,7 @@ final class NicknameSettingViewController: UIViewController {
     private let titleLabel = UILabel()
     private let nicknameTextField = UITextField()
     private let textFieldBottomLine = UIView()
+    private let nicknameTextDescriptionLabel = UILabel()
     private let confirmButton = UIButton()
     private let ref = Database.database().reference()
     
@@ -20,8 +21,10 @@ final class NicknameSettingViewController: UIViewController {
         configureMessageLabel()
         configureNicknameTextField()
         nicknameTextField.delegate = self
+        configureNicknameTextDescriptionLabel()
         configureConfirmButton()
         nicknameTextField.becomeFirstResponder()
+        self.view.backgroundColor = UIColor(red: 0.42, green: 0.42, blue: 0.42, alpha: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,13 +90,15 @@ extension NicknameSettingViewController: UITextFieldDelegate {
     }
 }
 
+
 // MARK: - nick name message를 세팅합니다.
 private extension NicknameSettingViewController {
     func configureMessageLabel() {
         view.addSubview(titleLabel)
         setMessageLabelLayout()
-        titleLabel.text = "이름을 설정해주세요"
-        titleLabel.font = .systemFont(ofSize: 20, weight: .semibold)
+        titleLabel.text = "닉네임을 설정해주세요"
+        titleLabel.font = .systemFont(ofSize: 26, weight: .bold)
+        titleLabel.textColor = .white
     }
     
     func setMessageLabelLayout() {
@@ -113,8 +118,19 @@ private extension NicknameSettingViewController {
         setNicknameTextFieldLayout()
         setTextFieldBottomLineLayout()
         nicknameTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
-        textFieldBottomLine.backgroundColor = .black
+        nicknameTextField.textColor = .white
+        textFieldBottomLine.backgroundColor = .gray
+        nicknameTextField.clearButtonMode = .always
         
+    }
+    
+    func configureNicknameTextDescriptionLabel() {
+        view.addSubview(nicknameTextDescriptionLabel)
+        nicknameTextDescriptionLabelLayout()
+        nicknameTextDescriptionLabel.text = "닉네임은 QR코드와 함께 표시됩니다 \n최대 10자까지 가능합니다"
+        nicknameTextDescriptionLabel.font = .systemFont(ofSize: 12, weight: .semibold)
+        nicknameTextDescriptionLabel.numberOfLines = 2
+        nicknameTextDescriptionLabel.textColor = .gray
     }
     
     func setNicknameTextFieldLayout() {
@@ -134,6 +150,14 @@ private extension NicknameSettingViewController {
             textFieldBottomLine.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             textFieldBottomLine.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             textFieldBottomLine.heightAnchor.constraint(equalToConstant: 1)
+        ])
+    }
+    
+    func nicknameTextDescriptionLabelLayout() {
+        nicknameTextDescriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            nicknameTextDescriptionLabel.topAnchor.constraint(equalTo: textFieldBottomLine.bottomAnchor, constant: 10),
+            nicknameTextDescriptionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
     }
 }

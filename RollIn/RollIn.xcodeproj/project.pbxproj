@@ -11,6 +11,7 @@
 		2A1A9F2029041D1600BA2764 /* RollingpaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A9F1F29041D1600BA2764 /* RollingpaperViewController.swift */; };
 		2A1A9F2329041D3400BA2764 /* RollingpaperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A9F2229041D3400BA2764 /* RollingpaperTableViewCell.swift */; };
 		79C61CB0290907D3002ECF26 /* UIColor＋.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C61CAF290907D3002ECF26 /* UIColor＋.swift */; };
+		795CA1BB290962BF00497365 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795CA1BA290962BF00497365 /* UILabel+.swift */; };
 		AB3AF1EE2902D3DC00BBF3E7 /* NicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1ED2902D3DC00BBF3E7 /* NicknameSettingViewController.swift */; };
 		AB3AF1F12902D81000BBF3E7 /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F02902D81000BBF3E7 /* UserDefaults+.swift */; };
 		AB3AF1F429037E7100BBF3E7 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1F329037E7100BBF3E7 /* UIApplication+.swift */; };
@@ -45,6 +46,7 @@
 		AB7590892902B5480088F5E7 /*  ImmerZumLachen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7590882902B5480088F5E7 /*  ImmerZumLachen.swift */; };
 		ABAF591C2902BE840002794E /* SomeOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAF591B2902BE840002794E /* SomeOneView.swift */; };
 		ABAF591E2902BE8D0002794E /* SomeTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAF591D2902BE8D0002794E /* SomeTwoView.swift */; };
+		F64EA70529098A0B00409924 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64EA70429098A0B00409924 /* UITextField+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,7 @@
 		2A1A9F1F29041D1600BA2764 /* RollingpaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingpaperViewController.swift; sourceTree = "<group>"; };
 		2A1A9F2229041D3400BA2764 /* RollingpaperTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingpaperTableViewCell.swift; sourceTree = "<group>"; };
 		79C61CAF290907D3002ECF26 /* UIColor＋.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor＋.swift"; path = "RollIn/App/UIColor＋.swift"; sourceTree = SOURCE_ROOT; };
+		795CA1BA290962BF00497365 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		AB3AF1ED2902D3DC00BBF3E7 /* NicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewController.swift; sourceTree = "<group>"; };
 		AB3AF1F02902D81000BBF3E7 /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
 		AB3AF1F329037E7100BBF3E7 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
@@ -95,6 +98,7 @@
 		AB7590882902B5480088F5E7 /*  ImmerZumLachen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " ImmerZumLachen.swift"; sourceTree = "<group>"; };
 		ABAF591B2902BE840002794E /* SomeOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeOneView.swift; sourceTree = "<group>"; };
 		ABAF591D2902BE8D0002794E /* SomeTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeTwoView.swift; sourceTree = "<group>"; };
+		F64EA70429098A0B00409924 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +180,8 @@
 				AB3AF1F02902D81000BBF3E7 /* UserDefaults+.swift */,
 				2A03F4992903E8E1004C57B3 /* Preview+.swift */,
 				79C61CAF290907D3002ECF26 /* UIColor＋.swift */,
+				F64EA70429098A0B00409924 /* UITextField+.swift */,
+				795CA1BA290962BF00497365 /* UILabel+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -463,6 +469,7 @@
 				AB3AF1EE2902D3DC00BBF3E7 /* NicknameSettingViewController.swift in Sources */,
 				AB75903A290264C90088F5E7 /* AppDelegate.swift in Sources */,
 				AB75903C290264C90088F5E7 /* SceneDelegate.swift in Sources */,
+				F64EA70529098A0B00409924 /* UITextField+.swift in Sources */,
 				2A1A9F2029041D1600BA2764 /* RollingpaperViewController.swift in Sources */,
 				ABAF591C2902BE840002794E /* SomeOneView.swift in Sources */,
 				AB3AF1F429037E7100BBF3E7 /* UIApplication+.swift in Sources */,
@@ -471,6 +478,7 @@
 				AB50CD3E2908DAF10089C314 /* Note.swift in Sources */,
 				AB50CD40290903DC0089C314 /* NoteView.swift in Sources */,
 				2A03F49A2903E8E1004C57B3 /* Preview+.swift in Sources */,
+				795CA1BB290962BF00497365 /* UILabel+.swift in Sources */,
 				ABAF591E2902BE8D0002794E /* SomeTwoView.swift in Sources */,
 				AB3AF1F929043AE100BBF3E7 /* QRCodeEnrollViewController.swift in Sources */,
 				AB50CD3C2907D6C80089C314 /* RollingpaperView.swift in Sources */,

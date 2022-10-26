@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F811994C2907736C00E13F4E /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F811994B2907736C00E13F4E /* FirebaseDatabase */; };
+		F811994E2907736C00E13F4E /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F811994D2907736C00E13F4E /* FirebaseDatabaseSwift */; };
+		F81199502907736C00E13F4E /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = F811994F2907736C00E13F4E /* FirebaseFirestore */; };
+		F81199522907736C00E13F4E /* FirebaseFirestoreCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = F81199512907736C00E13F4E /* FirebaseFirestoreCombine-Community */; };
+		F81199542907736C00E13F4E /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F81199532907736C00E13F4E /* FirebaseFirestoreSwift */; };
+		F81199562907736C00E13F4E /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F81199552907736C00E13F4E /* FirebaseStorage */; };
+		F81199582907736C00E13F4E /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = F81199572907736C00E13F4E /* FirebaseStorageCombine-Community */; };
+		F87DC308290798C400DE3F38 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F87DC307290798C400DE3F38 /* GoogleService-Info.plist */; };
 		F8B2DE9629067A98009795CC /* HalloweenTF_iPadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2DE9529067A98009795CC /* HalloweenTF_iPadApp.swift */; };
 		F8B2DE9829067A98009795CC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8B2DE9729067A98009795CC /* ContentView.swift */; };
 		F8B2DE9A29067A9B009795CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8B2DE9929067A9B009795CC /* Assets.xcassets */; };
@@ -14,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F87DC307290798C400DE3F38 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F8B2DE9229067A98009795CC /* HalloweenTF_iPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HalloweenTF_iPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8B2DE9529067A98009795CC /* HalloweenTF_iPadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalloweenTF_iPadApp.swift; sourceTree = "<group>"; };
 		F8B2DE9729067A98009795CC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,6 +35,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F81199542907736C00E13F4E /* FirebaseFirestoreSwift in Frameworks */,
+				F81199582907736C00E13F4E /* FirebaseStorageCombine-Community in Frameworks */,
+				F811994E2907736C00E13F4E /* FirebaseDatabaseSwift in Frameworks */,
+				F81199522907736C00E13F4E /* FirebaseFirestoreCombine-Community in Frameworks */,
+				F811994C2907736C00E13F4E /* FirebaseDatabase in Frameworks */,
+				F81199502907736C00E13F4E /* FirebaseFirestore in Frameworks */,
+				F81199562907736C00E13F4E /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +67,7 @@
 		F8B2DE9429067A98009795CC /* HalloweenTF_iPad */ = {
 			isa = PBXGroup;
 			children = (
+				F87DC307290798C400DE3F38 /* GoogleService-Info.plist */,
 				F8B2DE9529067A98009795CC /* HalloweenTF_iPadApp.swift */,
 				F8B2DE9729067A98009795CC /* ContentView.swift */,
 				F8B2DE9929067A9B009795CC /* Assets.xcassets */,
@@ -83,6 +100,15 @@
 			dependencies = (
 			);
 			name = HalloweenTF_iPad;
+			packageProductDependencies = (
+				F811994B2907736C00E13F4E /* FirebaseDatabase */,
+				F811994D2907736C00E13F4E /* FirebaseDatabaseSwift */,
+				F811994F2907736C00E13F4E /* FirebaseFirestore */,
+				F81199512907736C00E13F4E /* FirebaseFirestoreCombine-Community */,
+				F81199532907736C00E13F4E /* FirebaseFirestoreSwift */,
+				F81199552907736C00E13F4E /* FirebaseStorage */,
+				F81199572907736C00E13F4E /* FirebaseStorageCombine-Community */,
+			);
 			productName = HalloweenTF_iPad;
 			productReference = F8B2DE9229067A98009795CC /* HalloweenTF_iPad.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +137,9 @@
 				Base,
 			);
 			mainGroup = F8B2DE8929067A98009795CC;
+			packageReferences = (
+				F811994A2907736C00E13F4E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = F8B2DE9329067A98009795CC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,6 +156,7 @@
 			files = (
 				F8B2DE9D29067A9B009795CC /* Preview Assets.xcassets in Resources */,
 				F8B2DE9A29067A9B009795CC /* Assets.xcassets in Resources */,
+				F87DC308290798C400DE3F38 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,7 +303,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -302,7 +333,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -339,6 +371,55 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F811994A2907736C00E13F4E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F811994B2907736C00E13F4E /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F811994A2907736C00E13F4E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		F811994D2907736C00E13F4E /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F811994A2907736C00E13F4E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		F811994F2907736C00E13F4E /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F811994A2907736C00E13F4E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		F81199512907736C00E13F4E /* FirebaseFirestoreCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F811994A2907736C00E13F4E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseFirestoreCombine-Community";
+		};
+		F81199532907736C00E13F4E /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F811994A2907736C00E13F4E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		F81199552907736C00E13F4E /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F811994A2907736C00E13F4E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		F81199572907736C00E13F4E /* FirebaseStorageCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F811994A2907736C00E13F4E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseStorageCombine-Community";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F8B2DE8A29067A98009795CC /* Project object */;
 }
