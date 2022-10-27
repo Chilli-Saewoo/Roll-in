@@ -10,6 +10,7 @@
 		2A03F49A2903E8E1004C57B3 /* Preview+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A03F4992903E8E1004C57B3 /* Preview+.swift */; };
 		2A1A9F2029041D1600BA2764 /* RollingpaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A9F1F29041D1600BA2764 /* RollingpaperViewController.swift */; };
 		2A1A9F2329041D3400BA2764 /* RollingpaperTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1A9F2229041D3400BA2764 /* RollingpaperTableViewCell.swift */; };
+		793E4AA9290A9D5E007017A9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 793E4AA8290A9D5E007017A9 /* GoogleService-Info.plist */; };
 		795CA1BB290962BF00497365 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 795CA1BA290962BF00497365 /* UILabel+.swift */; };
 		79C61CB0290907D3002ECF26 /* UIColor＋.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C61CAF290907D3002ECF26 /* UIColor＋.swift */; };
 		AB3AF1EE2902D3DC00BBF3E7 /* NicknameSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3AF1ED2902D3DC00BBF3E7 /* NicknameSettingViewController.swift */; };
@@ -46,7 +47,6 @@
 		ABAF591C2902BE840002794E /* SomeOneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAF591B2902BE840002794E /* SomeOneView.swift */; };
 		ABAF591E2902BE8D0002794E /* SomeTwoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABAF591D2902BE8D0002794E /* SomeTwoView.swift */; };
 		F64EA70529098A0B00409924 /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64EA70429098A0B00409924 /* UITextField+.swift */; };
-		F64EA7072909A31000409924 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F64EA7062909A31000409924 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +70,7 @@
 		2A03F4992903E8E1004C57B3 /* Preview+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Preview+.swift"; sourceTree = "<group>"; };
 		2A1A9F1F29041D1600BA2764 /* RollingpaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingpaperViewController.swift; sourceTree = "<group>"; };
 		2A1A9F2229041D3400BA2764 /* RollingpaperTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingpaperTableViewCell.swift; sourceTree = "<group>"; };
+		793E4AA8290A9D5E007017A9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		795CA1BA290962BF00497365 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		79C61CAF290907D3002ECF26 /* UIColor＋.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIColor＋.swift"; path = "RollIn/App/UIColor＋.swift"; sourceTree = SOURCE_ROOT; };
 		AB3AF1ED2902D3DC00BBF3E7 /* NicknameSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameSettingViewController.swift; sourceTree = "<group>"; };
@@ -98,7 +99,6 @@
 		ABAF591B2902BE840002794E /* SomeOneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeOneView.swift; sourceTree = "<group>"; };
 		ABAF591D2902BE8D0002794E /* SomeTwoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeTwoView.swift; sourceTree = "<group>"; };
 		F64EA70429098A0B00409924 /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
-		F64EA7062909A31000409924 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,7 +231,7 @@
 				AB7590862902B4F40088F5E7 /* Screens */,
 				AB7590872902B5250088F5E7 /* Resources */,
 				AB759047290264CA0088F5E7 /* Info.plist */,
-				F64EA7062909A31000409924 /* GoogleService-Info.plist */,
+				793E4AA8290A9D5E007017A9 /* GoogleService-Info.plist */,
 			);
 			path = RollIn;
 			sourceTree = "<group>";
@@ -435,7 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB759046290264CA0088F5E7 /* LaunchScreen.storyboard in Resources */,
-				F64EA7072909A31000409924 /* GoogleService-Info.plist in Resources */,
+				793E4AA9290A9D5E007017A9 /* GoogleService-Info.plist in Resources */,
 				AB759043290264CA0088F5E7 /* Assets.xcassets in Resources */,
 				AB759041290264C90088F5E7 /* Main.storyboard in Resources */,
 			);
