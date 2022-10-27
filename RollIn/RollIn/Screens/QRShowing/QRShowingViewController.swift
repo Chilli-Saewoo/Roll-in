@@ -57,7 +57,8 @@ class QRShowingViewController: UIViewController {
     
     private func configureUI() {
         view.backgroundColor = .CustomBackgroundColor
-        navigationController?.navigationBar.tintColor = .hwOrange
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.topItem?.backButtonTitle = "롤링페이퍼"
     }
 }
 
