@@ -110,7 +110,7 @@ private extension NicknameSettingViewController {
     func setMessageLabelLayout() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 175),
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 117),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
         ])
     }
@@ -136,6 +136,7 @@ private extension NicknameSettingViewController {
         nicknameTextDescriptionLabel.text = "닉네임은 QR코드와 함께 표시됩니다 \n최대 10자까지 가능합니다"
         nicknameTextDescriptionLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         nicknameTextDescriptionLabel.numberOfLines = 2
+        nicknameTextDescriptionLabel.addLabelSpacing(lineSpacing: 4)
         nicknameTextDescriptionLabel.textColor = .lightGray
     }
     
