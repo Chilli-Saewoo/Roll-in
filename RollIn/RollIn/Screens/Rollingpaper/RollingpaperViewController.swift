@@ -8,11 +8,22 @@
 import UIKit
 import Firebase
 
+
+struct NoteConfig: Codable {
+    var isPlaced: Bool
+    var centerX: Float
+    var centerY: Float
+    var rotation: Float
+    var size: Float
+}
+
 final class RollingpaperViewController: UIViewController {
     
     private let rollingpaperView = RollingpaperView()
+    private let topBackgroundView = UIView()
     private let titleText = UILabel()
-    private let qrButton = UIButton(type: .custom)
+    private let buttonBackgroundView = UIButton(type: .custom)
+    private let qrImageView = UIImageView()
     private let ref = Database.database().reference()
     private let viewWidth: CGFloat = UIScreen.main.bounds.width
     private let viewHeight: CGFloat = UIScreen.main.bounds.height
@@ -54,6 +65,7 @@ final class RollingpaperViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
         setRollingpaperView()
         setTitleTextLabel()
+        topBackgroundView.backgroundColor = UIColor(hex: "3D3D3D")
         titleText.text = "\(UserDefaults.nickname ?? "")님의 롤링페이퍼"
         titleText.font = .systemFont(ofSize: 20, weight: .semibold)
         titleText.textColor = UIColor(hex: "FFF6F2")
@@ -65,8 +77,8 @@ final class RollingpaperViewController: UIViewController {
     }
     
     private func setNotesInRollingpaperView() {
-        
         let notesCount = notes.count
+        
         switch notesCount {
         case 0 ... 5:
             notesSizePropotion = 1
@@ -83,21 +95,70 @@ final class RollingpaperViewController: UIViewController {
         }
         
         for note in notes {
+            let noteView = NoteView(frame: CGRect(origin: .zero, size: .zero), note: note, noteSizeProportion: notesSizePropotion)
+            let key = note.id
+            var newNoteConfig: NoteConfig? = nil
             
-            let randomSize = CGFloat.random(in:(CGFloat(100 / notesSizePropotion) ... CGFloat(Int(100 / notesSizePropotion) + Int(20 / notesSizePropotion))))
-            let centerXStart = (randomSize / 2)
-            let centerXEnd = viewWidth - (randomSize / 2)
-            let centerYStart = 112 + (randomSize / 2)
-            let centerYEnd = viewHeight - (randomSize / 2)
-            let rectPosition = CGPoint(x: CGFloat.random(in: centerXStart...centerXEnd),
-                                       y: CGFloat.random(in: centerYStart...centerYEnd))
-            let rectSize = CGSize(width: randomSize, height: randomSize)
-            let noteView = NoteView(frame: CGRect(origin: .zero, size: rectSize), note: note, noteSizeProportion: notesSizePropotion)
-            noteView.center = rectPosition
+            if let noteConfig = UserDefaults.standard.object(forKey: key) as? Data {
+                let decoder = JSONDecoder()
+                if let savedObject = try? decoder.decode(NoteConfig.self, from: noteConfig) {
+                    newNoteConfig = savedObject
+                }
+            }
+            
+            if newNoteConfig == nil {
+                var isPlaceable = false
+                let rawRandomSize = CGFloat.random(in: 100 ... 140)
+                let randomSize = rawRandomSize / notesSizePropotion
+                let rectSize = CGSize(width: randomSize, height: randomSize)
+                
+                noteView.frame.size = rectSize
+                let rectRotation: Double = Double.random(in: -30 ..< 30)
+                noteView.transform = CGAffineTransformMakeRotation(rectRotation * Double.pi / 180)
+                let centerXStart = (randomSize / 2)
+                let centerXEnd = viewWidth - (randomSize / 2)
+                let centerYStart = 112 + (randomSize / 2)
+                let centerYEnd = viewHeight - (randomSize / 2)
+                while !isPlaceable {
+                    let rectPosition = CGPoint(x: CGFloat.random(in: centerXStart...centerXEnd),
+                                               y: CGFloat.random(in: centerYStart...centerYEnd))
+                    noteView.center = rectPosition
+                    // MARK: - 겹치는지 조사하는 함수! 안겹치면 넣어준다.
+                    for existedNoteView in rollingpaperView.subviews.filter({ $0 is NoteView }) {
+                        if existedNoteView.frame.intersects(noteView.frame) {
+                            isPlaceable = false
+                            break
+                        } else {
+                            isPlaceable = true
+                        }
+                    }
+                    if rollingpaperView.subviews.filter({ $0 is NoteView }).count == 0 {
+                        isPlaceable = true
+                    }
+                    
+                    let newConfig = NoteConfig(isPlaced: true,
+                                               centerX: Float(noteView.center.x),
+                                               centerY: Float(noteView.center.y),
+                                               rotation: Float(rectRotation),
+                                               size: Float(rawRandomSize))
+                    let encoder = JSONEncoder()
+                    if let encoded = try? encoder.encode(newConfig) {
+                        UserDefaults.standard.setValue(encoded, forKey: key)
+                    }
+                    
+                }
+            } else {
+                noteView.frame.size = CGSize(width: CGFloat(newNoteConfig?.size ?? 0) / notesSizePropotion,
+                                             height: CGFloat(newNoteConfig?.size ?? 0) / notesSizePropotion)
+                noteView.transform = CGAffineTransformMakeRotation(Double((newNoteConfig?.rotation ?? 0)) * Double.pi / 180)
+                noteView.center = CGPoint(x: CGFloat(newNoteConfig?.centerX ?? 0),
+                                          y: CGFloat(newNoteConfig?.centerY ?? 0))
+            }
             rollingpaperView.addSubview(noteView)
-            
         }
+        
     }
+    
     
     private func observeUserNotes() {
         guard let userId = UserDefaults.userId else { return }
@@ -107,6 +168,7 @@ final class RollingpaperViewController: UIViewController {
     }
     
     @objc func qrButtonPressed(_ sender: UIButton) {
+        print("touched")
         let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "QRShowingVC") ?? UIViewController()
         self.navigationController?.pushViewController(pushVC, animated: true)
     }
@@ -123,6 +185,14 @@ extension RollingpaperViewController: RollingpaperViewDelegate {
 
 private extension RollingpaperViewController {
     func setTitleTextLabel() {
+        view.addSubview(topBackgroundView)
+        topBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            topBackgroundView.topAnchor.constraint(equalTo: view.topAnchor),
+            topBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            topBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            topBackgroundView.heightAnchor.constraint(equalToConstant: 112)
+        ])
         view.addSubview(titleText)
         titleText.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -132,18 +202,30 @@ private extension RollingpaperViewController {
     }
     
     func setQRButton() {
-        view.addSubview(qrButton)
-        qrButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(buttonBackgroundView)
+        buttonBackgroundView.frame.size = CGSize(width: 50, height: 50)
+        buttonBackgroundView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            qrButton.widthAnchor.constraint(equalToConstant: 24),
-            qrButton.heightAnchor.constraint(equalToConstant: 24),
-            qrButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
-            qrButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24)
+            buttonBackgroundView.widthAnchor.constraint(equalToConstant: 50),
+            buttonBackgroundView.heightAnchor.constraint(equalToConstant: 50),
+            buttonBackgroundView.topAnchor.constraint(equalTo: view.topAnchor, constant: 57),
+            buttonBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -11)
+        ])
+        buttonBackgroundView.addTarget(self, action: #selector(qrButtonPressed), for: .touchUpInside)
+        
+        view.addSubview(qrImageView)
+        qrImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            qrImageView.widthAnchor.constraint(equalToConstant: 24),
+            qrImageView.heightAnchor.constraint(equalToConstant: 24),
+            qrImageView.centerXAnchor.constraint(equalTo: buttonBackgroundView.centerXAnchor),
+            qrImageView.centerYAnchor.constraint(equalTo: buttonBackgroundView.centerYAnchor),
         ])
         let qrImage = UIImage(systemName: "qrcode")
-        qrButton.setImage(qrImage, for: .normal)
-        qrButton.imageView?.tintColor = UIColor(hex: "FFF6F2")
-        qrButton.addTarget(self, action: #selector(qrButtonPressed), for: .touchUpInside)
+        qrImageView.image = qrImage
+        qrImageView.tintColor = UIColor(hex: "FFF6F2")
+        qrImageView.isUserInteractionEnabled = false
+        
     }
 }
 
