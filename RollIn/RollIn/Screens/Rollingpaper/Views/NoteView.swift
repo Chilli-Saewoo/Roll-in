@@ -40,17 +40,17 @@ final class NoteView: UIView {
     
     private func setNoteContents() {
         messageText.text = note.message
-        messageText.font = .systemFont(ofSize: 5, weight: .regular)
+        messageText.font = .systemFont(ofSize: 5/3, weight: .regular)
         messageText.textAlignment = .left
         messageText.backgroundColor = .clear
         messageText.isEditable = false
         let padding = messageText.textContainer.lineFragmentPadding
         messageText.textContainerInset =  UIEdgeInsets(top: 0, left: -padding, bottom: 0, right: -padding)
         senderText.text = note.sender
-        senderText.font = .systemFont(ofSize: 5, weight: .regular)
+        senderText.font = .systemFont(ofSize: 5/3, weight: .regular)
         senderText.textAlignment = .right
         fromText.text = "From. "
-        fromText.font = .systemFont(ofSize: 5, weight: .bold)
+        fromText.font = .systemFont(ofSize: 5/3, weight: .bold)
         fromText.textAlignment = .right
     }
     
