@@ -86,7 +86,7 @@ struct ContentView: View {
                     let dateObject = formatter.date(from: addedDateString) ?? Date()
                     return User(id: id, nickname: nickname, timeStamp: dateObject)
                 }.sorted(by: <)
-                print(users)
+                
                 var newIdx = users.count / 15
                 if users.count != 0 && users.count % 15 == 0 {
                     newIdx -= 1
