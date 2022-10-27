@@ -79,7 +79,6 @@ struct ContentView: View {
                     let id = $0.key
                     let nickname = $0.value["nickname"] as? String ?? ""
                     let addedDateString = $0.value["timestamp"] as? String ?? ""
-                    print(addedDateString)
                     let formatter = DateFormatter()
                     formatter.dateFormat = "dd HH:mm:ss"
                     formatter.timeZone = TimeZone(identifier: "UTC")
