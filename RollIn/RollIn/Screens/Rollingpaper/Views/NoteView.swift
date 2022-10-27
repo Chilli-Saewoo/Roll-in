@@ -69,11 +69,11 @@ final class NoteView: UIView {
         case 3:
             backgroundImage.image = UIImage(named: "batOrangeBackground")
             foregroundImage.image = UIImage(named: "batOrange")
-            setTextLayout(width: 0.7, height: 0.5, centerX: 0, centerY: -0.15)
+            setTextLayout(width: 0.65, height: 0.5, centerX: 0, centerY: -0.15)
         case 4:
             backgroundImage.image = UIImage(named: "batPurpleBackground")
             foregroundImage.image = UIImage(named: "batPurple")
-            setTextLayout(width: 0.7, height: 0.5, centerX: 0, centerY: -0.15)
+            setTextLayout(width: 0.65, height: 0.5, centerX: 0, centerY: -0.15)
         case 5:
             backgroundImage.image = UIImage(named: "carriageOrangeBackground")
             foregroundImage.image = UIImage(named: "carriageOrange")
