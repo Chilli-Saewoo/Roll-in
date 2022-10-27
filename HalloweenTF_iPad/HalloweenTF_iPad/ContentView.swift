@@ -12,15 +12,15 @@ import UIKit
 struct User: Identifiable, Hashable, Comparable {
     let id: String
     let nickname: String
+    let timeStamp: Date
     
     static func < (lhs: User, rhs: User) -> Bool {
-        lhs.nickname < rhs.nickname
+            return lhs.timeStamp < rhs.timeStamp
     }
 }
 
 struct ContentView: View {
-    let timer = Timer.publish(every: 7, on: .main, in: .common).autoconnect()
-    @State var tempTwoDimUsers: [[User]] = [[]]
+    let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
     @State var twoDimUsers: [[User]] = [[]]
     @State var showingUsers: [User] = []
     @State var currentIndex = 0
@@ -73,15 +73,20 @@ struct ContentView: View {
             
         }
         .onAppear {
-            var isFirstAppeared = true
             self.ref.child("users").observe(.value) { snapshot in
                 let values = snapshot.value as? [String: [String: AnyObject]] ?? [:]
                 let users: [User] = values.map {
                     let id = $0.key
                     let nickname = $0.value["nickname"] as? String ?? ""
-                    return User(id: id, nickname: nickname)
+                    let addedDateString = $0.value["timestamp"] as? String ?? ""
+                    print(addedDateString)
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "dd HH:mm:ss"
+                    formatter.timeZone = TimeZone(identifier: "UTC")
+                    let dateObject = formatter.date(from: addedDateString) ?? Date()
+                    return User(id: id, nickname: nickname, timeStamp: dateObject)
                 }.sorted(by: <)
-                
+                print(users)
                 var newIdx = users.count / 15
                 if users.count != 0 && users.count % 15 == 0 {
                     newIdx -= 1
@@ -89,12 +94,9 @@ struct ContentView: View {
                 let twoDimArray = Array(repeating: Array(repeating: 0, count: 15), count: newIdx + 1)
                 var iter = users.makeIterator()
                 let newArray = twoDimArray.map { $0.compactMap{ _ in iter.next() }}
-                tempTwoDimUsers = newArray
-                if isFirstAppeared == true {
-                    showingUsers = newArray.first ?? []
-                    twoDimUsers = newArray
-                    isFirstAppeared = false
-                }
+                
+                showingUsers = newArray.first ?? []
+                twoDimUsers = newArray
             }
         }
         .onReceive(timer) { _ in
@@ -102,9 +104,6 @@ struct ContentView: View {
             currentIndex += 1
             if currentIndex >= twoDimUsers.count {
                 currentIndex = 0
-            }
-            if currentIndex == 0 {
-                twoDimUsers = tempTwoDimUsers
             }
             showingUsers = twoDimUsers[currentIndex]
         }
