@@ -20,7 +20,7 @@ struct User: Identifiable, Hashable, Comparable {
 }
 
 struct ContentView: View {
-    let timer = Timer.publish(every: 2, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
     @State var twoDimUsers: [[User]] = [[]]
     @State var showingUsers: [User] = []
     @State var currentIndex = 0
