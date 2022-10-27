@@ -62,12 +62,17 @@ final class RollingpaperViewController: UIViewController {
     
     private func setNotesInRollingpaperView() {
         for note in notes {
-            let rectPosition = CGPoint(x: CGFloat.random(in: 50...300), y: CGFloat.random(in: 50...600))
             
+            let rectPosition = CGPoint(x: CGFloat.random(in: 50...300),
+                                       y: CGFloat.random(in: 50...600))
             let randomSize = CGFloat.random(in: 33...40)
             let rectSize = CGSize(width: randomSize, height: randomSize)
+            
+            
             let noteView = NoteView(frame: CGRect(origin: rectPosition, size: rectSize), note: note)
+            
             rollingpaperView.addSubview(noteView)
+            
         }
     }
     
