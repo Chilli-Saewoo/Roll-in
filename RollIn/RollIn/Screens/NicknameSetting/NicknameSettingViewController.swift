@@ -32,10 +32,6 @@ final class NicknameSettingViewController: UIViewController {
         initalizeUserInfo()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-    
     private func removeUserIfExist() {
         guard let userId = UserDefaults.userId else { return }
         self.ref.child("users").child(userId).removeValue()
@@ -192,11 +188,6 @@ private extension NicknameSettingViewController {
         nicknameTextField.becomeFirstResponder()
     }
     
-    //    override func didReceiveMemoryWarning() {
-    //           super.didReceiveMemoryWarning()
-    //           // Dispose of any resources that can be recreated.
-    //       }
-    
     @objc func keyboardWillShow(_ notification: Notification) {
         let userInfo = notification.userInfo
         let keyboardSize = userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
@@ -204,13 +195,9 @@ private extension NicknameSettingViewController {
         confirmButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant:  (-keyboardHeight)).isActive = true
     }
     
-    @objc func keyboardWillHide(_ notification: Notification) {
-        confirmButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-    }
     
     func subscribeToShowKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func buttonAction() {
