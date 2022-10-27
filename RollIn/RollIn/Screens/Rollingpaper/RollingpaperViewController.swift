@@ -77,6 +77,7 @@ final class RollingpaperViewController: UIViewController {
         setNotesInRollingpaperView()
         rollingpaperView.delegate = self
         view.backgroundColor = .CustomBackgroundColor
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {

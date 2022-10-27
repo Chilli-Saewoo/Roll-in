@@ -25,6 +25,7 @@ final class NicknameSettingViewController: UIViewController {
         configureConfirmButton()
         nicknameTextField.becomeFirstResponder()
         self.view.backgroundColor = .CustomBackgroundColor
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +44,7 @@ final class NicknameSettingViewController: UIViewController {
     }
     
     @objc func textFieldDidChange(_ sender: UITextField) {
-        guard let text = sender.text else {
+        guard sender.text != nil else {
             confirmButton.backgroundColor = .hwOrangeInactive
             return
         }
