@@ -26,10 +26,12 @@ class QRShowingViewController: UIViewController {
         configureUI()
     }
     
+    
     override func viewWillAppear(_ animated: Bool) {
         guard let userId = UserDefaults.userId else { return }
         let url = "https://chilli-saewoo.github.io/rollin.github.io/write/id=" + userId
         setQRCodeImage(url)
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     @objc func startButtonPressed(_ sender: UIButton) {

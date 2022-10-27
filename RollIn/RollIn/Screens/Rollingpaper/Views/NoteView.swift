@@ -136,6 +136,7 @@ final class NoteView: UIView {
             backgroundImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             backgroundImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
         ])
+        backgroundImage.contentMode = .scaleAspectFit
         
         foregroundImage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -144,6 +145,7 @@ final class NoteView: UIView {
             foregroundImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             foregroundImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
         ])
+        foregroundImage.contentMode = .scaleAspectFit
     }
     
 }

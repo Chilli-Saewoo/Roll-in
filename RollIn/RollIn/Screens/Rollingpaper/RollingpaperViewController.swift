@@ -20,7 +20,7 @@ struct NoteConfig: Codable {
 final class RollingpaperViewController: UIViewController {
     
     private let rollingpaperView = RollingpaperView()
-    private let topBackgroundView = UIView()
+    private var topBackgroundView = UIView()
     private let titleText = UILabel()
     private let buttonBackgroundView = UIButton(type: .custom)
     private let qrImageView = UIImageView()
@@ -65,7 +65,10 @@ final class RollingpaperViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
         setRollingpaperView()
         setTitleTextLabel()
-        topBackgroundView.backgroundColor = UIColor(hex: "3D3D3D")
+        topBackgroundView.backgroundColor = .CustomBackgroundColor
+        topBackgroundView.layer.opacity = 0.9
+        let blurEffect = UIBlurEffect(style: .systemChromeMaterialDark)
+        topBackgroundView = UIVisualEffectView(effect: blurEffect)
         titleText.text = "\(UserDefaults.nickname ?? "")님의 롤링페이퍼"
         titleText.font = .systemFont(ofSize: 20, weight: .semibold)
         titleText.textColor = UIColor(hex: "FFF6F2")
@@ -74,6 +77,10 @@ final class RollingpaperViewController: UIViewController {
         setNotesInRollingpaperView()
         rollingpaperView.delegate = self
         view.backgroundColor = .CustomBackgroundColor
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     private func setNotesInRollingpaperView() {
@@ -202,29 +209,29 @@ private extension RollingpaperViewController {
     }
     
     func setQRButton() {
+        view.addSubview(qrImageView)
+        qrImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            qrImageView.widthAnchor.constraint(equalToConstant: 24),
+            qrImageView.heightAnchor.constraint(equalToConstant: 24),
+            qrImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
+            qrImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24)
+        ])
+        let qrImage = UIImage(systemName: "qrcode")
+        qrImageView.image = qrImage
+        qrImageView.tintColor = UIColor(hex: "FFF6F2")
+        
         view.addSubview(buttonBackgroundView)
         buttonBackgroundView.frame.size = CGSize(width: 50, height: 50)
         buttonBackgroundView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             buttonBackgroundView.widthAnchor.constraint(equalToConstant: 50),
             buttonBackgroundView.heightAnchor.constraint(equalToConstant: 50),
-            buttonBackgroundView.topAnchor.constraint(equalTo: view.topAnchor, constant: 57),
-            buttonBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -11)
+            buttonBackgroundView.centerXAnchor.constraint(equalTo: qrImageView.centerXAnchor),
+            buttonBackgroundView.centerYAnchor.constraint(equalTo: qrImageView.centerYAnchor),
         ])
         buttonBackgroundView.addTarget(self, action: #selector(qrButtonPressed), for: .touchUpInside)
-        
-        view.addSubview(qrImageView)
-        qrImageView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            qrImageView.widthAnchor.constraint(equalToConstant: 24),
-            qrImageView.heightAnchor.constraint(equalToConstant: 24),
-            qrImageView.centerXAnchor.constraint(equalTo: buttonBackgroundView.centerXAnchor),
-            qrImageView.centerYAnchor.constraint(equalTo: buttonBackgroundView.centerYAnchor),
-        ])
-        let qrImage = UIImage(systemName: "qrcode")
-        qrImageView.image = qrImage
-        qrImageView.tintColor = UIColor(hex: "FFF6F2")
-        qrImageView.isUserInteractionEnabled = false
+        view.bringSubviewToFront(buttonBackgroundView)
         
     }
 }
