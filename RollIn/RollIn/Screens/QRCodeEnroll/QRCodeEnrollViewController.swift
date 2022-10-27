@@ -58,7 +58,8 @@ final class QRCodeEnrollViewController: UIViewController {
     
     private func configureUI() {
         view.backgroundColor = .CustomBackgroundColor
-        navigationController?.navigationBar.tintColor = .hwOrange
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.topItem?.backButtonTitle = "닉네임 설정"
     }
 }
 
