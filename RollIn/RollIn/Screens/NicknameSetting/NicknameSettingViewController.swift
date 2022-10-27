@@ -69,7 +69,8 @@ final class NicknameSettingViewController: UIViewController {
         guard let userId = UserDefaults.userId else { return }
         guard let nickname = UserDefaults.nickname else { return }
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E, d MMM yyyy HH:mm:ss zzz"
+        dateFormatter.dateFormat = "dd HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         let dateStr = dateFormatter.string(from: Date())
         self.ref.child("users").child(userId).setValue(["nickname": nickname,  "timestamp": dateStr])
     }
