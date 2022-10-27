@@ -45,15 +45,17 @@ final class NicknameSettingViewController: UIViewController {
     @objc func textFieldDidChange(_ sender: UITextField) {
         guard let text = sender.text else {
             confirmButton.backgroundColor = .hwOrangeInactive
-            confirmButton.isEnabled = false
             return
         }
-        let count = text.count
-        confirmButton.isEnabled = count > 0 ? true : false
-        confirmButton.backgroundColor = count > 0 ? .hwOrange : .hwOrangeInactive
+        guard let nickname = nicknameTextField.text else { return }
+        confirmButton.backgroundColor = nickname.trimmingCharacters(in: .whitespaces).count > 0 ? .hwOrange : .hwOrangeInactive
     }
     
     @objc func confirmButtonPressed(_ sender: UIButton) {
+        guard let nickname = nicknameTextField.text else { return }
+        if nickname.trimmingCharacters(in: .whitespaces) == "" {
+            return
+        }
         UserDefaults.nickname = nicknameTextField.text
         UserDefaults.userId = UUID().uuidString
         uploadNewUserData()
