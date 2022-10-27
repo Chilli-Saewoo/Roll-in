@@ -14,6 +14,9 @@ final class RollingpaperViewController: UIViewController {
     private let titleText = UILabel()
     private let qrButton = UIButton(type: .custom)
     private let ref = Database.database().reference()
+    private let viewWidth: CGFloat = UIScreen.main.bounds.width
+    private let viewHeight: CGFloat = UIScreen.main.bounds.height
+    private var notesSizePropotion: CGFloat = 1
     
     var notes: [Note] = [] {
         didSet {
@@ -22,6 +25,7 @@ final class RollingpaperViewController: UIViewController {
                 noteView.removeFromSuperview()
             }
             setNotesInRollingpaperView()
+            rollingpaperView.noteSizeProportion = notesSizePropotion
         }
     }
     
@@ -61,13 +65,37 @@ final class RollingpaperViewController: UIViewController {
     }
     
     private func setNotesInRollingpaperView() {
+        
+        let notesCount = notes.count
+        switch notesCount {
+        case 0 ... 5:
+            notesSizePropotion = 1
+        case 6 ... 15:
+            notesSizePropotion = 1.6
+        case 16 ... 35:
+            notesSizePropotion = 2.5
+        case 36 ... 63:
+            notesSizePropotion = 3.5
+        case 64 ... 99:
+            notesSizePropotion = 4.5
+        default:
+            notesSizePropotion = 5
+        }
+        
         for note in notes {
-            let rectPosition = CGPoint(x: CGFloat.random(in: 50...300), y: CGFloat.random(in: 50...600))
             
-            let randomSize = CGFloat.random(in: 33...40)
+            let randomSize = CGFloat.random(in:(CGFloat(100 / notesSizePropotion) ... CGFloat(Int(100 / notesSizePropotion) + Int(20 / notesSizePropotion))))
+            let centerXStart = (randomSize / 2)
+            let centerXEnd = viewWidth - (randomSize / 2)
+            let centerYStart = 112 + (randomSize / 2)
+            let centerYEnd = viewHeight - (randomSize / 2)
+            let rectPosition = CGPoint(x: CGFloat.random(in: centerXStart...centerXEnd),
+                                       y: CGFloat.random(in: centerYStart...centerYEnd))
             let rectSize = CGSize(width: randomSize, height: randomSize)
-            let noteView = NoteView(frame: CGRect(origin: rectPosition, size: rectSize), note: note)
+            let noteView = NoteView(frame: CGRect(origin: .zero, size: rectSize), note: note, noteSizeProportion: notesSizePropotion)
+            noteView.center = rectPosition
             rollingpaperView.addSubview(noteView)
+            
         }
     }
     

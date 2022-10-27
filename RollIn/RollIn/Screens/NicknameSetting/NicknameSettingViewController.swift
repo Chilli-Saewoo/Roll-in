@@ -63,13 +63,15 @@ final class NicknameSettingViewController: UIViewController {
         uploadNewUserData()
         let pushVC = self.storyboard?.instantiateViewController(withIdentifier: "QRCodeEnrollVC") ?? UIViewController()
         self.navigationController?.pushViewController(pushVC, animated: true)
-        
     }
     
     private func uploadNewUserData() {
         guard let userId = UserDefaults.userId else { return }
         guard let nickname = UserDefaults.nickname else { return }
-        self.ref.child("users").child(userId).setValue(["nickname": nickname])
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E, d MMM yyyy HH:mm:ss zzz"
+        let dateStr = dateFormatter.string(from: Date())
+        self.ref.child("users").child(userId).setValue(["nickname": nickname,  "timestamp": dateStr])
     }
 }
 
@@ -190,11 +192,6 @@ private extension NicknameSettingViewController {
         subscribeToShowKeyboardNotifications()
         nicknameTextField.becomeFirstResponder()
     }
-    
-    //    override func didReceiveMemoryWarning() {
-    //           super.didReceiveMemoryWarning()
-    //           // Dispose of any resources that can be recreated.
-    //       }
     
     @objc func keyboardWillShow(_ notification: Notification) {
         let userInfo = notification.userInfo

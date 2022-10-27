@@ -18,8 +18,9 @@ final class RollingpaperView: UIView {
     private let viewHeight: CGFloat = UIScreen.main.bounds.height
     //핀치줌 최댓값, 최솟값,
     private var recognizerScale: CGFloat = 1.0
-    private var maxScale: CGFloat = 4.0 * 3
+    private var maxScale: CGFloat { 3.0 * CGFloat(noteSizeProportion) }
     private var minScale: CGFloat = 1.0
+    var noteSizeProportion: CGFloat = 1
     
     weak var delegate: RollingpaperViewDelegate?
     
@@ -46,7 +47,7 @@ final class RollingpaperView: UIView {
             if(recognizerScale < maxScale && gesture.scale > 1.0) {
                 self.transform = self.transform.scaledBy(x: gesture.scale, y: gesture.scale)
                 if let delegate = delegate {
-                    delegate.handleOpacityValue(newVal: Float((2.5 * 3) - recognizerScale))
+                    delegate.handleOpacityValue(newVal: Float((2 * CGFloat(noteSizeProportion)) - recognizerScale))
                 }
                 recognizerScale *= gesture.scale
                 scaleView(view: self, scale: recognizerScale)
@@ -56,7 +57,7 @@ final class RollingpaperView: UIView {
             else if (recognizerScale > minScale && gesture.scale < 1.0) {
                 self.transform = self.transform.scaledBy(x: gesture.scale, y: gesture.scale)
                 if let delegate = delegate {
-                    delegate.handleOpacityValue(newVal: Float((2.5 * 3) - recognizerScale))
+                    delegate.handleOpacityValue(newVal: Float((2 * CGFloat(noteSizeProportion)) - recognizerScale))
                 }
                 recognizerScale *= gesture.scale
                 scaleView(view: self, scale: recognizerScale)
