@@ -58,7 +58,8 @@ final class QRCodeEnrollViewController: UIViewController {
     
     private func configureUI() {
         view.backgroundColor = .CustomBackgroundColor
-        navigationController?.navigationBar.tintColor = .hwOrange
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.topItem?.backButtonTitle = "닉네임 설정"
     }
 }
 
@@ -90,7 +91,7 @@ private extension QRCodeEnrollViewController {
         titleLabel.addLabelSpacing(lineSpacing: 4)
         titleLabel.numberOfLines = 2
         titleLabel.textAlignment = .center
-        titleLabel.font = .systemFont(ofSize: 18, weight: .medium)
+        titleLabel.font = .systemFont(ofSize: 18, weight: .bold)
         titleLabel.textColor = .white
         descriptionLabel.text = "QR을 공유해서 롤링페이퍼를 받아보세요"
         descriptionLabel.textAlignment = .center

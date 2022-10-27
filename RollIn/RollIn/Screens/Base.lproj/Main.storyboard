@@ -25,10 +25,10 @@
             </objects>
             <point key="canvasLocation" x="1030.7692307692307" y="3.5545023696682461"/>
         </scene>
-        <!--QR 등록-->
+        <!--Code Enroll View Controller-->
         <scene sceneID="z40-jE-TM8">
             <objects>
-                <viewController storyboardIdentifier="QRCodeEnrollVC" title="QR 등록" id="vXo-ue-XJH" customClass="QRCodeEnrollViewController" customModule="RollIn" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QRCodeEnrollVC" id="vXo-ue-XJH" customClass="QRCodeEnrollViewController" customModule="RollIn" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P1S-J7-BP6">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -32,10 +32,6 @@ final class NicknameSettingViewController: UIViewController {
         initalizeUserInfo()
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
-    
     private func removeUserIfExist() {
         guard let userId = UserDefaults.userId else { return }
         self.ref.child("users").child(userId).removeValue()
@@ -112,7 +108,7 @@ private extension NicknameSettingViewController {
     func setMessageLabelLayout() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 175),
+            titleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 117),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
         ])
     }
@@ -138,6 +134,7 @@ private extension NicknameSettingViewController {
         nicknameTextDescriptionLabel.text = "닉네임은 QR코드와 함께 표시됩니다 \n최대 10자까지 가능합니다"
         nicknameTextDescriptionLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         nicknameTextDescriptionLabel.numberOfLines = 2
+        nicknameTextDescriptionLabel.addLabelSpacing(lineSpacing: 4)
         nicknameTextDescriptionLabel.textColor = .lightGray
     }
     
@@ -200,13 +197,9 @@ private extension NicknameSettingViewController {
         confirmButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant:  (-keyboardHeight)).isActive = true
     }
     
-    @objc func keyboardWillHide(_ notification: Notification) {
-        confirmButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
-    }
     
     func subscribeToShowKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func buttonAction() {
