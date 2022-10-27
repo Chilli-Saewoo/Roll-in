@@ -122,14 +122,11 @@ struct ContentView: View {
             }
         }
         .onReceive(timer) { _ in
-            
             currentIndex += 1
             if currentIndex >= twoDimUsers.count {
                 currentIndex = 0
             }
             showingUsers = twoDimUsers[currentIndex]
-            
-            
         }
     }
 }
