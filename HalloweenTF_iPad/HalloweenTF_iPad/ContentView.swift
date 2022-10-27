@@ -24,6 +24,7 @@ struct ContentView: View {
     @State var twoDimUsers: [[User]] = [[]]
     @State var showingUsers: [User] = []
     @State var currentIndex = 0
+    @State var pages = 0
     private let ref = Database.database().reference()
     var ciContext = CIContext()
     
@@ -66,11 +67,33 @@ struct ContentView: View {
                         .padding(.horizontal)
                     }
                 }
-                
+                .frame(width: 931, height: 458, alignment: .topLeading)
+                .padding(EdgeInsets(top: 250, leading: 120, bottom:43, trailing: 120))
+                ZStack{
+                    RoundedRectangle(cornerRadius: 14)
+                        .fill(Color(red: 0 / 255, green: 0 / 255, blue: 0 / 255))
+                        .opacity(0.5)
+                        .frame(width: (15 * (CGFloat(pages) + 2)) + (8 * CGFloat(pages)), height: 20)
+                    HStack{
+                        ForEach(0 ..< pages, id: \.self) { page in
+                            if page == currentIndex {
+                                Circle()
+                                    .fill(Color(red: 255 / 255, green: 114 / 255, blue: 66 / 255))
+                                    .frame(width: 8, height: 8)
+                                    .padding(EdgeInsets(top: 0, leading: 7, bottom:0, trailing: 7))
+                            }
+                            else {
+                                Circle()
+                                    .fill(Color(red: 255 / 255, green: 255 / 255, blue: 255 / 255))
+                                    .frame(width: 8, height: 8)
+                                    .padding(EdgeInsets(top: 0, leading: 7, bottom:0, trailing: 7))
+                            }
+                            
+                        }
+                    }
+                }
+                .padding(EdgeInsets(top: 0, leading: 0, bottom:79, trailing: 0))
             }
-            .frame(width: 931, height: 458, alignment: .topLeading)
-            .padding(EdgeInsets(top: 250, leading: 120, bottom:142, trailing: 120))
-            
         }
         .onAppear {
             self.ref.child("users").observe(.value) { snapshot in
@@ -86,11 +109,11 @@ struct ContentView: View {
                     return User(id: id, nickname: nickname, timeStamp: dateObject)
                 }.sorted(by: <)
                 
-                var newIdx = users.count / 15
+                pages = (users.count / 15) + 1
                 if users.count != 0 && users.count % 15 == 0 {
-                    newIdx -= 1
+                    pages -= 1
                 }
-                let twoDimArray = Array(repeating: Array(repeating: 0, count: 15), count: newIdx + 1)
+                let twoDimArray = Array(repeating: Array(repeating: 0, count: 15), count: pages)
                 var iter = users.makeIterator()
                 let newArray = twoDimArray.map { $0.compactMap{ _ in iter.next() }}
                 
@@ -105,6 +128,8 @@ struct ContentView: View {
                 currentIndex = 0
             }
             showingUsers = twoDimUsers[currentIndex]
+            
+            
         }
     }
 }
