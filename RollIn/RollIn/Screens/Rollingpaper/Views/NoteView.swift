@@ -19,10 +19,12 @@ final class NoteView: UIView {
             foregroundImage.layer.opacity = foregroundImageOpacity
         }
     }
+    var noteSizeProportion: CGFloat
     
     
-    init(frame: CGRect, note: Note) {
+    init(frame: CGRect, note: Note, noteSizeProportion: CGFloat) {
         self.note = note
+        self.noteSizeProportion = noteSizeProportion
         super.init(frame: frame)
         self.addSubview(backgroundImage)
         self.addSubview(messageText)
@@ -40,17 +42,17 @@ final class NoteView: UIView {
     
     private func setNoteContents() {
         messageText.text = note.message
-        messageText.font = .systemFont(ofSize: 5/3, weight: .regular)
+        messageText.font = .systemFont(ofSize: CGFloat(5/noteSizeProportion), weight: .regular)
         messageText.textAlignment = .left
         messageText.backgroundColor = .clear
         messageText.isEditable = false
         let padding = messageText.textContainer.lineFragmentPadding
         messageText.textContainerInset =  UIEdgeInsets(top: 0, left: -padding, bottom: 0, right: -padding)
         senderText.text = note.sender
-        senderText.font = .systemFont(ofSize: 5/3, weight: .regular)
+        senderText.font = .systemFont(ofSize: CGFloat(5/noteSizeProportion), weight: .regular)
         senderText.textAlignment = .right
         fromText.text = "From. "
-        fromText.font = .systemFont(ofSize: 5/3, weight: .bold)
+        fromText.font = .systemFont(ofSize: CGFloat(5/noteSizeProportion), weight: .bold)
         fromText.textAlignment = .right
     }
     
