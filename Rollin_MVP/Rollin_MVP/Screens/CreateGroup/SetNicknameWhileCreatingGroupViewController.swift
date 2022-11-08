@@ -1,14 +1,14 @@
 //
-//  CreateGroupViewController.swift
+//  SetNicknameWhileCreatingGroupViewController.swift
 //  Rollin_MVP
 //
-//  Created by Noah Park on 2022/11/08.
+//  Created by Noah Park on 2022/11/09.
 //
 
 import UIKit
 
-final class SetGroupNameViewController: UIViewController {
-    
+final class SetNicknameWhileCreatingGroupViewController: UIViewController {
+    var creatingGroupInfo: CreatingGroupInfo?
     private lazy var titleMessageLabel = UILabel()
     private lazy var nameTextField = UITextField()
     private lazy var textFieldUnderLineView = UIView()
@@ -24,8 +24,24 @@ final class SetGroupNameViewController: UIViewController {
         setTitleMessageLayout()
         setNameTextFieldLayout()
         setNextButtonLayout()
+        setNextButtonAction()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         observeKeboardHeight()
         nameTextField.becomeFirstResponder()
+    }
+    
+    private func setNextButtonAction() {
+        nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc func nextButtonPressed(_ sender: UIButton) {
+        guard let text = nameTextField.text else { return }
+        creatingGroupInfo?.nickName = text
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmGroup") as? ConfirmGroupViewController ?? UIViewController()
+        (secondViewController as? ConfirmGroupViewController)?.creatingGroupInfo = creatingGroupInfo
+        self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     
     private func observeKeboardHeight() {
@@ -41,7 +57,7 @@ final class SetGroupNameViewController: UIViewController {
     }
 }
 
-private extension SetGroupNameViewController {
+private extension SetNicknameWhileCreatingGroupViewController {
     func setTitleMessageLayout() {
         view.addSubview(titleMessageLabel)
         titleMessageLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +65,7 @@ private extension SetGroupNameViewController {
             titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 96),
             titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23),
         ])
-        titleMessageLabel.text = "그룹 이름 입력"
+        titleMessageLabel.text = "닉네임 입력"
         
     }
     

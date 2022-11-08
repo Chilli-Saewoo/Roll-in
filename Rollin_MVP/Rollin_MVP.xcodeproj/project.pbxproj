@@ -9,7 +9,11 @@
 /* Begin PBXBuildFile section */
 		AB437573291A442F00C3688D /* Model_example.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437572291A442F00C3688D /* Model_example.swift */; };
 		AB43757E291A5B1800C3688D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB43757D291A5B1800C3688D /* GoogleService-Info.plist */; };
-		AB437581291A5B7900C3688D /* SetGroupNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437580291A5B7900C3688D /* SetGroupNameViewController.swift */; };
+		AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */; };
+		ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */; };
+		ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */; };
+		ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */; };
+		ABB96EB3291AC71F003C5B1D /* ConfirmGroupCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EB2291AC71F003C5B1D /* ConfirmGroupCardView.swift */; };
 		ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2BD291A3F97008FB3A6 /* AppDelegate.swift */; };
 		ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2BF291A3F97008FB3A6 /* SceneDelegate.swift */; };
 		ABDBD2C2291A3F97008FB3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2C1291A3F97008FB3A6 /* MainViewController.swift */; };
@@ -49,7 +53,11 @@
 /* Begin PBXFileReference section */
 		AB437572291A442F00C3688D /* Model_example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model_example.swift; sourceTree = "<group>"; };
 		AB43757D291A5B1800C3688D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		AB437580291A5B7900C3688D /* SetGroupNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGroupNameViewController.swift; sourceTree = "<group>"; };
+		AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGroupNameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
+		ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
+		ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingGroupInfo.swift; sourceTree = "<group>"; };
+		ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmGroupViewController.swift; sourceTree = "<group>"; };
+		ABB96EB2291AC71F003C5B1D /* ConfirmGroupCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmGroupCardView.swift; sourceTree = "<group>"; };
 		ABDBD2BA291A3F97008FB3A6 /* Rollin_MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rollin_MVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDBD2BD291A3F97008FB3A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABDBD2BF291A3F97008FB3A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,9 +117,28 @@
 		AB43757F291A5B5D00C3688D /* CreateGroup */ = {
 			isa = PBXGroup;
 			children = (
-				AB437580291A5B7900C3688D /* SetGroupNameViewController.swift */,
+				AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */,
+				ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */,
+				ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */,
+				ABB96EB1291AC6ED003C5B1D /* ViewComponents */,
 			);
 			path = CreateGroup;
+			sourceTree = "<group>";
+		};
+		ABB96EAC291AB71B003C5B1D /* CreatingGroup */ = {
+			isa = PBXGroup;
+			children = (
+				ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */,
+			);
+			path = CreatingGroup;
+			sourceTree = "<group>";
+		};
+		ABB96EB1291AC6ED003C5B1D /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				ABB96EB2291AC71F003C5B1D /* ConfirmGroupCardView.swift */,
+			);
+			path = ViewComponents;
 			sourceTree = "<group>";
 		};
 		ABDBD2B1291A3F97008FB3A6 = {
@@ -177,6 +204,7 @@
 		ABDBD2EE291A42F4008FB3A6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ABB96EAC291AB71B003C5B1D /* CreatingGroup */,
 				AB437572291A442F00C3688D /* Model_example.swift */,
 			);
 			path = Model;
@@ -353,7 +381,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB437581291A5B7900C3688D /* SetGroupNameViewController.swift in Sources */,
+				ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */,
+				ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */,
+				ABB96EB3291AC71F003C5B1D /* ConfirmGroupCardView.swift in Sources */,
+				ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */,
+				AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */,
 				ABDBD2C2291A3F97008FB3A6 /* MainViewController.swift in Sources */,
 				ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */,
 				AB437573291A442F00C3688D /* Model_example.swift in Sources */,
