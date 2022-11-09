@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		79A91011291C091B00A0672F /* Alert+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A91010291C091B00A0672F /* Alert+.swift */; };
 		AB437573291A442F00C3688D /* Model_example.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437572291A442F00C3688D /* Model_example.swift */; };
+		AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */; };
+		ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */; };
+		ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */; };
+		ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */; };
+		ABB96EB3291AC71F003C5B1D /* ConfirmGroupCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EB2291AC71F003C5B1D /* ConfirmGroupCardView.swift */; };
+		ABB96EB5291AF055003C5B1D /* GroupCodeSharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EB4291AF055003C5B1D /* GroupCodeSharingViewController.swift */; };
+		ABB96EB9291B69FA003C5B1D /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EB8291B69FA003C5B1D /* Date+.swift */; };
 		ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2BD291A3F97008FB3A6 /* AppDelegate.swift */; };
 		ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2BF291A3F97008FB3A6 /* SceneDelegate.swift */; };
 		ABDBD2C2291A3F97008FB3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2C1291A3F97008FB3A6 /* MainViewController.swift */; };
@@ -18,7 +25,6 @@
 		ABDBD2D5291A3F99008FB3A6 /* Rollin_MVPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2D4291A3F99008FB3A6 /* Rollin_MVPTests.swift */; };
 		ABDBD2DF291A3F99008FB3A6 /* Rollin_MVPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2DE291A3F99008FB3A6 /* Rollin_MVPUITests.swift */; };
 		ABDBD2E1291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2E0291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift */; };
-		F8173D1A291A4EDB00E545E0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8173D19291A4EDB00E545E0 /* GoogleService-Info.plist */; };
 		F8173D1D291A521400E545E0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D1C291A521400E545E0 /* FirebaseAuth */; };
 		F8173D1F291A521400E545E0 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D1E291A521400E545E0 /* FirebaseDatabase */; };
 		F8173D21291A521400E545E0 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D20291A521400E545E0 /* FirebaseDatabaseSwift */; };
@@ -27,6 +33,7 @@
 		F8173D27291A521400E545E0 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D26291A521400E545E0 /* FirebaseFirestoreSwift */; };
 		F8173D29291A521400E545E0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D28291A521400E545E0 /* FirebaseStorage */; };
 		F8173D2B291A521400E545E0 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D2A291A521400E545E0 /* FirebaseStorageCombine-Community */; };
+		F8173D2D291BA9CA00E545E0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8173D2C291BA9CA00E545E0 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +56,13 @@
 /* Begin PBXFileReference section */
 		79A91010291C091B00A0672F /* Alert+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+.swift"; sourceTree = "<group>"; };
 		AB437572291A442F00C3688D /* Model_example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model_example.swift; sourceTree = "<group>"; };
+		AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGroupNameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
+		ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
+		ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingGroupInfo.swift; sourceTree = "<group>"; };
+		ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmGroupViewController.swift; sourceTree = "<group>"; };
+		ABB96EB2291AC71F003C5B1D /* ConfirmGroupCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmGroupCardView.swift; sourceTree = "<group>"; };
+		ABB96EB4291AF055003C5B1D /* GroupCodeSharingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCodeSharingViewController.swift; sourceTree = "<group>"; };
+		ABB96EB8291B69FA003C5B1D /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		ABDBD2BA291A3F97008FB3A6 /* Rollin_MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rollin_MVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDBD2BD291A3F97008FB3A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABDBD2BF291A3F97008FB3A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,7 +76,7 @@
 		ABDBD2DA291A3F99008FB3A6 /* Rollin_MVPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Rollin_MVPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDBD2DE291A3F99008FB3A6 /* Rollin_MVPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rollin_MVPUITests.swift; sourceTree = "<group>"; };
 		ABDBD2E0291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rollin_MVPUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		F8173D19291A4EDB00E545E0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F8173D2C291BA9CA00E545E0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +136,50 @@
 			path = AppMain;
 			sourceTree = "<group>";
 		};
+		AB43757F291A5B5D00C3688D /* CreateGroup */ = {
+			isa = PBXGroup;
+			children = (
+				AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */,
+				ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */,
+				ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */,
+				ABB96EB4291AF055003C5B1D /* GroupCodeSharingViewController.swift */,
+				ABB96EB1291AC6ED003C5B1D /* ViewComponents */,
+			);
+			path = CreateGroup;
+			sourceTree = "<group>";
+		};
+		ABB96EAC291AB71B003C5B1D /* CreatingGroup */ = {
+			isa = PBXGroup;
+			children = (
+				ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */,
+			);
+			path = CreatingGroup;
+			sourceTree = "<group>";
+		};
+		ABB96EB1291AC6ED003C5B1D /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				ABB96EB2291AC71F003C5B1D /* ConfirmGroupCardView.swift */,
+			);
+			path = ViewComponents;
+			sourceTree = "<group>";
+		};
+		ABB96EB6291B69DF003C5B1D /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				ABB96EB7291B69E9003C5B1D /* Extension+ */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		ABB96EB7291B69E9003C5B1D /* Extension+ */ = {
+			isa = PBXGroup;
+			children = (
+				ABB96EB8291B69FA003C5B1D /* Date+.swift */,
+			);
+			path = "Extension+";
+			sourceTree = "<group>";
+		};
 		ABDBD2B1291A3F97008FB3A6 = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +203,7 @@
 		ABDBD2BC291A3F97008FB3A6 /* Rollin_MVP */ = {
 			isa = PBXGroup;
 			children = (
+				ABB96EB6291B69DF003C5B1D /* Global */,
 				ABDBD2ED291A42DA008FB3A6 /* App */,
 				79A9100E291C08ED00A0672F /* Global */,
 				ABDBD2EE291A42F4008FB3A6 /* Model */,
@@ -186,6 +245,7 @@
 		ABDBD2EE291A42F4008FB3A6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				ABB96EAC291AB71B003C5B1D /* CreatingGroup */,
 				AB437572291A442F00C3688D /* Model_example.swift */,
 			);
 			path = Model;
@@ -196,6 +256,7 @@
 			children = (
 				ABDBD2C3291A3F97008FB3A6 /* Main.storyboard */,
 				AB437571291A441700C3688D /* AppMain */,
+				AB43757F291A5B5D00C3688D /* CreateGroup */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -211,7 +272,7 @@
 		ABDBD2F2291A437F008FB3A6 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				F8173D19291A4EDB00E545E0 /* GoogleService-Info.plist */,
+				F8173D2C291BA9CA00E545E0 /* GoogleService-Info.plist */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -334,7 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABDBD2CA291A3F99008FB3A6 /* LaunchScreen.storyboard in Resources */,
-				F8173D1A291A4EDB00E545E0 /* GoogleService-Info.plist in Resources */,
+				F8173D2D291BA9CA00E545E0 /* GoogleService-Info.plist in Resources */,
 				ABDBD2C7291A3F99008FB3A6 /* Assets.xcassets in Resources */,
 				ABDBD2C5291A3F97008FB3A6 /* Main.storyboard in Resources */,
 			);
@@ -361,8 +422,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABB96EB9291B69FA003C5B1D /* Date+.swift in Sources */,
+				ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */,
+				ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */,
+				ABB96EB3291AC71F003C5B1D /* ConfirmGroupCardView.swift in Sources */,
+				ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */,
+				AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */,
 				ABDBD2C2291A3F97008FB3A6 /* MainViewController.swift in Sources */,
 				79A91011291C091B00A0672F /* Alert+.swift in Sources */,
+				ABB96EB5291AF055003C5B1D /* GroupCodeSharingViewController.swift in Sources */,
 				ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */,
 				AB437573291A442F00C3688D /* Model_example.swift in Sources */,
 				ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */,
@@ -556,7 +624,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.junhong.Rollin-MVP";
+				PRODUCT_BUNDLE_IDENTIFIER = com.chillijo.RollinMVP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -588,7 +656,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.junhong.Rollin-MVP";
+				PRODUCT_BUNDLE_IDENTIFIER = com.chillijo.RollinMVP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
