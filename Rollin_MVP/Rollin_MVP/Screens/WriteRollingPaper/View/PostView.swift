@@ -52,7 +52,7 @@ final class PostView: UIView {
             imageButton.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageButton.trailingAnchor.constraint(equalTo: trailingAnchor),
             imageButton.bottomAnchor.constraint(equalTo: bottomAnchor),
-            imageButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width-48)
+            imageButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width-112)
         ])
     }
     
