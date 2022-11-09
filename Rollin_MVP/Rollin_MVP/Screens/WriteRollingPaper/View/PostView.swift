@@ -9,6 +9,15 @@ import UIKit
 
 final class PostView: UIView {
     
+    private let imageButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .lightGray
+        button.setTitle("사진을 첨부해주세요", for: .normal)
+        button.layer.cornerRadius = 16
+        button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        return button
+    }()
+    
     private let textView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .red
@@ -34,6 +43,16 @@ final class PostView: UIView {
             textView.leadingAnchor.constraint(equalTo: leadingAnchor),
             textView.trailingAnchor.constraint(equalTo: trailingAnchor),
             textView.heightAnchor.constraint(equalToConstant: 240),
+        ])
+        
+        addSubview(imageButton)
+        imageButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            imageButton.topAnchor.constraint(equalTo: textView.bottomAnchor),
+            imageButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageButton.bottomAnchor.constraint(equalTo: bottomAnchor),
+            imageButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width-48)
         ])
     }
     
