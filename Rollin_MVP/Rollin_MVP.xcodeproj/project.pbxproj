@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A9F38A4291B57D100F9E517 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A9F38A3291B57D100F9E517 /* GoogleService-Info.plist */; };
+		2A9F38A7291B5AFA00F9E517 /* ChangeInGroupNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F38A6291B5AFA00F9E517 /* ChangeInGroupNicknameViewController.swift */; };
+		2A9F38A9291B68C200F9E517 /* PreviewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F38A8291B68C200F9E517 /* PreviewExtension.swift */; };
 		AB437573291A442F00C3688D /* Model_example.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437572291A442F00C3688D /* Model_example.swift */; };
-		AB43757E291A5B1800C3688D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB43757D291A5B1800C3688D /* GoogleService-Info.plist */; };
 		AB437581291A5B7900C3688D /* SetGroupNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437580291A5B7900C3688D /* SetGroupNameViewController.swift */; };
 		ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2BD291A3F97008FB3A6 /* AppDelegate.swift */; };
 		ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2BF291A3F97008FB3A6 /* SceneDelegate.swift */; };
@@ -47,8 +49,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A9F38A3291B57D100F9E517 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../AppleDeveloperAcademy/MacC_ChilliSaewoo/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2A9F38A6291B5AFA00F9E517 /* ChangeInGroupNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeInGroupNicknameViewController.swift; sourceTree = "<group>"; };
+		2A9F38A8291B68C200F9E517 /* PreviewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewExtension.swift; sourceTree = "<group>"; };
 		AB437572291A442F00C3688D /* Model_example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model_example.swift; sourceTree = "<group>"; };
-		AB43757D291A5B1800C3688D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB437580291A5B7900C3688D /* SetGroupNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGroupNameViewController.swift; sourceTree = "<group>"; };
 		ABDBD2BA291A3F97008FB3A6 /* Rollin_MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rollin_MVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDBD2BD291A3F97008FB3A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +102,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A9F38A5291B5A9500F9E517 /* ChangeNickname */ = {
+			isa = PBXGroup;
+			children = (
+				2A9F38A6291B5AFA00F9E517 /* ChangeInGroupNicknameViewController.swift */,
+				2A9F38A8291B68C200F9E517 /* PreviewExtension.swift */,
+			);
+			path = ChangeNickname;
+			sourceTree = "<group>";
+		};
 		AB437571291A441700C3688D /* AppMain */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,6 +198,7 @@
 		ABDBD2EF291A4307008FB3A6 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2A9F38A5291B5A9500F9E517 /* ChangeNickname */,
 				ABDBD2C3291A3F97008FB3A6 /* Main.storyboard */,
 				AB437571291A441700C3688D /* AppMain */,
 				AB43757F291A5B5D00C3688D /* CreateGroup */,
@@ -203,7 +217,7 @@
 		ABDBD2F2291A437F008FB3A6 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				AB43757D291A5B1800C3688D /* GoogleService-Info.plist */,
+				2A9F38A3291B57D100F9E517 /* GoogleService-Info.plist */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -326,7 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABDBD2CA291A3F99008FB3A6 /* LaunchScreen.storyboard in Resources */,
-				AB43757E291A5B1800C3688D /* GoogleService-Info.plist in Resources */,
+				2A9F38A4291B57D100F9E517 /* GoogleService-Info.plist in Resources */,
 				ABDBD2C7291A3F99008FB3A6 /* Assets.xcassets in Resources */,
 				ABDBD2C5291A3F97008FB3A6 /* Main.storyboard in Resources */,
 			);
@@ -353,7 +367,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A9F38A9291B68C200F9E517 /* PreviewExtension.swift in Sources */,
 				AB437581291A5B7900C3688D /* SetGroupNameViewController.swift in Sources */,
+				2A9F38A7291B5AFA00F9E517 /* ChangeInGroupNicknameViewController.swift in Sources */,
 				ABDBD2C2291A3F97008FB3A6 /* MainViewController.swift in Sources */,
 				ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */,
 				AB437573291A442F00C3688D /* Model_example.swift in Sources */,
