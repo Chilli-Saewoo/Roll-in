@@ -18,7 +18,7 @@ final class PostView: UIView {
         return button
     }()
     
-    private let textView: UITextView = {
+    let textView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .red
         textView.layer.cornerRadius = 16
@@ -55,5 +55,4 @@ final class PostView: UIView {
             imageButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width-112)
         ])
     }
-    
 }

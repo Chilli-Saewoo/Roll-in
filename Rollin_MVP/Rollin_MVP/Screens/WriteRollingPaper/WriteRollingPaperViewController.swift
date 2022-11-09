@@ -34,6 +34,7 @@ final class WriteRollingPaperViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        postThemePicerkView.delegate = self
     }
     
     private func setupLayout() {
@@ -79,3 +80,9 @@ final class WriteRollingPaperViewController: UIViewController {
     }
 }
 
+
+extension WriteRollingPaperViewController: PostViewDelegate {
+    func changePostColor(selectedColor: UIColor) {
+        postView.textView.backgroundColor = selectedColor
+    }
+}
