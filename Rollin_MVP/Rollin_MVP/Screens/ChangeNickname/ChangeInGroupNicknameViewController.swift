@@ -12,16 +12,39 @@ final class ChangeInGroupNicknameViewController: UIViewController {
     private lazy var titleLabel = UILabel()
     private lazy var completeButton = UIButton()
     private lazy var textfieldUnderlineView = UIView()
+    private var keyboardHeight: CGFloat = 0 {
+        didSet {
+            completeButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: keyboardHeight * -1).isActive = true
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTitleLayout()
-        setNewNicknameTextfieldLayout()
-        setCompleteButtonLayout()
+        setLayout()
+        observeKeboardHeight()
+        newNicknameTextfield.becomeFirstResponder()
+    }
+    
+    private func observeKeboardHeight() {
+        NotificationCenter.default.addObserver( self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            self.keyboardHeight = keyboardHeight
+        }
     }
 }
 
 private extension ChangeInGroupNicknameViewController {
+    func setLayout() {
+        setTitleLayout()
+        setNewNicknameTextfieldLayout()
+        setCompleteButtonLayout()
+    }
+    
     func setTitleLayout() {
         view.addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
