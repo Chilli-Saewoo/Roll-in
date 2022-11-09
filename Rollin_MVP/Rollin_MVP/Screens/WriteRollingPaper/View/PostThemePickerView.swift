@@ -12,6 +12,7 @@ protocol PostViewDelegate: AnyObject {
 }
 
 final class PostThemePickerView: UIView {
+
     struct theme {
         let color: UIColor
         let title: String
@@ -19,14 +20,16 @@ final class PostThemePickerView: UIView {
     
     weak var delegate: PostViewDelegate?
 
-    private var themeList: [theme] = [theme(color: .red, title: "Apple"),
-                                      theme(color: .blue, title: "Ocean"),
-                                      theme(color: .green, title: "Forest"),
-                                      theme(color: .yellow, title: "Lemon"),
-                                      theme(color: .orange, title: "Sunset"),
-                                      theme(color: .purple, title: "Cosmos"),
-                                      theme(color: .magenta, title: "Pinkish")]
-
+    private var themes: [UIColor : String] = [.red : "Apple",
+                                                 .blue : "Ocean",
+                                                 .green : "Forest",
+                                                 .yellow : "Lemon",
+                                                 .orange : "Sunset",
+                                                 .purple : "Cosmos",
+                                                 .magenta : "Pinkish"]
+    
+    private var themeList: [theme] = []
+    
     private let themeCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -43,6 +46,7 @@ final class PostThemePickerView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setThemeList()
         setupLayout()
         setupCollectionView()
     }
@@ -65,6 +69,12 @@ final class PostThemePickerView: UIView {
         themeCollectionView.dataSource = self
         themeCollectionView.delegate = self
         themeCollectionView.register(PostThemePickerViewCell.self, forCellWithReuseIdentifier: PostThemePickerViewCell.className)
+    }
+    
+    private func setThemeList() {
+        for (key, value) in themes {
+            themeList.append(theme(color: key, title: value))
+        }
     }
 }
 
