@@ -11,6 +11,7 @@ final class ChangeInGroupNicknameViewController: UIViewController {
     private lazy var newNicknameTextfield = UITextField()
     private lazy var titleLabel = UILabel()
     private lazy var completeButton = UIButton()
+    private lazy var textfieldUnderlineView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,16 @@ private extension ChangeInGroupNicknameViewController {
             newNicknameTextfield.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -23),
         ])
 
+        view.addSubview(textfieldUnderlineView)
+        textfieldUnderlineView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            textfieldUnderlineView.topAnchor.constraint(equalTo: newNicknameTextfield.bottomAnchor, constant: 2),
+            textfieldUnderlineView.heightAnchor.constraint(equalToConstant: 1),
+            textfieldUnderlineView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23),
+            textfieldUnderlineView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -23),
+        ])
+        textfieldUnderlineView.backgroundColor = .black
+        
     }
     
     func setCompleteButtonLayout() {
