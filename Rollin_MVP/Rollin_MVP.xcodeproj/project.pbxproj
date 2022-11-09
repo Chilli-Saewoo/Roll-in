@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		79BAA9AD291B5B9300C5636E /* UIColor +.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BAA9AC291B5B9300C5636E /* UIColor +.swift */; };
 		AB437573291A442F00C3688D /* Model_example.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437572291A442F00C3688D /* Model_example.swift */; };
 		ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2BD291A3F97008FB3A6 /* AppDelegate.swift */; };
 		ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2BF291A3F97008FB3A6 /* SceneDelegate.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		79BAA9AC291B5B9300C5636E /* UIColor +.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor +.swift"; sourceTree = "<group>"; };
 		AB437572291A442F00C3688D /* Model_example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model_example.swift; sourceTree = "<group>"; };
 		ABDBD2BA291A3F97008FB3A6 /* Rollin_MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rollin_MVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDBD2BD291A3F97008FB3A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +98,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		79BAA9AA291B5B7100C5636E /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				79BAA9AB291B5B8800C5636E /* Extension */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		79BAA9AB291B5B8800C5636E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				79BAA9AC291B5B9300C5636E /* UIColor +.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		AB437571291A441700C3688D /* AppMain */ = {
 			isa = PBXGroup;
 			children = (
@@ -128,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				ABDBD2ED291A42DA008FB3A6 /* App */,
+				79BAA9AA291B5B7100C5636E /* Global */,
 				ABDBD2EE291A42F4008FB3A6 /* Model */,
 				ABDBD2EF291A4307008FB3A6 /* Screens */,
 				ABDBD2F0291A434E008FB3A6 /* Resources */,
@@ -342,6 +361,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79BAA9AD291B5B9300C5636E /* UIColor +.swift in Sources */,
 				ABDBD2C2291A3F97008FB3A6 /* MainViewController.swift in Sources */,
 				ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */,
 				AB437573291A442F00C3688D /* Model_example.swift in Sources */,
