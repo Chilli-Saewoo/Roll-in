@@ -24,10 +24,10 @@
             </objects>
             <point key="canvasLocation" x="65" y="4"/>
         </scene>
-        <!--Set Group Name View Controller-->
+        <!--Set Group Name While Creating Group View Controller-->
         <scene sceneID="imJ-Cw-CZk">
             <objects>
-                <viewController id="i6a-zu-rTz" customClass="SetGroupNameViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SetGroupNameWhileCreatingGroup" id="i6a-zu-rTz" customClass="SetGroupNameWhileCreatingGroupViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Z3W-Pb-wAb">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,6 +39,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbD-F3-3Fl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1773.8461538461538" y="3.5545023696682461"/>
+        </scene>
+        <!--Set Nickname While Creating Group View Controller-->
+        <scene sceneID="nbq-QA-i1r">
+            <objects>
+                <viewController storyboardIdentifier="SetNicknameWhileCreatingGroup" id="4us-gd-oz2" customClass="SetNicknameWhileCreatingGroupViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Nop-bR-mvn">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="7Px-GH-2xY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lhA-FX-7Kv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2485" y="4"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="whr-1Q-8LW">
@@ -57,6 +72,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BYJ-V9-xXW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="844.61538461538464" y="3.5545023696682461"/>
+        </scene>
+        <!--Confirm Group View Controller-->
+        <scene sceneID="fX2-FX-PX5">
+            <objects>
+                <viewController storyboardIdentifier="ConfirmGroup" id="hLq-jO-BMg" customClass="ConfirmGroupViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eMo-qy-vjh">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="pFL-c7-Zrg"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kbc-Ot-csD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3203" y="4"/>
+        </scene>
+        <!--Group Code Sharing View Controller-->
+        <scene sceneID="k9P-lM-Wsk">
+            <objects>
+                <viewController storyboardIdentifier="GroupCodeSharing" id="akZ-tL-bry" customClass="GroupCodeSharingViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3jt-sj-8cI">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="nhU-Cd-XWu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oOe-fb-MlJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3895" y="4"/>
         </scene>
     </scenes>
     <resources>
