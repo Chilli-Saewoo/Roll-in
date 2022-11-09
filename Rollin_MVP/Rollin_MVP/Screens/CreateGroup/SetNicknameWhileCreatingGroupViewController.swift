@@ -39,6 +39,7 @@ final class SetNicknameWhileCreatingGroupViewController: UIViewController {
     @objc func nextButtonPressed(_ sender: UIButton) {
         guard let text = nameTextField.text else { return }
         creatingGroupInfo?.nickName = text
+        creatingGroupInfo?.createdTime = Date()
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmGroup") as? ConfirmGroupViewController ?? UIViewController()
         (secondViewController as? ConfirmGroupViewController)?.creatingGroupInfo = creatingGroupInfo
         self.navigationController?.pushViewController(secondViewController, animated: true)
@@ -66,7 +67,6 @@ private extension SetNicknameWhileCreatingGroupViewController {
             titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23),
         ])
         titleMessageLabel.text = "닉네임 입력"
-        
     }
     
     func setNameTextFieldLayout() {

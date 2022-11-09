@@ -14,7 +14,7 @@ final class ConfirmGroupCardView: UIView {
     init(groupName: String, date: Date) {
         super.init(frame: .zero)
         setGroupNameLabel(groupName: groupName)
-        setDateStringLabel(dateString: "2022.11.09")
+        setDateStringLabel(dateString: date.toString_ConfirmCreatingGroup())
         self.layer.cornerRadius = 16.0
         self.backgroundColor = .gray
     }
