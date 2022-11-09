@@ -9,7 +9,7 @@ import UIKit
 
 final class PostView: UIView {
     
-    private let imageButton: UIButton = {
+    let imageButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .lightGray
         button.setTitle("사진을 첨부해주세요", for: .normal)
