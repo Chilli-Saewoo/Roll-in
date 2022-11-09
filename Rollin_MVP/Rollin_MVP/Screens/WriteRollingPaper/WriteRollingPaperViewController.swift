@@ -14,8 +14,8 @@ final class WriteRollingPaperViewController: UIViewController {
     private let postThemePicerkView = PostThemePickerView()
     private let postView = PostView()
     private let imagePickerViewController = UIImagePickerController()
-    private lazy var authorizationOfCameraAlert = makeAlert(title: "알림", message: "카메라 접근이 허용되어 있지 않습니다.")
-    private lazy var authorizationOfLibraryAlert = makeAlert(title: "알림", message: "라이브러리 접근이 허용되어 있지 않습니다.")
+    private lazy var authorizationOfCameraAlert: () = makeAlert(title: "알림", message: "카메라 접근이 허용되어 있지 않습니다.")
+    private lazy var authorizationOfPhotoLibraryAlert: () = makeAlert(title: "알림", message: "라이브러리 접근이 허용되어 있지 않습니다.")
     
     private let privateSwitch: UISwitch = {
         let privateSwitch = UISwitch()
@@ -40,6 +40,10 @@ final class WriteRollingPaperViewController: UIViewController {
         super.viewDidLoad()
         setupLayout()
         setupButtonAction()
+        configureDelegate()
+    }
+    
+    private func configureDelegate() {
         postThemePicerkView.delegate = self
         imagePickerViewController.delegate = self
         imagePickerViewController.allowsEditing = true
@@ -79,7 +83,7 @@ final class WriteRollingPaperViewController: UIViewController {
                 }
             case .denied:
                 DispatchQueue.main.async {
-                    self.authorizationOfLibraryAlert
+                    self.authorizationOfPhotoLibraryAlert
                 }
             default:
                 break
