@@ -7,18 +7,19 @@
 
 import UIKit
 
-final class RollingPaperView: UIViewController {
+final class RollingPaperView: UIViewController, UISheetPresentationControllerDelegate {
 
     private lazy var detailRollingPaperButton = UIButton()
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
+        setDetailRollingPaperButton()
+        detailRollingPaperButton.addTarget(self, action: #selector(presentDetailViewHalfModal), for: .touchUpInside)
     }
     
     @objc private func presentDetailViewHalfModal() {
         
-        let rollingPaperDetailViewController = UIViewController()
+        let rollingPaperDetailViewController = DetailRollingPaperViewController()
         rollingPaperDetailViewController.view.backgroundColor = .gray
         
         rollingPaperDetailViewController.modalPresentationStyle = .pageSheet
@@ -41,8 +42,7 @@ private extension RollingPaperView {
         detailRollingPaperButton.setTitle("자세히 보기", for: .normal)
         
         NSLayoutConstraint.activate([
-            detailRollingPaperButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 30),
-            detailRollingPaperButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23),
+            detailRollingPaperButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 100)
         ])
     }
 }
