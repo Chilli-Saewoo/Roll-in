@@ -25,10 +25,10 @@ final class WriteRollingPaperViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
+        setupLayout()
     }
     
-    private func configureUI() {
+    private func setupLayout() {
         view.addSubview(postThemePicerkView)
         postThemePicerkView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
