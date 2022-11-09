@@ -23,6 +23,14 @@ final class WriteRollingPaperViewController: UIViewController {
         return label
     }()
     
+    private let confirmButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("완료", for: .normal)
+        button.backgroundColor = .lightGray
+        button.layer.cornerRadius = 8
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
@@ -58,6 +66,15 @@ final class WriteRollingPaperViewController: UIViewController {
             postView.topAnchor.constraint(equalTo: privateSwitch.bottomAnchor, constant: 8),
             postView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 56),
             postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -56),
+        ])
+        
+        view.addSubview(confirmButton)
+        confirmButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            confirmButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34),
+            confirmButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            confirmButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            confirmButton.heightAnchor.constraint(equalToConstant: 57)
         ])
     }
 }
