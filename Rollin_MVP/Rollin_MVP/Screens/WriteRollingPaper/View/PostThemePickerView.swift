@@ -38,7 +38,7 @@ final class PostThemePickerView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureUI()
+        setupLayout()
         setupCollectionView()
     }
     
@@ -46,7 +46,7 @@ final class PostThemePickerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configureUI() {
+    private func setupLayout() {
         addSubview(themeCollectionView)
         NSLayoutConstraint.activate([
             themeCollectionView.topAnchor.constraint(equalTo: topAnchor),

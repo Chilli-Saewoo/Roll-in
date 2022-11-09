@@ -10,6 +10,8 @@ import UIKit
 final class WriteRollingPaperViewController: UIViewController {
     
     private let postThemePicerkView = PostThemePickerView()
+    private let postView = PostView()
+    
     private let privateSwitch: UISwitch = {
         let privateSwitch = UISwitch()
         return privateSwitch
@@ -48,6 +50,15 @@ final class WriteRollingPaperViewController: UIViewController {
         NSLayoutConstraint.activate([
             privateSwitchTitleLabel.centerYAnchor.constraint(equalTo: privateSwitch.centerYAnchor),
             privateSwitchTitleLabel.trailingAnchor.constraint(equalTo: privateSwitch.leadingAnchor, constant: -8)
+        ])
+        
+        view.addSubview(postView)
+        postView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            postView.topAnchor.constraint(equalTo: privateSwitch.bottomAnchor, constant: 8),
+            postView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            postView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }
