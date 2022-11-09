@@ -73,7 +73,7 @@ extension PostThemePickerView: UICollectionViewDataSource {
         if indexPath.row == 0 {
             cell.isSelectedTheme = true
             cell.themeView.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
-            cell.themeView.layer.borderWidth = 2
+            cell.themeView.layer.borderWidth = 3
         }
         
         cell.themeTitleLabel.text = themeList[indexPath.row].title
@@ -89,7 +89,7 @@ extension PostThemePickerView: UICollectionViewDelegate {
         
         cell.isSelectedTheme = true
         cell.themeView.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
-        cell.themeView.layer.borderWidth = 2
+        cell.themeView.layer.borderWidth = 3
         
         if indexPath.row != 0 {
             guard let firstCell = collectionView.cellForItem(at: [0, 0]) as? PostThemePickerViewCell else { return }
