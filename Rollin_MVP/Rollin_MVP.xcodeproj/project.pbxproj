@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A9F38AE291BA36800F9E517 /* RollingPaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F38AD291BA36800F9E517 /* RollingPaperView.swift */; };
+		2A9F38B0291BA50E00F9E517 /* DetailRollingPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A9F38AF291BA50E00F9E517 /* DetailRollingPaperViewController.swift */; };
 		AB437573291A442F00C3688D /* Model_example.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437572291A442F00C3688D /* Model_example.swift */; };
 		AB43757E291A5B1800C3688D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB43757D291A5B1800C3688D /* GoogleService-Info.plist */; };
 		AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */; };
@@ -53,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A9F38AD291BA36800F9E517 /* RollingPaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperView.swift; sourceTree = "<group>"; };
+		2A9F38AF291BA50E00F9E517 /* DetailRollingPaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRollingPaperViewController.swift; sourceTree = "<group>"; };
 		AB437572291A442F00C3688D /* Model_example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model_example.swift; sourceTree = "<group>"; };
 		AB43757D291A5B1800C3688D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGroupNameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +114,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A9F38AC291BA2F800F9E517 /* RollingPaperDetail */ = {
+			isa = PBXGroup;
+			children = (
+				2A9F38AD291BA36800F9E517 /* RollingPaperView.swift */,
+				2A9F38AF291BA50E00F9E517 /* DetailRollingPaperViewController.swift */,
+			);
+			path = RollingPaperDetail;
+			sourceTree = "<group>";
+		};
 		AB437571291A441700C3688D /* AppMain */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,6 +248,7 @@
 		ABDBD2EF291A4307008FB3A6 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2A9F38AC291BA2F800F9E517 /* RollingPaperDetail */,
 				ABDBD2C3291A3F97008FB3A6 /* Main.storyboard */,
 				AB437571291A441700C3688D /* AppMain */,
 				AB43757F291A5B5D00C3688D /* CreateGroup */,
@@ -410,10 +424,12 @@
 				ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */,
 				AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */,
 				ABDBD2C2291A3F97008FB3A6 /* MainViewController.swift in Sources */,
+				2A9F38B0291BA50E00F9E517 /* DetailRollingPaperViewController.swift in Sources */,
 				ABB96EB5291AF055003C5B1D /* GroupCodeSharingViewController.swift in Sources */,
 				ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */,
 				AB437573291A442F00C3688D /* Model_example.swift in Sources */,
 				ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */,
+				2A9F38AE291BA36800F9E517 /* RollingPaperView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
