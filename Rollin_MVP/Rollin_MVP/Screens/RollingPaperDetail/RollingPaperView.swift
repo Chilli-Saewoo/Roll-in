@@ -15,6 +15,23 @@ final class RollingPaperView: UIViewController {
         
         super.viewDidLoad()
     }
+    
+    @objc private func presentDetailViewHalfModal() {
+        
+        let rollingPaperDetailViewController = UIViewController()
+        rollingPaperDetailViewController.view.backgroundColor = .gray
+        
+        rollingPaperDetailViewController.modalPresentationStyle = .pageSheet
+        
+        if let halfModal = rollingPaperDetailViewController.sheetPresentationController {
+            halfModal.preferredCornerRadius = 32
+            halfModal.detents = [.medium()]
+            halfModal.delegate = self
+            halfModal.prefersGrabberVisible = true
+        }
+        
+        present(rollingPaperDetailViewController, animated: true, completion: nil)
+    }
 }
 
 private extension RollingPaperView {
