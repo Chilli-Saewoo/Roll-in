@@ -7,8 +7,8 @@
 
 import UIKit
 
-final class SetGroupNameViewController: UIViewController {
-    
+final class SetGroupNameWhileCreatingGroupViewController: UIViewController {
+    let creatingGroupInfo = CreatingGroupInfo()
     private lazy var titleMessageLabel = UILabel()
     private lazy var nameTextField = UITextField()
     private lazy var textFieldUnderLineView = UIView()
@@ -24,8 +24,24 @@ final class SetGroupNameViewController: UIViewController {
         setTitleMessageLayout()
         setNameTextFieldLayout()
         setNextButtonLayout()
+        setNextButtonAction()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         observeKeboardHeight()
         nameTextField.becomeFirstResponder()
+    }
+    
+    private func setNextButtonAction() {
+        nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc func nextButtonPressed(_ sender: UIButton) {
+        guard let text = nameTextField.text else { return }
+        creatingGroupInfo.groupName =  text
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SetNicknameWhileCreatingGroup") as? SetNicknameWhileCreatingGroupViewController ?? UIViewController()
+        (secondViewController as? SetNicknameWhileCreatingGroupViewController)?.creatingGroupInfo = creatingGroupInfo
+        self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     
     private func observeKeboardHeight() {
@@ -41,7 +57,7 @@ final class SetGroupNameViewController: UIViewController {
     }
 }
 
-private extension SetGroupNameViewController {
+private extension SetGroupNameWhileCreatingGroupViewController {
     func setTitleMessageLayout() {
         view.addSubview(titleMessageLabel)
         titleMessageLabel.translatesAutoresizingMaskIntoConstraints = false
