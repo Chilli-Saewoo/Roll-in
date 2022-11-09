@@ -8,7 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2AF264F7291C3AA200585123 /* RollingPaperDetail in Resources */ = {isa = PBXBuildFile; fileRef = 2AF264F6291C3AA200585123 /* RollingPaperDetail */; };
+		79A9100D291B84B700A0672F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A9100C291B84B700A0672F /* PostView.swift */; };
 		79A91011291C091B00A0672F /* Alert+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A91010291C091B00A0672F /* Alert+.swift */; };
+		79BAA9A2291AE53100C5636E /* WriteRollingPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BAA9A1291AE53000C5636E /* WriteRollingPaperViewController.swift */; };
+		79BAA9A5291AE8D400C5636E /* PostThemePickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BAA9A4291AE8D400C5636E /* PostThemePickerViewCell.swift */; };
+		79BAA9A9291AED9500C5636E /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BAA9A8291AED9500C5636E /* NSObject+.swift */; };
+		79BAA9AF291B732F00C5636E /* PostThemePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BAA9AE291B732F00C5636E /* PostThemePickerView.swift */; };
 		AB437573291A442F00C3688D /* Model_example.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437572291A442F00C3688D /* Model_example.swift */; };
 		AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */; };
 		ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */; };
@@ -57,7 +62,12 @@
 
 /* Begin PBXFileReference section */
 		2AF264F6291C3AA200585123 /* RollingPaperDetail */ = {isa = PBXFileReference; lastKnownFileType = folder; path = RollingPaperDetail; sourceTree = "<group>"; };
+		79A9100C291B84B700A0672F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		79A91010291C091B00A0672F /* Alert+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+.swift"; sourceTree = "<group>"; };
+		79BAA9A1291AE53000C5636E /* WriteRollingPaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteRollingPaperViewController.swift; sourceTree = "<group>"; };
+		79BAA9A4291AE8D400C5636E /* PostThemePickerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostThemePickerViewCell.swift; sourceTree = "<group>"; };
+		79BAA9A8291AED9500C5636E /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
+		79BAA9AE291B732F00C5636E /* PostThemePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostThemePickerView.swift; sourceTree = "<group>"; };
 		AB437572291A442F00C3688D /* Model_example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model_example.swift; sourceTree = "<group>"; };
 		AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGroupNameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
 		ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
@@ -117,20 +127,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		79A9100E291C08ED00A0672F /* Global */ = {
+		79BAA9A0291AE4BC00C5636E /* WriteRollingPaper */ = {
 			isa = PBXGroup;
 			children = (
-				79A9100F291C090800A0672F /* Extension */,
+				79BAA9A1291AE53000C5636E /* WriteRollingPaperViewController.swift */,
+				79BAA9A3291AE85B00C5636E /* View */,
 			);
-			path = Global;
+			path = WriteRollingPaper;
 			sourceTree = "<group>";
 		};
-		79A9100F291C090800A0672F /* Extension */ = {
+		79BAA9A3291AE85B00C5636E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				79A91010291C091B00A0672F /* Alert+.swift */,
+				79BAA9A4291AE8D400C5636E /* PostThemePickerViewCell.swift */,
+				79BAA9AE291B732F00C5636E /* PostThemePickerView.swift */,
+				79A9100C291B84B700A0672F /* PostView.swift */,
 			);
-			path = Extension;
+			path = View;
 			sourceTree = "<group>";
 		};
 		AB437571291A441700C3688D /* AppMain */ = {
@@ -181,6 +194,8 @@
 			isa = PBXGroup;
 			children = (
 				ABB96EB8291B69FA003C5B1D /* Date+.swift */,
+				79A91010291C091B00A0672F /* Alert+.swift */,
+				79BAA9A8291AED9500C5636E /* NSObject+.swift */,
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -211,7 +226,6 @@
 				F64EA743291B60C800409924 /* Rollin_MVP.entitlements */,
 				ABB96EB6291B69DF003C5B1D /* Global */,
 				ABDBD2ED291A42DA008FB3A6 /* App */,
-				79A9100E291C08ED00A0672F /* Global */,
 				ABDBD2EE291A42F4008FB3A6 /* Model */,
 				ABDBD2EF291A4307008FB3A6 /* Screens */,
 				ABDBD2F0291A434E008FB3A6 /* Resources */,
@@ -265,6 +279,7 @@
 				ABDBD2C3291A3F97008FB3A6 /* Main.storyboard */,
 				AB437571291A441700C3688D /* AppMain */,
 				AB43757F291A5B5D00C3688D /* CreateGroup */,
+				79BAA9A0291AE4BC00C5636E /* WriteRollingPaper */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -448,11 +463,16 @@
 				ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */,
 				AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */,
 				ABDBD2C2291A3F97008FB3A6 /* MainViewController.swift in Sources */,
+				79BAA9A5291AE8D400C5636E /* PostThemePickerViewCell.swift in Sources */,
+				79BAA9A2291AE53100C5636E /* WriteRollingPaperViewController.swift in Sources */,
 				79A91011291C091B00A0672F /* Alert+.swift in Sources */,
 				ABB96EB5291AF055003C5B1D /* GroupCodeSharingViewController.swift in Sources */,
 				ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */,
 				AB437573291A442F00C3688D /* Model_example.swift in Sources */,
 				ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */,
+				79BAA9AF291B732F00C5636E /* PostThemePickerView.swift in Sources */,
+				79A9100D291B84B700A0672F /* PostView.swift in Sources */,
+				79BAA9A9291AED9500C5636E /* NSObject+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
