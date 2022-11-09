@@ -15,7 +15,6 @@ final class PostThemePickerViewCell: UICollectionViewCell {
         let uiView = UIView()
         uiView.backgroundColor = .red
         uiView.layer.cornerRadius = 12.5
-        uiView.translatesAutoresizingMaskIntoConstraints = false
         return uiView
     }()
     
@@ -23,22 +22,21 @@ final class PostThemePickerViewCell: UICollectionViewCell {
         let label = UILabel()
         label.text = "Sunset"
         label.font = .preferredFont(forTextStyle: .footnote)
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configureUI()
+        setupLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configureUI() {
+    private func setupLayout() {
         addSubview(themeView)
-        
+        themeView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             themeView.topAnchor.constraint(equalTo: topAnchor),
             themeView.centerXAnchor.constraint(equalTo: centerXAnchor),
@@ -47,6 +45,7 @@ final class PostThemePickerViewCell: UICollectionViewCell {
         ])
         
         addSubview(themeTitleLabel)
+        themeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             themeTitleLabel.topAnchor.constraint(equalTo: themeView.bottomAnchor, constant: 4.7),
             themeTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
