@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB361671291D15490011BB9E /* AddGroupButtonBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB361670291D15490011BB9E /* AddGroupButtonBackgroundView.swift */; };
+		AB361674291D29A40011BB9E /* SelectBackgroundColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB361673291D29A40011BB9E /* SelectBackgroundColorCell.swift */; };
+		AB361676291D68030011BB9E /* BackgroundColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB361675291D68030011BB9E /* BackgroundColorSet.swift */; };
+		AB361678291D77D80011BB9E /* SelectIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB361677291D77D80011BB9E /* SelectIconCell.swift */; };
+		AB36167A291D8E1B0011BB9E /* IconSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB361679291D8E1B0011BB9E /* IconSet.swift */; };
 		AB437573291A442F00C3688D /* Model_example.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437572291A442F00C3688D /* Model_example.swift */; };
 		AB43757E291A5B1800C3688D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB43757D291A5B1800C3688D /* GoogleService-Info.plist */; };
 		AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */; };
@@ -16,6 +21,9 @@
 		ABB96EB3291AC71F003C5B1D /* ConfirmGroupCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EB2291AC71F003C5B1D /* ConfirmGroupCardView.swift */; };
 		ABB96EB5291AF055003C5B1D /* GroupCodeSharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EB4291AF055003C5B1D /* GroupCodeSharingViewController.swift */; };
 		ABB96EB9291B69FA003C5B1D /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EB8291B69FA003C5B1D /* Date+.swift */; };
+		ABB96EBB291B703A003C5B1D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EBA291B703A003C5B1D /* String+.swift */; };
+		ABB96EBE291BA0AE003C5B1D /* GroupCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EBD291BA0AE003C5B1D /* GroupCodeView.swift */; };
+		ABB96EC0291C244E003C5B1D /* SetThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EBF291C244E003C5B1D /* SetThemeViewController.swift */; };
 		ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2BD291A3F97008FB3A6 /* AppDelegate.swift */; };
 		ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2BF291A3F97008FB3A6 /* SceneDelegate.swift */; };
 		ABDBD2C2291A3F97008FB3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2C1291A3F97008FB3A6 /* MainViewController.swift */; };
@@ -53,6 +61,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB361670291D15490011BB9E /* AddGroupButtonBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupButtonBackgroundView.swift; sourceTree = "<group>"; };
+		AB361673291D29A40011BB9E /* SelectBackgroundColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectBackgroundColorCell.swift; sourceTree = "<group>"; };
+		AB361675291D68030011BB9E /* BackgroundColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorSet.swift; sourceTree = "<group>"; };
+		AB361677291D77D80011BB9E /* SelectIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIconCell.swift; sourceTree = "<group>"; };
+		AB361679291D8E1B0011BB9E /* IconSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSet.swift; sourceTree = "<group>"; };
 		AB437572291A442F00C3688D /* Model_example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model_example.swift; sourceTree = "<group>"; };
 		AB43757D291A5B1800C3688D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGroupNameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +75,9 @@
 		ABB96EB2291AC71F003C5B1D /* ConfirmGroupCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmGroupCardView.swift; sourceTree = "<group>"; };
 		ABB96EB4291AF055003C5B1D /* GroupCodeSharingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCodeSharingViewController.swift; sourceTree = "<group>"; };
 		ABB96EB8291B69FA003C5B1D /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		ABB96EBA291B703A003C5B1D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		ABB96EBD291BA0AE003C5B1D /* GroupCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCodeView.swift; sourceTree = "<group>"; };
+		ABB96EBF291C244E003C5B1D /* SetThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetThemeViewController.swift; sourceTree = "<group>"; };
 		ABDBD2BA291A3F97008FB3A6 /* Rollin_MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rollin_MVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDBD2BD291A3F97008FB3A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABDBD2BF291A3F97008FB3A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,10 +126,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB36166F291D152C0011BB9E /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				AB361670291D15490011BB9E /* AddGroupButtonBackgroundView.swift */,
+			);
+			path = ViewComponents;
+			sourceTree = "<group>";
+		};
 		AB437571291A441700C3688D /* AppMain */ = {
 			isa = PBXGroup;
 			children = (
 				ABDBD2C1291A3F97008FB3A6 /* MainViewController.swift */,
+				AB36166F291D152C0011BB9E /* ViewComponents */,
 			);
 			path = AppMain;
 			sourceTree = "<group>";
@@ -121,6 +146,7 @@
 		AB43757F291A5B5D00C3688D /* CreateGroup */ = {
 			isa = PBXGroup;
 			children = (
+				ABB96EBF291C244E003C5B1D /* SetThemeViewController.swift */,
 				AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */,
 				ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */,
 				ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */,
@@ -134,6 +160,8 @@
 			isa = PBXGroup;
 			children = (
 				ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */,
+				AB361675291D68030011BB9E /* BackgroundColorSet.swift */,
+				AB361679291D8E1B0011BB9E /* IconSet.swift */,
 			);
 			path = CreatingGroup;
 			sourceTree = "<group>";
@@ -142,6 +170,9 @@
 			isa = PBXGroup;
 			children = (
 				ABB96EB2291AC71F003C5B1D /* ConfirmGroupCardView.swift */,
+				ABB96EBD291BA0AE003C5B1D /* GroupCodeView.swift */,
+				AB361673291D29A40011BB9E /* SelectBackgroundColorCell.swift */,
+				AB361677291D77D80011BB9E /* SelectIconCell.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -158,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				ABB96EB8291B69FA003C5B1D /* Date+.swift */,
+				ABB96EBA291B703A003C5B1D /* String+.swift */,
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -404,15 +436,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABB96EB9291B69FA003C5B1D /* Date+.swift in Sources */,
+				ABB96EBE291BA0AE003C5B1D /* GroupCodeView.swift in Sources */,
 				ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */,
+				ABB96EC0291C244E003C5B1D /* SetThemeViewController.swift in Sources */,
+				AB36167A291D8E1B0011BB9E /* IconSet.swift in Sources */,
 				ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */,
 				ABB96EB3291AC71F003C5B1D /* ConfirmGroupCardView.swift in Sources */,
 				ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */,
 				AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */,
 				ABDBD2C2291A3F97008FB3A6 /* MainViewController.swift in Sources */,
+				AB361674291D29A40011BB9E /* SelectBackgroundColorCell.swift in Sources */,
 				ABB96EB5291AF055003C5B1D /* GroupCodeSharingViewController.swift in Sources */,
+				AB361671291D15490011BB9E /* AddGroupButtonBackgroundView.swift in Sources */,
+				AB361678291D77D80011BB9E /* SelectIconCell.swift in Sources */,
 				ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */,
 				AB437573291A442F00C3688D /* Model_example.swift in Sources */,
+				ABB96EBB291B703A003C5B1D /* String+.swift in Sources */,
+				AB361676291D68030011BB9E /* BackgroundColorSet.swift in Sources */,
 				ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

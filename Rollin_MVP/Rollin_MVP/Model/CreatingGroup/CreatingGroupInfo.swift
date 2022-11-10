@@ -8,7 +8,8 @@
 import Foundation
 
 class CreatingGroupInfo {
-    var createdTime: Date = Date()
-    var groupName: String = ""
-    var nickName: String = ""
+    var createdTime: Date?
+    var groupName: String?
+    var nickName: String?
+    var code: String?
 }

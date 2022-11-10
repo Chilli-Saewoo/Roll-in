@@ -26,6 +26,7 @@ final class ConfirmGroupViewController: UIViewController {
     }
     
     @objc func completeButtonPressed(_ sender: UIButton) {
+        creatingGroupInfo?.code = 8.randomString()
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "GroupCodeSharing") as? GroupCodeSharingViewController ?? UIViewController()
         (secondViewController as? GroupCodeSharingViewController)?.creatingGroupInfo = creatingGroupInfo
         self.navigationController?.pushViewController(secondViewController, animated: true)
