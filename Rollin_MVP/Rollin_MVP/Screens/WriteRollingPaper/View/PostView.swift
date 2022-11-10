@@ -26,6 +26,8 @@ final class PostView: UIView {
         textView.textContainerInset = UIEdgeInsets(top: 13, left: 12, bottom: 36, right: 12)
         textView.layer.cornerRadius = 4
         textView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        textView.autocorrectionType = .no
+        textView.spellCheckingType = .no
         return textView
     }()
     
