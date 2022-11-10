@@ -41,6 +41,8 @@
 		F8173D29291A521400E545E0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D28291A521400E545E0 /* FirebaseStorage */; };
 		F8173D2B291A521400E545E0 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D2A291A521400E545E0 /* FirebaseStorageCombine-Community */; };
 		F8173D2D291BA9CA00E545E0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8173D2C291BA9CA00E545E0 /* GoogleService-Info.plist */; };
+		F8173D30291D0F3800E545E0 /* SearchGroupCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8173D2F291D0F3800E545E0 /* SearchGroupCodeViewController.swift */; };
+		F8173D32291D7CB900E545E0 /* ConfirmParticipatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8173D31291D7CB900E545E0 /* ConfirmParticipatingGroupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +94,8 @@
 		F64EA741291B608500409924 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F64EA743291B60C800409924 /* Rollin_MVP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rollin_MVP.entitlements; sourceTree = "<group>"; };
 		F8173D2C291BA9CA00E545E0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F8173D2F291D0F3800E545E0 /* SearchGroupCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupCodeViewController.swift; sourceTree = "<group>"; };
+		F8173D31291D7CB900E545E0 /* ConfirmParticipatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmParticipatingGroupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +283,7 @@
 				ABDBD2C3291A3F97008FB3A6 /* Main.storyboard */,
 				AB437571291A441700C3688D /* AppMain */,
 				AB43757F291A5B5D00C3688D /* CreateGroup */,
+				F8173D2E291D0EC700E545E0 /* ParticipateGroup */,
 				79BAA9A0291AE4BC00C5636E /* WriteRollingPaper */,
 			);
 			path = Screens;
@@ -306,6 +311,15 @@
 				F64EA741291B608500409924 /* LoginViewController.swift */,
 			);
 			path = AppleLogin;
+			sourceTree = "<group>";
+		};
+		F8173D2E291D0EC700E545E0 /* ParticipateGroup */ = {
+			isa = PBXGroup;
+			children = (
+				F8173D2F291D0F3800E545E0 /* SearchGroupCodeViewController.swift */,
+				F8173D31291D7CB900E545E0 /* ConfirmParticipatingGroupViewController.swift */,
+			);
+			path = ParticipateGroup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -454,9 +468,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8173D32291D7CB900E545E0 /* ConfirmParticipatingGroupViewController.swift in Sources */,
 				F64EA742291B608500409924 /* LoginViewController.swift in Sources */,
 				AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */,
 				ABB96EB9291B69FA003C5B1D /* Date+.swift in Sources */,
+				F8173D30291D0F3800E545E0 /* SearchGroupCodeViewController.swift in Sources */,
 				ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */,
 				ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */,
 				ABB96EB3291AC71F003C5B1D /* ConfirmGroupCardView.swift in Sources */,
