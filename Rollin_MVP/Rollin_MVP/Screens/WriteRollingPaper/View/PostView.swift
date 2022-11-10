@@ -9,15 +9,6 @@ import UIKit
 
 final class PostView: UIView {
     
-    let imageButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .lightGray
-        button.setTitle("사진을 첨부해주세요", for: .normal)
-        button.layer.cornerRadius = 16
-        button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        return button
-    }()
-    
     let textView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .bgRed
@@ -29,6 +20,23 @@ final class PostView: UIView {
         textView.autocorrectionType = .no
         textView.spellCheckingType = .no
         return textView
+    }()
+    
+    let imageButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .lightGray
+        button.setTitle("사진을 첨부해주세요", for: .normal)
+        button.layer.cornerRadius = 16
+        button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        return button
+    }()
+    
+    let fromLabel: UILabel = {
+        let label = UILabel()
+        label.text = "From. 닉"
+        label.font = .systemFont(ofSize: 16, weight: .bold)
+        label.textColor = .textRed
+        return label
     }()
     
     override init(frame: CGRect) {
@@ -49,6 +57,13 @@ final class PostView: UIView {
             textView.leadingAnchor.constraint(equalTo: leadingAnchor),
             textView.trailingAnchor.constraint(equalTo: trailingAnchor),
             textView.heightAnchor.constraint(equalToConstant: 164),
+        ])
+        
+        addSubview(fromLabel)
+        fromLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            fromLabel.bottomAnchor.constraint(equalTo: textView.bottomAnchor, constant: -8),
+            fromLabel.trailingAnchor.constraint(equalTo: textView.trailingAnchor, constant: -12)
         ])
         
         addSubview(imageButton)
