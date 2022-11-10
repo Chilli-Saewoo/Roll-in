@@ -11,16 +11,21 @@ final class PostThemePickerViewCell: UICollectionViewCell {
     
     var isSelectedTheme: Bool = false
     
-    lazy var themeView: UIView = {
-        let uiView = UIView()
-        uiView.backgroundColor = .red
-        uiView.layer.cornerRadius = 12.5
-        return uiView
+    var themeLabel: UILabel = {
+        let label = UILabel()
+        label.backgroundColor = .red
+        label.textColor = .red
+        label.text = "안녕.."
+        label.font = .preferredFont(forTextStyle: .body)
+        label.textAlignment = .center
+        label.layer.cornerRadius = 4
+        label.clipsToBounds = true
+        return label
     }()
     
     var themeTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Sunset"
+        label.text = ""
         label.font = .preferredFont(forTextStyle: .footnote)
         return label
     }()
@@ -35,19 +40,19 @@ final class PostThemePickerViewCell: UICollectionViewCell {
     }
     
     private func setupLayout() {
-        addSubview(themeView)
-        themeView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(themeLabel)
+        themeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            themeView.topAnchor.constraint(equalTo: topAnchor),
-            themeView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            themeView.widthAnchor.constraint(equalToConstant: 63),
-            themeView.heightAnchor.constraint(equalToConstant: 63),
+            themeLabel.topAnchor.constraint(equalTo: topAnchor),
+            themeLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            themeLabel.widthAnchor.constraint(equalToConstant: 63),
+            themeLabel.heightAnchor.constraint(equalToConstant: 63),
         ])
         
         addSubview(themeTitleLabel)
         themeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            themeTitleLabel.topAnchor.constraint(equalTo: themeView.bottomAnchor, constant: 4.7),
+            themeTitleLabel.topAnchor.constraint(equalTo: themeLabel.bottomAnchor, constant: 8),
             themeTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
         ])
     }

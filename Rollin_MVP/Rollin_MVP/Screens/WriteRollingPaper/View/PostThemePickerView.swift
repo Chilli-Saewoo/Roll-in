@@ -14,21 +14,18 @@ protocol PostViewDelegate: AnyObject {
 final class PostThemePickerView: UIView {
 
     struct theme {
-        let color: UIColor
+        let textColor: UIColor
+        let bgColor: UIColor
         let title: String
     }
     
     weak var delegate: PostViewDelegate?
 
-    private var themes: [UIColor : String] = [.red : "Apple",
-                                                 .blue : "Ocean",
-                                                 .green : "Forest",
-                                                 .yellow : "Lemon",
-                                                 .orange : "Sunset",
-                                                 .purple : "Cosmos",
-                                                 .magenta : "Pinkish"]
-    
-    private var themeList: [theme] = []
+    private var themeList: [theme] = [theme(textColor: .textRed, bgColor: .bgRed, title: "빨강"),
+                                      theme(textColor: .textYellow, bgColor: .bgYellow, title: "노랑"),
+                                      theme(textColor: .textGreen, bgColor: .bgGreen, title: "초록"),
+                                      theme(textColor: .textBlue, bgColor: .bgBlue, title: "파랑"),
+                                      theme(textColor: .textPurple, bgColor: .bgPurple, title: "보라")]
     
     private let themeCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -46,7 +43,6 @@ final class PostThemePickerView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setThemeList()
         setupLayout()
         setupCollectionView()
     }
@@ -70,12 +66,6 @@ final class PostThemePickerView: UIView {
         themeCollectionView.delegate = self
         themeCollectionView.register(PostThemePickerViewCell.self, forCellWithReuseIdentifier: PostThemePickerViewCell.className)
     }
-    
-    private func setThemeList() {
-        for (key, value) in themes {
-            themeList.append(theme(color: key, title: value))
-        }
-    }
 }
 
 extension PostThemePickerView: UICollectionViewDataSource {
@@ -87,12 +77,13 @@ extension PostThemePickerView: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostThemePickerViewCell.className, for: indexPath) as? PostThemePickerViewCell else { return UICollectionViewCell() }
         if indexPath.row == 0 {
             cell.isSelectedTheme = true
-            cell.themeView.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
-            cell.themeView.layer.borderWidth = 3
+            cell.themeLabel.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
+            cell.themeLabel.layer.borderWidth = 2
         }
         
         cell.themeTitleLabel.text = themeList[indexPath.row].title
-        cell.themeView.backgroundColor = themeList[indexPath.row].color
+        cell.themeLabel.textColor = themeList[indexPath.row].textColor
+        cell.themeLabel.backgroundColor = themeList[indexPath.row].bgColor
         
         return cell
     }
@@ -103,20 +94,20 @@ extension PostThemePickerView: UICollectionViewDelegate {
         guard let cell = collectionView.cellForItem(at: indexPath) as? PostThemePickerViewCell else { return }
         
         cell.isSelectedTheme = true
-        cell.themeView.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
-        cell.themeView.layer.borderWidth = 3
+        cell.themeLabel.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
+        cell.themeLabel.layer.borderWidth = 2
         
         if indexPath.row != 0 {
             guard let firstCell = collectionView.cellForItem(at: [0, 0]) as? PostThemePickerViewCell else { return }
             firstCell.isSelectedTheme = false
-            firstCell.themeView.layer.borderWidth = 0
+            firstCell.themeLabel.layer.borderWidth = 0
         }
-        delegate?.changePostColor(selectedColor: themeList[indexPath.row].color)
+        delegate?.changePostColor(selectedColor: themeList[indexPath.row].bgColor)
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? PostThemePickerViewCell else { return }
         cell.isSelectedTheme = false
-        cell.themeView.layer.borderWidth = 0
+        cell.themeLabel.layer.borderWidth = 0
     }
 }
