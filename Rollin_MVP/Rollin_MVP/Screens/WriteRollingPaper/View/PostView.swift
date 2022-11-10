@@ -7,7 +7,17 @@
 
 import UIKit
 
+protocol WriteRollingPaperViewControllerDelegate: AnyObject {
+    func activeConfirmButton()
+    
+    func inactiveConfirmButton()
+}
+
 final class PostView: UIView {
+    
+    var isPhotoAdded: Bool = false
+    
+    weak var delegate: WriteRollingPaperViewControllerDelegate?
     
     private let privateSwitch: UISwitch = {
         let privateSwitch = UISwitch()
@@ -168,5 +178,10 @@ extension PostView: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         textCountLabel.text = "\(textView.text.count)/100"
+        if textView.text.count > 0 && isPhotoAdded {
+            delegate?.activeConfirmButton()
+        } else {
+            delegate?.inactiveConfirmButton()
+        }
     }
 }
