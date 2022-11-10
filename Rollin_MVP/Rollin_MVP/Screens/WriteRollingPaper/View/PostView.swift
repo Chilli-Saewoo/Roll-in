@@ -23,6 +23,7 @@ final class PostView: UIView {
         let privateSwitch = UISwitch()
         privateSwitch.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
         privateSwitch.onTintColor = .systemBlack
+        privateSwitch.setOn(true, animated: false)
         return privateSwitch
     }()
     
