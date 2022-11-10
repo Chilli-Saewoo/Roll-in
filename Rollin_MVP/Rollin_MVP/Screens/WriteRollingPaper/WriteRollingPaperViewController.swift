@@ -21,12 +21,15 @@ final class WriteRollingPaperViewController: UIViewController {
     
     private let privateSwitch: UISwitch = {
         let privateSwitch = UISwitch()
+        privateSwitch.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+        privateSwitch.onTintColor = .systemBlack
         return privateSwitch
     }()
     
     private let privateSwitchTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "그룹내 공개"
+        label.font = .preferredFont(forTextStyle: .footnote)
         return label
     }()
     
@@ -123,20 +126,20 @@ final class WriteRollingPaperViewController: UIViewController {
         privateSwitch.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             privateSwitch.topAnchor.constraint(equalTo: postThemePicerkView.bottomAnchor, constant: 8),
-            privateSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24)
+            privateSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16)
         ])
         
         view.addSubview(privateSwitchTitleLabel)
         privateSwitchTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             privateSwitchTitleLabel.centerYAnchor.constraint(equalTo: privateSwitch.centerYAnchor),
-            privateSwitchTitleLabel.trailingAnchor.constraint(equalTo: privateSwitch.leadingAnchor, constant: -8)
+            privateSwitchTitleLabel.trailingAnchor.constraint(equalTo: privateSwitch.leadingAnchor, constant: 0)
         ])
         
         view.addSubview(postView)
         postView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            postView.topAnchor.constraint(equalTo: privateSwitch.bottomAnchor, constant: 8),
+            postView.topAnchor.constraint(equalTo: privateSwitch.bottomAnchor, constant: 4),
             postView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
