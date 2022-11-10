@@ -9,6 +9,26 @@ import UIKit
 
 final class PostView: UIView {
     
+    private let privateSwitch: UISwitch = {
+        let privateSwitch = UISwitch()
+        privateSwitch.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+        privateSwitch.onTintColor = .systemBlack
+        return privateSwitch
+    }()
+    
+    private let privateSwitchTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "그룹내 공개"
+        label.font = .preferredFont(forTextStyle: .footnote)
+        return label
+    }()
+    
+    private let textCountLabel: UILabel = {
+        let label = UILabel()
+        label.text = "0/100"
+        return label
+    }()
+    
     let textView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .bgRed
@@ -63,10 +83,33 @@ final class PostView: UIView {
     }
     
     private func setupPostLayout() {
+        addSubview(textCountLabel)
+        textCountLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            textCountLabel.topAnchor.constraint(equalTo: topAnchor),
+            textCountLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+            textCountLabel.heightAnchor.constraint(equalToConstant: 16)
+        ])
+        
+        addSubview(privateSwitch)
+        privateSwitch.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            privateSwitch.centerYAnchor.constraint(equalTo: textCountLabel.centerYAnchor),
+            privateSwitch.trailingAnchor.constraint(equalTo: trailingAnchor),
+        ])
+        
+        addSubview(privateSwitchTitleLabel)
+        privateSwitchTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            privateSwitchTitleLabel.centerYAnchor.constraint(equalTo: privateSwitch.centerYAnchor),
+            privateSwitchTitleLabel.trailingAnchor.constraint(equalTo: privateSwitch.leadingAnchor, constant: 0),
+            privateSwitchTitleLabel.heightAnchor.constraint(equalToConstant: 16)
+        ])
+        
         addSubview(textView)
         textView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            textView.topAnchor.constraint(equalTo: topAnchor),
+            textView.topAnchor.constraint(equalTo: textCountLabel.bottomAnchor, constant: 8),
             textView.leadingAnchor.constraint(equalTo: leadingAnchor),
             textView.trailingAnchor.constraint(equalTo: trailingAnchor),
             textView.heightAnchor.constraint(equalToConstant: 164),
@@ -121,5 +164,9 @@ extension PostView: UITextViewDelegate {
         return self.checkTextLimit(existingText: textView.text,
                                   newText: text,
                                   limit: 100)
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        textCountLabel.text = "\(textView.text.count)/100"
     }
 }
