@@ -87,6 +87,8 @@ final class WriteRollingPaperViewController: UIViewController {
     private func setupButtonAction() {
         postView.emptyImageButton.addTarget(self, action: #selector(touchUpInsideToSetPhoto), for: .touchUpInside)
         postView.addedImageButton.addTarget(self, action: #selector(touchUpInsideToSetPhoto), for: .touchUpInside)
+        confirmButton.addTarget(self, action: #selector(touchUpInsideToConfirmPost), for: .touchUpInside)
+        confirmButton.isEnabled = false
     }
     
     @objc
@@ -98,6 +100,11 @@ final class WriteRollingPaperViewController: UIViewController {
         makeActionSheet(actionTitles: ["라이브러리에서 선택하기", "사진 촬영하기", "취소"],
                         actionStyle: [.default, .default, .cancel],
                         actions: [choosePhotoFromAlbumAction, takePhotoAction, nil])
+    }
+    
+    @objc
+    private func touchUpInsideToConfirmPost() {
+        print("Confirmed!!")
     }
     
     private func setupLayout() {
@@ -181,10 +188,12 @@ extension WriteRollingPaperViewController: WriteRollingPaperViewControllerDelega
     func activeConfirmButton() {
         confirmButton.backgroundColor = .systemBlack
         confirmButton.setTitleColor(.white, for: .normal)
+        confirmButton.isEnabled = true
     }
     
     func inactiveConfirmButton() {
         confirmButton.backgroundColor = .inactiveBgGray
         confirmButton.setTitleColor(.inactiveTextGray, for: .normal)
+        confirmButton.isEnabled = false
     }
 }
