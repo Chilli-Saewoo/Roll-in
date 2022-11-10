@@ -17,6 +17,7 @@ final class WriteRollingPaperViewController: UIViewController {
     private lazy var authorizationOfCameraAlert: () = makeAlert(title: "알림", message: "카메라 접근이 허용되어 있지 않습니다.")
     private lazy var authorizationOfPhotoLibraryAlert: () = makeAlert(title: "알림", message: "라이브러리 접근이 허용되어 있지 않습니다.")
     private let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5
+    private var isPhotoAdded: Bool = false
     
     private let privateSwitch: UISwitch = {
         let privateSwitch = UISwitch()
@@ -93,7 +94,8 @@ final class WriteRollingPaperViewController: UIViewController {
     }
     
     private func setupButtonAction() {
-        postView.imageButton.addTarget(self, action: #selector(touchUpInsideToSetPhoto), for: .touchUpInside)
+        postView.emptyImageButton.addTarget(self, action: #selector(touchUpInsideToSetPhoto), for: .touchUpInside)
+        postView.addedImageButton.addTarget(self, action: #selector(touchUpInsideToSetPhoto), for: .touchUpInside)
     }
     
     @objc
@@ -148,6 +150,17 @@ final class WriteRollingPaperViewController: UIViewController {
             confirmButton.heightAnchor.constraint(equalToConstant: 57)
         ])
     }
+    
+    private func setupPostLayout() {
+        view.addSubview(postView)
+        postView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            postView.topAnchor.constraint(equalTo: privateSwitch.bottomAnchor, constant: 8),
+            postView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            postView.heightAnchor.constraint(equalToConstant: 164 + UIScreen.main.bounds.width - 40),
+        ])
+    }
 }
 
 
@@ -162,11 +175,17 @@ extension WriteRollingPaperViewController: PostViewDelegate {
 extension WriteRollingPaperViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
-            postView.imageButton.setBackgroundImage(image, for: .normal)
-            postView.imageButton.layer.cornerRadius = 16
-            postView.imageButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-            postView.imageButton.clipsToBounds = true
-            postView.imageButton.setTitle("", for: .normal)
+            if !isPhotoAdded {
+                postView.emptyImageButton.removeFromSuperview()
+                postView.setupAddedImageButtonLayout()
+                postView.removeFromSuperview()
+                setupPostLayout()
+                isPhotoAdded = true
+            }
+            postView.addedImageButton.setBackgroundImage(image, for: .normal)
+            postView.addedImageButton.layer.cornerRadius = 4
+            postView.addedImageButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+            postView.addedImageButton.clipsToBounds = true
         }
         
         picker.dismiss(animated: true, completion: nil)

@@ -22,11 +22,24 @@ final class PostView: UIView {
         return textView
     }()
     
-    let imageButton: UIButton = {
+    let emptyImageButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .lightGray
-        button.setTitle("사진을 첨부해주세요", for: .normal)
-        button.layer.cornerRadius = 16
+        button.setTitle("사진 추가하기", for: .normal)
+        button.setTitleColor(.systemBlack, for: .normal)
+        button.setImage(UIImage(systemName: "plus"), for: .normal)
+        button.tintColor = .systemBlack
+        button.backgroundColor = .white
+        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+        button.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 4
+        button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        return button
+    }()
+    
+    let addedImageButton: UIButton = {
+        let button = UIButton()
+        button.layer.cornerRadius = 4
         button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         return button
     }()
@@ -41,7 +54,7 @@ final class PostView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupLayout()
+        setupPostLayout()
         textView.delegate = self
     }
     
@@ -49,7 +62,7 @@ final class PostView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func setupLayout() {
+    private func setupPostLayout() {
         addSubview(textView)
         textView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -59,6 +72,16 @@ final class PostView: UIView {
             textView.heightAnchor.constraint(equalToConstant: 164),
         ])
         
+        addSubview(emptyImageButton)
+        emptyImageButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            emptyImageButton.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 4),
+            emptyImageButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+            emptyImageButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            emptyImageButton.bottomAnchor.constraint(equalTo: bottomAnchor),
+            emptyImageButton.heightAnchor.constraint(equalToConstant: 66)
+        ])
+        
         addSubview(fromLabel)
         fromLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -66,14 +89,17 @@ final class PostView: UIView {
             fromLabel.trailingAnchor.constraint(equalTo: textView.trailingAnchor, constant: -12)
         ])
         
-        addSubview(imageButton)
-        imageButton.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func setupAddedImageButtonLayout() {
+        addSubview(addedImageButton)
+        addedImageButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageButton.topAnchor.constraint(equalTo: textView.bottomAnchor),
-            imageButton.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageButton.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageButton.bottomAnchor.constraint(equalTo: bottomAnchor),
-            imageButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width-112)
+            addedImageButton.topAnchor.constraint(equalTo: textView.bottomAnchor),
+            addedImageButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+            addedImageButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            addedImageButton.bottomAnchor.constraint(equalTo: bottomAnchor),
+            addedImageButton.heightAnchor.constraint(equalToConstant: 200)
         ])
     }
     
