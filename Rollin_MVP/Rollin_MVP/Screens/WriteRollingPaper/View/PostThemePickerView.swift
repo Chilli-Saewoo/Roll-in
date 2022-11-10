@@ -8,7 +8,7 @@
 import UIKit
 
 protocol PostViewDelegate: AnyObject {
-    func changePostColor(selectedColor: UIColor)
+    func changePostColor(selectedTextColor: UIColor, selectedBgColor: UIColor)
 }
 
 final class PostThemePickerView: UIView {
@@ -102,7 +102,7 @@ extension PostThemePickerView: UICollectionViewDelegate {
             firstCell.isSelectedTheme = false
             firstCell.themeLabel.layer.borderWidth = 0
         }
-        delegate?.changePostColor(selectedColor: themeList[indexPath.row].bgColor)
+        delegate?.changePostColor(selectedTextColor: themeList[indexPath.row].textColor, selectedBgColor: themeList[indexPath.row].bgColor)
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

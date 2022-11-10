@@ -21,6 +21,7 @@ final class PostView: UIView {
     let textView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .bgRed
+        textView.textColor = .textRed
         textView.layer.cornerRadius = 4
         textView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         return textView

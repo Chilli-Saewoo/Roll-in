@@ -152,8 +152,9 @@ final class WriteRollingPaperViewController: UIViewController {
 
 
 extension WriteRollingPaperViewController: PostViewDelegate {
-    func changePostColor(selectedColor: UIColor) {
-        postView.textView.backgroundColor = selectedColor
+    func changePostColor(selectedTextColor: UIColor, selectedBgColor: UIColor) {
+        postView.textView.textColor = selectedTextColor
+        postView.textView.backgroundColor = selectedBgColor
     }
 }
 
