@@ -32,6 +32,7 @@ final class PostView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
+        textView.delegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -57,5 +58,22 @@ final class PostView: UIView {
             imageButton.bottomAnchor.constraint(equalTo: bottomAnchor),
             imageButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width-112)
         ])
+    }
+    
+    private func checkTextLimit(existingText: String?,
+                           newText: String,
+                           limit: Int) -> Bool {
+        let text = existingText ?? ""
+        let isLimit = text.count + newText.count <= limit
+        return isLimit
+    }
+}
+
+
+extension PostView: UITextViewDelegate {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        return self.checkTextLimit(existingText: textView.text,
+                                  newText: text,
+                                  limit: 100)
     }
 }
