@@ -27,15 +27,15 @@ final class PostThemePickerView: UIView {
                                       theme(textColor: .textBlue, bgColor: .bgBlue, title: "파랑"),
                                       theme(textColor: .textPurple, bgColor: .bgPurple, title: "보라")]
     
-    private let themeCollectionView: UICollectionView = {
+    let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5
+    
+    private lazy var themeCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
-        layout.itemSize = CGSize(width: 63, height: 81)
+        layout.minimumInteritemSpacing = 7
+        layout.itemSize = CGSize(width: postThemePickerItemWidth, height: postThemePickerItemWidth + 25)
        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
-        collectionView.showsHorizontalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         return collectionView
@@ -57,7 +57,7 @@ final class PostThemePickerView: UIView {
             themeCollectionView.topAnchor.constraint(equalTo: topAnchor),
             themeCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             themeCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            themeCollectionView.heightAnchor.constraint(equalToConstant: 100)
+            themeCollectionView.heightAnchor.constraint(equalToConstant: postThemePickerItemWidth + 25)
         ])
     }
 

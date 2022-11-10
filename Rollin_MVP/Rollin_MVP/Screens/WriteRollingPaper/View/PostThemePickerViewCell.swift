@@ -45,8 +45,8 @@ final class PostThemePickerViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             themeLabel.topAnchor.constraint(equalTo: topAnchor),
             themeLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            themeLabel.widthAnchor.constraint(equalToConstant: 63),
-            themeLabel.heightAnchor.constraint(equalToConstant: 63),
+            themeLabel.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5),
+            themeLabel.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5),
         ])
         
         addSubview(themeTitleLabel)

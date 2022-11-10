@@ -16,6 +16,7 @@ final class WriteRollingPaperViewController: UIViewController {
     private let imagePickerViewController = UIImagePickerController()
     private lazy var authorizationOfCameraAlert: () = makeAlert(title: "알림", message: "카메라 접근이 허용되어 있지 않습니다.")
     private lazy var authorizationOfPhotoLibraryAlert: () = makeAlert(title: "알림", message: "라이브러리 접근이 허용되어 있지 않습니다.")
+    private let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5
     
     private let privateSwitch: UISwitch = {
         let privateSwitch = UISwitch()
@@ -111,9 +112,9 @@ final class WriteRollingPaperViewController: UIViewController {
         postThemePicerkView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             postThemePicerkView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            postThemePicerkView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            postThemePicerkView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            postThemePicerkView.heightAnchor.constraint(equalToConstant: 100)
+            postThemePicerkView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
+            postThemePicerkView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -21),
+            postThemePicerkView.heightAnchor.constraint(equalToConstant: postThemePickerItemWidth + 25)
         ])
         
         view.addSubview(privateSwitch)
