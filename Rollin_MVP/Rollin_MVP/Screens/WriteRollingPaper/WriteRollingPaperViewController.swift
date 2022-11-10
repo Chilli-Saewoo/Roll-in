@@ -135,8 +135,8 @@ final class WriteRollingPaperViewController: UIViewController {
         postView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             postView.topAnchor.constraint(equalTo: privateSwitch.bottomAnchor, constant: 8),
-            postView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 56),
-            postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -56),
+            postView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
         
         view.addSubview(confirmButton)

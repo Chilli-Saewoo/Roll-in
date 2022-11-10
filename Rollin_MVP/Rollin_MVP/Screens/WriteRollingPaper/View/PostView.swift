@@ -20,8 +20,8 @@ final class PostView: UIView {
     
     let textView: UITextView = {
         let textView = UITextView()
-        textView.backgroundColor = .red
-        textView.layer.cornerRadius = 16
+        textView.backgroundColor = .bgRed
+        textView.layer.cornerRadius = 4
         textView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         return textView
     }()
@@ -42,7 +42,7 @@ final class PostView: UIView {
             textView.topAnchor.constraint(equalTo: topAnchor),
             textView.leadingAnchor.constraint(equalTo: leadingAnchor),
             textView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            textView.heightAnchor.constraint(equalToConstant: 240),
+            textView.heightAnchor.constraint(equalToConstant: 164),
         ])
         
         addSubview(imageButton)
