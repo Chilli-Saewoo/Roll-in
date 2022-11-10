@@ -22,6 +22,8 @@ final class PostView: UIView {
         let textView = UITextView()
         textView.backgroundColor = .bgRed
         textView.textColor = .textRed
+        textView.font = .preferredFont(forTextStyle: .body)
+        textView.textContainerInset = UIEdgeInsets(top: 13, left: 12, bottom: 36, right: 12)
         textView.layer.cornerRadius = 4
         textView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         return textView
