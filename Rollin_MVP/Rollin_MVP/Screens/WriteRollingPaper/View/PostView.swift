@@ -72,6 +72,9 @@ final class PostView: UIView {
 
 extension PostView: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if (text == "\n") {
+            textView.resignFirstResponder()
+        }
         return self.checkTextLimit(existingText: textView.text,
                                   newText: text,
                                   limit: 100)
