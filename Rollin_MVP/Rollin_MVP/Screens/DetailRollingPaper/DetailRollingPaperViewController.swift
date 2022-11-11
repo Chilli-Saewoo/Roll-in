@@ -18,6 +18,7 @@ final class DetailRollingPaperViewController: UIViewController {
         }
         static var collectionViewContentInset = UIEdgeInsets(top: 5, left: insetX, bottom: 0, right: insetX)
     }
+    
     private let collectionViewFlowLayout = UICollectionViewFlowLayout()
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.collectionViewFlowLayout)
     //TODO: 후에 글, 사진 포스트로 변경 예정
@@ -64,6 +65,8 @@ private extension DetailRollingPaperViewController {
     }
     
     func setCollectionView() {
+        self.collectionView.dataSource = self
+        self.collectionView.delegate = self
         collectionView.isScrollEnabled = true
         collectionView.showsHorizontalScrollIndicator = true
         collectionView.backgroundColor = .clear
@@ -74,13 +77,11 @@ private extension DetailRollingPaperViewController {
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.contentInset = LayoutValue.collectionViewContentInset
         collectionView.decelerationRate = .fast
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func setPostLayout() {
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.collectionView)
-        self.collectionView.dataSource = self
-        self.collectionView.delegate = self
         NSLayoutConstraint.activate([
             self.collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             self.collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
