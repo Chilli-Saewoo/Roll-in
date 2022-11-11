@@ -56,6 +56,14 @@ final class ConfirmGroupViewController: UIViewController {
             batch.updateData(["groupNickname": dummyNickname],
                              forDocument: groupUsersRef)
             
+            batch.commit() { err in
+                if let err = err {
+                    print("Error writing batch \(err)")
+                } else {
+                    print("Batch write succeeded.")
+                }
+            }
+            
         }
     }
 }
