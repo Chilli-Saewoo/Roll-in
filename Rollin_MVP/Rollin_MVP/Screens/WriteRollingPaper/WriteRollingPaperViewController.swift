@@ -16,23 +16,15 @@ final class WriteRollingPaperViewController: UIViewController {
     private let imagePickerViewController = UIImagePickerController()
     private lazy var authorizationOfCameraAlert: () = makeAlert(title: "알림", message: "카메라 접근이 허용되어 있지 않습니다.")
     private lazy var authorizationOfPhotoLibraryAlert: () = makeAlert(title: "알림", message: "라이브러리 접근이 허용되어 있지 않습니다.")
-    
-    private let privateSwitch: UISwitch = {
-        let privateSwitch = UISwitch()
-        return privateSwitch
-    }()
-    
-    private let privateSwitchTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "그룹내 공개"
-        return label
-    }()
+    private let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5
     
     private let confirmButton: UIButton = {
         let button = UIButton()
-        button.setTitle("완료", for: .normal)
-        button.backgroundColor = .lightGray
-        button.layer.cornerRadius = 8
+        button.setTitle("올리기", for: .normal)
+        button.backgroundColor = .inactiveBgGray
+        button.setTitleColor(.inactiveTextGray, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
+        button.layer.cornerRadius = 4
         return button
     }()
     
@@ -47,6 +39,7 @@ final class WriteRollingPaperViewController: UIViewController {
         postThemePicerkView.delegate = self
         imagePickerViewController.delegate = self
         imagePickerViewController.allowsEditing = true
+        postView.delegate = self
     }
     
     private func setImagePickerToPhotoLibrary() {
@@ -92,7 +85,10 @@ final class WriteRollingPaperViewController: UIViewController {
     }
     
     private func setupButtonAction() {
-        postView.imageButton.addTarget(self, action: #selector(touchUpInsideToSetPhoto), for: .touchUpInside)
+        postView.emptyImageButton.addTarget(self, action: #selector(touchUpInsideToSetPhoto), for: .touchUpInside)
+        postView.addedImageButton.addTarget(self, action: #selector(touchUpInsideToSetPhoto), for: .touchUpInside)
+        confirmButton.addTarget(self, action: #selector(touchUpInsideToConfirmPost), for: .touchUpInside)
+        confirmButton.isEnabled = false
     }
     
     @objc
@@ -106,64 +102,79 @@ final class WriteRollingPaperViewController: UIViewController {
                         actions: [choosePhotoFromAlbumAction, takePhotoAction, nil])
     }
     
+    @objc
+    private func touchUpInsideToConfirmPost() {
+        print("Confirmed!!")
+    }
+    
     private func setupLayout() {
         view.addSubview(postThemePicerkView)
         postThemePicerkView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             postThemePicerkView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            postThemePicerkView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            postThemePicerkView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            postThemePicerkView.heightAnchor.constraint(equalToConstant: 100)
+            postThemePicerkView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
+            postThemePicerkView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -21),
+            postThemePicerkView.heightAnchor.constraint(equalToConstant: postThemePickerItemWidth + 25)
         ])
-        
-        view.addSubview(privateSwitch)
-        privateSwitch.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            privateSwitch.topAnchor.constraint(equalTo: postThemePicerkView.bottomAnchor, constant: 8),
-            privateSwitch.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24)
-        ])
-        
-        view.addSubview(privateSwitchTitleLabel)
-        privateSwitchTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            privateSwitchTitleLabel.centerYAnchor.constraint(equalTo: privateSwitch.centerYAnchor),
-            privateSwitchTitleLabel.trailingAnchor.constraint(equalTo: privateSwitch.leadingAnchor, constant: -8)
-        ])
-        
+    
         view.addSubview(postView)
         postView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            postView.topAnchor.constraint(equalTo: privateSwitch.bottomAnchor, constant: 8),
-            postView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 56),
-            postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -56),
+            postView.topAnchor.constraint(equalTo: postThemePicerkView.bottomAnchor, constant: 43),
+            postView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
         ])
         
         view.addSubview(confirmButton)
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             confirmButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34),
-            confirmButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            confirmButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            confirmButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            confirmButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             confirmButton.heightAnchor.constraint(equalToConstant: 57)
+        ])
+    }
+    
+    private func setupPostLayout() {
+        view.addSubview(postView)
+        postView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            postView.topAnchor.constraint(equalTo: postThemePicerkView.bottomAnchor, constant: 43),
+            postView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            postView.heightAnchor.constraint(equalToConstant: 164 + UIScreen.main.bounds.width - 40),
         ])
     }
 }
 
 
 extension WriteRollingPaperViewController: PostViewDelegate {
-    func changePostColor(selectedColor: UIColor) {
-        postView.textView.backgroundColor = selectedColor
+    func changePostColor(selectedTextColor: UIColor, selectedBgColor: UIColor) {
+        postView.textView.textColor = selectedTextColor
+        postView.textView.tintColor = selectedTextColor
+        postView.textView.backgroundColor = selectedBgColor
+        postView.fromLabel.textColor = selectedTextColor
     }
 }
 
 extension WriteRollingPaperViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
-            postView.imageButton.setBackgroundImage(image, for: .normal)
-            postView.imageButton.layer.cornerRadius = 16
-            postView.imageButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-            postView.imageButton.clipsToBounds = true
-            postView.imageButton.setTitle("", for: .normal)
+            if !postView.isPhotoAdded {
+                postView.emptyImageButton.removeFromSuperview()
+                postView.setupAddedImageButtonLayout()
+                postView.removeFromSuperview()
+                setupPostLayout()
+                postView.isPhotoAdded = true
+            }
+            postView.addedImageButton.setBackgroundImage(image, for: .normal)
+            postView.addedImageButton.layer.cornerRadius = 4
+            postView.addedImageButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+            postView.addedImageButton.clipsToBounds = true
+        }
+        
+        if postView.isTextEdited && postView.isPhotoAdded {
+            activeConfirmButton()
         }
         
         picker.dismiss(animated: true, completion: nil)
@@ -171,5 +182,19 @@ extension WriteRollingPaperViewController: UIImagePickerControllerDelegate, UINa
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension WriteRollingPaperViewController: WriteRollingPaperViewControllerDelegate {
+    func activeConfirmButton() {
+        confirmButton.backgroundColor = .systemBlack
+        confirmButton.setTitleColor(.white, for: .normal)
+        confirmButton.isEnabled = true
+    }
+    
+    func inactiveConfirmButton() {
+        confirmButton.backgroundColor = .inactiveBgGray
+        confirmButton.setTitleColor(.inactiveTextGray, for: .normal)
+        confirmButton.isEnabled = false
     }
 }
