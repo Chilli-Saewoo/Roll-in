@@ -52,8 +52,9 @@ final class ConfirmGroupViewController: UIViewController {
                            "groupIcon": info.icon ?? "icon Error",
                            "timestamp": (info.createdTime ?? Date()).timeIntervalSince1970],
                           forDocument: groupsRef)
-            batch.updateData(["division": dummyUUID],
+            batch.updateData(["division": FieldValue.arrayUnion([dummyUUID])],
                              forDocument: userGroupsRef)
+            
         }
     }
 }
