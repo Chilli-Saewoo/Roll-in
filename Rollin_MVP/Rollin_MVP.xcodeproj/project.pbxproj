@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2AF46850291E1EF200AB2DE4 /* RollingPaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF4684F291E1EF200AB2DE4 /* RollingPaperView.swift */; };
 		2AF46852291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */; };
+		2AF46854291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46853291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift */; };
 		79A9100D291B84B700A0672F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A9100C291B84B700A0672F /* PostView.swift */; };
 		79A91011291C091B00A0672F /* Alert+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A91010291C091B00A0672F /* Alert+.swift */; };
 		79BAA9A2291AE53100C5636E /* WriteRollingPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BAA9A1291AE53000C5636E /* WriteRollingPaperViewController.swift */; };
@@ -64,6 +65,7 @@
 /* Begin PBXFileReference section */
 		2AF4684F291E1EF200AB2DE4 /* RollingPaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperView.swift; sourceTree = "<group>"; };
 		2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRollingPaperViewController.swift; sourceTree = "<group>"; };
+		2AF46853291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostCollectionViewCell.swift; sourceTree = "<group>"; };
 		79A9100C291B84B700A0672F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		79A91010291C091B00A0672F /* Alert+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+.swift"; sourceTree = "<group>"; };
 		79BAA9A1291AE53000C5636E /* WriteRollingPaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteRollingPaperViewController.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			children = (
 				2AF4684F291E1EF200AB2DE4 /* RollingPaperView.swift */,
 				2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */,
+				2AF46853291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift */,
 			);
 			path = DetailRollingPaper;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				79BAA9A2291AE53100C5636E /* WriteRollingPaperViewController.swift in Sources */,
 				79A91011291C091B00A0672F /* Alert+.swift in Sources */,
 				ABB96EB5291AF055003C5B1D /* GroupCodeSharingViewController.swift in Sources */,
+				2AF46854291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift in Sources */,
 				ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */,
 				AB437573291A442F00C3688D /* Model_example.swift in Sources */,
 				ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */,
