@@ -8,8 +8,6 @@
 import UIKit
 
 final class DetailPostCollectionViewCell: UICollectionViewCell {
-    static let id = "DetailPostCollectionViewCell"
-    
     private let detailPostView = UIView()
     
     required init?(coder: NSCoder) {
@@ -20,6 +18,7 @@ final class DetailPostCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         setDetailPostLayout()
     }
+    
     private func setDetailPostLayout() {
         detailPostView.translatesAutoresizingMaskIntoConstraints = false
         self.contentView.addSubview(detailPostView)
@@ -29,5 +28,8 @@ final class DetailPostCollectionViewCell: UICollectionViewCell {
             detailPostView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             detailPostView.topAnchor.constraint(equalTo: contentView.topAnchor)
         ])
+    }
+    func setBackgroundColor(color: UIColor?) {
+        detailPostView.backgroundColor = color
     }
 }

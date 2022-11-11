@@ -42,7 +42,6 @@
 		F8173D27291A521400E545E0 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D26291A521400E545E0 /* FirebaseFirestoreSwift */; };
 		F8173D29291A521400E545E0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D28291A521400E545E0 /* FirebaseStorage */; };
 		F8173D2B291A521400E545E0 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D2A291A521400E545E0 /* FirebaseStorageCombine-Community */; };
-		F8173D2D291BA9CA00E545E0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8173D2C291BA9CA00E545E0 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,7 +94,6 @@
 		ABDBD2E0291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rollin_MVPUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F64EA741291B608500409924 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		F64EA743291B60C800409924 /* Rollin_MVP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rollin_MVP.entitlements; sourceTree = "<group>"; };
-		F8173D2C291BA9CA00E545E0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,7 +307,6 @@
 		ABDBD2F2291A437F008FB3A6 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				F8173D2C291BA9CA00E545E0 /* GoogleService-Info.plist */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -440,7 +437,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABDBD2CA291A3F99008FB3A6 /* LaunchScreen.storyboard in Resources */,
-				F8173D2D291BA9CA00E545E0 /* GoogleService-Info.plist in Resources */,
 				ABDBD2C7291A3F99008FB3A6 /* Assets.xcassets in Resources */,
 				ABDBD2C5291A3F97008FB3A6 /* Main.storyboard in Resources */,
 			);
