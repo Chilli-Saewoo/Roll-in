@@ -106,7 +106,7 @@ private extension DetailRollingPaperViewController {
         self.view.addSubview(self.dismissButton)
         NSLayoutConstraint.activate([
             self.dismissButton.centerYAnchor.constraint(equalTo: self.titleLabel.centerYAnchor),
-            self.dismissButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            self.dismissButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
             self.dismissButton.heightAnchor.constraint(equalToConstant: 40),
             self.dismissButton.widthAnchor.constraint(equalToConstant: 40),
         ])
