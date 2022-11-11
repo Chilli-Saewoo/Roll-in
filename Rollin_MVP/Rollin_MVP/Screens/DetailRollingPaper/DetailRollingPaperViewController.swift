@@ -83,7 +83,7 @@ private extension DetailRollingPaperViewController {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
         collectionView.isScrollEnabled = true
-        collectionView.showsHorizontalScrollIndicator = true
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
         collectionView.clipsToBounds = true
         //TODO: 추후 className으로 id 값 설정하는 extension 차용
