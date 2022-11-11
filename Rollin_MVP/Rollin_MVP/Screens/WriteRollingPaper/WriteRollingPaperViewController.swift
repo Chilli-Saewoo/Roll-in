@@ -112,10 +112,10 @@ final class WriteRollingPaperViewController: UIViewController {
             if !isBeingSaved {
                 isBeingSaved = true
                 let rollingPaperPostData = RollingPaperPostData(from: "Nick",
-                                                                postTheme: "빨강",
-                                                                message: "wine",
+                                                                postTheme: postThemePicerkView.selectedTheme,
+                                                                message: postView.textView.text,
                                                                 image: "/image",
-                                                                isPublic: true,
+                                                                isPublic: postView.privateSwitch.isOn,
                                                                 timeStamp: FirebaseFirestore.Timestamp())
                 do {
                     try await rollingPaperPostAPI.writePost(document: rollingPaperPostData)
