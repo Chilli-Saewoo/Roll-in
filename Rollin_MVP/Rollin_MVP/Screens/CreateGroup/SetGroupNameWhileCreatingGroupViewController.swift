@@ -39,7 +39,7 @@ final class SetGroupNameWhileCreatingGroupViewController: UIViewController {
     
     @objc func nextButtonPressed(_ sender: UIButton) {
         guard let text = nameTextField.text else { return }
-        creatingGroupInfo.groupName =  text
+        creatingGroupInfo.groupName = text
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SetNicknameWhileCreatingGroup") as? SetNicknameWhileCreatingGroupViewController ?? UIViewController()
         (secondViewController as? SetNicknameWhileCreatingGroupViewController)?.creatingGroupInfo = creatingGroupInfo
         self.navigationController?.pushViewController(secondViewController, animated: true)
