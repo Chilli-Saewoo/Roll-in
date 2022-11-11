@@ -38,6 +38,27 @@ final class DetailRollingPaperViewController: UIViewController {
         return button
     }()
     
+    private let pageControllerStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .equalSpacing
+        return stackView
+    }()
+    
+    private let pageControllerFirstDotView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.layer.cornerRadius = 4
+        return view
+    }()
+    
+    private let pageControllerSecondDotView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .lightGray
+        view.layer.cornerRadius = 4
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setCollectionViewFlowLayout()
@@ -118,6 +139,35 @@ private extension DetailRollingPaperViewController {
             self.collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             self.collectionView.heightAnchor.constraint(equalToConstant: LayoutValue.postSize.height),
             self.collectionView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 22),
+        ])
+        
+        pageControllerStackView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(pageControllerStackView)
+        NSLayoutConstraint.activate([
+            pageControllerStackView.topAnchor.constraint(equalTo: self.collectionView.bottomAnchor, constant: 15),
+            pageControllerStackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            pageControllerStackView.heightAnchor.constraint(equalToConstant: 8),
+            pageControllerStackView.widthAnchor.constraint(equalToConstant: 25),
+        ])
+        
+        pageControllerStackView.addArrangedSubview(pageControllerFirstDotView)
+        pageControllerFirstDotView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            pageControllerFirstDotView.topAnchor.constraint(equalTo: self.pageControllerStackView.topAnchor),
+            pageControllerFirstDotView.leadingAnchor.constraint(equalTo: self.pageControllerStackView.leadingAnchor),
+            pageControllerFirstDotView.bottomAnchor.constraint(equalTo: self.pageControllerStackView.bottomAnchor),
+            pageControllerFirstDotView.heightAnchor.constraint(equalToConstant: 8),
+            pageControllerFirstDotView.widthAnchor.constraint(equalToConstant: 8),
+        ])
+        
+        pageControllerStackView.addArrangedSubview(pageControllerSecondDotView)
+        pageControllerSecondDotView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            pageControllerSecondDotView.topAnchor.constraint(equalTo: self.pageControllerStackView.topAnchor),
+            pageControllerSecondDotView.trailingAnchor.constraint(equalTo: self.pageControllerStackView.trailingAnchor),
+            pageControllerSecondDotView.bottomAnchor.constraint(equalTo: self.pageControllerStackView.bottomAnchor),
+            pageControllerSecondDotView.heightAnchor.constraint(equalToConstant: 8),
+            pageControllerSecondDotView.widthAnchor.constraint(equalToConstant: 8)
         ])
     }
     
