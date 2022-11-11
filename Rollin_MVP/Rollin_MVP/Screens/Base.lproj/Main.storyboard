@@ -119,6 +119,37 @@
             </objects>
             <point key="canvasLocation" x="1152" y="4"/>
         </scene>
+        <!--Login View Controller-->
+        <scene sceneID="U6K-2D-0Pk">
+            <objects>
+                <viewController id="7pW-9v-bXc" customClass="LoginViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rA4-JA-vwY">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Ijd-VG-Vwe"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="RhI-Cz-ylL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LIE-II-fqU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2975.3846153846152" y="726.5402843601895"/>
+        </scene>
+        <!--Set Nickname While Login View Controller-->
+        <scene sceneID="G6H-oA-AfX">
+            <objects>
+                <viewController id="GzZ-4F-376" customClass="SetNicknameWhileLoginViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="AgS-GI-hOG">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="sBv-sx-u0p"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LZg-3a-TsU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3820" y="727"/>
+        </scene>
         <!--Write Rolling Paper View Controller-->
         <scene sceneID="AtE-QI-Ubd">
             <objects>
@@ -132,7 +163,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gGt-Ec-bmV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="845" y="734"/>
+            <point key="canvasLocation" x="4740" y="727"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="BzW-Bm-OPa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0rw-bJ-vg5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="i88-y3-ng6">
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7pW-9v-bXc" kind="relationship" relationship="rootViewController" id="UZZ-67-QJk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dze-IH-wby" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2046.1538461538462" y="726.5402843601895"/>
         </scene>
     </scenes>
     <resources>

@@ -42,7 +42,13 @@
 		ABDBD2D5291A3F99008FB3A6 /* Rollin_MVPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2D4291A3F99008FB3A6 /* Rollin_MVPTests.swift */; };
 		ABDBD2DF291A3F99008FB3A6 /* Rollin_MVPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2DE291A3F99008FB3A6 /* Rollin_MVPUITests.swift */; };
 		ABDBD2E1291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2E0291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift */; };
-		ABFA8CC7291E8AD9007418D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABFA8CC6291E8AD9007418D5 /* GoogleService-Info.plist */; };
+		F6F411B4291ED9E0007094DE /* SetNicknameWhileLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F411B3291ED9E0007094DE /* SetNicknameWhileLoginViewController.swift */; };
+		F6F411B7291EDA00007094DE /* ReadRollingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F411B6291EDA00007094DE /* ReadRollingViewController.swift */; };
+		F6F411B9291EDA0D007094DE /* PostRollingPaperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F411B8291EDA0D007094DE /* PostRollingPaperModel.swift */; };
+		F6F411BB291EDA1C007094DE /* ReadRollingPaperCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F411BA291EDA1C007094DE /* ReadRollingPaperCollectionViewCell.swift */; };
+		F6F411BD291EDA2E007094DE /* PinterestLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F411BC291EDA2E007094DE /* PinterestLayout.swift */; };
+		F6F411C0291EDA4F007094DE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F411BF291EDA4F007094DE /* LoginViewController.swift */; };
+		F6F411C3291EDB0A007094DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6F411C2291EDB0A007094DE /* GoogleService-Info.plist */; };
 		F8173D1D291A521400E545E0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D1C291A521400E545E0 /* FirebaseAuth */; };
 		F8173D1F291A521400E545E0 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D1E291A521400E545E0 /* FirebaseDatabase */; };
 		F8173D21291A521400E545E0 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D20291A521400E545E0 /* FirebaseDatabaseSwift */; };
@@ -111,7 +117,14 @@
 		ABDBD2DA291A3F99008FB3A6 /* Rollin_MVPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Rollin_MVPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDBD2DE291A3F99008FB3A6 /* Rollin_MVPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rollin_MVPUITests.swift; sourceTree = "<group>"; };
 		ABDBD2E0291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rollin_MVPUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		ABFA8CC6291E8AD9007418D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F6F411B3291ED9E0007094DE /* SetNicknameWhileLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameWhileLoginViewController.swift; sourceTree = "<group>"; };
+		F6F411B6291EDA00007094DE /* ReadRollingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadRollingViewController.swift; sourceTree = "<group>"; };
+		F6F411B8291EDA0D007094DE /* PostRollingPaperModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostRollingPaperModel.swift; sourceTree = "<group>"; };
+		F6F411BA291EDA1C007094DE /* ReadRollingPaperCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadRollingPaperCollectionViewCell.swift; sourceTree = "<group>"; };
+		F6F411BC291EDA2E007094DE /* PinterestLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinterestLayout.swift; sourceTree = "<group>"; };
+		F6F411BF291EDA4F007094DE /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F6F411C2291EDB0A007094DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../dataSet/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F6F411C4291EDB49007094DE /* Rollin_MVP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rollin_MVP.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,13 +292,14 @@
 		ABDBD2BC291A3F97008FB3A6 /* Rollin_MVP */ = {
 			isa = PBXGroup;
 			children = (
+				F6F411C4291EDB49007094DE /* Rollin_MVP.entitlements */,
+				F6F411C1291EDACC007094DE /* Firebase */,
 				ABB96EB6291B69DF003C5B1D /* Global */,
 				ABDBD2ED291A42DA008FB3A6 /* App */,
 				ABDBD2EE291A42F4008FB3A6 /* Model */,
 				ABDBD2EF291A4307008FB3A6 /* Screens */,
 				ABDBD2F0291A434E008FB3A6 /* Resources */,
 				ABDBD2CB291A3F99008FB3A6 /* Info.plist */,
-				ABDBD2F2291A437F008FB3A6 /* Firebase */,
 			);
 			path = Rollin_MVP;
 			sourceTree = "<group>";
@@ -329,6 +343,9 @@
 		ABDBD2EF291A4307008FB3A6 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F6F411BE291EDA3D007094DE /* AppleLogin */,
+				F6F411B5291ED9ED007094DE /* ReadRollingPaper */,
+				F6F411B2291ED9D1007094DE /* SetNickname */,
 				2AF4684E291E1E9E00AB2DE4 /* DetailRollingPaper */,
 				ABDBD2C3291A3F97008FB3A6 /* Main.storyboard */,
 				AB437571291A441700C3688D /* AppMain */,
@@ -346,10 +363,37 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		ABDBD2F2291A437F008FB3A6 /* Firebase */ = {
+		F6F411B2291ED9D1007094DE /* SetNickname */ = {
 			isa = PBXGroup;
 			children = (
-				ABFA8CC6291E8AD9007418D5 /* GoogleService-Info.plist */,
+				F6F411B3291ED9E0007094DE /* SetNicknameWhileLoginViewController.swift */,
+			);
+			path = SetNickname;
+			sourceTree = "<group>";
+		};
+		F6F411B5291ED9ED007094DE /* ReadRollingPaper */ = {
+			isa = PBXGroup;
+			children = (
+				F6F411B6291EDA00007094DE /* ReadRollingViewController.swift */,
+				F6F411B8291EDA0D007094DE /* PostRollingPaperModel.swift */,
+				F6F411BA291EDA1C007094DE /* ReadRollingPaperCollectionViewCell.swift */,
+				F6F411BC291EDA2E007094DE /* PinterestLayout.swift */,
+			);
+			path = ReadRollingPaper;
+			sourceTree = "<group>";
+		};
+		F6F411BE291EDA3D007094DE /* AppleLogin */ = {
+			isa = PBXGroup;
+			children = (
+				F6F411BF291EDA4F007094DE /* LoginViewController.swift */,
+			);
+			path = AppleLogin;
+			sourceTree = "<group>";
+		};
+		F6F411C1291EDACC007094DE /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				F6F411C2291EDB0A007094DE /* GoogleService-Info.plist */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -472,7 +516,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABDBD2CA291A3F99008FB3A6 /* LaunchScreen.storyboard in Resources */,
-				ABFA8CC7291E8AD9007418D5 /* GoogleService-Info.plist in Resources */,
+				F6F411C3291EDB0A007094DE /* GoogleService-Info.plist in Resources */,
 				ABDBD2C7291A3F99008FB3A6 /* Assets.xcassets in Resources */,
 				ABDBD2C5291A3F97008FB3A6 /* Main.storyboard in Resources */,
 			);
@@ -499,6 +543,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6F411C0291EDA4F007094DE /* LoginViewController.swift in Sources */,
 				AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */,
 				AB032AA9291E875900B22C13 /* SelectBackgroundColorCell.swift in Sources */,
 				AB032AA7291E873500B22C13 /* AddGroupButtonBackgroundView.swift in Sources */,
@@ -509,9 +554,12 @@
 				AB032AA2291E870900B22C13 /* BackgroundColorSet.swift in Sources */,
 				ABB96EC0291C244E003C5B1D /* SetThemeViewController.swift in Sources */,
 				ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */,
+				F6F411BD291EDA2E007094DE /* PinterestLayout.swift in Sources */,
 				ABB96EB3291AC71F003C5B1D /* ConfirmGroupCardView.swift in Sources */,
 				ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */,
+				F6F411B7291EDA00007094DE /* ReadRollingViewController.swift in Sources */,
 				AB032AAB291E875E00B22C13 /* SelectIconCell.swift in Sources */,
+				F6F411B4291ED9E0007094DE /* SetNicknameWhileLoginViewController.swift in Sources */,
 				2AF46850291E1EF200AB2DE4 /* RollingPaperView.swift in Sources */,
 				AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */,
 				ABDBD2C2291A3F97008FB3A6 /* MainViewController.swift in Sources */,
@@ -524,6 +572,8 @@
 				AB437573291A442F00C3688D /* Model_example.swift in Sources */,
 				AB032AA0291E870300B22C13 /* IconSet.swift in Sources */,
 				ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */,
+				F6F411BB291EDA1C007094DE /* ReadRollingPaperCollectionViewCell.swift in Sources */,
+				F6F411B9291EDA0D007094DE /* PostRollingPaperModel.swift in Sources */,
 				79BAA9AF291B732F00C5636E /* PostThemePickerView.swift in Sources */,
 				79A9100D291B84B700A0672F /* PostView.swift in Sources */,
 				79BAA9A9291AED9500C5636E /* NSObject+.swift in Sources */,
@@ -703,9 +753,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Rollin_MVP/Rollin_MVP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8QSTXVD8H9;
+				DEVELOPMENT_TEAM = A8RC8B498C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
@@ -737,9 +788,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Rollin_MVP/Rollin_MVP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8QSTXVD8H9;
+				DEVELOPMENT_TEAM = A8RC8B498C;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
