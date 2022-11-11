@@ -9,6 +9,8 @@ import UIKit
 import AVFoundation
 import Photos
 
+import FirebaseFirestore
+
 final class WriteRollingPaperViewController: UIViewController {
     
     private let postThemePicerkView = PostThemePickerView()
@@ -17,6 +19,8 @@ final class WriteRollingPaperViewController: UIViewController {
     private lazy var authorizationOfCameraAlert: () = makeAlert(title: "알림", message: "카메라 접근이 허용되어 있지 않습니다.")
     private lazy var authorizationOfPhotoLibraryAlert: () = makeAlert(title: "알림", message: "라이브러리 접근이 허용되어 있지 않습니다.")
     private let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5
+    private let rollingPaperPostAPI = RollingPaperPostAPI()
+    private var isBeingSaved: Bool = false
     
     private let confirmButton: UIButton = {
         let button = UIButton()
@@ -104,7 +108,22 @@ final class WriteRollingPaperViewController: UIViewController {
     
     @objc
     private func touchUpInsideToConfirmPost() {
-        print("Confirmed!!")
+        Task {
+            if !isBeingSaved {
+                isBeingSaved = true
+                let rollingPaperPostData = RollingPaperPostData(from: "Nick",
+                                                                postTheme: "빨강",
+                                                                message: "wine",
+                                                                image: "/image",
+                                                                isPublic: true,
+                                                                timeStamp: FirebaseFirestore.Timestamp())
+                do {
+                    try await rollingPaperPostAPI.writePost(document: rollingPaperPostData)
+                } catch {
+                    isBeingSaved = false
+                }
+            }
+        }
     }
     
     private func setupLayout() {

@@ -15,5 +15,5 @@ struct RollingPaperPostData: Codable {
     var message: String
     var image: String
     var isPublic: Bool
-    let createdDate: FirebaseFirestore.Timestamp
+    let timeStamp: FirebaseFirestore.Timestamp
 }
