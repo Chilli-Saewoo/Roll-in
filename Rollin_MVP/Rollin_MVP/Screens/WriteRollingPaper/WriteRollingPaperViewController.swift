@@ -21,6 +21,7 @@ final class WriteRollingPaperViewController: UIViewController {
     private let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5
     private let rollingPaperPostAPI = RollingPaperPostAPI()
     private var isBeingSaved: Bool = false
+    var write: String = "Nick"
     
     private let confirmButton: UIButton = {
         let button = UIButton()
@@ -111,7 +112,7 @@ final class WriteRollingPaperViewController: UIViewController {
         Task {
             if !isBeingSaved {
                 isBeingSaved = true
-                let rollingPaperPostData = RollingPaperPostData(from: "Nick",
+                let rollingPaperPostData = RollingPaperPostData(from: writer,
                                                                 postTheme: postThemePicerkView.selectedTheme,
                                                                 message: postView.textView.text,
                                                                 image: "/image",
