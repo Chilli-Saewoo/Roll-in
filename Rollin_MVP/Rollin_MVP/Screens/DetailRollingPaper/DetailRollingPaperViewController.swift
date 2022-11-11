@@ -89,6 +89,21 @@ extension DetailRollingPaperViewController: UICollectionViewDelegateFlowLayout {
         let cellWidth = LayoutValue.postSize.width + LayoutValue.postSpacing
         let index = round(scrolledOffsetX / cellWidth)
         targetContentOffset.pointee = CGPoint(x: index * cellWidth - scrollView.contentInset.left, y: scrollView.contentInset.top)
+        if index == 0.0 {
+            pageControllerFirstDotView.backgroundColor = .black
+            pageControllerSecondDotView.backgroundColor = .lightGray
+            pageControllerFirstDotView.removeFromSuperview()
+            pageControllerSecondDotView.removeFromSuperview()
+            pageControllerStackView.addArrangedSubview(pageControllerFirstDotView)
+            pageControllerStackView.addArrangedSubview(pageControllerSecondDotView)
+        } else if index == 1.0 {
+            pageControllerFirstDotView.backgroundColor = .lightGray
+            pageControllerSecondDotView.backgroundColor = .black
+            pageControllerFirstDotView.removeFromSuperview()
+            pageControllerSecondDotView.removeFromSuperview()
+            pageControllerStackView.addArrangedSubview(pageControllerFirstDotView)
+            pageControllerStackView.addArrangedSubview(pageControllerSecondDotView)
+        }
     }
 }
 
@@ -107,7 +122,6 @@ private extension DetailRollingPaperViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
         collectionView.clipsToBounds = true
-        //TODO: 추후 className으로 id 값 설정하는 extension 차용
         collectionView.register(DetailPostCollectionViewCell.self, forCellWithReuseIdentifier: DetailPostCollectionViewCell.className)
         collectionView.isPagingEnabled = false
         collectionView.contentInsetAdjustmentBehavior = .never
