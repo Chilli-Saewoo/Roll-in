@@ -10,6 +10,8 @@ import AVFoundation
 import Photos
 
 import FirebaseFirestore
+import FirebaseStorage
+import Firebase
 
 final class WriteRollingPaperViewController: UIViewController {
     
@@ -21,7 +23,8 @@ final class WriteRollingPaperViewController: UIViewController {
     private let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5
     private let rollingPaperPostAPI = RollingPaperPostAPI()
     private var isBeingSaved: Bool = false
-    var write: String = "Nick"
+    var writer: String = "Nick"
+    var postImage: UIImage = UIImage()
     
     private let confirmButton: UIButton = {
         let button = UIButton()
@@ -112,17 +115,38 @@ final class WriteRollingPaperViewController: UIViewController {
         Task {
             if !isBeingSaved {
                 isBeingSaved = true
-                let rollingPaperPostData = RollingPaperPostData(from: writer,
-                                                                postTheme: postThemePicerkView.selectedTheme,
-                                                                message: postView.textView.text,
-                                                                image: "/image",
-                                                                isPublic: postView.privateSwitch.isOn,
-                                                                timeStamp: FirebaseFirestore.Timestamp())
-                do {
-                    try await rollingPaperPostAPI.writePost(document: rollingPaperPostData)
-                } catch {
-                    isBeingSaved = false
+                FirebaseStorageManager.uploadImage(image: postImage, pathRoot: "El6poAIPBKfuPgLh5mWNNrB6ySw2") { url in
+                    guard let url = url else { return }
+                    UserDefaults.standard.set(url.absoluteString, forKey: "myImageUrl")
+                    let absoluteUrl = url.absoluteString
+                    let rollingPaperPostData = RollingPaperPostData(from: self.writer,
+                                                                    postTheme: self.postThemePicerkView.selectedTheme,
+                                                                    message: self.postView.textView.text,
+                                                                    image: absoluteUrl,
+                                                                    isPublic: self.postView.privateSwitch.isOn,
+                                                                    timeStamp: FirebaseFirestore.Timestamp())
+                    
+                    let group = "fa8cce5a-1522-473e-9eb4-08aae407b015"
+                    let user = "rmEM5tNdBP7bi1v8Jgi4"
+                    let uuid = UUID().uuidString
+                    let db = FirebaseFirestore.Firestore.firestore()
+                    let batch = db.batch()
+                    batch.setData(["from": self.writer,
+                                   "postTheme": self.postThemePicerkView.selectedTheme,
+                                   "message": self.postView.textView.text,
+                                   "image": absoluteUrl,
+                                   "isPublic": self.postView.privateSwitch.isOn,
+                                   "timeStamp": FirebaseFirestore.Timestamp()], forDocument: db.collection("groupUsers").document(group).collection("participants").document(user).collection("posts").document(uuid), merge: true)
+                    batch.commit() { err in
+                        if let err = err {
+                            print("Error writing batch \(err)")
+                            self.isBeingSaved = false
+                        } else {
+                            print("Batch write succeeded.")
+                        }
+                    }
                 }
+                isBeingSaved = false
             }
         }
     }
@@ -136,7 +160,7 @@ final class WriteRollingPaperViewController: UIViewController {
             postThemePicerkView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -21),
             postThemePicerkView.heightAnchor.constraint(equalToConstant: postThemePickerItemWidth + 25)
         ])
-    
+        
         view.addSubview(postView)
         postView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -191,6 +215,7 @@ extension WriteRollingPaperViewController: UIImagePickerControllerDelegate, UINa
             postView.addedImageButton.layer.cornerRadius = 4
             postView.addedImageButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
             postView.addedImageButton.clipsToBounds = true
+            postImage = image
         }
         
         if postView.isTextEdited && postView.isPhotoAdded {
