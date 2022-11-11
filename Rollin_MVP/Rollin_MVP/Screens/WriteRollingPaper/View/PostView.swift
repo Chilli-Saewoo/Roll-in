@@ -45,6 +45,7 @@ final class PostView: UIView {
         let textView = UITextView()
         textView.backgroundColor = .bgRed
         textView.textColor = .textRed
+        textView.tintColor = .textRed
         textView.font = .preferredFont(forTextStyle: .body)
         textView.textContainerInset = UIEdgeInsets(top: 13, left: 12, bottom: 36, right: 12)
         textView.text = "롤링페이퍼를 입력하세요"
@@ -108,7 +109,7 @@ final class PostView: UIView {
         privateSwitch.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             privateSwitch.centerYAnchor.constraint(equalTo: textCountLabel.centerYAnchor),
-            privateSwitch.trailingAnchor.constraint(equalTo: trailingAnchor),
+            privateSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 4),
         ])
         
         addSubview(privateSwitchTitleLabel)
