@@ -23,6 +23,7 @@ final class DetailRollingPaperViewController: UIViewController {
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.collectionViewFlowLayout)
     //TODO: 후에 글, 사진 포스트로 변경 예정
     private var post = [UIColor.blue, UIColor.red]
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "상세보기"
@@ -30,11 +31,19 @@ final class DetailRollingPaperViewController: UIViewController {
         return label
     }()
     
+    private let dismissButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "xmark"), for: .normal)
+        button.tintColor = .black
+        return button
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setCollectionViewFlowLayout()
         setCollectionView()
         setPostLayout()
+        setButton()
     }
 }
 
@@ -93,6 +102,15 @@ private extension DetailRollingPaperViewController {
             self.titleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
         ])
         
+        dismissButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.dismissButton)
+        NSLayoutConstraint.activate([
+            self.dismissButton.centerYAnchor.constraint(equalTo: self.titleLabel.centerYAnchor),
+            self.dismissButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20),
+            self.dismissButton.heightAnchor.constraint(equalToConstant: 40),
+            self.dismissButton.widthAnchor.constraint(equalToConstant: 40),
+        ])
+        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.collectionView)
         NSLayoutConstraint.activate([
@@ -101,5 +119,14 @@ private extension DetailRollingPaperViewController {
             self.collectionView.heightAnchor.constraint(equalToConstant: LayoutValue.postSize.height),
             self.collectionView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 22),
         ])
+    }
+    
+    func setButton() {
+        dismissButton.addTarget(self, action: #selector(touchUpInsideToDismiss), for: .touchUpInside)
+    }
+    
+    @objc
+    func touchUpInsideToDismiss() {
+        self.dismiss(animated: true)
     }
 }
