@@ -12,8 +12,18 @@
 		AB361676291D68030011BB9E /* BackgroundColorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB361675291D68030011BB9E /* BackgroundColorSet.swift */; };
 		AB361678291D77D80011BB9E /* SelectIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB361677291D77D80011BB9E /* SelectIconCell.swift */; };
 		AB36167A291D8E1B0011BB9E /* IconSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB361679291D8E1B0011BB9E /* IconSet.swift */; };
+		2AF46850291E1EF200AB2DE4 /* RollingPaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF4684F291E1EF200AB2DE4 /* RollingPaperView.swift */; };
+		2AF46852291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */; };
+		2AF46854291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46853291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift */; };
+		790FF812291E55FB004BDA20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 790FF811291E55FB004BDA20 /* GoogleService-Info.plist */; };
+		7980D12E291C3F3F00915C72 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980D12D291C3F3F00915C72 /* UIColor+.swift */; };
+		79A9100D291B84B700A0672F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A9100C291B84B700A0672F /* PostView.swift */; };
+		79A91011291C091B00A0672F /* Alert+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A91010291C091B00A0672F /* Alert+.swift */; };
+		79BAA9A2291AE53100C5636E /* WriteRollingPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BAA9A1291AE53000C5636E /* WriteRollingPaperViewController.swift */; };
+		79BAA9A5291AE8D400C5636E /* PostThemePickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BAA9A4291AE8D400C5636E /* PostThemePickerViewCell.swift */; };
+		79BAA9A9291AED9500C5636E /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BAA9A8291AED9500C5636E /* NSObject+.swift */; };
+		79BAA9AF291B732F00C5636E /* PostThemePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BAA9AE291B732F00C5636E /* PostThemePickerView.swift */; };
 		AB437573291A442F00C3688D /* Model_example.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437572291A442F00C3688D /* Model_example.swift */; };
-		AB43757E291A5B1800C3688D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB43757D291A5B1800C3688D /* GoogleService-Info.plist */; };
 		AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */; };
 		ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */; };
 		ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */; };
@@ -66,8 +76,18 @@
 		AB361675291D68030011BB9E /* BackgroundColorSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundColorSet.swift; sourceTree = "<group>"; };
 		AB361677291D77D80011BB9E /* SelectIconCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectIconCell.swift; sourceTree = "<group>"; };
 		AB361679291D8E1B0011BB9E /* IconSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconSet.swift; sourceTree = "<group>"; };
+		2AF4684F291E1EF200AB2DE4 /* RollingPaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperView.swift; sourceTree = "<group>"; };
+		2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRollingPaperViewController.swift; sourceTree = "<group>"; };
+		2AF46853291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostCollectionViewCell.swift; sourceTree = "<group>"; };
+		790FF811291E55FB004BDA20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Documents/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7980D12D291C3F3F00915C72 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		79A9100C291B84B700A0672F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		79A91010291C091B00A0672F /* Alert+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+.swift"; sourceTree = "<group>"; };
+		79BAA9A1291AE53000C5636E /* WriteRollingPaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteRollingPaperViewController.swift; sourceTree = "<group>"; };
+		79BAA9A4291AE8D400C5636E /* PostThemePickerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostThemePickerViewCell.swift; sourceTree = "<group>"; };
+		79BAA9A8291AED9500C5636E /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
+		79BAA9AE291B732F00C5636E /* PostThemePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostThemePickerView.swift; sourceTree = "<group>"; };
 		AB437572291A442F00C3688D /* Model_example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model_example.swift; sourceTree = "<group>"; };
-		AB43757D291A5B1800C3688D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGroupNameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
 		ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
 		ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingGroupInfo.swift; sourceTree = "<group>"; };
@@ -132,6 +152,33 @@
 				AB361670291D15490011BB9E /* AddGroupButtonBackgroundView.swift */,
 			);
 			path = ViewComponents;
+		2AF4684E291E1E9E00AB2DE4 /* DetailRollingPaper */ = {
+			isa = PBXGroup;
+			children = (
+				2AF4684F291E1EF200AB2DE4 /* RollingPaperView.swift */,
+				2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */,
+				2AF46853291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift */,
+			);
+			path = DetailRollingPaper;
+			sourceTree = "<group>";
+		};
+		79BAA9A0291AE4BC00C5636E /* WriteRollingPaper */ = {
+			isa = PBXGroup;
+			children = (
+				79BAA9A1291AE53000C5636E /* WriteRollingPaperViewController.swift */,
+				79BAA9A3291AE85B00C5636E /* View */,
+			);
+			path = WriteRollingPaper;
+			sourceTree = "<group>";
+		};
+		79BAA9A3291AE85B00C5636E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				79BAA9A4291AE8D400C5636E /* PostThemePickerViewCell.swift */,
+				79BAA9AE291B732F00C5636E /* PostThemePickerView.swift */,
+				79A9100C291B84B700A0672F /* PostView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		AB437571291A441700C3688D /* AppMain */ = {
@@ -190,6 +237,9 @@
 			children = (
 				ABB96EB8291B69FA003C5B1D /* Date+.swift */,
 				ABB96EBA291B703A003C5B1D /* String+.swift */,
+				79A91010291C091B00A0672F /* Alert+.swift */,
+				79BAA9A8291AED9500C5636E /* NSObject+.swift */,
+				7980D12D291C3F3F00915C72 /* UIColor+.swift */,
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -267,9 +317,11 @@
 		ABDBD2EF291A4307008FB3A6 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2AF4684E291E1E9E00AB2DE4 /* DetailRollingPaper */,
 				ABDBD2C3291A3F97008FB3A6 /* Main.storyboard */,
 				AB437571291A441700C3688D /* AppMain */,
 				AB43757F291A5B5D00C3688D /* CreateGroup */,
+				79BAA9A0291AE4BC00C5636E /* WriteRollingPaper */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -285,7 +337,7 @@
 		ABDBD2F2291A437F008FB3A6 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				AB43757D291A5B1800C3688D /* GoogleService-Info.plist */,
+				790FF811291E55FB004BDA20 /* GoogleService-Info.plist */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -408,7 +460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABDBD2CA291A3F99008FB3A6 /* LaunchScreen.storyboard in Resources */,
-				AB43757E291A5B1800C3688D /* GoogleService-Info.plist in Resources */,
+				790FF812291E55FB004BDA20 /* GoogleService-Info.plist in Resources */,
 				ABDBD2C7291A3F99008FB3A6 /* Assets.xcassets in Resources */,
 				ABDBD2C5291A3F97008FB3A6 /* Main.storyboard in Resources */,
 			);
@@ -435,6 +487,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */,
+				2AF46852291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift in Sources */,
 				ABB96EB9291B69FA003C5B1D /* Date+.swift in Sources */,
 				ABB96EBE291BA0AE003C5B1D /* GroupCodeView.swift in Sources */,
 				ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */,
@@ -443,17 +497,27 @@
 				ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */,
 				ABB96EB3291AC71F003C5B1D /* ConfirmGroupCardView.swift in Sources */,
 				ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */,
+				2AF46850291E1EF200AB2DE4 /* RollingPaperView.swift in Sources */,
 				AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */,
 				ABDBD2C2291A3F97008FB3A6 /* MainViewController.swift in Sources */,
 				AB361674291D29A40011BB9E /* SelectBackgroundColorCell.swift in Sources */,
 				ABB96EB5291AF055003C5B1D /* GroupCodeSharingViewController.swift in Sources */,
 				AB361671291D15490011BB9E /* AddGroupButtonBackgroundView.swift in Sources */,
 				AB361678291D77D80011BB9E /* SelectIconCell.swift in Sources */,
+				79BAA9A5291AE8D400C5636E /* PostThemePickerViewCell.swift in Sources */,
+				79BAA9A2291AE53100C5636E /* WriteRollingPaperViewController.swift in Sources */,
+				79A91011291C091B00A0672F /* Alert+.swift in Sources */,
+				ABB96EB5291AF055003C5B1D /* GroupCodeSharingViewController.swift in Sources */,
+				2AF46854291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift in Sources */,
 				ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */,
 				AB437573291A442F00C3688D /* Model_example.swift in Sources */,
 				ABB96EBB291B703A003C5B1D /* String+.swift in Sources */,
 				AB361676291D68030011BB9E /* BackgroundColorSet.swift in Sources */,
 				ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */,
+				79BAA9AF291B732F00C5636E /* PostThemePickerView.swift in Sources */,
+				79A9100D291B84B700A0672F /* PostView.swift in Sources */,
+				79BAA9A9291AED9500C5636E /* NSObject+.swift in Sources */,
+				7980D12E291C3F3F00915C72 /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,21 +694,23 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3JSRDUQX77;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.junhong.Rollin-MVP";
+				PRODUCT_BUNDLE_IDENTIFIER = com.chillijo.RollinMVP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -662,21 +728,23 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3JSRDUQX77;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.junhong.Rollin-MVP";
+				PRODUCT_BUNDLE_IDENTIFIER = com.chillijo.RollinMVP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
