@@ -51,11 +51,12 @@ final class ConfirmGroupViewController: UIViewController {
                            "groupName": info.groupName ?? "group name Error",
                            "groupTheme": info.backgroundColor ?? "group Theme Error",
                            "groupIcon": info.icon ?? "icon Error",
-                           "timestamp": (info.createdTime ?? Date()).timeIntervalSince1970],
+                           "timestamp": info.createdTime ?? Date()],
                           forDocument: groupsRef)
-            batch.updateData(["groupNickname": dummyNickname],
-                             forDocument: groupUsersRef)
-            
+            batch.setData(["division": FieldValue.arrayUnion([groupId])],
+                                         forDocument: userGroupsRef, merge: true)
+            batch.setData([:], forDocument: db.collection("groupUsers").document(groupId))
+            batch.setData(["groupNickname": dummyNickname], forDocument: groupUsersRef)
             batch.commit() { err in
                 if let err = err {
                     print("Error writing batch \(err)")
@@ -63,7 +64,6 @@ final class ConfirmGroupViewController: UIViewController {
                     print("Batch write succeeded.")
                 }
             }
-            
         }
     }
 }
