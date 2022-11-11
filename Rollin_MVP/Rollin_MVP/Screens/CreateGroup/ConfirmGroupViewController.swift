@@ -44,6 +44,7 @@ final class ConfirmGroupViewController: UIViewController {
         let batch = db.batch()
         let groupsRef = db.collection("groups").document(groupId)
         let userGroupsRef = db.collection("userGroups").document(dummyUUID)
+        let groupUsersRef = db.collection("groupUsers").document(groupId).collection("participants").document(dummyUUID)
         // 나중에는 현재 아이디로 수정 필요
         if let info = creatingGroupInfo {
             batch.setData(["code": info.code ?? "code Error",
@@ -52,8 +53,8 @@ final class ConfirmGroupViewController: UIViewController {
                            "groupIcon": info.icon ?? "icon Error",
                            "timestamp": (info.createdTime ?? Date()).timeIntervalSince1970],
                           forDocument: groupsRef)
-            batch.updateData(["division": FieldValue.arrayUnion([dummyUUID])],
-                             forDocument: userGroupsRef)
+            batch.updateData(["groupNickname": dummyNickname],
+                             forDocument: groupUsersRef)
             
         }
     }
