@@ -36,18 +36,17 @@ final class ConfirmGroupViewController: UIViewController {
     }
     
     private func batchUpdateGroup() {
-    // TODO: - 로그인 기능이 추가 된 이후로 
-//        let groupId = UUID().uuidString
-//        let batch = db.batch()
-//        let groupRef = db.collection("groups").document(groupId)
-//        if let info = creatingGroupInfo {
-//            batch.setData(["code": info.code ?? "code Error",
-//                           "groupName": info.groupName ?? "group name Error",
-//                           "groupTheme": info.backgroundColor ?? "group Theme Error",
-//                           "groupIcon": info.icon ?? "icon Error",
-//                           "createdTime": info.createdTime ?? Date()],
-//                          forDocument: groupRef)
-//        }
+        let groupId = UUID().uuidString
+        let batch = db.batch()
+        let groupRef = db.collection("groups").document(groupId)
+        if let info = creatingGroupInfo {
+            batch.setData(["code": info.code ?? "code Error",
+                           "groupName": info.groupName ?? "group name Error",
+                           "groupTheme": info.backgroundColor ?? "group Theme Error",
+                           "groupIcon": info.icon ?? "icon Error",
+                           "timestamp": (info.createdTime ?? Date()).timeIntervalSince1970],
+                          forDocument: groupRef)
+        }
     }
 }
 
