@@ -26,6 +26,9 @@
 		ABB96EB3291AC71F003C5B1D /* ConfirmGroupCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EB2291AC71F003C5B1D /* ConfirmGroupCardView.swift */; };
 		ABB96EB5291AF055003C5B1D /* GroupCodeSharingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EB4291AF055003C5B1D /* GroupCodeSharingViewController.swift */; };
 		ABB96EB9291B69FA003C5B1D /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EB8291B69FA003C5B1D /* Date+.swift */; };
+		ABB96EBB291B703A003C5B1D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EBA291B703A003C5B1D /* String+.swift */; };
+		ABB96EBE291BA0AE003C5B1D /* GroupCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EBD291BA0AE003C5B1D /* GroupCodeView.swift */; };
+		ABB96EC0291C244E003C5B1D /* SetThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EBF291C244E003C5B1D /* SetThemeViewController.swift */; };
 		ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2BD291A3F97008FB3A6 /* AppDelegate.swift */; };
 		ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2BF291A3F97008FB3A6 /* SceneDelegate.swift */; };
 		ABDBD2C2291A3F97008FB3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2C1291A3F97008FB3A6 /* MainViewController.swift */; };
@@ -82,6 +85,9 @@
 		ABB96EB2291AC71F003C5B1D /* ConfirmGroupCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmGroupCardView.swift; sourceTree = "<group>"; };
 		ABB96EB4291AF055003C5B1D /* GroupCodeSharingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCodeSharingViewController.swift; sourceTree = "<group>"; };
 		ABB96EB8291B69FA003C5B1D /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		ABB96EBA291B703A003C5B1D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		ABB96EBD291BA0AE003C5B1D /* GroupCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCodeView.swift; sourceTree = "<group>"; };
+		ABB96EBF291C244E003C5B1D /* SetThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetThemeViewController.swift; sourceTree = "<group>"; };
 		ABDBD2BA291A3F97008FB3A6 /* Rollin_MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rollin_MVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDBD2BD291A3F97008FB3A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABDBD2BF291A3F97008FB3A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -163,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				ABDBD2C1291A3F97008FB3A6 /* MainViewController.swift */,
+				AB36166F291D152C0011BB9E /* ViewComponents */,
 			);
 			path = AppMain;
 			sourceTree = "<group>";
@@ -172,6 +179,7 @@
 			children = (
 				AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */,
 				ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */,
+				ABB96EBF291C244E003C5B1D /* SetThemeViewController.swift */,
 				ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */,
 				ABB96EB4291AF055003C5B1D /* GroupCodeSharingViewController.swift */,
 				ABB96EB1291AC6ED003C5B1D /* ViewComponents */,
@@ -183,6 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */,
+				AB361675291D68030011BB9E /* BackgroundColorSet.swift */,
+				AB361679291D8E1B0011BB9E /* IconSet.swift */,
 			);
 			path = CreatingGroup;
 			sourceTree = "<group>";
@@ -191,6 +201,9 @@
 			isa = PBXGroup;
 			children = (
 				ABB96EB2291AC71F003C5B1D /* ConfirmGroupCardView.swift */,
+				ABB96EBD291BA0AE003C5B1D /* GroupCodeView.swift */,
+				AB361673291D29A40011BB9E /* SelectBackgroundColorCell.swift */,
+				AB361677291D77D80011BB9E /* SelectIconCell.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -460,7 +473,10 @@
 				AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */,
 				2AF46852291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift in Sources */,
 				ABB96EB9291B69FA003C5B1D /* Date+.swift in Sources */,
+				ABB96EBE291BA0AE003C5B1D /* GroupCodeView.swift in Sources */,
 				ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */,
+				ABB96EC0291C244E003C5B1D /* SetThemeViewController.swift in Sources */,
+				AB36167A291D8E1B0011BB9E /* IconSet.swift in Sources */,
 				ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */,
 				ABB96EB3291AC71F003C5B1D /* ConfirmGroupCardView.swift in Sources */,
 				ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */,
@@ -474,6 +490,8 @@
 				2AF46854291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift in Sources */,
 				ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */,
 				AB437573291A442F00C3688D /* Model_example.swift in Sources */,
+				ABB96EBB291B703A003C5B1D /* String+.swift in Sources */,
+				AB361676291D68030011BB9E /* BackgroundColorSet.swift in Sources */,
 				ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */,
 				79BAA9AF291B732F00C5636E /* PostThemePickerView.swift in Sources */,
 				79A9100D291B84B700A0672F /* PostView.swift in Sources */,
