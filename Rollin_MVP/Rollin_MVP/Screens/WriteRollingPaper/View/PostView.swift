@@ -16,6 +16,7 @@ protocol WriteRollingPaperViewControllerDelegate: AnyObject {
 final class PostView: UIView {
     
     var isPhotoAdded: Bool = false
+    var isTextEdited: Bool = false
     
     weak var delegate: WriteRollingPaperViewControllerDelegate?
     
@@ -46,6 +47,7 @@ final class PostView: UIView {
         textView.textColor = .textRed
         textView.font = .preferredFont(forTextStyle: .body)
         textView.textContainerInset = UIEdgeInsets(top: 13, left: 12, bottom: 36, right: 12)
+        textView.text = "롤링페이퍼를 입력하세요"
         textView.layer.cornerRadius = 4
         textView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         textView.autocorrectionType = .no
@@ -140,7 +142,7 @@ final class PostView: UIView {
         fromLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             fromLabel.bottomAnchor.constraint(equalTo: textView.bottomAnchor, constant: -8),
-            fromLabel.trailingAnchor.constraint(equalTo: textView.trailingAnchor, constant: -12)
+            fromLabel.trailingAnchor.constraint(equalTo: textView.trailingAnchor, constant: -12),
         ])
         
     }
@@ -179,9 +181,24 @@ extension PostView: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         textCountLabel.text = "\(textView.text.count)/100"
-        if textView.text.count > 0 && isPhotoAdded {
+        if isTextEdited && isPhotoAdded {
             delegate?.activeConfirmButton()
         } else {
+            delegate?.inactiveConfirmButton()
+        }
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if !isTextEdited {
+            textView.text = ""
+            isTextEdited = true
+        }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if isTextEdited && textView.text == "" {
+            textView.text = "롤링페이퍼를 입력하세요"
+            isTextEdited = false
             delegate?.inactiveConfirmButton()
         }
     }

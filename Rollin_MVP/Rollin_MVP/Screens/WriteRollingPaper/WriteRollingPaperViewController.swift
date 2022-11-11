@@ -172,7 +172,7 @@ extension WriteRollingPaperViewController: UIImagePickerControllerDelegate, UINa
             postView.addedImageButton.clipsToBounds = true
         }
         
-        if postView.textView.text.count > 0 && postView.isPhotoAdded {
+        if postView.isTextEdited && postView.isPhotoAdded {
             activeConfirmButton()
         }
         
