@@ -23,6 +23,12 @@ final class DetailRollingPaperViewController: UIViewController {
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.collectionViewFlowLayout)
     //TODO: 후에 글, 사진 포스트로 변경 예정
     private var post = [UIColor.blue, UIColor.red]
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "상세보기"
+        label.font = .systemFont(ofSize: 17, weight: .semibold)
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,13 +86,20 @@ private extension DetailRollingPaperViewController {
     }
     
     func setPostLayout() {
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.titleLabel)
+        NSLayoutConstraint.activate([
+            self.titleLabel.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 20),
+            self.titleLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        ])
+        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.collectionView)
         NSLayoutConstraint.activate([
             self.collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             self.collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
             self.collectionView.heightAnchor.constraint(equalToConstant: LayoutValue.postSize.height),
-            self.collectionView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            self.collectionView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 22),
         ])
     }
 }
