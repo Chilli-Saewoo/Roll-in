@@ -21,11 +21,10 @@ final class RollingPaperView: UIViewController, UISheetPresentationControllerDel
         
         let rollingPaperDetailViewController = DetailRollingPaperViewController()
         rollingPaperDetailViewController.view.backgroundColor = .gray
-        
         rollingPaperDetailViewController.modalPresentationStyle = .pageSheet
         
         if let halfModal = rollingPaperDetailViewController.sheetPresentationController {
-            halfModal.preferredCornerRadius = 32
+            halfModal.preferredCornerRadius = 10
             halfModal.detents = [.medium()]
             halfModal.delegate = self
             halfModal.prefersGrabberVisible = true
