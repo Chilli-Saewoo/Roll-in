@@ -8,6 +8,10 @@
 import UIKit
 import FirebaseFirestore
 
+let dummyUUID = "6d5601db-24b7-44e0-af2b-fba491471ec5"
+let dummyNickname = "Sherry"
+
+
 final class ConfirmGroupViewController: UIViewController {
     var creatingGroupInfo: CreatingGroupInfo?
     private lazy var titleMessageLabel = UILabel()
@@ -38,14 +42,18 @@ final class ConfirmGroupViewController: UIViewController {
     private func batchUpdateGroup() {
         let groupId = UUID().uuidString
         let batch = db.batch()
-        let groupRef = db.collection("groups").document(groupId)
+        let groupsRef = db.collection("groups").document(groupId)
+        let userGroupsRef = db.collection("userGroups").document(dummyUUID)
+        // 나중에는 현재 아이디로 수정 필요
         if let info = creatingGroupInfo {
             batch.setData(["code": info.code ?? "code Error",
                            "groupName": info.groupName ?? "group name Error",
                            "groupTheme": info.backgroundColor ?? "group Theme Error",
                            "groupIcon": info.icon ?? "icon Error",
                            "timestamp": (info.createdTime ?? Date()).timeIntervalSince1970],
-                          forDocument: groupRef)
+                          forDocument: groupsRef)
+            batch.updateData(["division": dummyUUID],
+                             forDocument: userGroupsRef)
         }
     }
 }
