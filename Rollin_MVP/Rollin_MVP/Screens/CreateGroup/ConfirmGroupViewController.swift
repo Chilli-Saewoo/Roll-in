@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 final class ConfirmGroupViewController: UIViewController {
     var creatingGroupInfo: CreatingGroupInfo?
     private lazy var titleMessageLabel = UILabel()
     private lazy var confirmGroupCard = ConfirmGroupCardView(groupName: creatingGroupInfo?.groupName ?? "",date: creatingGroupInfo?.createdTime ?? Date())
     private let completeButton = UIButton()
+    private let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +28,26 @@ final class ConfirmGroupViewController: UIViewController {
     }
     
     @objc func completeButtonPressed(_ sender: UIButton) {
+        batchUpdateGroup()
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "GroupCodeSharing") as? GroupCodeSharingViewController ?? UIViewController()
         (secondViewController as? GroupCodeSharingViewController)?.creatingGroupInfo = creatingGroupInfo
         self.navigationController?.pushViewController(secondViewController, animated: true)
         
+    }
+    
+    private func batchUpdateGroup() {
+    // TODO: - 로그인 기능이 추가 된 이후로 
+//        let groupId = UUID().uuidString
+//        let batch = db.batch()
+//        let groupRef = db.collection("groups").document(groupId)
+//        if let info = creatingGroupInfo {
+//            batch.setData(["code": info.code ?? "code Error",
+//                           "groupName": info.groupName ?? "group name Error",
+//                           "groupTheme": info.backgroundColor ?? "group Theme Error",
+//                           "groupIcon": info.icon ?? "icon Error",
+//                           "createdTime": info.createdTime ?? Date()],
+//                          forDocument: groupRef)
+//        }
     }
 }
 
