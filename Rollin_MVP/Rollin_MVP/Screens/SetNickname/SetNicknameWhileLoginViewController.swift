@@ -42,8 +42,9 @@ final class SetNicknameWhileLoginViewController: UIViewController {
         let email = UserDefaults.standard.string(forKey: "userEmail")
         let uid = UserDefaults.standard.string(forKey: "uid")
         db.collection("users").document().setData([
-            "email": email,
-            "usernickname": nameTextField.text
+            "email": email ?? "",
+            "usernickname": nameTextField.text ?? "",
+            "uid": uid
         ]) { err in
             if let err = err {
                 print("Error writing document: \(err)")

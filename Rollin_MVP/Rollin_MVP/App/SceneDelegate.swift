@@ -27,6 +27,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             print(vc)
             self.window?.rootViewController = navigation
             self.window?.makeKeyAndVisible()
+        } else {
+            let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? UIViewController
+            let navigation = UINavigationController(rootViewController: vc!)
+            print(vc)
+            self.window?.rootViewController = navigation
+            self.window?.makeKeyAndVisible()
         }
     }
 

@@ -122,7 +122,7 @@
         <!--Login View Controller-->
         <scene sceneID="U6K-2D-0Pk">
             <objects>
-                <viewController id="7pW-9v-bXc" customClass="LoginViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" id="7pW-9v-bXc" customClass="LoginViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rA4-JA-vwY">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -138,7 +138,7 @@
         <!--Set Nickname While Login View Controller-->
         <scene sceneID="G6H-oA-AfX">
             <objects>
-                <viewController id="GzZ-4F-376" customClass="SetNicknameWhileLoginViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SetNicknameWhileLoginViewController" id="GzZ-4F-376" customClass="SetNicknameWhileLoginViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AgS-GI-hOG">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
