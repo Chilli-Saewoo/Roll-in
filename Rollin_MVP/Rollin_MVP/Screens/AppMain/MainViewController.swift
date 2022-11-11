@@ -23,7 +23,7 @@ final class MainViewController: UIViewController {
 
 extension MainViewController: AddGroupButtonBackgroundDelegate {
     func createActionSelected() {
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SetTheme") as? SetThemeViewController ?? UIViewController()
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SetGroupNameWhileCreatingGroup") as? SetGroupNameWhileCreatingGroupViewController ?? UIViewController()
         self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     

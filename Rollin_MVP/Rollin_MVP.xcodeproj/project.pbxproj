@@ -146,9 +146,9 @@
 		AB43757F291A5B5D00C3688D /* CreateGroup */ = {
 			isa = PBXGroup;
 			children = (
-				ABB96EBF291C244E003C5B1D /* SetThemeViewController.swift */,
 				AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */,
 				ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */,
+				ABB96EBF291C244E003C5B1D /* SetThemeViewController.swift */,
 				ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */,
 				ABB96EB4291AF055003C5B1D /* GroupCodeSharingViewController.swift */,
 				ABB96EB1291AC6ED003C5B1D /* ViewComponents */,

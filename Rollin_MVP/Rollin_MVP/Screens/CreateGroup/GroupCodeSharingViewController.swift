@@ -25,8 +25,6 @@ extension GroupCodeSharingViewController: GroupCodeViewDelegate {
     func showAlert(message: UIAlertController) {
         self.present(message, animated: true, completion: nil)
     }
-    
-    
 }
 
 private extension GroupCodeSharingViewController {

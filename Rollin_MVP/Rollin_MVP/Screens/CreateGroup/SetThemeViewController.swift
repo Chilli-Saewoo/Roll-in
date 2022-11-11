@@ -8,6 +8,7 @@
 import UIKit
 
 final class SetThemeViewController: UIViewController {
+    var creatingGroupInfo: CreatingGroupInfo?
     private var setBackgroundPaperTextLabel = UILabel()
     private var backgroundPapersCollectionView: UICollectionView!
     private let screenWidth = UIScreen.main.bounds.width
@@ -20,6 +21,9 @@ final class SetThemeViewController: UIViewController {
         didSet {
             if selectedBackgroundColor != nil && selectedIcon != nil {
                 nextButton.isEnabled = true
+                nextButton.backgroundColor = hexStringToUIColor(hex: "111111")
+                nextButton.setTitle("다음", for: .normal)
+                nextButton.setTitleColor(.white, for: .normal)
             }
         }
     }
@@ -27,6 +31,9 @@ final class SetThemeViewController: UIViewController {
         didSet {
             if selectedBackgroundColor != nil && selectedIcon != nil {
                 nextButton.isEnabled = true
+                nextButton.backgroundColor = hexStringToUIColor(hex: "111111")
+                nextButton.setTitle("다음", for: .normal)
+                nextButton.setTitleColor(.white, for: .normal)
             }
         }
     }
@@ -43,6 +50,20 @@ final class SetThemeViewController: UIViewController {
         registerIconCollectionView()
         iconCollectionViewDelegate()
         setNextButton()
+        setNextButtonAction()
+    }
+    
+    private func setNextButtonAction() {
+        nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc func nextButtonPressed(_ sender: UIButton) {
+        
+        creatingGroupInfo?.backgroundColor = selectedBackgroundColor
+        creatingGroupInfo?.icon = selectedIcon
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmGroup") as? ConfirmGroupViewController ?? UIViewController()
+        (secondViewController as? ConfirmGroupViewController)?.creatingGroupInfo = creatingGroupInfo
+        self.navigationController?.pushViewController(secondViewController, animated: true)
     }
 }
 
@@ -58,7 +79,7 @@ private extension SetThemeViewController {
         ])
         nextButton.isEnabled = false
         nextButton.layer.cornerRadius = 4.0
-        nextButton.setTitle("다음", for: [.normal, .disabled])
+        nextButton.setTitle("다음", for: .disabled)
         nextButton.setTitleColor(.white, for: .normal)
         nextButton.setTitleColor(hexStringToUIColor(hex: "646464"), for: .disabled)
         nextButton.backgroundColor = hexStringToUIColor(hex: "AEAEAE")
@@ -95,7 +116,7 @@ private extension SetThemeViewController {
             iconsCollectionView.topAnchor.constraint(equalTo: iconTextSettingLabel.bottomAnchor, constant: 20),
             iconsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
             iconsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -21),
-            iconsCollectionView.heightAnchor.constraint(equalToConstant: 100)
+            iconsCollectionView.heightAnchor.constraint(equalToConstant: 100),
         ])
     }
     
@@ -144,6 +165,52 @@ private extension SetThemeViewController {
 }
 
 extension SetThemeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if collectionView == backgroundPapersCollectionView {
+            for idx in 0 ..< backgroundColorDatas.count {
+                let aIndexPath = IndexPath(row: idx, section: 0)
+                if indexPath.row == aIndexPath.row {
+                    let cell = backgroundPapersCollectionView.cellForItem(at: aIndexPath) as? SelectBackgroundColorCell
+                    if cell?.isActivate == false {
+                        cell?.activateCell()
+                        selectedBackgroundColor = backgroundColorDatas[aIndexPath.row].backgroundColorString
+                    } else {
+                        cell?.inactivateCell()
+                        selectedBackgroundColor = nil
+                    }
+                    cell?.isActivate.toggle()
+                    
+                } else {
+                    let cell = backgroundPapersCollectionView.cellForItem(at: aIndexPath) as? SelectBackgroundColorCell
+                    cell?.inactivateCell()
+                    cell?.isActivate = false
+                }
+            }
+        } else {
+            for idx in 0 ..< iconDatas.count {
+                let aIndexPath = IndexPath(row: idx, section: 0)
+                if indexPath.row == aIndexPath.row {
+                    let cell = iconsCollectionView.cellForItem(at: aIndexPath) as? SelectIconCell
+                    if cell?.isActivate == false {
+                        cell?.activateCell()
+                        selectedIcon = iconDatas[aIndexPath.row].imageName
+                    } else {
+                        cell?.inactivateCell()
+                        selectedIcon = nil
+                    }
+                    cell?.isActivate.toggle()
+                    
+                } else {
+                    let cell = iconsCollectionView.cellForItem(at: aIndexPath) as? SelectIconCell
+                    cell?.inactivateCell()
+                    cell?.isActivate = false
+                }
+            }
+            
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == backgroundPapersCollectionView {

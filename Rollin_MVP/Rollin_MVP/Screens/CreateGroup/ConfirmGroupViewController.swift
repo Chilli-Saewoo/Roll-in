@@ -10,7 +10,7 @@ import UIKit
 final class ConfirmGroupViewController: UIViewController {
     var creatingGroupInfo: CreatingGroupInfo?
     private lazy var titleMessageLabel = UILabel()
-    private lazy var confirmGroupCard = ConfirmGroupCardView(groupName: creatingGroupInfo?.groupName ?? "", date: creatingGroupInfo?.createdTime ?? Date())
+    private lazy var confirmGroupCard = ConfirmGroupCardView(groupName: creatingGroupInfo?.groupName ?? "",date: creatingGroupInfo?.createdTime ?? Date())
     private let completeButton = UIButton()
     
     override func viewDidLoad() {
@@ -26,10 +26,10 @@ final class ConfirmGroupViewController: UIViewController {
     }
     
     @objc func completeButtonPressed(_ sender: UIButton) {
-        creatingGroupInfo?.code = 8.randomString()
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "GroupCodeSharing") as? GroupCodeSharingViewController ?? UIViewController()
         (secondViewController as? GroupCodeSharingViewController)?.creatingGroupInfo = creatingGroupInfo
         self.navigationController?.pushViewController(secondViewController, animated: true)
+        
     }
 }
 

@@ -40,8 +40,9 @@ final class SetNicknameWhileCreatingGroupViewController: UIViewController {
         guard let text = nameTextField.text else { return }
         creatingGroupInfo?.nickName = text
         creatingGroupInfo?.createdTime = Date()
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmGroup") as? ConfirmGroupViewController ?? UIViewController()
-        (secondViewController as? ConfirmGroupViewController)?.creatingGroupInfo = creatingGroupInfo
+        creatingGroupInfo?.code = 8.randomString()
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SetTheme") as? SetThemeViewController ?? UIViewController()
+        (secondViewController as? SetThemeViewController)?.creatingGroupInfo = creatingGroupInfo
         self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     

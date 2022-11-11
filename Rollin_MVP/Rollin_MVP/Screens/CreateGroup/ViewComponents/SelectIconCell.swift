@@ -30,6 +30,7 @@ final class SelectIconCell: UICollectionViewCell {
     var textMessageLabel = UILabel()
     private let screenWidth = UIScreen.main.bounds.width
     private let screenHeight = UIScreen.main.bounds.height
+    var isActivate = false
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -58,6 +59,15 @@ final class SelectIconCell: UICollectionViewCell {
         default:
             textMessageLabel.text = "❤️"
         }
+    }
+    
+    public func activateCell() {
+        colorBackgroundView.layer.borderWidth = 2.0
+        colorBackgroundView.layer.borderColor = .init(red: 0, green: 0, blue: 0, alpha: 1.0)
+    }
+    
+    public func inactivateCell() {
+        colorBackgroundView.layer.borderWidth = 0.0
     }
     
     private func setUpCell() {

@@ -11,6 +11,7 @@ final class SelectBackgroundColorCell: UICollectionViewCell {
     var colorBackgroundView = UIView()
     var textMessageLabel = UILabel()
     var colorNameLabel = UILabel()
+    var isActivate = false
     private let screenWidth = UIScreen.main.bounds.width
     private let screenHeight = UIScreen.main.bounds.height
     
@@ -48,6 +49,15 @@ final class SelectBackgroundColorCell: UICollectionViewCell {
             blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
             alpha: CGFloat(1.0)
         )
+    }
+    
+    public func activateCell() {
+        colorBackgroundView.layer.borderWidth = 2.0
+        colorBackgroundView.layer.borderColor = .init(red: 0, green: 0, blue: 0, alpha: 1.0)
+    }
+    
+    public func inactivateCell() {
+        colorBackgroundView.layer.borderWidth = 0.0
     }
     
     private func setUpCell() {

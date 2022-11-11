@@ -38,7 +38,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="byY-dW-MqF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2951" y="4"/>
+            <point key="canvasLocation" x="5094" y="4"/>
         </scene>
         <!--Set Group Name While Creating Group View Controller-->
         <scene sceneID="imJ-Cw-CZk">
@@ -84,7 +84,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kbc-Ot-csD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5086" y="4"/>
+            <point key="canvasLocation" x="5802" y="4"/>
         </scene>
         <!--Group Code Sharing View Controller-->
         <scene sceneID="k9P-lM-Wsk">
@@ -99,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oOe-fb-MlJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5777" y="4"/>
+            <point key="canvasLocation" x="6494" y="4"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="o9x-hg-p5h">
