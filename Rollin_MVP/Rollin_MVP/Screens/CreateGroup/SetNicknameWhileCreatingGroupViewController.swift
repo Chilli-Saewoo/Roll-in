@@ -13,6 +13,7 @@ final class SetNicknameWhileCreatingGroupViewController: UIViewController {
     private lazy var nameTextField = UITextField()
     private lazy var textFieldUnderLineView = UIView()
     private lazy var nextButton = UIButton()
+    private lazy var cancelButton = UIButton()
     private var keyboardHeight: CGFloat = 0 {
         didSet {
             nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: keyboardHeight * -1) .isActive = true
@@ -25,6 +26,8 @@ final class SetNicknameWhileCreatingGroupViewController: UIViewController {
         setNameTextFieldLayout()
         setNextButtonLayout()
         setNextButtonAction()
+        setCancelButton()
+        nameTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -87,6 +90,27 @@ extension SetNicknameWhileCreatingGroupViewController: UITextFieldDelegate {
 }
 
 private extension SetNicknameWhileCreatingGroupViewController {
+    func setCancelButton() {
+        view.addSubview(cancelButton)
+        cancelButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            cancelButton.trailingAnchor.constraint(equalTo: nameTextField.trailingAnchor, constant: -15),
+            cancelButton.centerYAnchor.constraint(equalTo: nameTextField.centerYAnchor),
+            cancelButton.widthAnchor.constraint(equalToConstant: 20),
+            cancelButton.heightAnchor.constraint(equalToConstant: 20),
+        ])
+        cancelButton.setImage(.init(systemName: "x.circle.fill"), for: .normal)
+        cancelButton.tintColor = .systemGray
+        cancelButton.addTarget(self, action: #selector(removeTextField), for: .touchUpInside)
+    }
+    
+    @objc func removeTextField() {
+        nameTextField.text = ""
+        self.nextButton.isEnabled = false
+        self.nextButton.backgroundColor = .inactiveBgGray
+        self.nextButton.setTitleColor(.inactiveTextGray, for: .disabled)
+    }
+    
     func setTitleMessageLayout() {
         view.addSubview(titleMessageLabel)
         titleMessageLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -130,5 +154,6 @@ private extension SetNicknameWhileCreatingGroupViewController {
         ])
         nextButton.backgroundColor = .gray
         nextButton.setTitle("다음", for: .normal)
+        nextButton.isEnabled = false
     }
 }

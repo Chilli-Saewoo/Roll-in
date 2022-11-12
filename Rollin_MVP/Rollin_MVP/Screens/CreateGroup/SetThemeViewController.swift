@@ -21,7 +21,7 @@ final class SetThemeViewController: UIViewController {
         didSet {
             if selectedBackgroundColor != nil && selectedIcon != nil {
                 nextButton.isEnabled = true
-                nextButton.backgroundColor = hexStringToUIColor(hex: "111111")
+                nextButton.backgroundColor = .systemBlack
                 nextButton.setTitle("다음", for: .normal)
                 nextButton.setTitleColor(.white, for: .normal)
             }
@@ -31,7 +31,7 @@ final class SetThemeViewController: UIViewController {
         didSet {
             if selectedBackgroundColor != nil && selectedIcon != nil {
                 nextButton.isEnabled = true
-                nextButton.backgroundColor = hexStringToUIColor(hex: "111111")
+                nextButton.backgroundColor = .systemBlack
                 nextButton.setTitle("다음", for: .normal)
                 nextButton.setTitleColor(.white, for: .normal)
             }
@@ -81,8 +81,8 @@ private extension SetThemeViewController {
         nextButton.layer.cornerRadius = 4.0
         nextButton.setTitle("다음", for: .disabled)
         nextButton.setTitleColor(.white, for: .normal)
-        nextButton.setTitleColor(hexStringToUIColor(hex: "646464"), for: .disabled)
-        nextButton.backgroundColor = hexStringToUIColor(hex: "AEAEAE")
+        nextButton.setTitleColor(.inactiveTextGray, for: .disabled)
+        nextButton.backgroundColor = .inactiveBgGray
     }
 }
 

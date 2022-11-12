@@ -15,7 +15,7 @@ let dummyNickname = "Sherry"
 final class ConfirmGroupViewController: UIViewController {
     var creatingGroupInfo: CreatingGroupInfo?
     private lazy var titleMessageLabel = UILabel()
-    private lazy var confirmGroupCard = ConfirmGroupCardView(groupName: creatingGroupInfo?.groupName ?? "",date: creatingGroupInfo?.createdTime ?? Date())
+    private lazy var confirmGroupCard = GroupWithThemeView(info: creatingGroupInfo ?? CreatingGroupInfo())
     private let completeButton = UIButton()
     private let db = Firestore.firestore()
     
@@ -73,10 +73,12 @@ private extension ConfirmGroupViewController {
         view.addSubview(titleMessageLabel)
         titleMessageLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 96),
-            titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23),
+            titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
+            titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
-        titleMessageLabel.text = "해당 롤링페이퍼가 맞으신가요?"
+        titleMessageLabel.text = "해당 그룹이 맞으신가요?"
+        titleMessageLabel.font = .systemFont(ofSize: 24, weight: .medium)
+        titleMessageLabel.textColor = .systemBlack
         
     }
     
@@ -95,13 +97,13 @@ private extension ConfirmGroupViewController {
         view.addSubview(completeButton)
         completeButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            completeButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -65),
-            completeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 17),
-            completeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -17),
-            completeButton.heightAnchor.constraint(equalToConstant: 60),
+            completeButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -34),
+            completeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            completeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            completeButton.heightAnchor.constraint(equalToConstant: 56),
         ])
         completeButton.setTitle("완료", for: .normal)
-        completeButton.layer.cornerRadius = 8.0
-        completeButton.backgroundColor = .gray
+        completeButton.layer.cornerRadius = 4.0
+        completeButton.backgroundColor = .systemBlack
     }
 }
