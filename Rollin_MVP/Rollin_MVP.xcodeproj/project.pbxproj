@@ -35,6 +35,8 @@
 		ABB96EB9291B69FA003C5B1D /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EB8291B69FA003C5B1D /* Date+.swift */; };
 		ABB96EBE291BA0AE003C5B1D /* GroupCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EBD291BA0AE003C5B1D /* GroupCodeView.swift */; };
 		ABB96EC0291C244E003C5B1D /* SetThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EBF291C244E003C5B1D /* SetThemeViewController.swift */; };
+		ABCFC80D291FE32D006DB26B /* GroupWithThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFC80C291FE32D006DB26B /* GroupWithThemeView.swift */; };
+		ABCFC80F291FEAC7006DB26B /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFC80E291FEAC7006DB26B /* Int+.swift */; };
 		ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2BD291A3F97008FB3A6 /* AppDelegate.swift */; };
 		ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2BF291A3F97008FB3A6 /* SceneDelegate.swift */; };
 		ABDBD2C2291A3F97008FB3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2C1291A3F97008FB3A6 /* MainViewController.swift */; };
@@ -102,6 +104,8 @@
 		ABB96EBA291B703A003C5B1D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		ABB96EBD291BA0AE003C5B1D /* GroupCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupCodeView.swift; sourceTree = "<group>"; };
 		ABB96EBF291C244E003C5B1D /* SetThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetThemeViewController.swift; sourceTree = "<group>"; };
+		ABCFC80C291FE32D006DB26B /* GroupWithThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupWithThemeView.swift; sourceTree = "<group>"; };
+		ABCFC80E291FEAC7006DB26B /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
 		ABDBD2BA291A3F97008FB3A6 /* Rollin_MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rollin_MVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDBD2BD291A3F97008FB3A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABDBD2BF291A3F97008FB3A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -256,6 +260,7 @@
 				7980D12D291C3F3F00915C72 /* UIColor+.swift */,
 				790FF813291E5733004BDA20 /* UIViewController+.swift */,
 				AB032AA3291E872400B22C13 /* String+.swift */,
+				ABCFC80E291FEAC7006DB26B /* Int+.swift */,
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -339,6 +344,7 @@
 				AB437571291A441700C3688D /* AppMain */,
 				AB43757F291A5B5D00C3688D /* CreateGroup */,
 				79BAA9A0291AE4BC00C5636E /* WriteRollingPaper */,
+				ABCFC80C291FE32D006DB26B /* GroupWithThemeView.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -511,6 +517,7 @@
 				ABB96EB9291B69FA003C5B1D /* Date+.swift in Sources */,
 				ABB96EBE291BA0AE003C5B1D /* GroupCodeView.swift in Sources */,
 				ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */,
+				ABCFC80D291FE32D006DB26B /* GroupWithThemeView.swift in Sources */,
 				AB032AA2291E870900B22C13 /* BackgroundColorSet.swift in Sources */,
 				ABB96EC0291C244E003C5B1D /* SetThemeViewController.swift in Sources */,
 				ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */,
@@ -531,6 +538,7 @@
 				AB032AA0291E870300B22C13 /* IconSet.swift in Sources */,
 				ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */,
 				79BAA9AF291B732F00C5636E /* PostThemePickerView.swift in Sources */,
+				ABCFC80F291FEAC7006DB26B /* Int+.swift in Sources */,
 				79A9100D291B84B700A0672F /* PostView.swift in Sources */,
 				79BAA9A9291AED9500C5636E /* NSObject+.swift in Sources */,
 				AB032AA4291E872400B22C13 /* String+.swift in Sources */,

@@ -12,6 +12,7 @@ protocol GroupCodeViewDelegate: AnyObject {
 }
 
 final class GroupCodeView: UIView {
+    private let codeBackgroundView = UIView()
     private let copyButtonLabel = UILabel()
     private let copyButtonBackground = UIButton()
     private let groupCodeLabel = UILabel()
@@ -21,12 +22,11 @@ final class GroupCodeView: UIView {
     init(code: String) {
         self.code = code
         super.init(frame: .zero)
-        self.layer.borderWidth = 1.0
-        self.layer.cornerRadius = 8.0
+        self.backgroundColor = .clear
         setCopyButtonBackground()
         setCopyButtonLabel()
-        setCopyButtonAction()
         setGroupCodeLabel()
+        setCopyButtonAction()
     }
     
     required init?(coder: NSCoder) {
@@ -54,11 +54,13 @@ private extension GroupCodeView {
         self.addSubview(copyButtonBackground)
         copyButtonBackground.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            copyButtonBackground.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            copyButtonBackground.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -12),
-            copyButtonBackground.widthAnchor.constraint(equalToConstant: 70),
-            copyButtonBackground.heightAnchor.constraint(equalToConstant: 20),
+            copyButtonBackground.topAnchor.constraint(equalTo: self.topAnchor),
+            copyButtonBackground.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            copyButtonBackground.widthAnchor.constraint(equalTo: self.heightAnchor),
+            copyButtonBackground.heightAnchor.constraint(equalTo: self.heightAnchor),
         ])
+        copyButtonBackground.backgroundColor = .systemBlack
+        copyButtonBackground.layer.cornerRadius = 4.0
     }
     
     func setCopyButtonLabel() {
@@ -71,18 +73,37 @@ private extension GroupCodeView {
             copyButtonLabel.heightAnchor.constraint(equalTo: copyButtonBackground.heightAnchor),
         ])
         copyButtonLabel.isUserInteractionEnabled = false
-        copyButtonLabel.text = "복사하기"
-        copyButtonLabel.textAlignment = .left
+        let imageAttachment = NSTextAttachment()
+        imageAttachment.image = UIImage(systemName: "square.on.square")?.withTintColor(.white)
+        let fullString = NSMutableAttributedString(attachment: imageAttachment)
+        fullString.append(NSMutableAttributedString(string: " 복사"))
+        copyButtonLabel.attributedText = fullString
+        copyButtonLabel.font = .systemFont(ofSize: 12, weight: .semibold)
+        copyButtonLabel.textColor = .white
+        copyButtonLabel.textAlignment = .center
     }
     
     func setGroupCodeLabel() {
+        self.addSubview(codeBackgroundView)
+        codeBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            codeBackgroundView.topAnchor.constraint(equalTo: self.topAnchor),
+            codeBackgroundView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            codeBackgroundView.heightAnchor.constraint(equalTo: self.heightAnchor),
+            codeBackgroundView.trailingAnchor.constraint(equalTo: copyButtonBackground.leadingAnchor, constant: -12)
+        ])
+        codeBackgroundView.backgroundColor = hexStringToUIColor(hex: "E9E9E9")
+        codeBackgroundView.layer.cornerRadius = 4.0
+        
+        
         self.addSubview(groupCodeLabel)
         groupCodeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            groupCodeLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            groupCodeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 12),
+            groupCodeLabel.centerXAnchor.constraint(equalTo: codeBackgroundView.centerXAnchor),
+            groupCodeLabel.centerYAnchor.constraint(equalTo: codeBackgroundView.centerYAnchor),
         ])
         groupCodeLabel.text = code ?? "코드 생성에 실패했습니다."
+        groupCodeLabel.font = .systemFont(ofSize: 16, weight: .semibold)
     }
 }
 
