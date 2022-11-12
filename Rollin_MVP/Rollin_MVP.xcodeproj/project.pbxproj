@@ -10,11 +10,11 @@
 		2AF46850291E1EF200AB2DE4 /* RollingPaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF4684F291E1EF200AB2DE4 /* RollingPaperView.swift */; };
 		2AF46852291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */; };
 		2AF46854291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46853291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift */; };
-		790FF812291E55FB004BDA20 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 790FF811291E55FB004BDA20 /* GoogleService-Info.plist */; };
 		790FF814291E5733004BDA20 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FF813291E5733004BDA20 /* UIViewController+.swift */; };
 		7980D12E291C3F3F00915C72 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980D12D291C3F3F00915C72 /* UIColor+.swift */; };
 		79A9100D291B84B700A0672F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A9100C291B84B700A0672F /* PostView.swift */; };
 		79A91011291C091B00A0672F /* Alert+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A91010291C091B00A0672F /* Alert+.swift */; };
+		79AB0F3A291FB12F00FDF9CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79AB0F39291FB12E00FDF9CB /* GoogleService-Info.plist */; };
 		79BAA9A2291AE53100C5636E /* WriteRollingPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BAA9A1291AE53000C5636E /* WriteRollingPaperViewController.swift */; };
 		79BAA9A5291AE8D400C5636E /* PostThemePickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BAA9A4291AE8D400C5636E /* PostThemePickerViewCell.swift */; };
 		79BAA9A9291AED9500C5636E /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BAA9A8291AED9500C5636E /* NSObject+.swift */; };
@@ -44,7 +44,6 @@
 		ABDBD2D5291A3F99008FB3A6 /* Rollin_MVPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2D4291A3F99008FB3A6 /* Rollin_MVPTests.swift */; };
 		ABDBD2DF291A3F99008FB3A6 /* Rollin_MVPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2DE291A3F99008FB3A6 /* Rollin_MVPUITests.swift */; };
 		ABDBD2E1291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2E0291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift */; };
-		ABFA8CC7291E8AD9007418D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABFA8CC6291E8AD9007418D5 /* GoogleService-Info.plist */; };
 		F8173D1D291A521400E545E0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D1C291A521400E545E0 /* FirebaseAuth */; };
 		F8173D1F291A521400E545E0 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D1E291A521400E545E0 /* FirebaseDatabase */; };
 		F8173D21291A521400E545E0 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D20291A521400E545E0 /* FirebaseDatabaseSwift */; };
@@ -76,11 +75,11 @@
 		2AF4684F291E1EF200AB2DE4 /* RollingPaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperView.swift; sourceTree = "<group>"; };
 		2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRollingPaperViewController.swift; sourceTree = "<group>"; };
 		2AF46853291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostCollectionViewCell.swift; sourceTree = "<group>"; };
-		790FF811291E55FB004BDA20 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Documents/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		790FF813291E5733004BDA20 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		7980D12D291C3F3F00915C72 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		79A9100C291B84B700A0672F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		79A91010291C091B00A0672F /* Alert+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+.swift"; sourceTree = "<group>"; };
+		79AB0F39291FB12E00FDF9CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Documents/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		79BAA9A1291AE53000C5636E /* WriteRollingPaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteRollingPaperViewController.swift; sourceTree = "<group>"; };
 		79BAA9A4291AE8D400C5636E /* PostThemePickerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostThemePickerViewCell.swift; sourceTree = "<group>"; };
 		79BAA9A8291AED9500C5636E /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
@@ -115,7 +114,6 @@
 		ABDBD2DA291A3F99008FB3A6 /* Rollin_MVPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Rollin_MVPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDBD2DE291A3F99008FB3A6 /* Rollin_MVPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rollin_MVPUITests.swift; sourceTree = "<group>"; };
 		ABDBD2E0291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rollin_MVPUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		ABFA8CC6291E8AD9007418D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -354,7 +352,7 @@
 		ABDBD2F2291A437F008FB3A6 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				ABFA8CC6291E8AD9007418D5 /* GoogleService-Info.plist */,
+				79AB0F39291FB12E00FDF9CB /* GoogleService-Info.plist */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -477,7 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABDBD2CA291A3F99008FB3A6 /* LaunchScreen.storyboard in Resources */,
-				ABFA8CC7291E8AD9007418D5 /* GoogleService-Info.plist in Resources */,
+				79AB0F3A291FB12F00FDF9CB /* GoogleService-Info.plist in Resources */,
 				ABDBD2C7291A3F99008FB3A6 /* Assets.xcassets in Resources */,
 				ABDBD2C5291A3F97008FB3A6 /* Main.storyboard in Resources */,
 			);
@@ -711,7 +709,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8QSTXVD8H9;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
@@ -745,7 +743,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 8QSTXVD8H9;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
