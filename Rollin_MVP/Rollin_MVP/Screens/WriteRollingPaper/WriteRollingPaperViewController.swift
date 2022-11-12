@@ -24,7 +24,7 @@ final class WriteRollingPaperViewController: UIViewController {
     private let rollingPaperPostAPI = RollingPaperPostAPI()
     private var isBeingSaved: Bool = false
     var writer: String = "Nick"
-    var postImage: UIImage = UIImage()
+    private var postImage: UIImage = UIImage()
     
     private let confirmButton: UIButton = {
         let button = UIButton()
@@ -126,25 +126,8 @@ final class WriteRollingPaperViewController: UIViewController {
                                                                     isPublic: self.postView.privateSwitch.isOn,
                                                                     timeStamp: FirebaseFirestore.Timestamp())
                     
-                    let group = "fa8cce5a-1522-473e-9eb4-08aae407b015"
-                    let user = "rmEM5tNdBP7bi1v8Jgi4"
-                    let uuid = UUID().uuidString
-                    let db = FirebaseFirestore.Firestore.firestore()
-                    let batch = db.batch()
-                    batch.setData(["from": self.writer,
-                                   "postTheme": self.postThemePicerkView.selectedTheme,
-                                   "message": self.postView.textView.text,
-                                   "image": absoluteUrl,
-                                   "isPublic": self.postView.privateSwitch.isOn,
-                                   "timeStamp": FirebaseFirestore.Timestamp()], forDocument: db.collection("groupUsers").document(group).collection("participants").document(user).collection("posts").document(uuid), merge: true)
-                    batch.commit() { err in
-                        if let err = err {
-                            print("Error writing batch \(err)")
-                            self.isBeingSaved = false
-                        } else {
-                            print("Batch write succeeded.")
-                        }
-                    }
+                    let rollingPaperPostAPI = RollingPaperPostAPI()
+                    rollingPaperPostAPI.writePost(document: rollingPaperPostData, imageUrl: absoluteUrl)
                 }
                 isBeingSaved = false
             }
