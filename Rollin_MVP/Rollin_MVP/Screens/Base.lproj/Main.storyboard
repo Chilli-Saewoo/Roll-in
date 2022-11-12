@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WS6-on-BqB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LqD-AF-1pl">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -132,7 +132,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gGt-Ec-bmV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="845" y="734"/>
+            <point key="canvasLocation" x="834" y="741"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="KlB-Ng-d4P">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="jRJ-fI-dU1" customClass="LoginViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TX0-Ck-KUf">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="9ih-uz-vaT"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="qct-pr-TEo"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j1z-Nj-Mjc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3240" y="733.64928909952607"/>
         </scene>
         <!--Rolling Paper View-->
         <scene sceneID="5Lx-XD-lwQ">
@@ -147,7 +163,55 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tTB-Tw-wnm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1832" y="749"/>
+            <point key="canvasLocation" x="5094" y="734"/>
+        </scene>
+        <!--Post View Controller-->
+        <scene sceneID="1Ho-cU-x9b">
+            <objects>
+                <viewController storyboardIdentifier="PostViewController" id="rDv-zm-yoc" customClass="PostViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gtf-TN-1VB">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="ExP-Rn-8MM"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0fg-Bp-nKf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5991" y="734"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ifc-J1-ipD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LqD-AF-1pl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="byh-5i-7kV">
+                        <rect key="frame" x="0.0" y="47" width="390" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jRJ-fI-dU1" kind="relationship" relationship="rootViewController" id="UdH-1q-4gu"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XY0-SY-CUT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2310.7692307692305" y="733.64928909952607"/>
+        </scene>
+        <!--Set Nickname While Login View Controller-->
+        <scene sceneID="JAO-rg-ZcD">
+            <objects>
+                <viewController storyboardIdentifier="SetNicknameWhileLoginViewController" id="0Rd-dt-c0d" customClass="SetNicknameWhileLoginViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="l5w-em-qWA">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="WbV-Qy-Tg7"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F6o-Lb-v5b" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4123" y="734"/>
         </scene>
     </scenes>
     <resources>
