@@ -34,6 +34,7 @@ final class SetGroupNameWhileCreatingGroupViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         observeKeboardHeight()
         nameTextField.becomeFirstResponder()
+        
     }
     
     private func setNextButtonAction() {
@@ -118,7 +119,7 @@ private extension SetGroupNameWhileCreatingGroupViewController {
             titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
         titleMessageLabel.text = "그룹 이름을 입력해주세요"
-        titleMessageLabel.font = .systemFont(ofSize: 24, weight: .medium)
+        titleMessageLabel.font = .systemFont(ofSize: 24, weight: .bold)
         titleMessageLabel.textColor = .systemBlack
         
     }

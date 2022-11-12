@@ -77,7 +77,7 @@ private extension ConfirmGroupViewController {
             titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
         titleMessageLabel.text = "해당 그룹이 맞으신가요?"
-        titleMessageLabel.font = .systemFont(ofSize: 24, weight: .medium)
+        titleMessageLabel.font = .systemFont(ofSize: 24, weight: .bold)
         titleMessageLabel.textColor = .systemBlack
         
     }
@@ -86,7 +86,7 @@ private extension ConfirmGroupViewController {
         view.addSubview(confirmGroupCard)
         confirmGroupCard.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            confirmGroupCard.topAnchor.constraint(equalTo: titleMessageLabel.bottomAnchor, constant: 25),
+            confirmGroupCard.topAnchor.constraint(equalTo: titleMessageLabel.bottomAnchor, constant: 186),
             confirmGroupCard.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 17),
             confirmGroupCard.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -17),
             confirmGroupCard.heightAnchor.constraint(equalToConstant: 120),

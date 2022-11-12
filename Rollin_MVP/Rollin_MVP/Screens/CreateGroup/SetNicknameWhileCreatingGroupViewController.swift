@@ -119,7 +119,7 @@ private extension SetNicknameWhileCreatingGroupViewController {
             titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
         titleMessageLabel.text = "그룹 내 닉네임을 입력해주세요"
-        titleMessageLabel.font = .systemFont(ofSize: 24, weight: .medium)
+        titleMessageLabel.font = .systemFont(ofSize: 24, weight: .bold)
         titleMessageLabel.textColor = .systemBlack
     }
     

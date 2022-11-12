@@ -95,7 +95,7 @@ private extension SetThemeViewController {
             iconTextSettingLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23),
         ])
         iconTextSettingLabel.text = "그룹 아이콘 선택"
-        iconTextSettingLabel.font = .systemFont(ofSize: 24, weight: .medium)
+        iconTextSettingLabel.font = .systemFont(ofSize: 24, weight: .bold)
     }
     
     func configureIconCollectionView() {
