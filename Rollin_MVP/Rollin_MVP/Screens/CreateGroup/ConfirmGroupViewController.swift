@@ -8,10 +8,6 @@
 import UIKit
 import FirebaseFirestore
 
-let dummyUUID = "6d5601db-24b7-44e0-af2b-fba491471ec5"
-let dummyNickname = "Sherry"
-
-
 final class ConfirmGroupViewController: UIViewController {
     var creatingGroupInfo: CreatingGroupInfo?
     private lazy var titleMessageLabel = UILabel()
@@ -43,8 +39,8 @@ final class ConfirmGroupViewController: UIViewController {
         let groupId = UUID().uuidString
         let batch = db.batch()
         let groupsRef = db.collection("groups").document(groupId)
-        let userGroupsRef = db.collection("userGroups").document(dummyUUID)
-        let groupUsersRef = db.collection("groupUsers").document(groupId).collection("participants").document(dummyUUID)
+        let userGroupsRef = db.collection("userGroups").document(UserDefaults.standard.string(forKey: "uid") ?? "")
+        let groupUsersRef = db.collection("groupUsers").document(groupId).collection("participants").document(UserDefaults.standard.string(forKey: "uid") ?? "")
         // 나중에는 현재 아이디로 수정 필요
         if let info = creatingGroupInfo {
             batch.setData(["code": info.code ?? "code Error",
@@ -56,7 +52,7 @@ final class ConfirmGroupViewController: UIViewController {
             batch.setData(["division": FieldValue.arrayUnion([groupId])],
                                          forDocument: userGroupsRef, merge: true)
             batch.setData([:], forDocument: db.collection("groupUsers").document(groupId))
-            batch.setData(["groupNickname": dummyNickname], forDocument: groupUsersRef)
+            batch.setData(["groupNickname": info.nickName ?? ""], forDocument: groupUsersRef)
             batch.commit() { err in
                 if let err = err {
                     print("Error writing batch \(err)")
