@@ -18,6 +18,7 @@ final class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAppleButtonLayout()
+        setAppleLoginButtonAction()
     }
     
     private var currentNonce: String?
@@ -147,10 +148,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 // uerdefault에 email과 uid값 저장
                 UserDefaults.standard.set(email, forKey: "userEmail")
                 UserDefaults.standard.set(uid, forKey: "uid")
-                if self.emailCheck(email: email) == true {
+                if self.emailCheck(email: email) == false {
                     self.db.collection("users").document(uid).setData([
                         "email": email,
-                        "uid": UUID().uuidString,
                         "usernickname": displayName
                     ]) { err in
                         if let err = err {

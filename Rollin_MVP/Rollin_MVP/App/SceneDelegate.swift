@@ -19,6 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let scene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: scene)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        try! FirebaseAuth.Auth.auth().signOut()
         if let user = FirebaseAuth.Auth.auth().currentUser {
             print("로그인 되어 있음", user.email ?? "-")
             let vc = storyboard.instantiateViewController(withIdentifier: "MainView") as? UIViewController

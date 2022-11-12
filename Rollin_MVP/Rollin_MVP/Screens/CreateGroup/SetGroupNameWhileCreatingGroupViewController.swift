@@ -22,7 +22,6 @@ final class SetGroupNameWhileCreatingGroupViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = false
         setTitleMessageLayout()
         setNameTextFieldLayout()
         setNextButtonLayout()

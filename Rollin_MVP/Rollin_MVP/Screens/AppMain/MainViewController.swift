@@ -22,6 +22,10 @@ final class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+    }
 }
 
 extension MainViewController: AddGroupButtonBackgroundDelegate {

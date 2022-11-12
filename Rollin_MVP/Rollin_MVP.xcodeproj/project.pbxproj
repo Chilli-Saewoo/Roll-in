@@ -26,6 +26,8 @@
 		AB032AAB291E875E00B22C13 /* SelectIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB032AAA291E875E00B22C13 /* SelectIconCell.swift */; };
 		AB437573291A442F00C3688D /* Model_example.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437572291A442F00C3688D /* Model_example.swift */; };
 		AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */; };
+		AB7E6B0829201795001F6716 /* PostRollingPaperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E6B0729201795001F6716 /* PostRollingPaperModel.swift */; };
+		AB7E6B0A292017C4001F6716 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB7E6B09292017C4001F6716 /* GoogleService-Info.plist */; };
 		ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */; };
 		ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */; };
 		ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */; };
@@ -36,6 +38,11 @@
 		ABB96EC0291C244E003C5B1D /* SetThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EBF291C244E003C5B1D /* SetThemeViewController.swift */; };
 		ABCFC80D291FE32D006DB26B /* GroupWithThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFC80C291FE32D006DB26B /* GroupWithThemeView.swift */; };
 		ABCFC80F291FEAC7006DB26B /* Int+.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFC80E291FEAC7006DB26B /* Int+.swift */; };
+		ABCFC81229201518006DB26B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFC81129201518006DB26B /* LoginViewController.swift */; };
+		ABCFC8372920158A006DB26B /* PostRollingPaperLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFC8322920158A006DB26B /* PostRollingPaperLayout.swift */; };
+		ABCFC8382920158A006DB26B /* PostRollingPaperCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFC8342920158A006DB26B /* PostRollingPaperCollectionViewCell.swift */; };
+		ABCFC8392920158A006DB26B /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFC8362920158A006DB26B /* PostViewController.swift */; };
+		ABCFC83B2920159E006DB26B /* SetNicknameWhileLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFC83A2920159E006DB26B /* SetNicknameWhileLoginViewController.swift */; };
 		ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2BD291A3F97008FB3A6 /* AppDelegate.swift */; };
 		ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2BF291A3F97008FB3A6 /* SceneDelegate.swift */; };
 		ABDBD2C2291A3F97008FB3A6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2C1291A3F97008FB3A6 /* MainViewController.swift */; };
@@ -45,13 +52,6 @@
 		ABDBD2D5291A3F99008FB3A6 /* Rollin_MVPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2D4291A3F99008FB3A6 /* Rollin_MVPTests.swift */; };
 		ABDBD2DF291A3F99008FB3A6 /* Rollin_MVPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2DE291A3F99008FB3A6 /* Rollin_MVPUITests.swift */; };
 		ABDBD2E1291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2E0291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift */; };
-		F6F411D0291FBA12007094DE /* PostRollingPaperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F411CF291FBA12007094DE /* PostRollingPaperModel.swift */; };
-		F6F411D3291FBA23007094DE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F411D2291FBA23007094DE /* LoginViewController.swift */; };
-		F6F411DB291FBA27007094DE /* PostRollingPaperLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F411D6291FBA27007094DE /* PostRollingPaperLayout.swift */; };
-		F6F411DC291FBA27007094DE /* PostRollingPaperCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F411D8291FBA27007094DE /* PostRollingPaperCollectionViewCell.swift */; };
-		F6F411DD291FBA27007094DE /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F411DA291FBA27007094DE /* PostViewController.swift */; };
-		F6F411E0291FBA37007094DE /* SetNicknameWhileLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F411DF291FBA37007094DE /* SetNicknameWhileLoginViewController.swift */; };
-		F6F411E4291FBCEF007094DE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6F411E3291FBCEF007094DE /* GoogleService-Info.plist */; };
 		F8173D1D291A521400E545E0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D1C291A521400E545E0 /* FirebaseAuth */; };
 		F8173D1F291A521400E545E0 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D1E291A521400E545E0 /* FirebaseDatabase */; };
 		F8173D21291A521400E545E0 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D20291A521400E545E0 /* FirebaseDatabaseSwift */; };
@@ -99,6 +99,8 @@
 		AB032AAA291E875E00B22C13 /* SelectIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectIconCell.swift; sourceTree = "<group>"; };
 		AB437572291A442F00C3688D /* Model_example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model_example.swift; sourceTree = "<group>"; };
 		AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGroupNameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
+		AB7E6B0729201795001F6716 /* PostRollingPaperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRollingPaperModel.swift; sourceTree = "<group>"; };
+		AB7E6B09292017C4001F6716 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
 		ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingGroupInfo.swift; sourceTree = "<group>"; };
 		ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmGroupViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +112,11 @@
 		ABB96EBF291C244E003C5B1D /* SetThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetThemeViewController.swift; sourceTree = "<group>"; };
 		ABCFC80C291FE32D006DB26B /* GroupWithThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupWithThemeView.swift; sourceTree = "<group>"; };
 		ABCFC80E291FEAC7006DB26B /* Int+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+.swift"; sourceTree = "<group>"; };
+		ABCFC81129201518006DB26B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		ABCFC8322920158A006DB26B /* PostRollingPaperLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRollingPaperLayout.swift; sourceTree = "<group>"; };
+		ABCFC8342920158A006DB26B /* PostRollingPaperCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRollingPaperCollectionViewCell.swift; sourceTree = "<group>"; };
+		ABCFC8362920158A006DB26B /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		ABCFC83A2920159E006DB26B /* SetNicknameWhileLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetNicknameWhileLoginViewController.swift; sourceTree = "<group>"; };
 		ABDBD2BA291A3F97008FB3A6 /* Rollin_MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rollin_MVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDBD2BD291A3F97008FB3A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABDBD2BF291A3F97008FB3A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -123,14 +130,7 @@
 		ABDBD2DA291A3F99008FB3A6 /* Rollin_MVPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Rollin_MVPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDBD2DE291A3F99008FB3A6 /* Rollin_MVPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rollin_MVPUITests.swift; sourceTree = "<group>"; };
 		ABDBD2E0291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rollin_MVPUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		F6F411CF291FBA12007094DE /* PostRollingPaperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRollingPaperModel.swift; sourceTree = "<group>"; };
-		F6F411D2291FBA23007094DE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		F6F411D6291FBA27007094DE /* PostRollingPaperLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRollingPaperLayout.swift; sourceTree = "<group>"; };
-		F6F411D8291FBA27007094DE /* PostRollingPaperCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRollingPaperCollectionViewCell.swift; sourceTree = "<group>"; };
-		F6F411DA291FBA27007094DE /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		F6F411DF291FBA37007094DE /* SetNicknameWhileLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetNicknameWhileLoginViewController.swift; sourceTree = "<group>"; };
 		F6F411E1291FBA55007094DE /* Rollin_MVP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rollin_MVP.entitlements; sourceTree = "<group>"; };
-		F6F411E3291FBCEF007094DE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../dataSet/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +233,14 @@
 			path = CreateGroup;
 			sourceTree = "<group>";
 		};
+		AB7E6B0629201795001F6716 /* PostRollingPaper */ = {
+			isa = PBXGroup;
+			children = (
+				AB7E6B0729201795001F6716 /* PostRollingPaperModel.swift */,
+			);
+			path = PostRollingPaper;
+			sourceTree = "<group>";
+		};
 		ABB96EAC291AB71B003C5B1D /* CreatingGroup */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,6 +282,49 @@
 				ABCFC80E291FEAC7006DB26B /* Int+.swift */,
 			);
 			path = "Extension+";
+			sourceTree = "<group>";
+		};
+		ABCFC81029201518006DB26B /* AppleLogin */ = {
+			isa = PBXGroup;
+			children = (
+				ABCFC81129201518006DB26B /* LoginViewController.swift */,
+			);
+			name = AppleLogin;
+			path = Rollin_MVP/Screens/AppleLogin;
+			sourceTree = SOURCE_ROOT;
+		};
+		ABCFC8302920158A006DB26B /* PostRollingPaper */ = {
+			isa = PBXGroup;
+			children = (
+				ABCFC8312920158A006DB26B /* PostRollingPaperLayout */,
+				ABCFC8332920158A006DB26B /* PostRollingPaperView */,
+				ABCFC8352920158A006DB26B /* PostRollingPaperViewContoller */,
+			);
+			path = PostRollingPaper;
+			sourceTree = "<group>";
+		};
+		ABCFC8312920158A006DB26B /* PostRollingPaperLayout */ = {
+			isa = PBXGroup;
+			children = (
+				ABCFC8322920158A006DB26B /* PostRollingPaperLayout.swift */,
+			);
+			path = PostRollingPaperLayout;
+			sourceTree = "<group>";
+		};
+		ABCFC8332920158A006DB26B /* PostRollingPaperView */ = {
+			isa = PBXGroup;
+			children = (
+				ABCFC8342920158A006DB26B /* PostRollingPaperCollectionViewCell.swift */,
+			);
+			path = PostRollingPaperView;
+			sourceTree = "<group>";
+		};
+		ABCFC8352920158A006DB26B /* PostRollingPaperViewContoller */ = {
+			isa = PBXGroup;
+			children = (
+				ABCFC8362920158A006DB26B /* PostViewController.swift */,
+			);
+			path = PostRollingPaperViewContoller;
 			sourceTree = "<group>";
 		};
 		ABDBD2B1291A3F97008FB3A6 = {
@@ -342,7 +393,7 @@
 		ABDBD2EE291A42F4008FB3A6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				F6F411CE291FBA12007094DE /* PostRollingPaper */,
+				AB7E6B0629201795001F6716 /* PostRollingPaper */,
 				ABB96EAC291AB71B003C5B1D /* CreatingGroup */,
 				AB437572291A442F00C3688D /* Model_example.swift */,
 			);
@@ -353,8 +404,8 @@
 			isa = PBXGroup;
 			children = (
 				F6F411DE291FBA37007094DE /* SetNickname */,
-				F6F411D4291FBA27007094DE /* PostRollingPaper */,
-				F6F411D1291FBA23007094DE /* AppleLogin */,
+				ABCFC8302920158A006DB26B /* PostRollingPaper */,
+				ABCFC81029201518006DB26B /* AppleLogin */,
 				2AF4684E291E1E9E00AB2DE4 /* DetailRollingPaper */,
 				ABDBD2C3291A3F97008FB3A6 /* Main.storyboard */,
 				AB437571291A441700C3688D /* AppMain */,
@@ -373,63 +424,10 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		F6F411CE291FBA12007094DE /* PostRollingPaper */ = {
-			isa = PBXGroup;
-			children = (
-				F6F411CF291FBA12007094DE /* PostRollingPaperModel.swift */,
-			);
-			name = PostRollingPaper;
-			path = "../../../../../../Downloads/Roll-in-feat-CS-135-/Rollin_MVP/Rollin_MVP/Model/PostRollingPaper";
-			sourceTree = "<group>";
-		};
-		F6F411D1291FBA23007094DE /* AppleLogin */ = {
-			isa = PBXGroup;
-			children = (
-				F6F411D2291FBA23007094DE /* LoginViewController.swift */,
-			);
-			name = AppleLogin;
-			path = "../../../../../../Downloads/Roll-in-feat-CS-135-/Rollin_MVP/Rollin_MVP/Screens/AppleLogin";
-			sourceTree = "<group>";
-		};
-		F6F411D4291FBA27007094DE /* PostRollingPaper */ = {
-			isa = PBXGroup;
-			children = (
-				F6F411D5291FBA27007094DE /* PostRollingPaperLayout */,
-				F6F411D7291FBA27007094DE /* PostRollingPaperView */,
-				F6F411D9291FBA27007094DE /* PostRollingPaperViewContoller */,
-			);
-			name = PostRollingPaper;
-			path = "../../../../../../Downloads/Roll-in-feat-CS-135-/Rollin_MVP/Rollin_MVP/Screens/PostRollingPaper";
-			sourceTree = "<group>";
-		};
-		F6F411D5291FBA27007094DE /* PostRollingPaperLayout */ = {
-			isa = PBXGroup;
-			children = (
-				F6F411D6291FBA27007094DE /* PostRollingPaperLayout.swift */,
-			);
-			path = PostRollingPaperLayout;
-			sourceTree = "<group>";
-		};
-		F6F411D7291FBA27007094DE /* PostRollingPaperView */ = {
-			isa = PBXGroup;
-			children = (
-				F6F411D8291FBA27007094DE /* PostRollingPaperCollectionViewCell.swift */,
-			);
-			path = PostRollingPaperView;
-			sourceTree = "<group>";
-		};
-		F6F411D9291FBA27007094DE /* PostRollingPaperViewContoller */ = {
-			isa = PBXGroup;
-			children = (
-				F6F411DA291FBA27007094DE /* PostViewController.swift */,
-			);
-			path = PostRollingPaperViewContoller;
-			sourceTree = "<group>";
-		};
 		F6F411DE291FBA37007094DE /* SetNickname */ = {
 			isa = PBXGroup;
 			children = (
-				F6F411DF291FBA37007094DE /* SetNicknameWhileLoginViewController.swift */,
+				ABCFC83A2920159E006DB26B /* SetNicknameWhileLoginViewController.swift */,
 			);
 			name = SetNickname;
 			path = "../../../../../../Downloads/Roll-in-feat-CS-135-/Rollin_MVP/Rollin_MVP/Screens/SetNickname";
@@ -438,7 +436,7 @@
 		F6F411E2291FBCDE007094DE /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				F6F411E3291FBCEF007094DE /* GoogleService-Info.plist */,
+				AB7E6B09292017C4001F6716 /* GoogleService-Info.plist */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -561,7 +559,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABDBD2CA291A3F99008FB3A6 /* LaunchScreen.storyboard in Resources */,
-				F6F411E4291FBCEF007094DE /* GoogleService-Info.plist in Resources */,
+				AB7E6B0A292017C4001F6716 /* GoogleService-Info.plist in Resources */,
 				ABDBD2C7291A3F99008FB3A6 /* Assets.xcassets in Resources */,
 				ABDBD2C5291A3F97008FB3A6 /* Main.storyboard in Resources */,
 			);
@@ -588,11 +586,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6F411DD291FBA27007094DE /* PostViewController.swift in Sources */,
-				F6F411DB291FBA27007094DE /* PostRollingPaperLayout.swift in Sources */,
-				F6F411E0291FBA37007094DE /* SetNicknameWhileLoginViewController.swift in Sources */,
 				AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */,
 				AB032AA9291E875900B22C13 /* SelectBackgroundColorCell.swift in Sources */,
+				ABCFC8392920158A006DB26B /* PostViewController.swift in Sources */,
+				AB7E6B0829201795001F6716 /* PostRollingPaperModel.swift in Sources */,
 				AB032AA7291E873500B22C13 /* AddGroupButtonBackgroundView.swift in Sources */,
 				2AF46852291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift in Sources */,
 				ABB96EB9291B69FA003C5B1D /* Date+.swift in Sources */,
@@ -604,26 +601,27 @@
 				ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */,
 				790FF814291E5733004BDA20 /* UIViewController+.swift in Sources */,
 				ABB96EB3291AC71F003C5B1D /* ConfirmGroupCardView.swift in Sources */,
+				ABCFC83B2920159E006DB26B /* SetNicknameWhileLoginViewController.swift in Sources */,
 				ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */,
 				AB032AAB291E875E00B22C13 /* SelectIconCell.swift in Sources */,
 				2AF46850291E1EF200AB2DE4 /* RollingPaperView.swift in Sources */,
-				F6F411DC291FBA27007094DE /* PostRollingPaperCollectionViewCell.swift in Sources */,
+				ABCFC8382920158A006DB26B /* PostRollingPaperCollectionViewCell.swift in Sources */,
 				AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */,
 				ABDBD2C2291A3F97008FB3A6 /* MainViewController.swift in Sources */,
 				79BAA9A5291AE8D400C5636E /* PostThemePickerViewCell.swift in Sources */,
 				79BAA9A2291AE53100C5636E /* WriteRollingPaperViewController.swift in Sources */,
+				ABCFC81229201518006DB26B /* LoginViewController.swift in Sources */,
 				79A91011291C091B00A0672F /* Alert+.swift in Sources */,
 				ABB96EB5291AF055003C5B1D /* GroupCodeSharingViewController.swift in Sources */,
-				F6F411D3291FBA23007094DE /* LoginViewController.swift in Sources */,
 				2AF46854291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift in Sources */,
 				ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */,
 				AB437573291A442F00C3688D /* Model_example.swift in Sources */,
 				AB032AA0291E870300B22C13 /* IconSet.swift in Sources */,
 				ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */,
 				79BAA9AF291B732F00C5636E /* PostThemePickerView.swift in Sources */,
+				ABCFC8372920158A006DB26B /* PostRollingPaperLayout.swift in Sources */,
 				ABCFC80F291FEAC7006DB26B /* Int+.swift in Sources */,
 				79A9100D291B84B700A0672F /* PostView.swift in Sources */,
-				F6F411D0291FBA12007094DE /* PostRollingPaperModel.swift in Sources */,
 				79BAA9A9291AED9500C5636E /* NSObject+.swift in Sources */,
 				AB032AA4291E872400B22C13 /* String+.swift in Sources */,
 				7980D12E291C3F3F00915C72 /* UIColor+.swift in Sources */,
@@ -804,7 +802,7 @@
 				CODE_SIGN_ENTITLEMENTS = Rollin_MVP/Rollin_MVP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A8RC8B498C;
+				DEVELOPMENT_TEAM = 8QSTXVD8H9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
@@ -839,7 +837,7 @@
 				CODE_SIGN_ENTITLEMENTS = Rollin_MVP/Rollin_MVP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A8RC8B498C;
+				DEVELOPMENT_TEAM = 8QSTXVD8H9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
