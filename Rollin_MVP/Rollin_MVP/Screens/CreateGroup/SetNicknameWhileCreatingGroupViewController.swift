@@ -15,7 +15,7 @@ final class SetNicknameWhileCreatingGroupViewController: UIViewController {
     private lazy var nextButton = UIButton()
     private var keyboardHeight: CGFloat = 0 {
         didSet {
-            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: keyboardHeight * -1).isActive = true
+            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: keyboardHeight * -1) .isActive = true
         }
     }
     
@@ -64,10 +64,12 @@ private extension SetNicknameWhileCreatingGroupViewController {
         view.addSubview(titleMessageLabel)
         titleMessageLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 96),
-            titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23),
+            titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
+            titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
-        titleMessageLabel.text = "닉네임 입력"
+        titleMessageLabel.text = "그룹 내 닉네임을 입력해주세요"
+        titleMessageLabel.font = .systemFont(ofSize: 24, weight: .medium)
+        titleMessageLabel.textColor = .systemBlack
     }
     
     func setNameTextFieldLayout() {
@@ -75,19 +77,19 @@ private extension SetNicknameWhileCreatingGroupViewController {
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             nameTextField.topAnchor.constraint(equalTo: titleMessageLabel.bottomAnchor, constant: 20),
-            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23),
-            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -23),
+            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
         ])
         
         view.addSubview(textFieldUnderLineView)
         textFieldUnderLineView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            textFieldUnderLineView.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 2),
-            textFieldUnderLineView.heightAnchor.constraint(equalToConstant: 1),
+            textFieldUnderLineView.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 10),
+            textFieldUnderLineView.heightAnchor.constraint(equalToConstant: 0.45),
             textFieldUnderLineView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23),
             textFieldUnderLineView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -23),
         ])
-        textFieldUnderLineView.backgroundColor = .black
+        textFieldUnderLineView.backgroundColor = hexStringToUIColor(hex: "C6C6C8")
     }
     
     func setNextButtonLayout() {

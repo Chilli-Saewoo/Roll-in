@@ -26,6 +26,7 @@ final class SetGroupNameWhileCreatingGroupViewController: UIViewController {
         setNameTextFieldLayout()
         setNextButtonLayout()
         setNextButtonAction()
+        nameTextField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -58,15 +59,46 @@ final class SetGroupNameWhileCreatingGroupViewController: UIViewController {
     }
 }
 
+extension SetGroupNameWhileCreatingGroupViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        if let char = string.cString(using: String.Encoding.utf8) {
+            let isBackSpace = strcmp(char, "\\b")
+            if isBackSpace == -92 {
+                if range.location == 0 && range.length != 0 {
+                    self.nextButton.isEnabled = false
+                    self.nextButton.backgroundColor = .inactiveBgGray
+                    self.nextButton.setTitleColor(.inactiveTextGray, for: .disabled)
+                }
+                return true
+            }
+        }
+        guard textField.text!.count < 20 else { return false }
+
+        if range.location == 0 && range.length != 0 {
+            self.nextButton.isEnabled = false
+            self.nextButton.backgroundColor = .inactiveBgGray
+            self.nextButton.setTitleColor(.inactiveTextGray, for: .disabled)
+        } else {
+            self.nextButton.isEnabled = true
+            self.nextButton.backgroundColor = .systemBlack
+            self.nextButton.setTitleColor(.white, for: .normal)
+        }
+        return true
+    }
+}
+
 private extension SetGroupNameWhileCreatingGroupViewController {
     func setTitleMessageLayout() {
         view.addSubview(titleMessageLabel)
         titleMessageLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 96),
-            titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23),
+            titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
+            titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
-        titleMessageLabel.text = "그룹 이름 입력"
+        titleMessageLabel.text = "그룹 이름을 입력해주세요"
+        titleMessageLabel.font = .systemFont(ofSize: 24, weight: .medium)
+        titleMessageLabel.textColor = .systemBlack
         
     }
     
@@ -82,12 +114,12 @@ private extension SetGroupNameWhileCreatingGroupViewController {
         view.addSubview(textFieldUnderLineView)
         textFieldUnderLineView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            textFieldUnderLineView.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 2),
-            textFieldUnderLineView.heightAnchor.constraint(equalToConstant: 1),
+            textFieldUnderLineView.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 10),
+            textFieldUnderLineView.heightAnchor.constraint(equalToConstant: 0.45),
             textFieldUnderLineView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23),
             textFieldUnderLineView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -23),
         ])
-        textFieldUnderLineView.backgroundColor = .black
+        textFieldUnderLineView.backgroundColor = hexStringToUIColor(hex: "C6C6C8")
     }
     
     func setNextButtonLayout() {
@@ -97,9 +129,10 @@ private extension SetGroupNameWhileCreatingGroupViewController {
             nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
             nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            nextButton.heightAnchor.constraint(equalToConstant: 60),
+            nextButton.heightAnchor.constraint(equalToConstant: 56),
         ])
-        nextButton.backgroundColor = .gray
+        nextButton.backgroundColor = .inactiveBgGray
         nextButton.setTitle("다음", for: .normal)
+        nextButton.setTitleColor(.inactiveTextGray, for: .disabled)
     }
 }
