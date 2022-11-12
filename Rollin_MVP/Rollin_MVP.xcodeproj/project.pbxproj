@@ -43,6 +43,7 @@
 		F8173D2D291BA9CA00E545E0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8173D2C291BA9CA00E545E0 /* GoogleService-Info.plist */; };
 		F8173D30291D0F3800E545E0 /* SearchGroupCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8173D2F291D0F3800E545E0 /* SearchGroupCodeViewController.swift */; };
 		F8173D32291D7CB900E545E0 /* ConfirmParticipatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8173D31291D7CB900E545E0 /* ConfirmParticipatingGroupViewController.swift */; };
+		F8173D34291E96AB00E545E0 /* SetNicknameWhileParticipatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8173D33291E96AB00E545E0 /* SetNicknameWhileParticipatingGroupViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		F8173D2C291BA9CA00E545E0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F8173D2F291D0F3800E545E0 /* SearchGroupCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupCodeViewController.swift; sourceTree = "<group>"; };
 		F8173D31291D7CB900E545E0 /* ConfirmParticipatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmParticipatingGroupViewController.swift; sourceTree = "<group>"; };
+		F8173D33291E96AB00E545E0 /* SetNicknameWhileParticipatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameWhileParticipatingGroupViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -318,6 +320,7 @@
 			children = (
 				F8173D2F291D0F3800E545E0 /* SearchGroupCodeViewController.swift */,
 				F8173D31291D7CB900E545E0 /* ConfirmParticipatingGroupViewController.swift */,
+				F8173D33291E96AB00E545E0 /* SetNicknameWhileParticipatingGroupViewController.swift */,
 			);
 			path = ParticipateGroup;
 			sourceTree = "<group>";
@@ -487,6 +490,7 @@
 				AB437573291A442F00C3688D /* Model_example.swift in Sources */,
 				ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */,
 				79BAA9AF291B732F00C5636E /* PostThemePickerView.swift in Sources */,
+				F8173D34291E96AB00E545E0 /* SetNicknameWhileParticipatingGroupViewController.swift in Sources */,
 				79A9100D291B84B700A0672F /* PostView.swift in Sources */,
 				79BAA9A9291AED9500C5636E /* NSObject+.swift in Sources */,
 			);

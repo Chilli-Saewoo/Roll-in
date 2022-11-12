@@ -7,23 +7,65 @@
 
 import UIKit
 
-class ConfirmParticipatingGroupViewController: UIViewController {
-
+final class ConfirmParticipatingGroupViewController: UIViewController {
+    var creatingGroupInfo: CreatingGroupInfo?
+    var codeText: String = ""
+    private lazy var titleMessageLabel = UILabel()
+    private lazy var confirmGroupCard = ConfirmGroupCardView(groupName: creatingGroupInfo?.groupName ?? "", date: creatingGroupInfo?.createdTime ?? Date())
+    private let completeButton = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setTitleMessageLayout()
+        setConfirmGroupCard()
+        setCompleteButton()
+        setCompleteButtonAction()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setCompleteButtonAction() {
+        completeButton.addTarget(self, action: #selector(completeButtonPressed), for: .touchUpInside)
     }
-    */
+    // codeText가 맞는 
+    @objc func completeButtonPressed(_ sender: UIButton) {
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "GroupCodeSharing") as? GroupCodeSharingViewController ?? UIViewController()
+        (secondViewController as? GroupCodeSharingViewController)?.creatingGroupInfo = creatingGroupInfo
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+    }
+}
 
+private extension ConfirmParticipatingGroupViewController {
+    func setTitleMessageLayout() {
+        view.addSubview(titleMessageLabel)
+        titleMessageLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 96),
+            titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23),
+        ])
+        titleMessageLabel.text = "해당 롤링페이퍼가 맞으신가요?"
+    }
+    
+    func setConfirmGroupCard() {
+        view.addSubview(confirmGroupCard)
+        confirmGroupCard.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            confirmGroupCard.topAnchor.constraint(equalTo: titleMessageLabel.bottomAnchor, constant: 25),
+            confirmGroupCard.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 17),
+            confirmGroupCard.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -17),
+            confirmGroupCard.heightAnchor.constraint(equalToConstant: 120),
+        ])
+    }
+    
+    func setCompleteButton() {
+        view.addSubview(completeButton)
+        completeButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            completeButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -65),
+            completeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 17),
+            completeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -17),
+            completeButton.heightAnchor.constraint(equalToConstant: 60),
+        ])
+        completeButton.setTitle("완료", for: .normal)
+        completeButton.layer.cornerRadius = 8.0
+        completeButton.backgroundColor = .gray
+    }
 }
