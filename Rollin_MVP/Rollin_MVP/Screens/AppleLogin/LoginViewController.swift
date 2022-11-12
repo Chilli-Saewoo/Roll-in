@@ -36,7 +36,7 @@ final class LoginViewController: UIViewController {
     private func randomNonceString(length: Int = 32) -> String {
         precondition(length > 0)
         let charset: Array<Character> =
-            Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
+        Array("0123456789ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz-._")
         var result = ""
         var remainingLength = length
         
@@ -68,18 +68,18 @@ final class LoginViewController: UIViewController {
     }
     
     @objc func startSignInWithAppleFlow() {
-       let nonce = randomNonceString()
-       currentNonce = nonce
-       let appleIDProvider = ASAuthorizationAppleIDProvider()
-       let request = appleIDProvider.createRequest()
-       request.requestedScopes = [.fullName, .email]
-       request.nonce = sha256(nonce)
-       
-       let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-       authorizationController.delegate = self
-       authorizationController.presentationContextProvider = self
-       authorizationController.performRequests()
-   }
+        let nonce = randomNonceString()
+        currentNonce = nonce
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        request.nonce = sha256(nonce)
+        
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+    }
     
 }
 
@@ -98,28 +98,25 @@ private extension LoginViewController {
 
 extension LoginViewController: ASAuthorizationControllerDelegate {
     
-    func emailCheck(email: String) -> Bool {
-            var result = false
-            
-            let userDB = db.collection("users")
-            // 입력한 이메일이 있는지 확인 쿼리
-            let query = userDB.whereField("email", isEqualTo: email)
-            query.getDocuments() { (qs, err) in
-                
-                if qs!.documents.isEmpty {
-                    print("데이터 중복 안 됨 가입 진행 가능")
-                    result = true
-                } else {
-                    print("데이터 중복 됨 가입 진행 불가")
-                    result = false
-                }
+    func emailCheck(email: String, uid: String) {
+        let userDB = db.collection("users")
+        // 입력한 이메일이 있는지 확인 쿼리
+        let query = userDB.whereField("email", isEqualTo: email)
+        query.getDocuments() { (qs, err) in
+            if qs!.documents.isEmpty {
+                guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "SetNicknameWhileLoginViewController") else {return}
+                self.navigationController?.pushViewController(viewController, animated: true)
+            } else {
+                print("데이터 중복 됨 가입 진행 불가")
+                print("해당 이메일은 이미 가입이 되어있습니다.")
+                guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") else {return}
+                self.navigationController?.pushViewController(viewController, animated: true)
             }
-            
-            return result
         }
-
+    }
+    
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+    if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             guard let nonce = currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
             }
@@ -148,26 +145,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 // uerdefault에 email과 uid값 저장
                 UserDefaults.standard.set(email, forKey: "userEmail")
                 UserDefaults.standard.set(uid, forKey: "uid")
-                if self.emailCheck(email: email) == false {
-                    self.db.collection("users").document(uid).setData([
-                        "email": email,
-                        "usernickname": displayName
-                    ]) { err in
-                        if let err = err {
-                            print("Error writing document: \(err)")
-                        } else {
-                            print("회원가입이 완료되었습니다.")
-                            guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "SetNicknameWhileLoginViewController") else {return}
-                                    
-                            self.navigationController?.pushViewController(viewController, animated: true)
-                        }
-                    }
-                } else {
-                    print("해당 이메일은 이미 가입이 되어있습니다.")
-                    guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") else {return}
-                    self.navigationController?.pushViewController(viewController, animated: true)
-                }
-                
+                self.emailCheck(email: email, uid: uid)
             }
         }
     }
