@@ -61,7 +61,6 @@ final class SetGroupNameWhileCreatingGroupViewController: UIViewController {
 
 extension SetGroupNameWhileCreatingGroupViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
         if let char = string.cString(using: String.Encoding.utf8) {
             let isBackSpace = strcmp(char, "\\b")
             if isBackSpace == -92 {
@@ -74,7 +73,6 @@ extension SetGroupNameWhileCreatingGroupViewController: UITextFieldDelegate {
             }
         }
         guard textField.text!.count < 20 else { return false }
-
         if range.location == 0 && range.length != 0 {
             self.nextButton.isEnabled = false
             self.nextButton.backgroundColor = .inactiveBgGray
