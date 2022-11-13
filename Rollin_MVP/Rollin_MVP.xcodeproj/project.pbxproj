@@ -10,20 +10,20 @@
 		2AF46850291E1EF200AB2DE4 /* RollingPaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF4684F291E1EF200AB2DE4 /* RollingPaperView.swift */; };
 		2AF46852291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */; };
 		2AF46854291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46853291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift */; };
-		790FF81A291E69CB004BDA20 /* RollingPaperPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FF819291E69CB004BDA20 /* RollingPaperPostModel.swift */; };
+		790FF814291E5733004BDA20 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FF813291E5733004BDA20 /* UIViewController+.swift */; };
 		790FF81D291E7195004BDA20 /* RollingPaperPostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FF81C291E7195004BDA20 /* RollingPaperPostAPI.swift */; };
 		790FF81F291ED661004BDA20 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FF81E291ED661004BDA20 /* FirebaseStorageManager.swift */; };
-		790FF814291E5733004BDA20 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FF813291E5733004BDA20 /* UIViewController+.swift */; };
 		79340B27292171130097D111 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B26292171130097D111 /* Group.swift */; };
 		79340B29292171420097D111 /* ParticipateGroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B28292171420097D111 /* ParticipateGroupInfo.swift */; };
 		79340B31292171AD0097D111 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B2D292171AD0097D111 /* MainViewController.swift */; };
 		79340B33292171AD0097D111 /* AddGroupButtonBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B30292171AD0097D111 /* AddGroupButtonBackgroundView.swift */; };
 		79340B35292171BD0097D111 /* MainGroupCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B34292171BD0097D111 /* MainGroupCardViewCell.swift */; };
-		79340B37292171F20097D111 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79340B36292171F20097D111 /* GoogleService-Info.plist */; };
 		79340B3A292172580097D111 /* ConfirmGroupWhileParticipateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B39292172580097D111 /* ConfirmGroupWhileParticipateViewController.swift */; };
 		79340B3C292172760097D111 /* SearchGroupWithCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B3B292172760097D111 /* SearchGroupWithCodeViewController.swift */; };
 		79340B3E292172990097D111 /* SetNicknameWhileParticipateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B3D292172990097D111 /* SetNicknameWhileParticipateViewController.swift */; };
 		79340B41292173380097D111 /* ParticipateGroupConfirmCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B40292173380097D111 /* ParticipateGroupConfirmCardView.swift */; };
+		79340B4729217CF80097D111 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79340B4629217CF80097D111 /* GoogleService-Info.plist */; };
+		79340B49292180170097D111 /* RollingPaperPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B48292180170097D111 /* RollingPaperPostModel.swift */; };
 		7980D12E291C3F3F00915C72 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980D12D291C3F3F00915C72 /* UIColor+.swift */; };
 		79A9100D291B84B700A0672F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A9100C291B84B700A0672F /* PostView.swift */; };
 		79A91011291C091B00A0672F /* Alert+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A91010291C091B00A0672F /* Alert+.swift */; };
@@ -97,19 +97,19 @@
 		2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRollingPaperViewController.swift; sourceTree = "<group>"; };
 		2AF46853291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostCollectionViewCell.swift; sourceTree = "<group>"; };
 		790FF813291E5733004BDA20 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		790FF81C291E7195004BDA20 /* RollingPaperPostAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperPostAPI.swift; sourceTree = "<group>"; };
+		790FF81E291ED661004BDA20 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		79340B26292171130097D111 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		79340B28292171420097D111 /* ParticipateGroupInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipateGroupInfo.swift; sourceTree = "<group>"; };
 		79340B2D292171AD0097D111 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		79340B30292171AD0097D111 /* AddGroupButtonBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupButtonBackgroundView.swift; sourceTree = "<group>"; };
 		79340B34292171BD0097D111 /* MainGroupCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGroupCardViewCell.swift; sourceTree = "<group>"; };
-		79340B36292171F20097D111 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		79340B39292172580097D111 /* ConfirmGroupWhileParticipateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmGroupWhileParticipateViewController.swift; sourceTree = "<group>"; };
 		79340B3B292172760097D111 /* SearchGroupWithCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupWithCodeViewController.swift; sourceTree = "<group>"; };
 		79340B3D292172990097D111 /* SetNicknameWhileParticipateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameWhileParticipateViewController.swift; sourceTree = "<group>"; };
 		79340B40292173380097D111 /* ParticipateGroupConfirmCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateGroupConfirmCardView.swift; sourceTree = "<group>"; };
-		790FF819291E69CB004BDA20 /* RollingPaperPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperPostModel.swift; sourceTree = "<group>"; };
-		790FF81C291E7195004BDA20 /* RollingPaperPostAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperPostAPI.swift; sourceTree = "<group>"; };
-		790FF81E291ED661004BDA20 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
+		79340B4629217CF80097D111 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Documents/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		79340B48292180170097D111 /* RollingPaperPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperPostModel.swift; sourceTree = "<group>"; };
 		7980D12D291C3F3F00915C72 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		79A9100C291B84B700A0672F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		79A91010291C091B00A0672F /* Alert+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+.swift"; sourceTree = "<group>"; };
@@ -202,6 +202,15 @@
 			path = DetailRollingPaper;
 			sourceTree = "<group>";
 		};
+		790FF81B291E7188004BDA20 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				790FF81C291E7195004BDA20 /* RollingPaperPostAPI.swift */,
+				790FF81E291ED661004BDA20 /* FirebaseStorageManager.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		79340B2C292171AD0097D111 /* AppMain */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,23 +246,6 @@
 				79340B40292173380097D111 /* ParticipateGroupConfirmCardView.swift */,
 			);
 			path = ViewComponents;
-			sourceTree = "<group>";
-		};
-		790FF818291E69B0004BDA20 /* RollingPaper */ = {
-			isa = PBXGroup;
-			children = (
-				790FF819291E69CB004BDA20 /* RollingPaperPostModel.swift */,
-			);
-			path = RollingPaper;
-			sourceTree = "<group>";
-		};
-		790FF81B291E7188004BDA20 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				790FF81C291E7195004BDA20 /* RollingPaperPostAPI.swift */,
-				790FF81E291ED661004BDA20 /* FirebaseStorageManager.swift */,
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		79BAA9A0291AE4BC00C5636E /* WriteRollingPaper */ = {
@@ -464,6 +456,7 @@
 				AB437572291A442F00C3688D /* Model_example.swift */,
 				79340B26292171130097D111 /* Group.swift */,
 				79340B28292171420097D111 /* ParticipateGroupInfo.swift */,
+				79340B48292180170097D111 /* RollingPaperPostModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -496,8 +489,8 @@
 		F66332462920338D00A7310A /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
+				79340B4629217CF80097D111 /* GoogleService-Info.plist */,
 				790FF81B291E7188004BDA20 /* API */,
-				790FF811291E55FB004BDA20 /* GoogleService-Info.plist */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -629,7 +622,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABDBD2CA291A3F99008FB3A6 /* LaunchScreen.storyboard in Resources */,
-				79340B37292171F20097D111 /* GoogleService-Info.plist in Resources */,
+				79340B4729217CF80097D111 /* GoogleService-Info.plist in Resources */,
 				ABDBD2C7291A3F99008FB3A6 /* Assets.xcassets in Resources */,
 				ABDBD2C5291A3F97008FB3A6 /* Main.storyboard in Resources */,
 			);
@@ -688,6 +681,7 @@
 				79BAA9A5291AE8D400C5636E /* PostThemePickerViewCell.swift in Sources */,
 				79BAA9A2291AE53100C5636E /* WriteRollingPaperViewController.swift in Sources */,
 				ABCFC81229201518006DB26B /* LoginViewController.swift in Sources */,
+				79340B49292180170097D111 /* RollingPaperPostModel.swift in Sources */,
 				79A91011291C091B00A0672F /* Alert+.swift in Sources */,
 				F65517512920C89D00B09405 /* NSTextAttachment+.swift in Sources */,
 				ABB96EB5291AF055003C5B1D /* GroupCodeSharingViewController.swift in Sources */,
@@ -698,7 +692,6 @@
 				ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */,
 				79BAA9AF291B732F00C5636E /* PostThemePickerView.swift in Sources */,
 				790FF81D291E7195004BDA20 /* RollingPaperPostAPI.swift in Sources */,
-				790FF81A291E69CB004BDA20 /* RollingPaperPostModel.swift in Sources */,
 				ABCFC8372920158A006DB26B /* PostRollingPaperLayout.swift in Sources */,
 				ABCFC80F291FEAC7006DB26B /* Int+.swift in Sources */,
 				79A9100D291B84B700A0672F /* PostView.swift in Sources */,
