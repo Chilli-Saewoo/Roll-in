@@ -27,6 +27,7 @@
 		7980D12E291C3F3F00915C72 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980D12D291C3F3F00915C72 /* UIColor+.swift */; };
 		79A9100D291B84B700A0672F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A9100C291B84B700A0672F /* PostView.swift */; };
 		79A91011291C091B00A0672F /* Alert+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A91010291C091B00A0672F /* Alert+.swift */; };
+		79AB0F3A291FB12F00FDF9CB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79AB0F39291FB12E00FDF9CB /* GoogleService-Info.plist */; };
 		79BAA9A2291AE53100C5636E /* WriteRollingPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BAA9A1291AE53000C5636E /* WriteRollingPaperViewController.swift */; };
 		79BAA9A5291AE8D400C5636E /* PostThemePickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BAA9A4291AE8D400C5636E /* PostThemePickerViewCell.swift */; };
 		79BAA9A9291AED9500C5636E /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BAA9A8291AED9500C5636E /* NSObject+.swift */; };
@@ -113,6 +114,7 @@
 		7980D12D291C3F3F00915C72 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		79A9100C291B84B700A0672F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		79A91010291C091B00A0672F /* Alert+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+.swift"; sourceTree = "<group>"; };
+		79AB0F39291FB12E00FDF9CB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Documents/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		79BAA9A1291AE53000C5636E /* WriteRollingPaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteRollingPaperViewController.swift; sourceTree = "<group>"; };
 		79BAA9A4291AE8D400C5636E /* PostThemePickerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostThemePickerViewCell.swift; sourceTree = "<group>"; };
 		79BAA9A8291AED9500C5636E /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
@@ -878,7 +880,7 @@
 				CODE_SIGN_ENTITLEMENTS = Rollin_MVP/Rollin_MVP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = U5D4UR6AFR;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
@@ -913,7 +915,7 @@
 				CODE_SIGN_ENTITLEMENTS = Rollin_MVP/Rollin_MVP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = U5D4UR6AFR;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";

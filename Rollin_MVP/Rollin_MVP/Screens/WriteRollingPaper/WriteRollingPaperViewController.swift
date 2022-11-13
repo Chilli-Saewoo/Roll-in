@@ -41,6 +41,7 @@ final class WriteRollingPaperViewController: UIViewController {
         setupLayout()
         setupButtonAction()
         configureDelegate()
+        hideKeyboardWhenTappedAround()
     }
     
     private func configureDelegate() {
