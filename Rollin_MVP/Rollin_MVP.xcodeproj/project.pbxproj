@@ -53,19 +53,10 @@
 		F65517582920C94A00B09405 /* MainGroupCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65517552920C94A00B09405 /* MainGroupCardViewCell.swift */; };
 		F65517592920C94A00B09405 /* AddGroupButtonBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65517562920C94A00B09405 /* AddGroupButtonBackgroundView.swift */; };
 		F655175B2920C9C700B09405 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F655175A2920C9C700B09405 /* Group.swift */; };
-<<<<<<< HEAD
-		F663324B292033F300A7310A /* (null) in Sources */ = {isa = PBXBuildFile; };
-		F663324D292034D100A7310A /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324C292034D100A7310A /* Image+.swift */; };
-		F663324F2920398200A7310A /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324E2920398200A7310A /* UITextField+.swift */; };
-		F6654C90292133960095D28A /* SetNickNameWhileLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6654C8F292133960095D28A /* SetNickNameWhileLoginViewController.swift */; };
-		F6D7BC2F292110B000494072 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6D7BC2E292110B000494072 /* GoogleService-Info.plist */; };
-		F6D7BC3129211DBB00494072 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D7BC3029211DBB00494072 /* UILabel+.swift */; };
-=======
 		F6633248292033A300A7310A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6633247292033A200A7310A /* GoogleService-Info.plist */; };
 		F663324B292033F300A7310A /* SetNickNameWhileLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324A292033F300A7310A /* SetNickNameWhileLoginViewController.swift */; };
 		F663324D292034D100A7310A /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324C292034D100A7310A /* Image+.swift */; };
 		F663324F2920398200A7310A /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324E2920398200A7310A /* UITextField+.swift */; };
->>>>>>> b0cb35bf5b3234a9d9fa2f4bf245b2224bf7e209
 		F8173D1D291A521400E545E0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D1C291A521400E545E0 /* FirebaseAuth */; };
 		F8173D1F291A521400E545E0 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D1E291A521400E545E0 /* FirebaseDatabase */; };
 		F8173D21291A521400E545E0 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D20291A521400E545E0 /* FirebaseDatabaseSwift */; };
@@ -145,18 +136,10 @@
 		F65517552920C94A00B09405 /* MainGroupCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainGroupCardViewCell.swift; sourceTree = "<group>"; };
 		F65517562920C94A00B09405 /* AddGroupButtonBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupButtonBackgroundView.swift; sourceTree = "<group>"; };
 		F655175A2920C9C700B09405 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Group.swift; path = "../../../../../../Downloads/Roll-in-develop-2/Rollin_MVP/Rollin_MVP/Model/Group.swift"; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		F663324C292034D100A7310A /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
-		F663324E2920398200A7310A /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
-		F6654C8F292133960095D28A /* SetNickNameWhileLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetNickNameWhileLoginViewController.swift; sourceTree = "<group>"; };
-		F6D7BC2E292110B000494072 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../dataSet/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		F6D7BC3029211DBB00494072 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
-=======
 		F6633247292033A200A7310A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../dataSet/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F663324A292033F300A7310A /* SetNickNameWhileLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetNickNameWhileLoginViewController.swift; sourceTree = "<group>"; };
 		F663324C292034D100A7310A /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
 		F663324E2920398200A7310A /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
->>>>>>> b0cb35bf5b3234a9d9fa2f4bf245b2224bf7e209
 		F6F411E1291FBA55007094DE /* Rollin_MVP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rollin_MVP.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -293,10 +276,7 @@
 				F663324C292034D100A7310A /* Image+.swift */,
 				F663324E2920398200A7310A /* UITextField+.swift */,
 				F65517502920C89D00B09405 /* NSTextAttachment+.swift */,
-<<<<<<< HEAD
 				F6D7BC3029211DBB00494072 /* UILabel+.swift */,
-=======
->>>>>>> b0cb35bf5b3234a9d9fa2f4bf245b2224bf7e209
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -368,11 +348,7 @@
 		ABDBD2BC291A3F97008FB3A6 /* Rollin_MVP */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
-				F6D7BC2D2921109C00494072 /* Firebase */,
-=======
 				F66332462920338D00A7310A /* Firebase */,
->>>>>>> b0cb35bf5b3234a9d9fa2f4bf245b2224bf7e209
 				F6F411E1291FBA55007094DE /* Rollin_MVP.entitlements */,
 				ABB96EB6291B69DF003C5B1D /* Global */,
 				ABDBD2ED291A42DA008FB3A6 /* App */,
@@ -465,7 +441,6 @@
 			path = ViewComponents;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
 		F6633249292033F300A7310A /* LoginSetNickName */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,16 +450,10 @@
 			path = Rollin_MVP/Screens/LoginSetNickName;
 			sourceTree = SOURCE_ROOT;
 		};
-		F6D7BC2D2921109C00494072 /* Firebase */ = {
-			isa = PBXGroup;
-			children = (
-				F6D7BC2E292110B000494072 /* GoogleService-Info.plist */,
-=======
 		F66332462920338D00A7310A /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
 				F6633247292033A200A7310A /* GoogleService-Info.plist */,
->>>>>>> b0cb35bf5b3234a9d9fa2f4bf245b2224bf7e209
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -616,11 +585,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABDBD2CA291A3F99008FB3A6 /* LaunchScreen.storyboard in Resources */,
-<<<<<<< HEAD
-				F6D7BC2F292110B000494072 /* GoogleService-Info.plist in Resources */,
-=======
 				F6633248292033A300A7310A /* GoogleService-Info.plist in Resources */,
->>>>>>> b0cb35bf5b3234a9d9fa2f4bf245b2224bf7e209
 				ABDBD2C7291A3F99008FB3A6 /* Assets.xcassets in Resources */,
 				ABDBD2C5291A3F97008FB3A6 /* Main.storyboard in Resources */,
 			);
@@ -675,10 +640,7 @@
 				F6654C90292133960095D28A /* SetNickNameWhileLoginViewController.swift in Sources */,
 				79A91011291C091B00A0672F /* Alert+.swift in Sources */,
 				F65517512920C89D00B09405 /* NSTextAttachment+.swift in Sources */,
-<<<<<<< HEAD
 				F6D7BC3129211DBB00494072 /* UILabel+.swift in Sources */,
-=======
->>>>>>> b0cb35bf5b3234a9d9fa2f4bf245b2224bf7e209
 				ABB96EB5291AF055003C5B1D /* GroupCodeSharingViewController.swift in Sources */,
 				2AF46854291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift in Sources */,
 				F65517592920C94A00B09405 /* AddGroupButtonBackgroundView.swift in Sources */,
@@ -694,11 +656,7 @@
 				79BAA9A9291AED9500C5636E /* NSObject+.swift in Sources */,
 				AB032AA4291E872400B22C13 /* String+.swift in Sources */,
 				F663324D292034D100A7310A /* Image+.swift in Sources */,
-<<<<<<< HEAD
-				F663324B292033F300A7310A /* (null) in Sources */,
-=======
 				F663324B292033F300A7310A /* SetNickNameWhileLoginViewController.swift in Sources */,
->>>>>>> b0cb35bf5b3234a9d9fa2f4bf245b2224bf7e209
 				7980D12E291C3F3F00915C72 /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
