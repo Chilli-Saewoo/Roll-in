@@ -38,7 +38,6 @@
 		AB437573291A442F00C3688D /* Model_example.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437572291A442F00C3688D /* Model_example.swift */; };
 		AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */; };
 		AB7E6B0829201795001F6716 /* PostRollingPaperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E6B0729201795001F6716 /* PostRollingPaperModel.swift */; };
-		ABA0343B292193AB00A50471 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABA0343A292193AB00A50471 /* GoogleService-Info.plist */; };
 		ABA0343E2921946000A50471 /* VerticalCardSwiper in Frameworks */ = {isa = PBXBuildFile; productRef = ABA0343D2921946000A50471 /* VerticalCardSwiper */; };
 		ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */; };
 		ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */; };
@@ -126,7 +125,6 @@
 		AB437572291A442F00C3688D /* Model_example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model_example.swift; sourceTree = "<group>"; };
 		AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGroupNameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
 		AB7E6B0729201795001F6716 /* PostRollingPaperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRollingPaperModel.swift; sourceTree = "<group>"; };
-		ABA0343A292193AB00A50471 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
 		ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingGroupInfo.swift; sourceTree = "<group>"; };
 		ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmGroupViewController.swift; sourceTree = "<group>"; };
