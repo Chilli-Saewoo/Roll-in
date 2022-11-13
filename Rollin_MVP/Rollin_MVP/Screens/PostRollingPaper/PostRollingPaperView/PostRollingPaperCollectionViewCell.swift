@@ -19,18 +19,29 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
 
     lazy var PostRollingPaperContainerView: UIView = {
         let view = UIView()
+        view.layer.cornerRadius = 4
         return view
     }()
 
     lazy var PostRollingPaperTitleLabel: UILabel = {
         let label = UILabel()
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 0
+        return label
+    }()
+    
+    lazy var PostRollingPapeFromLabel: UILabel = {
+        let label = UILabel()
+        label.lineBreakMode = .byWordWrapping
+        label.numberOfLines = 1
         return label
     }()
     
     lazy var PostRollingPaperImageView: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleToFill
         image.image = UIImage(named: "cat")
+        image.layer.cornerRadius = 4
         return image
     }()
 
@@ -45,7 +56,7 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
 
     private func bind() {
         PostRollingPaperContainerView.backgroundColor = myModel?.color
-        PostRollingPaperImageView.image = myModel?.imageString
+        PostRollingPaperImageView.image = myModel?.image
         PostRollingPaperTitleLabel.text = myModel?.commentString
     }
 }
@@ -60,11 +71,11 @@ private extension PostRollingPaperCollectionViewCell {
         PostRollingPaperContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
     
         
-//        containerView.addSubview(PostRollingPaperImageView)
-//        PostRollingPaperImageView.translatesAutoresizingMaskIntoConstraints = false
-//        PostRollingPaperImageView.leadingAnchor.constraint(equalTo: PostRollingPaperContainerView.leadingAnchor).isActive = true
-//        PostRollingPaperImageView.bottomAnchor.constraint(equalTo: PostRollingPaperContainerView.bottomAnchor).isActive = true
-//        PostRollingPaperImageView.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor).isActive = true
+        PostRollingPaperContainerView.addSubview(PostRollingPaperImageView)
+        PostRollingPaperImageView.translatesAutoresizingMaskIntoConstraints = false
+        PostRollingPaperImageView.leadingAnchor.constraint(equalTo: PostRollingPaperContainerView.leadingAnchor).isActive = true
+        PostRollingPaperImageView.bottomAnchor.constraint(equalTo: PostRollingPaperContainerView.bottomAnchor).isActive = true
+        PostRollingPaperImageView.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor).isActive = true
         
         PostRollingPaperContainerView.addSubview(PostRollingPaperTitleLabel)
         PostRollingPaperTitleLabel.text = myModel?.commentString
@@ -72,6 +83,12 @@ private extension PostRollingPaperCollectionViewCell {
         PostRollingPaperTitleLabel.leadingAnchor.constraint(equalTo: PostRollingPaperContainerView.leadingAnchor).isActive = true
         PostRollingPaperTitleLabel.topAnchor.constraint(equalTo: PostRollingPaperContainerView.topAnchor).isActive = true
         PostRollingPaperTitleLabel.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor).isActive = true
+        
+        PostRollingPaperContainerView.addSubview(PostRollingPapeFromLabel)
+        PostRollingPapeFromLabel.text = "From."
+        PostRollingPapeFromLabel.translatesAutoresizingMaskIntoConstraints = false
+        PostRollingPapeFromLabel.topAnchor.constraint(equalTo: PostRollingPaperTitleLabel.bottomAnchor).isActive = true
+        PostRollingPapeFromLabel.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor).isActive = true
     }
 }
 
