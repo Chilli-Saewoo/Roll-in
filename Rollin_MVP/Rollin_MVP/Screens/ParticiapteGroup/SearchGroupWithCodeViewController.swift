@@ -73,7 +73,7 @@ final class SearchGroupWithCodeViewController: UIViewController {
                         completion(document)
                     }
                     if querySnapshot!.documents.count == 0 {
-                        let dialogMessage = UIAlertController(title: "존재하지 않는 코드입니다", message: "다른 코드를 입력해보세요\n코드는 8자리입니다", preferredStyle: .alert)
+                        let dialogMessage = UIAlertController(title: "존재하지 않는 코드입니다", message: "다른 코드로 검색해보세요\n코드는 8자리입니다", preferredStyle: .alert)
                         let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
                         dialogMessage.addAction(ok)
                         self.present(dialogMessage, animated: true, completion: nil)
