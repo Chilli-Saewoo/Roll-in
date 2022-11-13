@@ -44,7 +44,20 @@ class SetNicknameWhileParticipateViewController: UIViewController {
     @objc func nextButtonPressed(_ sender: UIButton) {
         guard let text = nameTextField.text else { return }
         participateGroupInfo?.groupNickname = text
-        // TODO: - participateGroupInfo 바탕으로 firestore 업데이트
+        let batch = db.batch()
+        let userGroupsRef = db.collection("userGroups").document(UserDefaults.standard.string(forKey: "uid") ?? "")
+        batch.setData(["division": FieldValue.arrayUnion([participateGroupInfo?.groupId ?? ""])],
+                                     forDocument: userGroupsRef, merge: true)
+        let groupUsersRef = db.collection("groupUsers").document(participateGroupInfo?.groupId ?? "").collection("participants").document(UserDefaults.standard.string(forKey: "uid") ?? "")
+        batch.setData(["groupNickname": participateGroupInfo?.groupNickname ?? ""], forDocument: groupUsersRef)
+        batch.commit() { err in
+            if let err = err {
+                print("Error writing batch \(err)")
+            } else {
+                print("Batch write succeeded.")
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }
     }
     
     private func observeKeboardHeight() {
