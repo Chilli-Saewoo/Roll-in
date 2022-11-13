@@ -20,7 +20,8 @@ final class Group: Codable, Comparable {
     let code: String
     let timestamp: Date
     var groupId: String?
-    var participants: [(String, String)]?
+    var groupNickname: String?
+    var participants: [(String, String)] = []
     
     enum CodingKeys: String, CodingKey {
         case groupName

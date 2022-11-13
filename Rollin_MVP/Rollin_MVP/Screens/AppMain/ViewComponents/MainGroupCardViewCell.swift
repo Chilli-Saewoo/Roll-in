@@ -27,6 +27,12 @@ final class MainGroupCardViewCell: UICollectionViewCell {
         setIconContents(data: info.groupIcon)
         groupNameLabel.text = info.groupName
         createdDateLabel.text = info.timestamp.toString_ConfirmCreatingGroup()
+        let imageAttachment = NSTextAttachment()
+        imageAttachment.image = UIImage(systemName: "person.fill")?.withTintColor(.systemBlack)
+        imageAttachment.setImageHeight(height: 10)
+        let fullString = NSMutableAttributedString(attachment: imageAttachment)
+        fullString.append(NSMutableAttributedString(string: " \(info.participants.count)명 참여중"))
+        participateCountLabel.attributedText = fullString
     }
     
     required init?(coder: NSCoder) {
@@ -41,6 +47,7 @@ final class MainGroupCardViewCell: UICollectionViewCell {
             participateCountLabel.topAnchor.constraint(equalTo: createdDateLabel.bottomAnchor, constant: 4),
         ])
         participateCountLabel.font = .systemFont(ofSize: 12, weight: .regular)
+        participateCountLabel.textColor = .systemBlack
     }
     
     private func setIconContents(data: String) {

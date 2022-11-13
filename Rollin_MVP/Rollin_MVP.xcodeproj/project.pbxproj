@@ -28,6 +28,7 @@
 		AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */; };
 		AB5BD3A629206C0D00833126 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5BD3A529206C0D00833126 /* Group.swift */; };
 		AB5BD3A82920767500833126 /* MainGroupCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5BD3A72920767500833126 /* MainGroupCardViewCell.swift */; };
+		AB5BD3AA2920927700833126 /* NSTextAttachment+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5BD3A92920927700833126 /* NSTextAttachment+.swift */; };
 		AB7E6B0829201795001F6716 /* PostRollingPaperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E6B0729201795001F6716 /* PostRollingPaperModel.swift */; };
 		AB7E6B0A292017C4001F6716 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB7E6B09292017C4001F6716 /* GoogleService-Info.plist */; };
 		ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */; };
@@ -103,6 +104,7 @@
 		AB5BD3A429202D0A00833126 /* SetNickNameWhileLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNickNameWhileLoginViewController.swift; sourceTree = "<group>"; };
 		AB5BD3A529206C0D00833126 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		AB5BD3A72920767500833126 /* MainGroupCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGroupCardViewCell.swift; sourceTree = "<group>"; };
+		AB5BD3A92920927700833126 /* NSTextAttachment+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextAttachment+.swift"; sourceTree = "<group>"; };
 		AB7E6B0729201795001F6716 /* PostRollingPaperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRollingPaperModel.swift; sourceTree = "<group>"; };
 		AB7E6B09292017C4001F6716 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				790FF813291E5733004BDA20 /* UIViewController+.swift */,
 				AB032AA3291E872400B22C13 /* String+.swift */,
 				ABCFC80E291FEAC7006DB26B /* Int+.swift */,
+				AB5BD3A92920927700833126 /* NSTextAttachment+.swift */,
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				ABB96EC0291C244E003C5B1D /* SetThemeViewController.swift in Sources */,
 				ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */,
 				790FF814291E5733004BDA20 /* UIViewController+.swift in Sources */,
+				AB5BD3AA2920927700833126 /* NSTextAttachment+.swift in Sources */,
 				ABB96EB3291AC71F003C5B1D /* ConfirmGroupCardView.swift in Sources */,
 				ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */,
 				AB032AAB291E875E00B22C13 /* SelectIconCell.swift in Sources */,
