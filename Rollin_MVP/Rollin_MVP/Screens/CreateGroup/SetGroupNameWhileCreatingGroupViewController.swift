@@ -104,6 +104,12 @@ private extension SetGroupNameWhileCreatingGroupViewController {
         cancelButton.addTarget(self, action: #selector(removeTextField), for: .touchUpInside)
     }
     
+    func setNavigationBarBackButton() {
+        let backBarButtonItem = UIBarButtonItem(title: "그룹 이름 입력", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = .black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+    }
+    
     @objc func removeTextField() {
         nameTextField.text = ""
         self.nextButton.isEnabled = false
@@ -157,11 +163,5 @@ private extension SetGroupNameWhileCreatingGroupViewController {
         nextButton.setTitle("다음", for: .normal)
         nextButton.setTitleColor(.inactiveTextGray, for: .disabled)
         nextButton.isEnabled = false
-    }
-    
-    func setNavigationBarBackButton() {
-        let backBarButtonItem = UIBarButtonItem(title: "그룹 이름 입력", style: .plain, target: self, action: nil)
-        backBarButtonItem.tintColor = .black
-        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
 }
