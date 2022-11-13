@@ -14,7 +14,7 @@ import CryptoKit
 final class LoginViewController: UIViewController {
     let db = Firestore.firestore()
     private lazy var titleMessageLabel = UILabel()
-    private let appleButton = ASAuthorizationAppleIDButton(type: .continue, style: .black)
+    private let appleButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,12 +101,12 @@ private extension LoginViewController {
     
     func setupAppleButtonLayout() {
         view.addSubview(appleButton)
-        appleButton.cornerRadius = 12
+        appleButton.cornerRadius = 4
         appleButton.translatesAutoresizingMaskIntoConstraints = false
-        appleButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        appleButton.widthAnchor.constraint(equalToConstant: 235).isActive = true
+        appleButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        appleButton.widthAnchor.constraint(equalToConstant: 335).isActive = true
         appleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        appleButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70).isActive = true
+        appleButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34).isActive = true
     }
 }
 
