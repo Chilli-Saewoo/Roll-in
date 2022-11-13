@@ -1,14 +1,16 @@
 //
-//  SetNicknameWhileCreatingGroupViewController.swift
+//  SetNicknameWhileParticipateViewController.swift
 //  Rollin_MVP
 //
-//  Created by Noah Park on 2022/11/09.
+//  Created by Seungyun Kim on 2022/11/14.
 //
 
 import UIKit
+import FirebaseFirestore
 
-final class SetNicknameWhileCreatingGroupViewController: UIViewController {
-    var creatingGroupInfo: CreatingGroupInfo?
+class SetNicknameWhileParticipateViewController: UIViewController {
+    private let db = Firestore.firestore()
+    var participateGroupInfo: ParticipateGroupInfo?
     private lazy var titleMessageLabel = UILabel()
     private lazy var nameTextField = UITextField()
     private lazy var textFieldUnderLineView = UIView()
@@ -41,12 +43,21 @@ final class SetNicknameWhileCreatingGroupViewController: UIViewController {
     
     @objc func nextButtonPressed(_ sender: UIButton) {
         guard let text = nameTextField.text else { return }
-        creatingGroupInfo?.nickName = text
-        creatingGroupInfo?.createdTime = Date()
-        creatingGroupInfo?.code = 8.randomString()
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SetTheme") as? SetThemeViewController ?? UIViewController()
-        (secondViewController as? SetThemeViewController)?.creatingGroupInfo = creatingGroupInfo
-        self.navigationController?.pushViewController(secondViewController, animated: true)
+        participateGroupInfo?.groupNickname = text
+        let batch = db.batch()
+        let userGroupsRef = db.collection("userGroups").document(UserDefaults.standard.string(forKey: "uid") ?? "")
+        batch.setData(["division": FieldValue.arrayUnion([participateGroupInfo?.groupId ?? ""])],
+                                     forDocument: userGroupsRef, merge: true)
+        let groupUsersRef = db.collection("groupUsers").document(participateGroupInfo?.groupId ?? "").collection("participants").document(UserDefaults.standard.string(forKey: "uid") ?? "")
+        batch.setData(["groupNickname": participateGroupInfo?.groupNickname ?? ""], forDocument: groupUsersRef)
+        batch.commit() { err in
+            if let err = err {
+                print("Error writing batch \(err)")
+            } else {
+                print("Batch write succeeded.")
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }
     }
     
     private func observeKeboardHeight() {
@@ -62,7 +73,7 @@ final class SetNicknameWhileCreatingGroupViewController: UIViewController {
     }
 }
 
-extension SetNicknameWhileCreatingGroupViewController: UITextFieldDelegate {
+extension SetNicknameWhileParticipateViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let char = string.cString(using: String.Encoding.utf8) {
             let isBackSpace = strcmp(char, "\\b")
@@ -89,7 +100,7 @@ extension SetNicknameWhileCreatingGroupViewController: UITextFieldDelegate {
     }
 }
 
-private extension SetNicknameWhileCreatingGroupViewController {
+private extension SetNicknameWhileParticipateViewController {
     func setCancelButton() {
         view.addSubview(cancelButton)
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
@@ -153,7 +164,7 @@ private extension SetNicknameWhileCreatingGroupViewController {
             nextButton.heightAnchor.constraint(equalToConstant: 60),
         ])
         nextButton.backgroundColor = .gray
-        nextButton.setTitle("다음", for: .normal)
+        nextButton.setTitle("시작하기", for: .normal)
         nextButton.isEnabled = false
     }
 }

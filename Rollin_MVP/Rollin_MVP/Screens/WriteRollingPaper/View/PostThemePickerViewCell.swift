@@ -9,8 +9,6 @@ import UIKit
 
 final class PostThemePickerViewCell: UICollectionViewCell {
     
-    var isSelectedTheme: Bool = false
-    
     var themeLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .red

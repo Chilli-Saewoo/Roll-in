@@ -1,14 +1,15 @@
 //
-//  SetNicknameWhileCreatingGroupViewController.swift
+//  SetNickNameWhileLoginViewController.swift
 //  Rollin_MVP
 //
-//  Created by Noah Park on 2022/11/09.
+//  Created by Noah Park on 2022/11/13.
 //
 
 import UIKit
+import FirebaseFirestore
 
-final class SetNicknameWhileCreatingGroupViewController: UIViewController {
-    var creatingGroupInfo: CreatingGroupInfo?
+final class SetNicknameWhileLoginViewController: UIViewController {
+    let creatingGroupInfo = CreatingGroupInfo()
     private lazy var titleMessageLabel = UILabel()
     private lazy var nameTextField = UITextField()
     private lazy var textFieldUnderLineView = UIView()
@@ -16,7 +17,7 @@ final class SetNicknameWhileCreatingGroupViewController: UIViewController {
     private lazy var cancelButton = UIButton()
     private var keyboardHeight: CGFloat = 0 {
         didSet {
-            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: keyboardHeight * -1) .isActive = true
+            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: keyboardHeight * -1).isActive = true
         }
     }
     
@@ -33,20 +34,35 @@ final class SetNicknameWhileCreatingGroupViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         observeKeboardHeight()
         nameTextField.becomeFirstResponder()
+        self.navigationItem.hidesBackButton = true
     }
     
     private func setNextButtonAction() {
         nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
     }
     
+    private func setNicknameUserDefault() {
+        UserDefaults.standard.set(nameTextField.text, forKey: "nickname")
+    }
+    
     @objc func nextButtonPressed(_ sender: UIButton) {
-        guard let text = nameTextField.text else { return }
-        creatingGroupInfo?.nickName = text
-        creatingGroupInfo?.createdTime = Date()
-        creatingGroupInfo?.code = 8.randomString()
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SetTheme") as? SetThemeViewController ?? UIViewController()
-        (secondViewController as? SetThemeViewController)?.creatingGroupInfo = creatingGroupInfo
-        self.navigationController?.pushViewController(secondViewController, animated: true)
+        let db = Firestore.firestore()
+        let email = UserDefaults.standard.string(forKey: "userEmail")
+        let uid = UserDefaults.standard.string(forKey: "uid") ?? ""
+        db.collection("users").document(uid).setData([
+            "email": email ?? "",
+            "usernickname": nameTextField.text ?? "",
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("닉네임 생성")
+                self.setNicknameUserDefault()
+            }
+        }
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") else {return}
+                
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func observeKeboardHeight() {
@@ -62,7 +78,7 @@ final class SetNicknameWhileCreatingGroupViewController: UIViewController {
     }
 }
 
-extension SetNicknameWhileCreatingGroupViewController: UITextFieldDelegate {
+extension SetNicknameWhileLoginViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let char = string.cString(using: String.Encoding.utf8) {
             let isBackSpace = strcmp(char, "\\b")
@@ -70,6 +86,7 @@ extension SetNicknameWhileCreatingGroupViewController: UITextFieldDelegate {
                 if range.location == 0 && range.length != 0 {
                     self.nextButton.isEnabled = false
                     self.nextButton.backgroundColor = .inactiveBgGray
+                    self.nextButton.setTitle("다음", for: .normal)
                     self.nextButton.setTitleColor(.inactiveTextGray, for: .disabled)
                 }
                 return true
@@ -79,17 +96,20 @@ extension SetNicknameWhileCreatingGroupViewController: UITextFieldDelegate {
         if range.location == 0 && range.length != 0 {
             self.nextButton.isEnabled = false
             self.nextButton.backgroundColor = .inactiveBgGray
+            self.nextButton.setTitle("다음", for: .normal)
             self.nextButton.setTitleColor(.inactiveTextGray, for: .disabled)
         } else {
             self.nextButton.isEnabled = true
             self.nextButton.backgroundColor = .systemBlack
+            self.nextButton.setTitle("시작하기", for: .normal)
             self.nextButton.setTitleColor(.white, for: .normal)
         }
         return true
+        
     }
 }
 
-private extension SetNicknameWhileCreatingGroupViewController {
+private extension SetNicknameWhileLoginViewController {
     func setCancelButton() {
         view.addSubview(cancelButton)
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
@@ -118,9 +138,10 @@ private extension SetNicknameWhileCreatingGroupViewController {
             titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
             titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
-        titleMessageLabel.text = "그룹 내 닉네임을 입력해주세요"
+        titleMessageLabel.text = "닉네임을 설정해주세요"
         titleMessageLabel.font = .systemFont(ofSize: 24, weight: .bold)
         titleMessageLabel.textColor = .systemBlack
+        
     }
     
     func setNameTextFieldLayout() {
@@ -128,8 +149,8 @@ private extension SetNicknameWhileCreatingGroupViewController {
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             nameTextField.topAnchor.constraint(equalTo: titleMessageLabel.bottomAnchor, constant: 20),
-            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
-            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23),
+            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -23),
         ])
         
         view.addSubview(textFieldUnderLineView)
@@ -150,10 +171,11 @@ private extension SetNicknameWhileCreatingGroupViewController {
             nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
             nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            nextButton.heightAnchor.constraint(equalToConstant: 60),
+            nextButton.heightAnchor.constraint(equalToConstant: 56),
         ])
-        nextButton.backgroundColor = .gray
+        nextButton.backgroundColor = .inactiveBgGray
         nextButton.setTitle("다음", for: .normal)
+        nextButton.setTitleColor(.inactiveTextGray, for: .disabled)
         nextButton.isEnabled = false
     }
 }

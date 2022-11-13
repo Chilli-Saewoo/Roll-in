@@ -20,7 +20,7 @@ final class PostView: UIView {
     
     weak var delegate: WriteRollingPaperViewControllerDelegate?
     
-    private let privateSwitch: UISwitch = {
+    let privateSwitch: UISwitch = {
         let privateSwitch = UISwitch()
         privateSwitch.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
         privateSwitch.onTintColor = .systemBlack
