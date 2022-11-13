@@ -40,6 +40,7 @@
 		AB7E6B0829201795001F6716 /* PostRollingPaperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E6B0729201795001F6716 /* PostRollingPaperModel.swift */; };
 		ABA0343B292193AB00A50471 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABA0343A292193AB00A50471 /* GoogleService-Info.plist */; };
 		ABA0343E2921946000A50471 /* VerticalCardSwiper in Frameworks */ = {isa = PBXBuildFile; productRef = ABA0343D2921946000A50471 /* VerticalCardSwiper */; };
+		ABA034412921969C00A50471 /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA034402921969C00A50471 /* GroupDetailViewController.swift */; };
 		ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */; };
 		ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */; };
 		ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */; };
@@ -126,6 +127,7 @@
 		AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGroupNameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
 		AB7E6B0729201795001F6716 /* PostRollingPaperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRollingPaperModel.swift; sourceTree = "<group>"; };
 		ABA0343A292193AB00A50471 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ABA034402921969C00A50471 /* GroupDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailViewController.swift; sourceTree = "<group>"; };
 		ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
 		ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingGroupInfo.swift; sourceTree = "<group>"; };
 		ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmGroupViewController.swift; sourceTree = "<group>"; };
@@ -298,6 +300,14 @@
 			path = PostRollingPaper;
 			sourceTree = "<group>";
 		};
+		ABA0343F2921968400A50471 /* GroupDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				ABA034402921969C00A50471 /* GroupDetailViewController.swift */,
+			);
+			path = GroupDetailView;
+			sourceTree = "<group>";
+		};
 		ABB96EAC291AB71B003C5B1D /* CreatingGroup */ = {
 			isa = PBXGroup;
 			children = (
@@ -466,6 +476,7 @@
 		ABDBD2EF291A4307008FB3A6 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				ABA0343F2921968400A50471 /* GroupDetailView */,
 				79340B38292172390097D111 /* ParticipateGroup */,
 				79340B2C292171AD0097D111 /* AppMain */,
 				F6633249292033F300A7310A /* LoginSetNickName */,
@@ -694,6 +705,7 @@
 				AB437573291A442F00C3688D /* Model_example.swift in Sources */,
 				AB032AA0291E870300B22C13 /* IconSet.swift in Sources */,
 				ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */,
+				ABA034412921969C00A50471 /* GroupDetailViewController.swift in Sources */,
 				79BAA9AF291B732F00C5636E /* PostThemePickerView.swift in Sources */,
 				790FF81D291E7195004BDA20 /* RollingPaperPostAPI.swift in Sources */,
 				ABCFC8372920158A006DB26B /* PostRollingPaperLayout.swift in Sources */,
@@ -882,7 +894,7 @@
 				CODE_SIGN_ENTITLEMENTS = Rollin_MVP/Rollin_MVP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8QSTXVD8H9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
@@ -917,7 +929,7 @@
 				CODE_SIGN_ENTITLEMENTS = Rollin_MVP/Rollin_MVP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8QSTXVD8H9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";

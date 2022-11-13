@@ -79,6 +79,12 @@ private extension MainViewController {
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "GroupDetail") as? GroupDetailViewController ?? UIViewController()
+        (secondViewController as? GroupDetailViewController)?.group = groups[indexPath.row]
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return groups.count
     }

@@ -15,32 +15,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private let db = Firestore.firestore()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        guard let _ = (scene as? UIWindowScene) else { return }
-//        self.window = UIWindow(windowScene: scene)
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        //        try! FirebaseAuth.Auth.auth().signOut()
-//        if let user = FirebaseAuth.Auth.auth().currentUser {
-//            UserDefaults.standard.set(user.email ?? "", forKey: "userEmail")
-//            UserDefaults.standard.set(user.uid, forKey: "uid")
-//            let userRef = self.db.collection("users").document(UserDefaults.standard.string(forKey: "uid") ?? "")
-//            userRef.getDocument { (document, error) in
-//                if let document = document, document.exists {
-//                    UserDefaults.standard.set(document.data()?["usernickname"] ?? "익명의 유저", forKey: "nickname")
-//                    print("로그인 되어 있음", user.email ?? "-")
-//                    let vc = storyboard.instantiateViewController(withIdentifier: "MainView")
-//                    let navigation = UINavigationController(rootViewController: vc)
-//                    self.window?.rootViewController = navigation
-//                    self.window?.makeKeyAndVisible()
-//                } else {
-//                    print("Document does not exist")
-//                }
-//            }
-//        } else {
-//            let vc = storyboard.instantiateViewController(withIdentifier: "PostViewController")
-//            let navigation = UINavigationController(rootViewController: vc)
-//            self.window?.rootViewController = navigation
-//            self.window?.makeKeyAndVisible()
-//        }
+        guard let scene = (scene as? UIWindowScene) else { return }
+        self.window = UIWindow(windowScene: scene)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)        //        try! FirebaseAuth.Auth.auth().signOut()
+        if let user = FirebaseAuth.Auth.auth().currentUser {
+            UserDefaults.standard.set(user.email ?? "", forKey: "userEmail")
+            UserDefaults.standard.set(user.uid, forKey: "uid")
+            let userRef = self.db.collection("users").document(UserDefaults.standard.string(forKey: "uid") ?? "")
+            userRef.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    UserDefaults.standard.set(document.data()?["usernickname"] ?? "익명의 유저", forKey: "nickname")
+                    print("로그인 되어 있음", user.email ?? "-")
+                    let vc = storyboard.instantiateViewController(withIdentifier: "MainView")
+                    let navigation = UINavigationController(rootViewController: vc)
+                    self.window?.rootViewController = navigation
+                    self.window?.makeKeyAndVisible()
+                } else {
+                    print("Document does not exist")
+                }
+            }
+        } else {
+            let vc = storyboard.instantiateViewController(withIdentifier: "PostViewController")
+            let navigation = UINavigationController(rootViewController: vc)
+            self.window?.rootViewController = navigation
+            self.window?.makeKeyAndVisible()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
