@@ -11,12 +11,19 @@ class PostViewController: UIViewController {
 
     var collectionView: UICollectionView!
     var dataSource: [PostRollingPaperModel] = []
+    private lazy var titleMessageLabel = UILabel()
+    private let writeButton = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupDataSource()
         configurePostViewController()
         setupPostViewControllerLayout()
+        setTitleMessageLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = true
     }
     
     private func setupDataSource() {
@@ -36,21 +43,36 @@ private extension PostViewController {
         collectionView.dataSource = self
         collectionView.register(PostRollingPaperCollectionViewCell.self, forCellWithReuseIdentifier: PostRollingPaperCollectionViewCell.id)
     }
+
+    func setTitleMessageLayout() {
+        view.addSubview(titleMessageLabel)
+        titleMessageLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
+            titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+        ])
+        titleMessageLabel.setTextWithLineHeight(text: "Key의 롤링페이퍼", lineHeight: 40)
+        titleMessageLabel.font = .systemFont(ofSize: 26, weight: .bold)
+        titleMessageLabel.numberOfLines = 0
+    }
+    
+    func setupWriteButtonLayout() {
+        view.addSubview(writeButton)
+        let configuration = UIImage.SymbolConfiguration(pointSize: 24)
+    }
     
     private func setupPostViewControllerLayout() {
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 10).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -10).isActive = true
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 500).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 8).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -8).isActive = true
+        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 }
 
 extension PostViewController: PostRollingPaperLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat {
-        let cellWidth: CGFloat = (view.bounds.width - 4) / 2
         let imageHeight = dataSource[indexPath.item].image.size.height
         let labelHeight = dataSource[indexPath.item].commentString.heightWithConstrainedWidth(width: 100, font: UIFont.systemFont(ofSize: 15, weight: .bold))
         print(imageHeight)
