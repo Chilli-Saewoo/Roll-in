@@ -104,7 +104,8 @@ private extension LoginViewController {
         appleButton.cornerRadius = 4
         appleButton.translatesAutoresizingMaskIntoConstraints = false
         appleButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
-        appleButton.widthAnchor.constraint(equalToConstant: 335).isActive = true
+        appleButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        appleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         appleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         appleButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34).isActive = true
     }
