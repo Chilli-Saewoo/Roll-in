@@ -10,6 +10,7 @@ import UIKit
 protocol AddGroupButtonBackgroundDelegate: AnyObject {
     func showActionSheet(sheet: UIAlertController)
     func createActionSelected()
+    func participateActionSelected()
 }
 
 final class AddGroupButtonBackgroundView: UIView {
@@ -35,10 +36,12 @@ final class AddGroupButtonBackgroundView: UIView {
     private func setActionSheet() {
         let participateAction = UIAlertAction(title: "참가하기", style: .destructive, handler: {
             (alert: UIAlertAction!) -> Void in
+            if let delegate = self.delegate {
+                delegate.participateActionSelected()
+            }
         })
         let createAction = UIAlertAction(title: "생성하기", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
-            print("생성하기")
             if let delegate = self.delegate {
                 delegate.createActionSelected()
             }

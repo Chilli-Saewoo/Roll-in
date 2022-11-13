@@ -91,6 +91,11 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 extension MainViewController: AddGroupButtonBackgroundDelegate {
+    func participateActionSelected() {
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SearchGroupWithCode") as? SearchGroupWithCodeViewController ?? UIViewController()
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+    }
+    
     func createActionSelected() {
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SetGroupNameWhileCreatingGroup") as? SetGroupNameWhileCreatingGroupViewController ?? UIViewController()
         self.navigationController?.pushViewController(secondViewController, animated: true)
