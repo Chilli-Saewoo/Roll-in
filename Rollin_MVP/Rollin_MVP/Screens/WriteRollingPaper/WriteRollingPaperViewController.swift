@@ -9,6 +9,10 @@ import UIKit
 import AVFoundation
 import Photos
 
+import FirebaseFirestore
+import FirebaseStorage
+import Firebase
+
 final class WriteRollingPaperViewController: UIViewController {
     
     private let postThemePicerkView = PostThemePickerView()
@@ -17,6 +21,10 @@ final class WriteRollingPaperViewController: UIViewController {
     private lazy var authorizationOfCameraAlert: () = makeAlert(title: "알림", message: "카메라 접근이 허용되어 있지 않습니다.")
     private lazy var authorizationOfPhotoLibraryAlert: () = makeAlert(title: "알림", message: "라이브러리 접근이 허용되어 있지 않습니다.")
     private let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5
+    private let rollingPaperPostAPI = RollingPaperPostAPI()
+    private var isBeingSaved: Bool = false
+    var writer: String = "Nick"
+    private var postImage: UIImage = UIImage()
     
     private let confirmButton: UIButton = {
         let button = UIButton()
@@ -104,7 +112,26 @@ final class WriteRollingPaperViewController: UIViewController {
     
     @objc
     private func touchUpInsideToConfirmPost() {
-        print("Confirmed!!")
+        Task {
+            if !isBeingSaved {
+                isBeingSaved = true
+                FirebaseStorageManager.uploadImage(image: postImage, pathRoot: "El6poAIPBKfuPgLh5mWNNrB6ySw2") { url in
+                    guard let url = url else { return }
+                    UserDefaults.standard.set(url.absoluteString, forKey: "myImageUrl")
+                    let absoluteUrl = url.absoluteString
+                    let rollingPaperPostData = RollingPaperPostData(from: self.writer,
+                                                                    postTheme: self.postThemePicerkView.selectedTheme,
+                                                                    message: self.postView.textView.text,
+                                                                    image: absoluteUrl,
+                                                                    isPublic: self.postView.privateSwitch.isOn,
+                                                                    timeStamp: FirebaseFirestore.Timestamp())
+                    
+                    let rollingPaperPostAPI = RollingPaperPostAPI()
+                    rollingPaperPostAPI.writePost(document: rollingPaperPostData, imageUrl: absoluteUrl)
+                }
+                isBeingSaved = false
+            }
+        }
     }
     
     private func setupLayout() {
@@ -116,7 +143,7 @@ final class WriteRollingPaperViewController: UIViewController {
             postThemePicerkView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -21),
             postThemePicerkView.heightAnchor.constraint(equalToConstant: postThemePickerItemWidth + 25)
         ])
-    
+        
         view.addSubview(postView)
         postView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -171,6 +198,7 @@ extension WriteRollingPaperViewController: UIImagePickerControllerDelegate, UINa
             postView.addedImageButton.layer.cornerRadius = 4
             postView.addedImageButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
             postView.addedImageButton.clipsToBounds = true
+            postImage = image
         }
         
         if postView.isTextEdited && postView.isPhotoAdded {
