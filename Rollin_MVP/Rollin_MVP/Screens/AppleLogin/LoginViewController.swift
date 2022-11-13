@@ -13,12 +13,14 @@ import CryptoKit
 
 final class LoginViewController: UIViewController {
     let db = Firestore.firestore()
+    private lazy var titleMessageLabel = UILabel()
     private let appleButton = ASAuthorizationAppleIDButton(type: .continue, style: .black)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAppleButtonLayout()
         setAppleLoginButtonAction()
+        setTitleMessageLayout() 
     }
     
     private var currentNonce: String?
@@ -84,6 +86,19 @@ final class LoginViewController: UIViewController {
 }
 
 private extension LoginViewController {
+    func setTitleMessageLayout() {
+        view.addSubview(titleMessageLabel)
+        titleMessageLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
+            titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+        ])
+        titleMessageLabel.setTextWithLineHeight(text: "간편하게 로그인하고\n롤링페이퍼를 이용해보세요", lineHeight: 40)
+        titleMessageLabel.font = .systemFont(ofSize: 26, weight: .bold)
+        titleMessageLabel.numberOfLines = 0
+        
+    }
+    
     func setupAppleButtonLayout() {
         view.addSubview(appleButton)
         appleButton.cornerRadius = 12
