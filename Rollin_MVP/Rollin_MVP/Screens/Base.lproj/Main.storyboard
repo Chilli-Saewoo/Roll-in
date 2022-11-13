@@ -55,6 +55,21 @@
             </objects>
             <point key="canvasLocation" x="3649" y="-672"/>
         </scene>
+        <!--Confirm Group While Participate View Controller-->
+        <scene sceneID="KAS-Im-xZv">
+            <objects>
+                <viewController storyboardIdentifier="ConfirmGroupWhileParticipate" id="xpn-8o-RrT" customClass="ConfirmGroupWhileParticipateViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="voW-q8-xAC">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="0LO-Nv-mxa"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PPM-RO-Tv5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4368" y="-673"/>
+        </scene>
         <!--Set Group Name While Creating Group View Controller-->
         <scene sceneID="imJ-Cw-CZk">
             <objects>

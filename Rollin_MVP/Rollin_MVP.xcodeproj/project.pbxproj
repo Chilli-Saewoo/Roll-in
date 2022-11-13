@@ -30,6 +30,8 @@
 		AB5BD3A82920767500833126 /* MainGroupCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5BD3A72920767500833126 /* MainGroupCardViewCell.swift */; };
 		AB5BD3AA2920927700833126 /* NSTextAttachment+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5BD3A92920927700833126 /* NSTextAttachment+.swift */; };
 		AB5BD3AD2920A8FD00833126 /* SearchGroupWithCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5BD3AC2920A8FD00833126 /* SearchGroupWithCodeViewController.swift */; };
+		AB5BD3AF2920ADDF00833126 /* ParticipateGroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5BD3AE2920ADDF00833126 /* ParticipateGroupInfo.swift */; };
+		AB5BD3B12920B4B100833126 /* ConfirmGroupWhileParticipateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5BD3B02920B4B100833126 /* ConfirmGroupWhileParticipateViewController.swift */; };
 		AB7E6B0829201795001F6716 /* PostRollingPaperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E6B0729201795001F6716 /* PostRollingPaperModel.swift */; };
 		AB7E6B0A292017C4001F6716 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AB7E6B09292017C4001F6716 /* GoogleService-Info.plist */; };
 		ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */; };
@@ -107,6 +109,8 @@
 		AB5BD3A72920767500833126 /* MainGroupCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGroupCardViewCell.swift; sourceTree = "<group>"; };
 		AB5BD3A92920927700833126 /* NSTextAttachment+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextAttachment+.swift"; sourceTree = "<group>"; };
 		AB5BD3AC2920A8FD00833126 /* SearchGroupWithCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupWithCodeViewController.swift; sourceTree = "<group>"; };
+		AB5BD3AE2920ADDF00833126 /* ParticipateGroupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateGroupInfo.swift; sourceTree = "<group>"; };
+		AB5BD3B02920B4B100833126 /* ConfirmGroupWhileParticipateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmGroupWhileParticipateViewController.swift; sourceTree = "<group>"; };
 		AB7E6B0729201795001F6716 /* PostRollingPaperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRollingPaperModel.swift; sourceTree = "<group>"; };
 		AB7E6B09292017C4001F6716 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				AB5BD3AC2920A8FD00833126 /* SearchGroupWithCodeViewController.swift */,
+				AB5BD3B02920B4B100833126 /* ConfirmGroupWhileParticipateViewController.swift */,
 			);
 			path = ParticiapteGroup;
 			sourceTree = "<group>";
@@ -422,6 +427,7 @@
 				ABB96EAC291AB71B003C5B1D /* CreatingGroup */,
 				AB437572291A442F00C3688D /* Model_example.swift */,
 				AB5BD3A529206C0D00833126 /* Group.swift */,
+				AB5BD3AE2920ADDF00833126 /* ParticipateGroupInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -621,6 +627,7 @@
 				ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */,
 				AB5BD3AD2920A8FD00833126 /* SearchGroupWithCodeViewController.swift in Sources */,
 				790FF814291E5733004BDA20 /* UIViewController+.swift in Sources */,
+				AB5BD3AF2920ADDF00833126 /* ParticipateGroupInfo.swift in Sources */,
 				AB5BD3AA2920927700833126 /* NSTextAttachment+.swift in Sources */,
 				ABB96EB3291AC71F003C5B1D /* ConfirmGroupCardView.swift in Sources */,
 				ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */,
@@ -643,6 +650,7 @@
 				ABCFC8372920158A006DB26B /* PostRollingPaperLayout.swift in Sources */,
 				ABCFC80F291FEAC7006DB26B /* Int+.swift in Sources */,
 				79A9100D291B84B700A0672F /* PostView.swift in Sources */,
+				AB5BD3B12920B4B100833126 /* ConfirmGroupWhileParticipateViewController.swift in Sources */,
 				79BAA9A9291AED9500C5636E /* NSObject+.swift in Sources */,
 				AB032AA4291E872400B22C13 /* String+.swift in Sources */,
 				7980D12E291C3F3F00915C72 /* UIColor+.swift in Sources */,

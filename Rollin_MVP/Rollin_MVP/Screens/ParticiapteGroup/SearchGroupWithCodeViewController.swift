@@ -6,10 +6,11 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 final class SearchGroupWithCodeViewController: UIViewController {
-
-    let creatingGroupInfo = CreatingGroupInfo()
+    private let db = Firestore.firestore()
+    let participateGroupInfo = ParticipateGroupInfo()
     private lazy var titleMessageLabel = UILabel()
     private lazy var nameTextField = UITextField()
     private lazy var textFieldUnderLineView = UIView()
@@ -36,16 +37,50 @@ final class SearchGroupWithCodeViewController: UIViewController {
         observeKeboardHeight()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.nextButton.isEnabled = true
+    }
+    
     private func setNextButtonAction() {
         nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
     }
     
     @objc func nextButtonPressed(_ sender: UIButton) {
         guard let text = nameTextField.text else { return }
-        creatingGroupInfo.groupName = text
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SetNicknameWhileCreatingGroup") as? SetNicknameWhileCreatingGroupViewController ?? UIViewController()
-        (secondViewController as? SetNicknameWhileCreatingGroupViewController)?.creatingGroupInfo = creatingGroupInfo
-        self.navigationController?.pushViewController(secondViewController, animated: true)
+        searchGroupWithCode(code: text) { document in
+            self.participateGroupInfo.code = text
+            self.participateGroupInfo.groupId = document.documentID
+            self.participateGroupInfo.groupName = document.data()["groupName"] as? String ?? ""
+            self.participateGroupInfo.timeStamp = document.data()["timestamp"] as? Date ?? Date()
+            self.participateGroupInfo.groupIcon = document.data()["groupIcon"] as? String ?? ""
+            self.participateGroupInfo.groupTheme = document.data()["groupTheme"] as? String ?? ""
+            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmGroupWhileParticipate") as? ConfirmGroupWhileParticipateViewController ?? UIViewController()
+            (secondViewController as? ConfirmGroupWhileParticipateViewController)?.participateGroupInfo = self.participateGroupInfo
+            self.navigationController?.pushViewController(secondViewController, animated: true)
+        }
+
+    }
+    
+    private func searchGroupWithCode(code: String, completion: @escaping (_: QueryDocumentSnapshot) -> Void) {
+        db.collection("groups").whereField("code", isEqualTo: code)
+            .getDocuments() { (querySnapshot, err) in
+                if let err = err {
+                    print("Error getting documents: \(err)")
+                } else {
+                    for document in querySnapshot!.documents {
+                        self.nextButton.isEnabled = false
+                        print("run completion")
+                        completion(document)
+                    }
+                    if querySnapshot!.documents.count == 0 {
+                        let dialogMessage = UIAlertController(title: "존재하지 않는 코드입니다", message: "다른 코드를 입력해보세요\n코드는 8자리입니다", preferredStyle: .alert)
+                        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+                        dialogMessage.addAction(ok)
+                        self.present(dialogMessage, animated: true, completion: nil)
+                        print("alert")
+                    }
+                }
+            }
     }
     
     private func observeKeboardHeight() {
@@ -63,11 +98,10 @@ final class SearchGroupWithCodeViewController: UIViewController {
 
 extension SearchGroupWithCodeViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        print(range.location, range.length)
         if let char = string.cString(using: String.Encoding.utf8) {
             let isBackSpace = strcmp(char, "\\b")
             if isBackSpace == -92 {
-                if (range.location == 0 && range.length != 0) || range.length == 1 {
+                if (range.location == 0 && range.length != 0) {
                     self.nextButton.isEnabled = false
                     self.nextButton.backgroundColor = .inactiveBgGray
                     self.nextButton.setTitleColor(.inactiveTextGray, for: .disabled)
@@ -76,7 +110,7 @@ extension SearchGroupWithCodeViewController: UITextFieldDelegate {
             }
         }
         guard textField.text!.count < 8 else { return false }
-        if (range.location == 0 && range.length != 0) || range.location != 7 {
+        if (range.location == 0 && range.length != 0) {
             self.nextButton.isEnabled = false
             self.nextButton.backgroundColor = .inactiveBgGray
             self.nextButton.setTitleColor(.inactiveTextGray, for: .disabled)
