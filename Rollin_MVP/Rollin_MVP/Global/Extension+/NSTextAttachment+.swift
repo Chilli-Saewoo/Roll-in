@@ -4,7 +4,6 @@
 //
 //  Created by Noah Park on 2022/11/13.
 //
-
 import UIKit
 
 extension NSTextAttachment {
