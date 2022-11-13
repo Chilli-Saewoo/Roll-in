@@ -19,6 +19,7 @@ final class Group: Codable, Comparable {
     let groupIcon: String
     let code: String
     let timestamp: Date
+    var groupId: String?
     var participants: [(String, String)]?
     
     enum CodingKeys: String, CodingKey {

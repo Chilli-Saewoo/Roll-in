@@ -76,6 +76,7 @@ private extension MainViewController {
                                         for document in querySnapshot?.documents ?? [] {
                                             group.participants?.append((document.documentID, document.data()["groupNickname"] as? String ?? ""))
                                         }
+                                        group.groupId = groupId
                                         self.groups.append(group)
                                     }
                                 }
