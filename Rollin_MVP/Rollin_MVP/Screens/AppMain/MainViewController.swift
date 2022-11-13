@@ -13,9 +13,10 @@ final class MainViewController: UIViewController {
     private let db = Firestore.firestore()
     private let mainTitleLabel = UILabel()
     private let addGroupCard = AddGroupButtonBackgroundView()
+    private var groupsCollectionView: UICollectionView!
     private var groups: [Group] = [] {
         didSet {
-            print(groups)
+            groupsCollectionView.reloadData()
         }
     }
     
@@ -24,6 +25,9 @@ final class MainViewController: UIViewController {
         setMainTitleLabel()
         setAddGroupCard()
         addGroupCard.delegate = self
+        configureCollectionView()
+        registerCollectionView()
+        collectionViewDelegate()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -38,6 +42,51 @@ final class MainViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+}
+
+private extension MainViewController {
+    func configureCollectionView() {
+        let layout = UICollectionViewFlowLayout()
+        let spacing: CGFloat = 12
+        let width: CGFloat = UIScreen.main.bounds.width - 40
+        let height: CGFloat = 100
+        layout.itemSize = CGSize(width: width, height: height)
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = spacing
+        layout.minimumInteritemSpacing = spacing
+        groupsCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        self.view.addSubview(groupsCollectionView)
+        groupsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            groupsCollectionView.topAnchor.constraint(equalTo: addGroupCard.bottomAnchor, constant: 12),
+            groupsCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+            groupsCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+            groupsCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+        ])
+        groupsCollectionView.backgroundColor =  .clear
+    }
+    
+        func registerCollectionView() {
+            groupsCollectionView.register(MainGroupCardViewCell.classForCoder(), forCellWithReuseIdentifier: "mainGroupCard")
+        }
+            
+        func collectionViewDelegate() {
+            groupsCollectionView.delegate = self
+            groupsCollectionView.dataSource = self
+        }
+}
+
+extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return groups.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = groupsCollectionView.dequeueReusableCell(withReuseIdentifier: "mainGroupCard", for: indexPath) as? MainGroupCardViewCell ?? MainGroupCardViewCell()
+        cell.setCardView(info: groups[indexPath.row])
+        return cell
     }
 }
 
@@ -78,6 +127,7 @@ private extension MainViewController {
                                         }
                                         group.groupId = groupId
                                         self.groups.append(group)
+                                        self.groups.sort(by: <)
                                     }
                                 }
                                 case .failure(let error):
