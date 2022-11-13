@@ -24,6 +24,7 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         setMainTitleLabel()
         setAddGroupCard()
+        setNavigationBarBackButton()
         addGroupCard.delegate = self
         configureCollectionView()
         registerCollectionView()
@@ -174,6 +175,12 @@ private extension MainViewController {
             addGroupCard.topAnchor.constraint(equalTo: mainTitleLabel.bottomAnchor, constant: 40),
             addGroupCard.heightAnchor.constraint(equalToConstant: 100),
         ])
+    }
+    
+    func setNavigationBarBackButton() {
+        let backBarButtonItem = UIBarButtonItem(title: "롤인 그룹", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = .black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
 }
 

@@ -27,6 +27,7 @@ final class SetGroupNameWhileCreatingGroupViewController: UIViewController {
         setNextButtonLayout()
         setNextButtonAction()
         setCancelButton()
+        setNavigationBarBackButton()
         nameTextField.delegate = self
     }
     
@@ -156,5 +157,11 @@ private extension SetGroupNameWhileCreatingGroupViewController {
         nextButton.setTitle("다음", for: .normal)
         nextButton.setTitleColor(.inactiveTextGray, for: .disabled)
         nextButton.isEnabled = false
+    }
+    
+    func setNavigationBarBackButton() {
+        let backBarButtonItem = UIBarButtonItem(title: "그룹 이름 입력", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = .black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
 }
