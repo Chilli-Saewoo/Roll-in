@@ -43,6 +43,8 @@ class SetNicknameWhileParticipateViewController: UIViewController {
     
     @objc func nextButtonPressed(_ sender: UIButton) {
         guard let text = nameTextField.text else { return }
+        participateGroupInfo?.groupNickname = text
+        // TODO: - participateGroupInfo 바탕으로 firestore 업데이트
     }
     
     private func observeKeboardHeight() {
