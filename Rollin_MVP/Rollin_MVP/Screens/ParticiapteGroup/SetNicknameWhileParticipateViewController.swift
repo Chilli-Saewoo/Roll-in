@@ -1,5 +1,5 @@
 //
-//  SearchGroupWithCodeViewController.swift
+//  SetNicknameWhileParticipateViewController.swift
 //  Rollin_MVP
 //
 //  Created by Noah Park on 2022/11/13.
@@ -8,9 +8,9 @@
 import UIKit
 import FirebaseFirestore
 
-final class SearchGroupWithCodeViewController: UIViewController {
+class SetNicknameWhileParticipateViewController: UIViewController {
     private let db = Firestore.firestore()
-    let participateGroupInfo = ParticipateGroupInfo()
+    var participateGroupInfo: ParticipateGroupInfo?
     private lazy var titleMessageLabel = UILabel()
     private lazy var nameTextField = UITextField()
     private lazy var textFieldUnderLineView = UIView()
@@ -18,13 +18,12 @@ final class SearchGroupWithCodeViewController: UIViewController {
     private lazy var cancelButton = UIButton()
     private var keyboardHeight: CGFloat = 0 {
         didSet {
-            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: keyboardHeight * -1).isActive = true
+            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: keyboardHeight * -1) .isActive = true
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameTextField.becomeFirstResponder()
         setTitleMessageLayout()
         setNameTextFieldLayout()
         setNextButtonLayout()
@@ -35,10 +34,7 @@ final class SearchGroupWithCodeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         observeKeboardHeight()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        self.nextButton.isEnabled = true
+        nameTextField.becomeFirstResponder()
     }
     
     private func setNextButtonAction() {
@@ -46,43 +42,7 @@ final class SearchGroupWithCodeViewController: UIViewController {
     }
     
     @objc func nextButtonPressed(_ sender: UIButton) {
-        self.nextButton.isEnabled = false
         guard let text = nameTextField.text else { return }
-        searchGroupWithCode(code: text) { document in
-            self.participateGroupInfo.code = text
-            self.participateGroupInfo.groupId = document.documentID
-            self.participateGroupInfo.groupName = document.data()["groupName"] as? String ?? ""
-            self.participateGroupInfo.timeStamp = document.data()["timestamp"] as? Date ?? Date()
-            self.participateGroupInfo.groupIcon = document.data()["groupIcon"] as? String ?? ""
-            self.participateGroupInfo.groupTheme = document.data()["groupTheme"] as? String ?? ""
-            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "ConfirmGroupWhileParticipate") as? ConfirmGroupWhileParticipateViewController ?? UIViewController()
-            (secondViewController as? ConfirmGroupWhileParticipateViewController)?.participateGroupInfo = self.participateGroupInfo
-            self.navigationController?.pushViewController(secondViewController, animated: true)
-        }
-
-    }
-    
-    private func searchGroupWithCode(code: String, completion: @escaping (_: QueryDocumentSnapshot) -> Void) {
-        db.collection("groups").whereField("code", isEqualTo: code)
-            .getDocuments() { (querySnapshot, err) in
-                if let err = err {
-                    print("Error getting documents: \(err)")
-                } else {
-                    // 기존에 있는지 검사하고 있으면 중복 alert
-                    for document in querySnapshot!.documents {
-                        print("run completion")
-                        completion(document)
-                    }
-                    if querySnapshot!.documents.count == 0 {
-                        self.nextButton.isEnabled = true
-                        let dialogMessage = UIAlertController(title: "존재하지 않는 코드입니다", message: "다른 코드로 검색해보세요\n코드는 8자리입니다", preferredStyle: .alert)
-                        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
-                        dialogMessage.addAction(ok)
-                        self.present(dialogMessage, animated: true, completion: nil)
-                        print("alert")
-                    }
-                }
-            }
     }
     
     private func observeKeboardHeight() {
@@ -98,12 +58,12 @@ final class SearchGroupWithCodeViewController: UIViewController {
     }
 }
 
-extension SearchGroupWithCodeViewController: UITextFieldDelegate {
+extension SetNicknameWhileParticipateViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let char = string.cString(using: String.Encoding.utf8) {
             let isBackSpace = strcmp(char, "\\b")
             if isBackSpace == -92 {
-                if (range.location == 0 && range.length != 0) {
+                if range.location == 0 && range.length != 0 {
                     self.nextButton.isEnabled = false
                     self.nextButton.backgroundColor = .inactiveBgGray
                     self.nextButton.setTitleColor(.inactiveTextGray, for: .disabled)
@@ -111,8 +71,8 @@ extension SearchGroupWithCodeViewController: UITextFieldDelegate {
                 return true
             }
         }
-        guard textField.text!.count < 8 else { return false }
-        if (range.location == 0 && range.length != 0) {
+        guard textField.text!.count < 20 else { return false }
+        if range.location == 0 && range.length != 0 {
             self.nextButton.isEnabled = false
             self.nextButton.backgroundColor = .inactiveBgGray
             self.nextButton.setTitleColor(.inactiveTextGray, for: .disabled)
@@ -125,7 +85,7 @@ extension SearchGroupWithCodeViewController: UITextFieldDelegate {
     }
 }
 
-private extension SearchGroupWithCodeViewController {
+private extension SetNicknameWhileParticipateViewController {
     func setCancelButton() {
         view.addSubview(cancelButton)
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
@@ -154,10 +114,9 @@ private extension SearchGroupWithCodeViewController {
             titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
             titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
-        titleMessageLabel.text = "그룹 코드를 입력해주세요"
+        titleMessageLabel.text = "그룹 내 닉네임을 입력해주세요"
         titleMessageLabel.font = .systemFont(ofSize: 24, weight: .bold)
         titleMessageLabel.textColor = .systemBlack
-        
     }
     
     func setNameTextFieldLayout() {
@@ -165,8 +124,8 @@ private extension SearchGroupWithCodeViewController {
         nameTextField.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             nameTextField.topAnchor.constraint(equalTo: titleMessageLabel.bottomAnchor, constant: 20),
-            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 23),
-            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -23),
+            nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+            nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
         ])
         
         view.addSubview(textFieldUnderLineView)
@@ -187,11 +146,10 @@ private extension SearchGroupWithCodeViewController {
             nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
             nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            nextButton.heightAnchor.constraint(equalToConstant: 56),
+            nextButton.heightAnchor.constraint(equalToConstant: 60),
         ])
-        nextButton.backgroundColor = .inactiveBgGray
-        nextButton.setTitle("다음", for: .normal)
-        nextButton.setTitleColor(.inactiveTextGray, for: .disabled)
+        nextButton.backgroundColor = .gray
+        nextButton.setTitle("시작하기", for: .normal)
         nextButton.isEnabled = false
     }
 }

@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class ConfirmGroupWhileParticipateViewController: UIViewController {
+    private let db = Firestore.firestore()
     var participateGroupInfo: ParticipateGroupInfo?
     private lazy var titleMessageLabel = UILabel()
     private lazy var confirmGroupCard = ParticipateGroupConfirmCardView(info: participateGroupInfo ?? ParticipateGroupInfo())
@@ -21,14 +23,38 @@ class ConfirmGroupWhileParticipateViewController: UIViewController {
         setCompleteButtonAction()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        fetchParticipantsCount()
+    }
+    
+    private func fetchParticipantsCount() {
+        db.collection("groupUsers").document(participateGroupInfo?.groupId ?? "").collection("participants").getDocuments() { querySnapshot, error in
+            if let err = error {
+                print("Error getting documents: \(err)")
+            } else {
+                var participants = 0
+                for _ in querySnapshot?.documents ?? [] {
+                    participants += 1
+                }
+                let imageAttachment = NSTextAttachment()
+                imageAttachment.image = UIImage(systemName: "person.fill")?.withTintColor(.systemBlack)
+                imageAttachment.setImageHeight(height: 10)
+                let fullString = NSMutableAttributedString(attachment: imageAttachment)
+                fullString.append(NSMutableAttributedString(string: " \(participants)명 참여중"))
+                self.confirmGroupCard.participateCountLabel.attributedText = fullString
+            }
+        }
+
+    }
+    
     private func setCompleteButtonAction() {
         completeButton.addTarget(self, action: #selector(completeButtonPressed), for: .touchUpInside)
     }
     
     @objc func completeButtonPressed(_ sender: UIButton) {
-//        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "GroupCodeSharing") as? GroupCodeSharingViewController ?? UIViewController()
-//        (secondViewController as? GroupCodeSharingViewController)?.creatingGroupInfo = creatingGroupInfo
-//        self.navigationController?.pushViewController(secondViewController, animated: true)
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SetNicknameWhileParticipate") as? SetNicknameWhileParticipateViewController ?? UIViewController()
+        (secondViewController as? SetNicknameWhileParticipateViewController)?.participateGroupInfo = participateGroupInfo
+        self.navigationController?.pushViewController(secondViewController, animated: true)
         
     }
     
@@ -68,7 +94,7 @@ private extension ConfirmGroupWhileParticipateViewController {
             completeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             completeButton.heightAnchor.constraint(equalToConstant: 56),
         ])
-        completeButton.setTitle("완료", for: .normal)
+        completeButton.setTitle("입장하기", for: .normal)
         completeButton.layer.cornerRadius = 4.0
         completeButton.backgroundColor = .systemBlack
     }

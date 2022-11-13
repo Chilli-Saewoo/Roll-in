@@ -12,7 +12,7 @@ final class ParticipateGroupConfirmCardView: UIView {
     private let iconView = UILabel()
     private let groupNameLabel = UILabel()
     private let createdDateLabel = UILabel()
-    private let participateCountLabel = UILabel()
+    let participateCountLabel = UILabel()
     
     init(info: ParticipateGroupInfo) {
         super.init(frame: .zero)
@@ -25,12 +25,6 @@ final class ParticipateGroupConfirmCardView: UIView {
         setIconContents(data: info.groupIcon ?? "")
         groupNameLabel.text = info.groupName ?? ""
         createdDateLabel.text = info.timeStamp?.toString_ConfirmCreatingGroup()
-        //        let imageAttachment = NSTextAttachment()
-        //        imageAttachment.image = UIImage(systemName: "person.fill")?.withTintColor(.systemBlack)
-        //        imageAttachment.setImageHeight(height: 10)
-        //        let fullString = NSMutableAttributedString(attachment: imageAttachment)
-        //        fullString.append(NSMutableAttributedString(string: " \(info.participants.count)명 참여중"))
-        //        participateCountLabel.attributedText = fullString
     }
     
     required init?(coder: NSCoder) {

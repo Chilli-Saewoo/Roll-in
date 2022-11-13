@@ -70,6 +70,21 @@
             </objects>
             <point key="canvasLocation" x="4368" y="-673"/>
         </scene>
+        <!--Set Nickname While Participate View Controller-->
+        <scene sceneID="6r0-HI-Ko5">
+            <objects>
+                <viewController storyboardIdentifier="SetNicknameWhileParticipate" id="Eh2-5W-Ubn" customClass="SetNicknameWhileParticipateViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EiM-Ji-eyG">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="g2j-v7-4IO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xp6-gl-clZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5094" y="-673"/>
+        </scene>
         <!--Set Group Name While Creating Group View Controller-->
         <scene sceneID="imJ-Cw-CZk">
             <objects>
