@@ -27,6 +27,35 @@ final class MainViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        fetchGroups()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+}
+
+extension MainViewController: AddGroupButtonBackgroundDelegate {
+    func createActionSelected() {
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SetGroupNameWhileCreatingGroup") as? SetGroupNameWhileCreatingGroupViewController ?? UIViewController()
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+    }
+    
+    func showActionSheet(sheet: UIAlertController) {
+        present(sheet, animated: true, completion: nil)
+    }
+    
+    
+}
+
+private extension MainViewController {
+    func fetchGroups() {
         if let uid = UserDefaults.standard.string(forKey: "uid") {
             let docRef = db.collection("userGroups").document(uid)
             docRef.getDocument { (document, error) in
@@ -55,37 +84,12 @@ final class MainViewController: UIViewController {
                             }
                         }
                     }
-                    
-                    
                 } else {
                     print("Document does not exist")
                 }
             }
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = true
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
-    }
-}
-
-extension MainViewController: AddGroupButtonBackgroundDelegate {
-    func createActionSelected() {
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "SetGroupNameWhileCreatingGroup") as? SetGroupNameWhileCreatingGroupViewController ?? UIViewController()
-        self.navigationController?.pushViewController(secondViewController, animated: true)
-    }
-    
-    func showActionSheet(sheet: UIAlertController) {
-        present(sheet, animated: true, completion: nil)
-    }
-    
-    
 }
 
 private extension MainViewController {
