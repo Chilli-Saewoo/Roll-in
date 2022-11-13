@@ -109,6 +109,15 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             } else {
                 print("데이터 중복 됨 가입 진행 불가")
                 print("해당 이메일은 이미 가입이 되어있습니다.")
+                let userRef = self.db.collection("users").document(UserDefaults.standard.string(forKey: "uid") ?? "")
+                userRef.getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        UserDefaults.standard.set(document.data()?["usernickname"] ?? "익명의 유저", forKey: "nickname")
+                    } else {
+                        print("Document does not exist")
+                    }
+                }
+
                 guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") else {return}
                 self.navigationController?.pushViewController(viewController, animated: true)
             }

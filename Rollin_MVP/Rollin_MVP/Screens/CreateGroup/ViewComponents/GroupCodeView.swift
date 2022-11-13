@@ -39,7 +39,7 @@ final class GroupCodeView: UIView {
     
     @objc func copyButtonPressed(_ sender: UIButton) {
         UIPasteboard.general.string = self.code
-        let dialogMessage = UIAlertController(title: "코드가 복사되었습니다.", message: "코드를 공유해서 친구들과 롤링페이퍼를 시작해보세요.", preferredStyle: .alert)
+        let dialogMessage = UIAlertController(title: "코드가 복사되었습니다", message: "코드를 공유해서 친구들과 롤링페이퍼를 시작해보세요", preferredStyle: .alert)
         let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
         dialogMessage.addAction(ok)
         if let delegate = delegate {
