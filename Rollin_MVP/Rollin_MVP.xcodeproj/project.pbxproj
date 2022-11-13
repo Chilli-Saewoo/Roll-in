@@ -11,6 +11,16 @@
 		2AF46852291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */; };
 		2AF46854291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46853291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift */; };
 		790FF814291E5733004BDA20 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FF813291E5733004BDA20 /* UIViewController+.swift */; };
+		79340B27292171130097D111 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B26292171130097D111 /* Group.swift */; };
+		79340B29292171420097D111 /* ParticipateGroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B28292171420097D111 /* ParticipateGroupInfo.swift */; };
+		79340B31292171AD0097D111 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B2D292171AD0097D111 /* MainViewController.swift */; };
+		79340B33292171AD0097D111 /* AddGroupButtonBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B30292171AD0097D111 /* AddGroupButtonBackgroundView.swift */; };
+		79340B35292171BD0097D111 /* MainGroupCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B34292171BD0097D111 /* MainGroupCardViewCell.swift */; };
+		79340B37292171F20097D111 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79340B36292171F20097D111 /* GoogleService-Info.plist */; };
+		79340B3A292172580097D111 /* ConfirmGroupWhileParticipateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B39292172580097D111 /* ConfirmGroupWhileParticipateViewController.swift */; };
+		79340B3C292172760097D111 /* SearchGroupWithCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B3B292172760097D111 /* SearchGroupWithCodeViewController.swift */; };
+		79340B3E292172990097D111 /* SetNicknameWhileParticipateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B3D292172990097D111 /* SetNicknameWhileParticipateViewController.swift */; };
+		79340B41292173380097D111 /* ParticipateGroupConfirmCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B40292173380097D111 /* ParticipateGroupConfirmCardView.swift */; };
 		7980D12E291C3F3F00915C72 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980D12D291C3F3F00915C72 /* UIColor+.swift */; };
 		79A9100D291B84B700A0672F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A9100C291B84B700A0672F /* PostView.swift */; };
 		79A91011291C091B00A0672F /* Alert+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A91010291C091B00A0672F /* Alert+.swift */; };
@@ -49,11 +59,6 @@
 		ABDBD2DF291A3F99008FB3A6 /* Rollin_MVPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2DE291A3F99008FB3A6 /* Rollin_MVPUITests.swift */; };
 		ABDBD2E1291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2E0291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift */; };
 		F65517512920C89D00B09405 /* NSTextAttachment+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65517502920C89D00B09405 /* NSTextAttachment+.swift */; };
-		F65517572920C94A00B09405 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65517532920C94A00B09405 /* MainViewController.swift */; };
-		F65517582920C94A00B09405 /* MainGroupCardViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65517552920C94A00B09405 /* MainGroupCardViewCell.swift */; };
-		F65517592920C94A00B09405 /* AddGroupButtonBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65517562920C94A00B09405 /* AddGroupButtonBackgroundView.swift */; };
-		F655175B2920C9C700B09405 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F655175A2920C9C700B09405 /* Group.swift */; };
-		F6633248292033A300A7310A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6633247292033A200A7310A /* GoogleService-Info.plist */; };
 		F663324B292033F300A7310A /* SetNickNameWhileLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324A292033F300A7310A /* SetNickNameWhileLoginViewController.swift */; };
 		F663324D292034D100A7310A /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324C292034D100A7310A /* Image+.swift */; };
 		F663324F2920398200A7310A /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324E2920398200A7310A /* UITextField+.swift */; };
@@ -89,6 +94,16 @@
 		2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRollingPaperViewController.swift; sourceTree = "<group>"; };
 		2AF46853291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostCollectionViewCell.swift; sourceTree = "<group>"; };
 		790FF813291E5733004BDA20 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		79340B26292171130097D111 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		79340B28292171420097D111 /* ParticipateGroupInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipateGroupInfo.swift; sourceTree = "<group>"; };
+		79340B2D292171AD0097D111 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		79340B30292171AD0097D111 /* AddGroupButtonBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupButtonBackgroundView.swift; sourceTree = "<group>"; };
+		79340B34292171BD0097D111 /* MainGroupCardViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGroupCardViewCell.swift; sourceTree = "<group>"; };
+		79340B36292171F20097D111 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		79340B39292172580097D111 /* ConfirmGroupWhileParticipateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmGroupWhileParticipateViewController.swift; sourceTree = "<group>"; };
+		79340B3B292172760097D111 /* SearchGroupWithCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGroupWithCodeViewController.swift; sourceTree = "<group>"; };
+		79340B3D292172990097D111 /* SetNicknameWhileParticipateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameWhileParticipateViewController.swift; sourceTree = "<group>"; };
+		79340B40292173380097D111 /* ParticipateGroupConfirmCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateGroupConfirmCardView.swift; sourceTree = "<group>"; };
 		7980D12D291C3F3F00915C72 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		79A9100C291B84B700A0672F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		79A91010291C091B00A0672F /* Alert+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+.swift"; sourceTree = "<group>"; };
@@ -132,11 +147,6 @@
 		ABDBD2DE291A3F99008FB3A6 /* Rollin_MVPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rollin_MVPUITests.swift; sourceTree = "<group>"; };
 		ABDBD2E0291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rollin_MVPUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F65517502920C89D00B09405 /* NSTextAttachment+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextAttachment+.swift"; sourceTree = "<group>"; };
-		F65517532920C94A00B09405 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		F65517552920C94A00B09405 /* MainGroupCardViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainGroupCardViewCell.swift; sourceTree = "<group>"; };
-		F65517562920C94A00B09405 /* AddGroupButtonBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGroupButtonBackgroundView.swift; sourceTree = "<group>"; };
-		F655175A2920C9C700B09405 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Group.swift; path = "../../../../../../Downloads/Roll-in-develop-2/Rollin_MVP/Rollin_MVP/Model/Group.swift"; sourceTree = "<group>"; };
-		F6633247292033A200A7310A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../dataSet/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F663324A292033F300A7310A /* SetNickNameWhileLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetNickNameWhileLoginViewController.swift; sourceTree = "<group>"; };
 		F663324C292034D100A7310A /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
 		F663324E2920398200A7310A /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
@@ -184,6 +194,43 @@
 				2AF46853291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift */,
 			);
 			path = DetailRollingPaper;
+			sourceTree = "<group>";
+		};
+		79340B2C292171AD0097D111 /* AppMain */ = {
+			isa = PBXGroup;
+			children = (
+				79340B2D292171AD0097D111 /* MainViewController.swift */,
+				79340B2E292171AD0097D111 /* ViewComponents */,
+			);
+			path = AppMain;
+			sourceTree = "<group>";
+		};
+		79340B2E292171AD0097D111 /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				79340B30292171AD0097D111 /* AddGroupButtonBackgroundView.swift */,
+				79340B34292171BD0097D111 /* MainGroupCardViewCell.swift */,
+			);
+			path = ViewComponents;
+			sourceTree = "<group>";
+		};
+		79340B38292172390097D111 /* ParticipateGroup */ = {
+			isa = PBXGroup;
+			children = (
+				79340B3F292173260097D111 /* ViewComponents */,
+				79340B39292172580097D111 /* ConfirmGroupWhileParticipateViewController.swift */,
+				79340B3B292172760097D111 /* SearchGroupWithCodeViewController.swift */,
+				79340B3D292172990097D111 /* SetNicknameWhileParticipateViewController.swift */,
+			);
+			path = ParticipateGroup;
+			sourceTree = "<group>";
+		};
+		79340B3F292173260097D111 /* ViewComponents */ = {
+			isa = PBXGroup;
+			children = (
+				79340B40292173380097D111 /* ParticipateGroupConfirmCardView.swift */,
+			);
+			path = ViewComponents;
 			sourceTree = "<group>";
 		};
 		79BAA9A0291AE4BC00C5636E /* WriteRollingPaper */ = {
@@ -276,7 +323,6 @@
 				F663324C292034D100A7310A /* Image+.swift */,
 				F663324E2920398200A7310A /* UITextField+.swift */,
 				F65517502920C89D00B09405 /* NSTextAttachment+.swift */,
-				F6D7BC3029211DBB00494072 /* UILabel+.swift */,
 			);
 			path = "Extension+";
 			sourceTree = "<group>";
@@ -393,7 +439,8 @@
 				AB7E6B0629201795001F6716 /* PostRollingPaper */,
 				ABB96EAC291AB71B003C5B1D /* CreatingGroup */,
 				AB437572291A442F00C3688D /* Model_example.swift */,
-				F655175A2920C9C700B09405 /* Group.swift */,
+				79340B26292171130097D111 /* Group.swift */,
+				79340B28292171420097D111 /* ParticipateGroupInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -401,7 +448,8 @@
 		ABDBD2EF291A4307008FB3A6 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				F65517522920C94A00B09405 /* AppMain */,
+				79340B38292172390097D111 /* ParticipateGroup */,
+				79340B2C292171AD0097D111 /* AppMain */,
 				F6633249292033F300A7310A /* LoginSetNickName */,
 				ABCFC8302920158A006DB26B /* PostRollingPaper */,
 				ABCFC81029201518006DB26B /* AppleLogin */,
@@ -422,38 +470,10 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		F65517522920C94A00B09405 /* AppMain */ = {
-			isa = PBXGroup;
-			children = (
-				F65517532920C94A00B09405 /* MainViewController.swift */,
-				F65517542920C94A00B09405 /* ViewComponents */,
-			);
-			name = AppMain;
-			path = "../../../../../../Downloads/Roll-in-develop-2/Rollin_MVP/Rollin_MVP/Screens/AppMain";
-			sourceTree = "<group>";
-		};
-		F65517542920C94A00B09405 /* ViewComponents */ = {
-			isa = PBXGroup;
-			children = (
-				F65517552920C94A00B09405 /* MainGroupCardViewCell.swift */,
-				F65517562920C94A00B09405 /* AddGroupButtonBackgroundView.swift */,
-			);
-			path = ViewComponents;
-			sourceTree = "<group>";
-		};
-		F6633249292033F300A7310A /* LoginSetNickName */ = {
-			isa = PBXGroup;
-			children = (
-				F6654C8F292133960095D28A /* SetNickNameWhileLoginViewController.swift */,
-			);
-			name = LoginSetNickName;
-			path = Rollin_MVP/Screens/LoginSetNickName;
-			sourceTree = SOURCE_ROOT;
-		};
 		F66332462920338D00A7310A /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				F6633247292033A200A7310A /* GoogleService-Info.plist */,
+				79340B36292171F20097D111 /* GoogleService-Info.plist */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -585,7 +605,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABDBD2CA291A3F99008FB3A6 /* LaunchScreen.storyboard in Resources */,
-				F6633248292033A300A7310A /* GoogleService-Info.plist in Resources */,
+				79340B37292171F20097D111 /* GoogleService-Info.plist in Resources */,
 				ABDBD2C7291A3F99008FB3A6 /* Assets.xcassets in Resources */,
 				ABDBD2C5291A3F97008FB3A6 /* Main.storyboard in Resources */,
 			);
@@ -614,36 +634,40 @@
 			files = (
 				AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */,
 				AB032AA9291E875900B22C13 /* SelectBackgroundColorCell.swift in Sources */,
+				79340B33292171AD0097D111 /* AddGroupButtonBackgroundView.swift in Sources */,
 				ABCFC8392920158A006DB26B /* PostViewController.swift in Sources */,
 				AB7E6B0829201795001F6716 /* PostRollingPaperModel.swift in Sources */,
 				F663324F2920398200A7310A /* UITextField+.swift in Sources */,
 				2AF46852291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift in Sources */,
 				ABB96EB9291B69FA003C5B1D /* Date+.swift in Sources */,
+				79340B3A292172580097D111 /* ConfirmGroupWhileParticipateViewController.swift in Sources */,
 				ABB96EBE291BA0AE003C5B1D /* GroupCodeView.swift in Sources */,
 				ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */,
+				79340B41292173380097D111 /* ParticipateGroupConfirmCardView.swift in Sources */,
 				ABCFC80D291FE32D006DB26B /* GroupWithThemeView.swift in Sources */,
 				AB032AA2291E870900B22C13 /* BackgroundColorSet.swift in Sources */,
-				F655175B2920C9C700B09405 /* Group.swift in Sources */,
+				79340B31292171AD0097D111 /* MainViewController.swift in Sources */,
+				79340B29292171420097D111 /* ParticipateGroupInfo.swift in Sources */,
+				79340B27292171130097D111 /* Group.swift in Sources */,
+				79340B35292171BD0097D111 /* MainGroupCardViewCell.swift in Sources */,
 				ABB96EC0291C244E003C5B1D /* SetThemeViewController.swift in Sources */,
 				ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */,
+				79340B3C292172760097D111 /* SearchGroupWithCodeViewController.swift in Sources */,
 				790FF814291E5733004BDA20 /* UIViewController+.swift in Sources */,
 				ABB96EB3291AC71F003C5B1D /* ConfirmGroupCardView.swift in Sources */,
-				F65517582920C94A00B09405 /* MainGroupCardViewCell.swift in Sources */,
 				ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */,
 				AB032AAB291E875E00B22C13 /* SelectIconCell.swift in Sources */,
 				2AF46850291E1EF200AB2DE4 /* RollingPaperView.swift in Sources */,
 				ABCFC8382920158A006DB26B /* PostRollingPaperCollectionViewCell.swift in Sources */,
+				79340B3E292172990097D111 /* SetNicknameWhileParticipateViewController.swift in Sources */,
 				AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */,
 				79BAA9A5291AE8D400C5636E /* PostThemePickerViewCell.swift in Sources */,
 				79BAA9A2291AE53100C5636E /* WriteRollingPaperViewController.swift in Sources */,
 				ABCFC81229201518006DB26B /* LoginViewController.swift in Sources */,
-				F6654C90292133960095D28A /* SetNickNameWhileLoginViewController.swift in Sources */,
 				79A91011291C091B00A0672F /* Alert+.swift in Sources */,
 				F65517512920C89D00B09405 /* NSTextAttachment+.swift in Sources */,
-				F6D7BC3129211DBB00494072 /* UILabel+.swift in Sources */,
 				ABB96EB5291AF055003C5B1D /* GroupCodeSharingViewController.swift in Sources */,
 				2AF46854291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift in Sources */,
-				F65517592920C94A00B09405 /* AddGroupButtonBackgroundView.swift in Sources */,
 				ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */,
 				AB437573291A442F00C3688D /* Model_example.swift in Sources */,
 				AB032AA0291E870300B22C13 /* IconSet.swift in Sources */,
@@ -651,7 +675,6 @@
 				79BAA9AF291B732F00C5636E /* PostThemePickerView.swift in Sources */,
 				ABCFC8372920158A006DB26B /* PostRollingPaperLayout.swift in Sources */,
 				ABCFC80F291FEAC7006DB26B /* Int+.swift in Sources */,
-				F65517572920C94A00B09405 /* MainViewController.swift in Sources */,
 				79A9100D291B84B700A0672F /* PostView.swift in Sources */,
 				79BAA9A9291AED9500C5636E /* NSObject+.swift in Sources */,
 				AB032AA4291E872400B22C13 /* String+.swift in Sources */,
@@ -835,7 +858,7 @@
 				CODE_SIGN_ENTITLEMENTS = Rollin_MVP/Rollin_MVP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A8RC8B498C;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
@@ -870,7 +893,7 @@
 				CODE_SIGN_ENTITLEMENTS = Rollin_MVP/Rollin_MVP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A8RC8B498C;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
