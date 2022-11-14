@@ -124,13 +124,13 @@ private extension MainViewController {
                     let groupIds = document.data().map{
                         $0["division"] as? [String] ?? []
                     } ?? [String]()
-                    self.groups.removeAll()
-                    for groupId in groupIds {
-                        let groupsRef = self.db.collection("groups").document(groupId)
+                    var newGroups: [Group] = []
+                    for idx in 0..<groupIds.count {
+                        let groupsRef = self.db.collection("groups").document(groupIds[idx])
                         groupsRef.getDocument(as: Group.self) { result in
                             switch result {
                                 case .success(let group):
-                                self.db.collection("groupUsers").document(groupId).collection("participants").getDocuments() { querySnapshot, error in
+                                self.db.collection("groupUsers").document(groupIds[idx]).collection("participants").getDocuments() { querySnapshot, error in
                                     if let err = error {
                                         print("Error getting documents: \(err)")
                                     } else {
@@ -141,9 +141,12 @@ private extension MainViewController {
                                                 group.groupNickname = document.data()["groupNickname"] as? String ?? ""
                                             }
                                         }
-                                        group.groupId = groupId
-                                        self.groups.append(group)
-                                        self.groups.sort(by: <)
+                                        group.groupId = groupIds[idx]
+                                        newGroups.append(group)
+                                        newGroups.sort(by: <)
+                                        if newGroups.count == groupIds.count {
+                                            self.groups = newGroups
+                                        }
                                     }
                                 }
                                 case .failure(let error):
