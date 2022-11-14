@@ -146,7 +146,7 @@ private extension PostViewController {
 extension PostViewController: PostRollingPaperLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat {
         let imageHeight = (UIScreen.main.bounds.width - 10)/2
-        let labelHeight = dataSource[indexPath.item].commentString.heightWithConstrainedWidth(width: UIScreen.main.bounds.width/2-50, font: UIFont.systemFont(ofSize: 17, weight: .medium))
+        let labelHeight = dataSource[indexPath.item].commentString.heightWithConstrainedWidth(width: UIScreen.main.bounds.width/2-50, font: UIFont.systemFont(ofSize: 17.2, weight: .medium))
         return imageHeight + labelHeight + 40
     }
 }
