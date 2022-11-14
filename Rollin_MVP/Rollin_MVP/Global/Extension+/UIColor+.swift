@@ -36,6 +36,20 @@ extension UIColor {
     static let textRed = UIColor(named: "textRed") ?? .black
     
     static let textYellow = UIColor(named: "textYellow") ?? .black
+    
+    static let cardBlue = UIColor(named: "cardBlue") ?? .black
+    
+    static let cardDeepBlue = UIColor(named: "cardDeepBlue") ?? .black
+    
+    static let cardGreen = UIColor(named: "cardGreen") ?? .black
+    
+    static let cardPink = UIColor(named: "cardPink") ?? .black
+    
+    static let cardPurple = UIColor(named: "cardPurple") ?? .black
+    
+    static let cardRed = UIColor(named: "cardRed") ?? .black
+    
+    static let cardYellow = UIColor(named: "cardYellow") ?? .black
 }
 
 extension UIColor {

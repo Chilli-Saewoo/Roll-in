@@ -182,7 +182,7 @@
         <!--Write Rolling Paper View Controller-->
         <scene sceneID="AtE-QI-Ubd">
             <objects>
-                <viewController id="INW-jB-nRN" customClass="WriteRollingPaperViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WriteRollingPaperViewController" id="INW-jB-nRN" customClass="WriteRollingPaperViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MER-bb-EQG">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -228,7 +228,7 @@
         <!--PostViewController-->
         <scene sceneID="Xqq-gI-2ag">
             <objects>
-                <viewController storyboardIdentifier="PostViewController" title="PostViewController" id="v3r-W4-C83" customClass="PostViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PostViewController" id="v3r-W4-C83" customClass="PostViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AWH-H1-cTc">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
