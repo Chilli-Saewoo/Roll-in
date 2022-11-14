@@ -14,7 +14,7 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
         return NSStringFromClass(Self.self).components(separatedBy: ".").last ?? ""
     }
 
-    var PostRollingPaperModel: PostRollingPaperModel? {
+    var postRollingPaperModel: PostRollingPaperModel? {
         didSet {
             bind()
         }
@@ -79,12 +79,12 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
     func bind() {
         blurView.removeFromSuperview()
         lockImage.removeFromSuperview()
-        PostRollingPaperContainerView.backgroundColor = PostRollingPaperModel?.color
-        PostRollingPaperImageView.image = PostRollingPaperModel?.image
-        PostRollingPaperTitleLabel.text = PostRollingPaperModel?.commentString
-        guard let from = PostRollingPaperModel?.from else { return }
+        PostRollingPaperContainerView.backgroundColor = postRollingPaperModel?.color
+        PostRollingPaperImageView.image = postRollingPaperModel?.image
+        PostRollingPaperTitleLabel.text = postRollingPaperModel?.commentString
+        guard let from = postRollingPaperModel?.from else { return }
         PostRollingPaperFromLabel.text = "From. \(from)"
-        guard let isPublic = PostRollingPaperModel?.isPublic else { return }
+        guard let isPublic = postRollingPaperModel?.isPublic else { return }
         
         contentView.addSubview(blurView)
         blurView.translatesAutoresizingMaskIntoConstraints = false
@@ -115,7 +115,7 @@ private extension PostRollingPaperCollectionViewCell {
         PostRollingPaperContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         
         PostRollingPaperContainerView.addSubview(PostRollingPaperTitleLabel)
-        PostRollingPaperTitleLabel.text = PostRollingPaperModel?.commentString
+        PostRollingPaperTitleLabel.text = postRollingPaperModel?.commentString
         PostRollingPaperTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         PostRollingPaperTitleLabel.leadingAnchor.constraint(equalTo: PostRollingPaperContainerView.leadingAnchor, constant: 10).isActive = true
         PostRollingPaperTitleLabel.topAnchor.constraint(equalTo: PostRollingPaperContainerView.topAnchor, constant: 10).isActive = true

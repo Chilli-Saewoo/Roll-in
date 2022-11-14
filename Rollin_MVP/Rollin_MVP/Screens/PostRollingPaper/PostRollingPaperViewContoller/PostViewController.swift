@@ -159,7 +159,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostRollingPaperCollectionViewCell.id, for: indexPath) as? PostRollingPaperCollectionViewCell ?? PostRollingPaperCollectionViewCell()
-        cell.PostRollingPaperModel = dataSource[indexPath.row]
+        cell.postRollingPaperModel = dataSource[indexPath.row]
         cell.receiverUserId = receiverUserId ?? ""
         cell.bind()
         return cell
