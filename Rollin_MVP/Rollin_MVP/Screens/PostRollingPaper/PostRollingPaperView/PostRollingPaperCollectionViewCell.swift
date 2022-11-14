@@ -39,7 +39,7 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
     
     lazy var PostRollingPaperImageView: UIImageView = {
         let image = UIImageView()
-        image.contentMode = .scaleToFill
+        image.contentMode = .scaleAspectFill
         image.image = UIImage(named: "cat")
         image.layer.cornerRadius = 4
         image.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
