@@ -14,7 +14,9 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
     }
 
     var myModel: PostRollingPaperModel? {
-        didSet { bind() }
+        didSet {
+            bind()
+        }
     }
     
     lazy var blurView: UIView = {
@@ -62,6 +64,7 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+        bind()
     }
 
     required init?(coder: NSCoder) {
@@ -69,6 +72,7 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
     }
 
     private func bind() {
+        blurView.removeFromSuperview()
         PostRollingPaperContainerView.backgroundColor = myModel?.color
         PostRollingPaperImageView.image = myModel?.image
         PostRollingPaperTitleLabel.text = myModel?.commentString
@@ -76,13 +80,16 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
         PostRollingPaperFromLabel.text = "From. \(from)"
         guard let isPublic = myModel?.isPublic else { return }
         var receiverUserId: String?
-        if isPublic != true{
-            contentView.addSubview(blurView)
-            blurView.translatesAutoresizingMaskIntoConstraints = false
-            blurView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-            blurView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-            blurView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-            blurView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        contentView.addSubview(blurView)
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        blurView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        blurView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        blurView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        if isPublic {
+            blurView.layer.opacity = 0.0
+        } else {
+            blurView.layer.opacity = 1.0
         }
     }
 }
@@ -103,13 +110,7 @@ private extension PostRollingPaperCollectionViewCell {
         PostRollingPaperTitleLabel.topAnchor.constraint(equalTo: PostRollingPaperContainerView.topAnchor, constant: 10).isActive = true
         PostRollingPaperTitleLabel.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor, constant: -10).isActive = true
         
-        PostRollingPaperContainerView.addSubview(PostRolling
-        
-        
-        
-        
-        
-        Label)
+        PostRollingPaperContainerView.addSubview(PostRollingPaperFromLabel)
         PostRollingPaperFromLabel.translatesAutoresizingMaskIntoConstraints = false
         PostRollingPaperFromLabel.topAnchor.constraint(equalTo: PostRollingPaperTitleLabel.bottomAnchor, constant: 10).isActive = true
         PostRollingPaperFromLabel.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor, constant: -10).isActive = true
