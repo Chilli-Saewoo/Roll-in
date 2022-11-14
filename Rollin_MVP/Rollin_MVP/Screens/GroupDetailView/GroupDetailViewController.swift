@@ -49,6 +49,7 @@ final class GroupDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setGroupMessageLabel()
+        setNavigationBarBackButton()
         cardSwiper = VerticalCardSwiper(frame: CGRect(x: 0.0, y: screenHeight * 0.2, width: screenWidth, height: screenHeight * 0.8))
         cardSwiper.isSideSwipingEnabled = false
         cardSwiper.topInset = 40
@@ -109,6 +110,11 @@ private extension GroupDetailViewController {
         participantsCountLabel.font = .systemFont(ofSize: 26, weight: .medium)
     }
     
+    func setNavigationBarBackButton() {
+        let backBarButtonItem = UIBarButtonItem(title: "\(group?.groupName ?? "")의 롤링페이퍼", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = .black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+    }
 }
 
 

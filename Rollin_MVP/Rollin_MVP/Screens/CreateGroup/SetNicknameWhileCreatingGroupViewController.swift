@@ -106,7 +106,7 @@ private extension SetNicknameWhileCreatingGroupViewController {
     }
     
     func setNavigationBarBackButton() {
-        let backBarButtonItem = UIBarButtonItem(title: "그룹 내 닉네임 입력", style: .plain, target: self, action: nil)
+        let backBarButtonItem = UIBarButtonItem(title: "닉네임 입력", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .black
         self.navigationItem.backBarButtonItem = backBarButtonItem
     }

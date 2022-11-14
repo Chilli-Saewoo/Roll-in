@@ -87,7 +87,7 @@ private extension SetThemeViewController {
     }
     
     func setNavigationBarBackButton() {
-        let backBarButtonItem = UIBarButtonItem(title: "그룹 선택", style: .plain, target: self, action: nil)
+        let backBarButtonItem = UIBarButtonItem(title: "그룹 테마 선택", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .black
         self.navigationItem.backBarButtonItem = backBarButtonItem
     }
