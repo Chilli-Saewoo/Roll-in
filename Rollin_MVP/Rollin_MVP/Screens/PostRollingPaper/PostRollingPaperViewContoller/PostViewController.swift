@@ -26,11 +26,11 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTitleMessageLayout()
+        setWriteButtonLayout()
         configurePostViewController()
         setupPostViewControllerLayout()
         fetchAllPosts()
-        setTitleMessageLayout()
-        setWriteButtonLayout()
     }
     
     
@@ -116,7 +116,7 @@ private extension PostViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 8).isActive = true
         collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -8).isActive = true
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
+        collectionView.topAnchor.constraint(equalTo: titleMessageLabel.bottomAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
