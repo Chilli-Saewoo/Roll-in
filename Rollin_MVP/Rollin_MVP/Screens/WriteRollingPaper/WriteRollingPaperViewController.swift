@@ -122,7 +122,7 @@ final class WriteRollingPaperViewController: UIViewController {
                     guard let url = url else { return }
                     let absoluteUrl = url.absoluteString
                     let rollingPaperPostData = RollingPaperPostData(from: self.writerNickname,
-                                                                    postTheme: self.postThemePicerkView.selectedTheme,
+                                                                    postTheme: self.postThemePicerkView.selectedThemeHex,
                                                                     message: self.postView.textView.text,
                                                                     image: absoluteUrl,
                                                                     isPublic: self.postView.privateSwitch.isOn,
