@@ -11,8 +11,6 @@
 		2AF46852291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */; };
 		2AF46854291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46853291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift */; };
 		790FF814291E5733004BDA20 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FF813291E5733004BDA20 /* UIViewController+.swift */; };
-		790FF81D291E7195004BDA20 /* RollingPaperPostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FF81C291E7195004BDA20 /* RollingPaperPostAPI.swift */; };
-		790FF81F291ED661004BDA20 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FF81E291ED661004BDA20 /* FirebaseStorageManager.swift */; };
 		79340B27292171130097D111 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B26292171130097D111 /* Group.swift */; };
 		79340B29292171420097D111 /* ParticipateGroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B28292171420097D111 /* ParticipateGroupInfo.swift */; };
 		79340B31292171AD0097D111 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B2D292171AD0097D111 /* MainViewController.swift */; };
@@ -40,6 +38,9 @@
 		AB7E6B0829201795001F6716 /* PostRollingPaperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E6B0729201795001F6716 /* PostRollingPaperModel.swift */; };
 		ABA0343E2921946000A50471 /* VerticalCardSwiper in Frameworks */ = {isa = PBXBuildFile; productRef = ABA0343D2921946000A50471 /* VerticalCardSwiper */; };
 		ABA034412921969C00A50471 /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA034402921969C00A50471 /* GroupDetailViewController.swift */; };
+		ABA034432921B93F00A50471 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABA034422921B93E00A50471 /* GoogleService-Info.plist */; };
+		ABA034472921BB0100A50471 /* RollingPaperPostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA034452921BB0100A50471 /* RollingPaperPostAPI.swift */; };
+		ABA034482921BB0100A50471 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA034462921BB0100A50471 /* FirebaseStorageManager.swift */; };
 		ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */; };
 		ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */; };
 		ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */; };
@@ -66,7 +67,6 @@
 		F663324B292033F300A7310A /* SetNickNameWhileLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324A292033F300A7310A /* SetNickNameWhileLoginViewController.swift */; };
 		F663324D292034D100A7310A /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324C292034D100A7310A /* Image+.swift */; };
 		F663324F2920398200A7310A /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324E2920398200A7310A /* UITextField+.swift */; };
-		F6667F2C2921763100CD480F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6667F2B2921763100CD480F /* GoogleService-Info.plist */; };
 		F8173D1D291A521400E545E0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D1C291A521400E545E0 /* FirebaseAuth */; };
 		F8173D1F291A521400E545E0 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D1E291A521400E545E0 /* FirebaseDatabase */; };
 		F8173D21291A521400E545E0 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D20291A521400E545E0 /* FirebaseDatabaseSwift */; };
@@ -127,6 +127,9 @@
 		AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGroupNameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
 		AB7E6B0729201795001F6716 /* PostRollingPaperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRollingPaperModel.swift; sourceTree = "<group>"; };
 		ABA034402921969C00A50471 /* GroupDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailViewController.swift; sourceTree = "<group>"; };
+		ABA034422921B93E00A50471 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		ABA034452921BB0100A50471 /* RollingPaperPostAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RollingPaperPostAPI.swift; sourceTree = "<group>"; };
+		ABA034462921BB0100A50471 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
 		ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingGroupInfo.swift; sourceTree = "<group>"; };
 		ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmGroupViewController.swift; sourceTree = "<group>"; };
@@ -158,7 +161,6 @@
 		F663324A292033F300A7310A /* SetNickNameWhileLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetNickNameWhileLoginViewController.swift; sourceTree = "<group>"; };
 		F663324C292034D100A7310A /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
 		F663324E2920398200A7310A /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
-		F6667F2B2921763100CD480F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../dataSet/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F6F411E1291FBA55007094DE /* Rollin_MVP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rollin_MVP.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -204,15 +206,6 @@
 				2AF46853291E20E300AB2DE4 /* DetailPostCollectionViewCell.swift */,
 			);
 			path = DetailRollingPaper;
-			sourceTree = "<group>";
-		};
-		790FF81B291E7188004BDA20 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				790FF81C291E7195004BDA20 /* RollingPaperPostAPI.swift */,
-				790FF81E291ED661004BDA20 /* FirebaseStorageManager.swift */,
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		79340B2C292171AD0097D111 /* AppMain */ = {
@@ -275,6 +268,8 @@
 			isa = PBXGroup;
 			children = (
 				ABB96EBA291B703A003C5B1D /* String+.swift */,
+				790FF81C291E7195004BDA20 /* RollingPaperPostAPI.swift */,
+				790FF81E291ED661004BDA20 /* FirebaseStorageManager.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -306,6 +301,15 @@
 				ABA034402921969C00A50471 /* GroupDetailViewController.swift */,
 			);
 			path = GroupDetailView;
+			sourceTree = "<group>";
+		};
+		ABA034442921BB0100A50471 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				ABA034452921BB0100A50471 /* RollingPaperPostAPI.swift */,
+				ABA034462921BB0100A50471 /* FirebaseStorageManager.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		ABB96EAC291AB71B003C5B1D /* CreatingGroup */ = {
@@ -511,7 +515,8 @@
 		F6667F2A2921762A00CD480F /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				F6667F2B2921763100CD480F /* GoogleService-Info.plist */,
+				ABA034442921BB0100A50471 /* API */,
+				ABA034422921B93E00A50471 /* GoogleService-Info.plist */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -636,7 +641,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABDBD2CA291A3F99008FB3A6 /* LaunchScreen.storyboard in Resources */,
-				ABA0343B292193AB00A50471 /* GoogleService-Info.plist in Resources */,
+				ABA034432921B93F00A50471 /* GoogleService-Info.plist in Resources */,
 				ABDBD2C7291A3F99008FB3A6 /* Assets.xcassets in Resources */,
 				ABDBD2C5291A3F97008FB3A6 /* Main.storyboard in Resources */,
 			);
@@ -675,6 +680,7 @@
 				ABB96EBE291BA0AE003C5B1D /* GroupCodeView.swift in Sources */,
 				ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */,
 				79340B41292173380097D111 /* ParticipateGroupConfirmCardView.swift in Sources */,
+				ABA034482921BB0100A50471 /* FirebaseStorageManager.swift in Sources */,
 				ABCFC80D291FE32D006DB26B /* GroupWithThemeView.swift in Sources */,
 				AB032AA2291E870900B22C13 /* BackgroundColorSet.swift in Sources */,
 				79340B31292171AD0097D111 /* MainViewController.swift in Sources */,
@@ -706,11 +712,10 @@
 				ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */,
 				ABA034412921969C00A50471 /* GroupDetailViewController.swift in Sources */,
 				79BAA9AF291B732F00C5636E /* PostThemePickerView.swift in Sources */,
-				790FF81D291E7195004BDA20 /* RollingPaperPostAPI.swift in Sources */,
+				ABA034472921BB0100A50471 /* RollingPaperPostAPI.swift in Sources */,
 				ABCFC8372920158A006DB26B /* PostRollingPaperLayout.swift in Sources */,
 				ABCFC80F291FEAC7006DB26B /* Int+.swift in Sources */,
 				79A9100D291B84B700A0672F /* PostView.swift in Sources */,
-				790FF81F291ED661004BDA20 /* FirebaseStorageManager.swift in Sources */,
 				79BAA9A9291AED9500C5636E /* NSObject+.swift in Sources */,
 				AB032AA4291E872400B22C13 /* String+.swift in Sources */,
 				F663324D292034D100A7310A /* Image+.swift in Sources */,
@@ -896,6 +901,8 @@
 				DEVELOPMENT_TEAM = 8QSTXVD8H9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Roll in";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -931,6 +938,8 @@
 				DEVELOPMENT_TEAM = 8QSTXVD8H9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Roll in";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
