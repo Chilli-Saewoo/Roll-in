@@ -29,6 +29,7 @@ final class SearchGroupWithCodeViewController: UIViewController {
         setNameTextFieldLayout()
         setNextButtonLayout()
         setNextButtonAction()
+        setNavigationBarBackButton()
         setCancelButton()
         nameTextField.delegate = self
     }
@@ -138,6 +139,12 @@ private extension SearchGroupWithCodeViewController {
         cancelButton.setImage(.init(systemName: "x.circle.fill"), for: .normal)
         cancelButton.tintColor = .systemGray
         cancelButton.addTarget(self, action: #selector(removeTextField), for: .touchUpInside)
+    }
+    
+    func setNavigationBarBackButton() {
+        let backBarButtonItem = UIBarButtonItem(title: "코드 입력", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = .black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     @objc func removeTextField() {

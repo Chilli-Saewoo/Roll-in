@@ -21,6 +21,7 @@ class ConfirmGroupWhileParticipateViewController: UIViewController {
         setConfirmGroupCard()
         setCompleteButton()
         setCompleteButtonAction()
+        setNavigationBarBackButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -97,5 +98,11 @@ private extension ConfirmGroupWhileParticipateViewController {
         completeButton.setTitle("입장하기", for: .normal)
         completeButton.layer.cornerRadius = 4.0
         completeButton.backgroundColor = .systemBlack
+    }
+    
+    func setNavigationBarBackButton() {
+        let backBarButtonItem = UIBarButtonItem(title: "그룹 확인", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = .black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
 }
