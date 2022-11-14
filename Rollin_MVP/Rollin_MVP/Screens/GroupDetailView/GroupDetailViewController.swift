@@ -10,14 +10,31 @@ import VerticalCardSwiper
 
 final class CardSwiperCell: CardCell {
     
+    private let nameLabel = UILabel()
+    
+    public func setCell(index: Int, name: String) {
+        let colors: [UIColor] = [.cardRed, .cardBlue, .cardPink, .cardGreen, .cardPurple, .cardYellow, .cardDeepBlue]
+        self.backgroundColor = colors[index % colors.count]
+        nameLabel.text = name
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        let colors: [UIColor] = [.blue, .red, .yellow, .bgGreen, .bgPurple, .bgRed, .inactiveBgGray, .textYellow, .bgYellow, .bgBlue, .inactiveTextGray, .brown]
-        self.backgroundColor = colors.randomElement()
+        setNameLabel()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setNameLabel() {
+        self.addSubview(nameLabel)
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+        ])
+        nameLabel.font = .systemFont(ofSize: 20, weight: .semibold)
     }
 }
 
@@ -28,7 +45,7 @@ final class GroupDetailViewController: UIViewController {
     private let participantsCountLabel = UILabel()
     private let screenWidth = UIScreen.main.bounds.width
     private let screenHeight = UIScreen.main.bounds.height
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setGroupMessageLabel()
@@ -39,7 +56,7 @@ final class GroupDetailViewController: UIViewController {
         cardSwiper.cardSpacing = 30
         cardSwiper.isStackOnBottom = false
         cardSwiper.visibleNextCardHeight = 50
-        cardSwiper.firstItemTransform = 0.05
+        cardSwiper.firstItemTransform = 0.08
         view.addSubview(cardSwiper)
         cardSwiper.datasource = self
         cardSwiper.delegate = self
@@ -47,21 +64,27 @@ final class GroupDetailViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        let _ = cardSwiper.scrollToCard(at: 99, animated: false)
+        let _ = cardSwiper.scrollToCard(at: (group?.participants.count ?? 1) - 1, animated: false)
     }
 }
 
 extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardSwiperDelegate {
+    
+    func didTapCard(verticalCardSwiperView: VerticalCardSwiperView, index: Int) {
+        print("??????")
+    }
+    
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
-           if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: index) as? CardSwiperCell {
-               return cardCell
-           }
-           return CardCell()
-       }
-       
-       func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {
-           return 100//group?.participants.count ?? 0
-       }
+        if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: index) as? CardSwiperCell {
+            cardCell.setCell(index: index, name: group?.participants[index].1 ?? "error")
+            return cardCell
+        }
+        return CardCell()
+    }
+    
+    func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {
+        return group?.participants.count ?? 0
+    }
 }
 
 private extension GroupDetailViewController {
