@@ -21,8 +21,6 @@ final class DetailRollingPaperViewController: UIViewController {
     
     private let collectionViewFlowLayout = UICollectionViewFlowLayout()
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.collectionViewFlowLayout)
-    //TODO: 후에 글, 사진 포스트로 변경 예정
-    private var post = [UIColor.blue, UIColor.red]
     var postRollingPaperModel: PostRollingPaperModel?
     
     private let titleLabel: UILabel = {
@@ -71,19 +69,22 @@ final class DetailRollingPaperViewController: UIViewController {
 
 extension DetailRollingPaperViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.post.count
+        2
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailPostCollectionViewCell.className, for: indexPath) as! DetailPostCollectionViewCell
-        if indexPath.row == 1 {
-            cell.isPhoto = true
+        if indexPath.row == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailPostLabelCollectionViewCell.className, for: indexPath) as! DetailPostLabelCollectionViewCell
+            guard let postRollingPaperModel = postRollingPaperModel else { return cell }
+            cell.message.text = postRollingPaperModel.commentString
+            cell.detailPostView.backgroundColor = postRollingPaperModel.color
+            cell.from.text = "From. \(postRollingPaperModel.from)"
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailPostImageCollectionViewCell.className, for: indexPath) as! DetailPostImageCollectionViewCell
+            guard let postRollingPaperModel = postRollingPaperModel else { return cell }
+            cell.imageView.image = postRollingPaperModel.image
+            return cell
         }
-        guard let postRollingPaperModel = postRollingPaperModel else { return cell }
-        cell.message.text = postRollingPaperModel.commentString
-        cell.image.image = postRollingPaperModel.image
-        cell.detailPostView.backgroundColor = postRollingPaperModel.color
-        cell.from.text = "From. \(postRollingPaperModel.from)"
-        return cell
     }
 }
 
@@ -130,7 +131,8 @@ private extension DetailRollingPaperViewController {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.backgroundColor = .clear
         collectionView.clipsToBounds = true
-        collectionView.register(DetailPostCollectionViewCell.self, forCellWithReuseIdentifier: DetailPostCollectionViewCell.className)
+        collectionView.register(DetailPostLabelCollectionViewCell.self, forCellWithReuseIdentifier: DetailPostLabelCollectionViewCell.className)
+        collectionView.register(DetailPostImageCollectionViewCell.self, forCellWithReuseIdentifier: DetailPostImageCollectionViewCell.className)
         collectionView.isPagingEnabled = false
         collectionView.contentInsetAdjustmentBehavior = .never
         collectionView.contentInset = LayoutValue.collectionViewContentInset
