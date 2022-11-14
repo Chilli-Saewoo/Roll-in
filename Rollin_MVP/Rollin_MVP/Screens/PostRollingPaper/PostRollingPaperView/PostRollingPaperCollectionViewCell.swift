@@ -80,15 +80,15 @@ private extension PostRollingPaperCollectionViewCell {
         PostRollingPaperContainerView.addSubview(PostRollingPaperTitleLabel)
         PostRollingPaperTitleLabel.text = myModel?.commentString
         PostRollingPaperTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        PostRollingPaperTitleLabel.leadingAnchor.constraint(equalTo: PostRollingPaperContainerView.leadingAnchor).isActive = true
-        PostRollingPaperTitleLabel.topAnchor.constraint(equalTo: PostRollingPaperContainerView.topAnchor).isActive = true
-        PostRollingPaperTitleLabel.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor).isActive = true
+        PostRollingPaperTitleLabel.leadingAnchor.constraint(equalTo: PostRollingPaperContainerView.leadingAnchor, constant: 10).isActive = true
+        PostRollingPaperTitleLabel.topAnchor.constraint(equalTo: PostRollingPaperContainerView.topAnchor, constant: 10).isActive = true
+        PostRollingPaperTitleLabel.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor, constant: -10).isActive = true
         
         PostRollingPaperContainerView.addSubview(PostRollingPapeFromLabel)
         PostRollingPapeFromLabel.text = "From.\(myModel?.from)"
         PostRollingPapeFromLabel.translatesAutoresizingMaskIntoConstraints = false
-        PostRollingPapeFromLabel.topAnchor.constraint(equalTo: PostRollingPaperTitleLabel.bottomAnchor).isActive = true
-        PostRollingPapeFromLabel.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor).isActive = true
+        PostRollingPapeFromLabel.topAnchor.constraint(equalTo: PostRollingPaperTitleLabel.bottomAnchor, constant: 10).isActive = true
+        PostRollingPapeFromLabel.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor, constant: -10).isActive = true
     }
 }
 
