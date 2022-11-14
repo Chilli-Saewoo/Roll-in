@@ -22,6 +22,7 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
     var groupId: String?
     var receiverUserId: String?
     var posts: [RollingPaperPostData] = []
+    var myGroupNickname: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,8 +61,12 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
         let vc = viewController as? WriteRollingPaperViewController
         guard let groupId = groupId else {return}
         guard let receiverUserId = receiverUserId else {return}
+        guard let myGroupNickname = myGroupNickname else {return}
+        print(myGroupNickname)
+        print(receiverUserId)
         vc?.groupId = groupId
         vc?.receiverUserId = receiverUserId
+        vc?.writerNickname = myGroupNickname
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
@@ -176,7 +181,10 @@ private extension PostViewController {
     func fetchPosts() async throws -> [RollingPaperPostData] {
         let db = FirebaseFirestore.Firestore.firestore()
         let snapshot = try await db.collection("groupUsers").document(groupId ?? "").collection("participants").document(receiverUserId ?? "").collection("posts").order(by: "timeStamp", descending: true).getDocuments()
-        
+        let uid = UserDefaults.standard.string(forKey: "uid")
+        let myGroupNickname = try await db.collection("groupUsers").document(groupId ?? "").collection("participants").document(uid ?? "").getDocument().data()
+        guard let myGroupNickname = myGroupNickname else { return [RollingPaperPostData(from: "", postTheme: "", message: "", image: "", isPublic: false, timeStamp: FirebaseFirestore.Timestamp())]}
+        self.myGroupNickname = String(describing: myGroupNickname["groupNickname"] ?? "")
         let dtoDocuments = try snapshot.documents.map { document -> RollingPaperPostData in
             let data = try document.data(as: RollingPaperPostData.self)
             return RollingPaperPostData(from: data.from,
