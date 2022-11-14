@@ -30,12 +30,15 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
         setWriteButtonLayout()
         configurePostViewController()
         setupPostViewControllerLayout()
-        fetchAllPosts()
         setNavigationBarBackButton()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        fetchAllPosts()
+    }
     
     private func setupDataSource() {
+        self.dataSource = []
         for post in posts {
             var image = UIImage()
             FirebaseStorageManager.downloadImage(urlString: post.image) { uiImage in
@@ -43,21 +46,21 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
                 image = uiImage
                 let color = UIColor(hex: "#\(post.postTheme)")
                 self.dataSource.append(PostRollingPaperModel(color: color, commentString: post.message, image: image.resizeImage(newWidth: 170) ?? UIImage(), timestamp: post.timeStamp, from: post.from, isPublic: post.isPublic))
-                self.dataSource.sort(by: >)
-                self.collectionView.reloadData()
+                self.dataSource.sort(by: <)
+                if self.dataSource.count == self.posts.count {
+                    self.collectionView.reloadData()
+                }
             }
         }
     }
     
     func fetchAllPosts() {
         Task {
-            let posts = try await fetchPosts()
+            posts = try await fetchPosts()
             self.posts = posts
             setupDataSource()
         }
     }
-    
-    
     
     @objc private func didTapButton() {
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "WriteRollingPaperViewController") as? WriteRollingPaperViewController ?? UIViewController()
@@ -99,7 +102,6 @@ private extension PostViewController {
                 writeButton.heightAnchor.constraint(equalToConstant: 25),
             ])
         }
-        
     }
 
     func setTitleMessageLayout() {
@@ -144,7 +146,7 @@ private extension PostViewController {
 extension PostViewController: PostRollingPaperLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat {
         let imageHeight = (UIScreen.main.bounds.width - 10)/2
-        let labelHeight = dataSource[indexPath.item].commentString.heightWithConstrainedWidth(width: UIScreen.main.bounds.width/2-50, font: UIFont.systemFont(ofSize: 17, weight: .medium))
+        let labelHeight = dataSource[indexPath.item].commentString.heightWithConstrainedWidth(width: UIScreen.main.bounds.width/2-50, font: UIFont.systemFont(ofSize: 17.2, weight: .medium))
         return imageHeight + labelHeight + 40
     }
 }
@@ -165,7 +167,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let rollingPaperDetailViewController = DetailRollingPaperViewController()
         rollingPaperDetailViewController.view.backgroundColor = .white
         rollingPaperDetailViewController.modalPresentationStyle = .pageSheet
-        rollingPaperDetailViewController.myModel = dataSource[indexPath.item]
+        rollingPaperDetailViewController.postRollingPaperModel = dataSource[indexPath.item]
         
         if let halfModal = rollingPaperDetailViewController.sheetPresentationController {
             halfModal.preferredCornerRadius = 10
@@ -200,7 +202,7 @@ private extension PostViewController {
         for dtoDocument in dtoDocuments {
             documents.append(dtoDocument)
         }
-        return documents.sorted(by: >)
+        return documents.sorted(by: <)
     }
 }
 

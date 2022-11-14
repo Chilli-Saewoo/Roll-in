@@ -133,11 +133,11 @@ final class WriteRollingPaperViewController: UIViewController {
                                                   imageUrl: absoluteUrl,
                                                   groupId: self.groupId,
                                                   receiver: self.receiverUserId)
+                    self.navigationController?.popViewController(animated: true)
                 }
-                isBeingSaved = false
             }
+            isBeingSaved = false
         }
-        self.navigationController?.popViewController(animated: true)
     }
     
     private func setupLayout() {
