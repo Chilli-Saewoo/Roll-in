@@ -73,6 +73,7 @@ final class PostView: UIView {
     
     let addedImageButton: UIButton = {
         let button = UIButton()
+        button.contentMode = .scaleAspectFit
         button.layer.cornerRadius = 4
         button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         return button

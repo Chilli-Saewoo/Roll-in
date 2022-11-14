@@ -174,7 +174,7 @@ final class WriteRollingPaperViewController: UIViewController {
         postView.fromLabel.text = "From. \(writerNickname)"
         postView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            postView.topAnchor.constraint(equalTo: postThemePicerkView.bottomAnchor, constant: 43),
+            postView.topAnchor.constraint(equalTo: postThemePicerkView.bottomAnchor, constant: 35),
             postView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             postView.heightAnchor.constraint(equalToConstant: 164 + UIScreen.main.bounds.width - 40),
