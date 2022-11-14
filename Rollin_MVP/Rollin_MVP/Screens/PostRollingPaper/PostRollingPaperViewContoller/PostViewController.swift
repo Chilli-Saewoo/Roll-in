@@ -31,6 +31,7 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
         configurePostViewController()
         setupPostViewControllerLayout()
         fetchAllPosts()
+        setNavigationBarBackButton()
     }
     
     
@@ -199,5 +200,14 @@ private extension PostViewController {
             documents.append(dtoDocument)
         }
         return documents.sorted(by: >)
+    }
+}
+
+extension PostViewController {
+    func setNavigationBarBackButton() {
+        guard let groupNickname = groupNickname else { return }
+        let backBarButtonItem = UIBarButtonItem(title: "\(groupNickname)님의 롤링페이퍼", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = .black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
 }
