@@ -18,7 +18,7 @@ class PostViewController: UIViewController {
     private lazy var writeButton = UIButton()
     private lazy var plusButton = UIButton()
     var rollingPaperInfo: RollingPaperInfo?
-    var writerNickname: String?
+    var groupNickname: String?
     var groupId: String?
     var receiverUserId: String?
     var posts: [RollingPaperPostData] = []
@@ -93,7 +93,7 @@ private extension PostViewController {
             titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
             titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
-        titleMessageLabel.setTextWithLineHeight(text: "Key의 롤링페이퍼", lineHeight: 40)
+        titleMessageLabel.setTextWithLineHeight(text: "\(groupNickname)의 롤링페이퍼", lineHeight: 40)
         titleMessageLabel.font = .systemFont(ofSize: 26, weight: .bold)
         titleMessageLabel.numberOfLines = 0
     }

@@ -74,7 +74,7 @@ extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardS
     func didTapCard(verticalCardSwiperView: VerticalCardSwiperView, index: Int) {
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostViewController") as? PostViewController ?? UIViewController()
         let vc = secondViewController as? PostViewController
-        vc?.writerNickname = group?.participants[index].1
+        vc?.groupNickname = group?.participants[index].1
         vc?.receiverUserId = group?.participants[index].0
         vc?.groupId = group?.groupId
         
