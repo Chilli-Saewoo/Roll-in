@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v3r-W4-C83">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v3r-W4-C83">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -213,7 +213,7 @@
         <!--Rolling Paper View-->
         <scene sceneID="5Lx-XD-lwQ">
             <objects>
-                <viewController id="WS6-on-BqB" customClass="RollingPaperView" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailRollingPaperViewController" id="WS6-on-BqB" customClass="RollingPaperView" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Nkw-3D-V8b">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -225,7 +225,7 @@
             </objects>
             <point key="canvasLocation" x="5094" y="734"/>
         </scene>
-        <!--PostViewController-->
+        <!--Post View Controller-->
         <scene sceneID="Xqq-gI-2ag">
             <objects>
                 <viewController storyboardIdentifier="PostViewController" id="v3r-W4-C83" customClass="PostViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
