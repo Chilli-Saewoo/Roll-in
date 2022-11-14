@@ -58,6 +58,8 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
         PostRollingPaperContainerView.backgroundColor = myModel?.color
         PostRollingPaperImageView.image = myModel?.image
         PostRollingPaperTitleLabel.text = myModel?.commentString
+        guard let from = myModel?.from else { return }
+        PostRollingPapeFromLabel.text = "From. \(from)"
     }
 }
 
@@ -85,7 +87,6 @@ private extension PostRollingPaperCollectionViewCell {
         PostRollingPaperTitleLabel.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor, constant: -10).isActive = true
         
         PostRollingPaperContainerView.addSubview(PostRollingPapeFromLabel)
-        PostRollingPapeFromLabel.text = "From.\(myModel?.from)"
         PostRollingPapeFromLabel.translatesAutoresizingMaskIntoConstraints = false
         PostRollingPapeFromLabel.topAnchor.constraint(equalTo: PostRollingPaperTitleLabel.bottomAnchor, constant: 10).isActive = true
         PostRollingPapeFromLabel.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor, constant: -10).isActive = true
