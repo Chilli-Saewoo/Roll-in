@@ -12,6 +12,7 @@ import FirebaseFirestoreSwift
 final class MainViewController: UIViewController {
     private let db = Firestore.firestore()
     private let mainTitleLabel = UILabel()
+    private lazy var bottomGradientView = UIView()
     private let addGroupCard = AddGroupButtonBackgroundView()
     private var groupsCollectionView: UICollectionView!
     private var groups: [Group] = [] {
@@ -29,6 +30,7 @@ final class MainViewController: UIViewController {
         configureCollectionView()
         registerCollectionView()
         collectionViewDelegate()
+        setBottomGradientLayout()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -111,8 +113,6 @@ extension MainViewController: AddGroupButtonBackgroundDelegate {
     func showActionSheet(sheet: UIAlertController) {
         present(sheet, animated: true, completion: nil)
     }
-    
-    
 }
 
 private extension MainViewController {
@@ -186,6 +186,14 @@ private extension MainViewController {
         ])
     }
     
+    func setBottomGradientLayout() {
+        view.addSubview(bottomGradientView)
+        bottomGradientView.translatesAutoresizingMaskIntoConstraints = false
+        bottomGradientView.frame = CGRect(origin: CGPoint(x: 0, y: view.frame.height * 0.9),
+                                          size: CGSize(width: view.frame.width, height: view.frame.height * 0.1))
+        bottomGradientView.setGradient(color1: .init(red: 1, green: 1, blue: 1, alpha: 0), color2: .white)
+    }
+    
     func setNavigationBarBackButton() {
         let backBarButtonItem = UIBarButtonItem(title: "롤인 그룹", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .black
@@ -193,4 +201,14 @@ private extension MainViewController {
     }
 }
 
-
+extension UIView {
+    func setGradient(color1:UIColor,color2:UIColor){
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.colors = [color1.cgColor,color2.cgColor]
+        gradient.locations = [0.0 , 0.65]
+        gradient.startPoint = CGPoint(x: 0.5, y: 0.0)
+        gradient.endPoint = CGPoint(x: 0.5, y: 1.0)
+        gradient.frame = bounds
+        layer.addSublayer(gradient)
+    }
+}
