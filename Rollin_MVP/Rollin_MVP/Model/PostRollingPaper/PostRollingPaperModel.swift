@@ -7,11 +7,22 @@
 
 import UIKit
 
-struct PostRollingPaperModel {
+struct PostRollingPaperModel: Comparable {
+    let id = UUID()
     let color: UIColor
     let commentString: String
     let image: UIImage
     let contentHeightSize: CGFloat
+    let timestamp: Date
+    
+    static func < (lhs: PostRollingPaperModel, rhs: PostRollingPaperModel) -> Bool {
+        lhs.timestamp < rhs.timestamp
+    }
+
+    static func == (lhs: PostRollingPaperModel, rhs: PostRollingPaperModel) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     private let rollingPaperPostAPI = RollingPaperPostAPI()
 
     // 현재 임의의 색깔이 들어가있는 상태이므로 추후에 변경될 예정입니다.
@@ -35,7 +46,7 @@ struct PostRollingPaperModel {
             let tmpHeight = CGFloat(arc4random_uniform(500))
             let myModel: PostRollingPaperModel = .init(color: color,
                                                        commentString: dummyIdx, image: myImage,
-                                         contentHeightSize: tmpHeight)
+                                                       contentHeightSize: tmpHeight, timestamp: Date())
             datas += [myModel]
         }
 

@@ -40,7 +40,8 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
                 guard let uiImage = uiImage else { return }
                 image = uiImage
                 let color = UIColor(hex: "#\(post.postTheme)")
-                self.dataSource.append(PostRollingPaperModel(color: color, commentString: post.message, image: image.resizeImage(newWidth: 170) ?? UIImage(), contentHeightSize: CGFloat(arc4random_uniform(500))))
+                self.dataSource.append(PostRollingPaperModel(color: color, commentString: post.message, image: image.resizeImage(newWidth: 170) ?? UIImage(), contentHeightSize: CGFloat(arc4random_uniform(500)), timestamp: post.timeStamp))
+                self.dataSource.sort(by: >)
                 self.collectionView.reloadData()
             }
         }
@@ -132,8 +133,6 @@ extension PostViewController: PostRollingPaperLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat {
         let imageHeight = dataSource[indexPath.item].image.size.height
         let labelHeight = dataSource[indexPath.item].commentString.heightWithConstrainedWidth(width: UIScreen.main.bounds.width/2-55, font: UIFont.systemFont(ofSize: 15, weight: .medium))
-        print(imageHeight)
-        print(labelHeight)
         return imageHeight + labelHeight + 40
     }
 }
@@ -141,15 +140,12 @@ extension PostViewController: PostRollingPaperLayoutDelegate {
 extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(dataSource.count)
         return dataSource.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostRollingPaperCollectionViewCell.id, for: indexPath)
-        if let cell = cell as? PostRollingPaperCollectionViewCell {
-            cell.myModel = dataSource[indexPath.item]
-        }
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostRollingPaperCollectionViewCell.id, for: indexPath) as? PostRollingPaperCollectionViewCell ?? PostRollingPaperCollectionViewCell()
+        cell.myModel = dataSource[indexPath.row]
         return cell
     }
     
@@ -178,6 +174,6 @@ private extension PostViewController {
         for dtoDocument in dtoDocuments {
             documents.append(dtoDocument)
         }
-        return documents
+        return documents.sorted(by: >)
     }
 }

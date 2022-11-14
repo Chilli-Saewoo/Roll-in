@@ -126,7 +126,7 @@ final class WriteRollingPaperViewController: UIViewController {
                                                                     message: self.postView.textView.text,
                                                                     image: absoluteUrl,
                                                                     isPublic: self.postView.privateSwitch.isOn,
-                                                                    timeStamp: FirebaseFirestore.Timestamp())
+                                                                    timeStamp: Date())
                     
                     let rollingPaperPostAPI = RollingPaperPostAPI()
                     rollingPaperPostAPI.writePost(document: rollingPaperPostData,
