@@ -42,7 +42,6 @@
 		ABA034412921969C00A50471 /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA034402921969C00A50471 /* GroupDetailViewController.swift */; };
 		ABA034472921BB0100A50471 /* RollingPaperPostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA034452921BB0100A50471 /* RollingPaperPostAPI.swift */; };
 		ABA034482921BB0100A50471 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA034462921BB0100A50471 /* FirebaseStorageManager.swift */; };
-		ABB213D429229C0D001653E1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABB213D329229C0D001653E1 /* GoogleService-Info.plist */; };
 		ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */; };
 		ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */; };
 		ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */; };
@@ -66,6 +65,7 @@
 		ABDBD2DF291A3F99008FB3A6 /* Rollin_MVPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2DE291A3F99008FB3A6 /* Rollin_MVPUITests.swift */; };
 		ABDBD2E1291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2E0291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift */; };
 		F64694F92921A4BB0094CB68 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64694F82921A4BB0094CB68 /* FirebaseStorageManager.swift */; };
+		F646950B2922B9910094CB68 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F646950A2922B9910094CB68 /* GoogleService-Info.plist */; };
 		F65517512920C89D00B09405 /* NSTextAttachment+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65517502920C89D00B09405 /* NSTextAttachment+.swift */; };
 		F663324B292033F300A7310A /* SetNickNameWhileLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324A292033F300A7310A /* SetNickNameWhileLoginViewController.swift */; };
 		F663324D292034D100A7310A /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324C292034D100A7310A /* Image+.swift */; };
@@ -135,7 +135,6 @@
 		ABA034402921969C00A50471 /* GroupDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailViewController.swift; sourceTree = "<group>"; };
 		ABA034452921BB0100A50471 /* RollingPaperPostAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RollingPaperPostAPI.swift; sourceTree = "<group>"; };
 		ABA034462921BB0100A50471 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
-		ABB213D329229C0D001653E1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
 		ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingGroupInfo.swift; sourceTree = "<group>"; };
 		ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmGroupViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +163,7 @@
 		ABDBD2DE291A3F99008FB3A6 /* Rollin_MVPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rollin_MVPUITests.swift; sourceTree = "<group>"; };
 		ABDBD2E0291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rollin_MVPUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F64694F82921A4BB0094CB68 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseStorageManager.swift; path = API/FirebaseStorageManager.swift; sourceTree = "<group>"; };
+		F646950A2922B9910094CB68 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../dataSet/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F65517502920C89D00B09405 /* NSTextAttachment+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextAttachment+.swift"; sourceTree = "<group>"; };
 		F663324A292033F300A7310A /* SetNickNameWhileLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetNickNameWhileLoginViewController.swift; sourceTree = "<group>"; };
 		F663324C292034D100A7310A /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
@@ -525,7 +525,7 @@
 		F6667F2A2921762A00CD480F /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				ABB213D329229C0D001653E1 /* GoogleService-Info.plist */,
+				F646950A2922B9910094CB68 /* GoogleService-Info.plist */,
 				F6667F2F29219FD000CD480F /* RollingPaperPostAPI.swift */,
 				F64694F82921A4BB0094CB68 /* FirebaseStorageManager.swift */,
 				ABA034442921BB0100A50471 /* API */,
@@ -653,7 +653,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABDBD2CA291A3F99008FB3A6 /* LaunchScreen.storyboard in Resources */,
-				ABB213D429229C0D001653E1 /* GoogleService-Info.plist in Resources */,
+				F646950B2922B9910094CB68 /* GoogleService-Info.plist in Resources */,
 				ABDBD2C7291A3F99008FB3A6 /* Assets.xcassets in Resources */,
 				ABDBD2C5291A3F97008FB3A6 /* Main.storyboard in Resources */,
 			);
