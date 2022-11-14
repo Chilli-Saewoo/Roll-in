@@ -113,8 +113,6 @@ extension MainViewController: AddGroupButtonBackgroundDelegate {
     func showActionSheet(sheet: UIAlertController) {
         present(sheet, animated: true, completion: nil)
     }
-    
-    
 }
 
 private extension MainViewController {
@@ -193,7 +191,8 @@ private extension MainViewController {
         bottomGradientView.translatesAutoresizingMaskIntoConstraints = false
         bottomGradientView.frame = CGRect(origin: CGPoint(x: 0, y: view.frame.height * 0.9),
                                           size: CGSize(width: view.frame.width, height: view.frame.height * 0.1))
-        bottomGradientView.setGradient(color1: .init(red: 1, green: 1, blue: 1, alpha: 0), color2: .white)    }
+        bottomGradientView.setGradient(color1: .init(red: 1, green: 1, blue: 1, alpha: 0), color2: .white)
+    }
     
     func setNavigationBarBackButton() {
         let backBarButtonItem = UIBarButtonItem(title: "롤인 그룹", style: .plain, target: self, action: nil)
@@ -213,5 +212,3 @@ extension UIView {
         layer.addSublayer(gradient)
     }
 }
-
-
