@@ -23,8 +23,10 @@ final class WriteRollingPaperViewController: UIViewController {
     private let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5
     private let rollingPaperPostAPI = RollingPaperPostAPI()
     private var isBeingSaved: Bool = false
-    var writer: String = "Nick"
     private var postImage: UIImage = UIImage()
+    var writerNickname: String = ""
+    var groupId: String = ""
+    var receiverUserId: String = ""
     
     private let confirmButton: UIButton = {
         let button = UIButton()
@@ -116,19 +118,21 @@ final class WriteRollingPaperViewController: UIViewController {
         Task {
             if !isBeingSaved {
                 isBeingSaved = true
-                FirebaseStorageManager.uploadImage(image: postImage, pathRoot: "El6poAIPBKfuPgLh5mWNNrB6ySw2") { url in
+                FirebaseStorageManager.uploadImage(image: postImage, pathRoot: receiverUserId) { url in
                     guard let url = url else { return }
-                    UserDefaults.standard.set(url.absoluteString, forKey: "myImageUrl")
                     let absoluteUrl = url.absoluteString
-                    let rollingPaperPostData = RollingPaperPostData(from: self.writer,
-                                                                    postTheme: self.postThemePicerkView.selectedTheme,
+                    let rollingPaperPostData = RollingPaperPostData(from: self.writerNickname,
+                                                                    postTheme: self.postThemePicerkView.selectedThemeHex,
                                                                     message: self.postView.textView.text,
                                                                     image: absoluteUrl,
                                                                     isPublic: self.postView.privateSwitch.isOn,
                                                                     timeStamp: FirebaseFirestore.Timestamp())
                     
                     let rollingPaperPostAPI = RollingPaperPostAPI()
-                    rollingPaperPostAPI.writePost(document: rollingPaperPostData, imageUrl: absoluteUrl)
+                    rollingPaperPostAPI.writePost(document: rollingPaperPostData,
+                                                  imageUrl: absoluteUrl,
+                                                  groupId: self.groupId,
+                                                  receiver: self.receiverUserId)
                 }
                 isBeingSaved = false
             }
@@ -145,6 +149,7 @@ final class WriteRollingPaperViewController: UIViewController {
             postThemePicerkView.heightAnchor.constraint(equalToConstant: postThemePickerItemWidth + 25)
         ])
         
+        postView.fromLabel.text = "From. \(writerNickname)"
         view.addSubview(postView)
         postView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -165,6 +170,7 @@ final class WriteRollingPaperViewController: UIViewController {
     
     private func setupPostLayout() {
         view.addSubview(postView)
+        postView.fromLabel.text = "From. \(writerNickname)"
         postView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             postView.topAnchor.constraint(equalTo: postThemePicerkView.bottomAnchor, constant: 43),

@@ -21,6 +21,7 @@
 		79340B3E292172990097D111 /* SetNicknameWhileParticipateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B3D292172990097D111 /* SetNicknameWhileParticipateViewController.swift */; };
 		79340B41292173380097D111 /* ParticipateGroupConfirmCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B40292173380097D111 /* ParticipateGroupConfirmCardView.swift */; };
 		79340B49292180170097D111 /* RollingPaperPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B48292180170097D111 /* RollingPaperPostModel.swift */; };
+		79340B4B2921AA330097D111 /* RollingPaperInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B4A2921AA330097D111 /* RollingPaperInfo.swift */; };
 		7980D12E291C3F3F00915C72 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980D12D291C3F3F00915C72 /* UIColor+.swift */; };
 		79A9100D291B84B700A0672F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A9100C291B84B700A0672F /* PostView.swift */; };
 		79A91011291C091B00A0672F /* Alert+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A91010291C091B00A0672F /* Alert+.swift */; };
@@ -112,6 +113,7 @@
 		79340B3D292172990097D111 /* SetNicknameWhileParticipateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameWhileParticipateViewController.swift; sourceTree = "<group>"; };
 		79340B40292173380097D111 /* ParticipateGroupConfirmCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateGroupConfirmCardView.swift; sourceTree = "<group>"; };
 		79340B48292180170097D111 /* RollingPaperPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperPostModel.swift; sourceTree = "<group>"; };
+		79340B4A2921AA330097D111 /* RollingPaperInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperInfo.swift; sourceTree = "<group>"; };
 		7980D12D291C3F3F00915C72 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		79A9100C291B84B700A0672F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		79A91010291C091B00A0672F /* Alert+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+.swift"; sourceTree = "<group>"; };
@@ -473,6 +475,7 @@
 				ABB96EAC291AB71B003C5B1D /* CreatingGroup */,
 				AB437572291A442F00C3688D /* Model_example.swift */,
 				79340B26292171130097D111 /* Group.swift */,
+				79340B4A2921AA330097D111 /* RollingPaperInfo.swift */,
 				79340B28292171420097D111 /* ParticipateGroupInfo.swift */,
 				79340B48292180170097D111 /* RollingPaperPostModel.swift */,
 			);
@@ -685,6 +688,7 @@
 				ABA034482921BB0100A50471 /* FirebaseStorageManager.swift in Sources */,
 				ABCFC80D291FE32D006DB26B /* GroupWithThemeView.swift in Sources */,
 				AB032AA2291E870900B22C13 /* BackgroundColorSet.swift in Sources */,
+				79340B4B2921AA330097D111 /* RollingPaperInfo.swift in Sources */,
 				79340B31292171AD0097D111 /* MainViewController.swift in Sources */,
 				79340B29292171420097D111 /* ParticipateGroupInfo.swift in Sources */,
 				79340B27292171130097D111 /* Group.swift in Sources */,

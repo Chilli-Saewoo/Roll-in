@@ -11,6 +11,7 @@ class PostViewController: UIViewController {
 
     var collectionView: UICollectionView!
     var dataSource: [PostRollingPaperModel] = []
+    var rollingPaperInfo: RollingPaperInfo?
 
     override func viewDidLoad() {
         super.viewDidLoad()

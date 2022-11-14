@@ -17,19 +17,20 @@ final class PostThemePickerView: UIView {
         let textColor: UIColor
         let bgColor: UIColor
         let title: String
+        let themeHex: String
     }
     
     weak var delegate: PostViewDelegate?
 
-    private var themeList: [theme] = [theme(textColor: .textRed, bgColor: .bgRed, title: "빨강"),
-                                      theme(textColor: .textYellow, bgColor: .bgYellow, title: "노랑"),
-                                      theme(textColor: .textGreen, bgColor: .bgGreen, title: "초록"),
-                                      theme(textColor: .textBlue, bgColor: .bgBlue, title: "파랑"),
-                                      theme(textColor: .textPurple, bgColor: .bgPurple, title: "보라")]
+    private var themeList: [theme] = [theme(textColor: .textRed, bgColor: .bgRed, title: "빨강", themeHex: "FEE0EA"),
+                                      theme(textColor: .textYellow, bgColor: .bgYellow, title: "노랑", themeHex: "FFF9C0"),
+                                      theme(textColor: .textGreen, bgColor: .bgGreen, title: "초록", themeHex: "C8F6D5"),
+                                      theme(textColor: .textBlue, bgColor: .bgBlue, title: "파랑", themeHex: "DDEBFF"),
+                                      theme(textColor: .textPurple, bgColor: .bgPurple, title: "보라", themeHex: "EBDDFF")]
     
     let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5
     
-    var selectedTheme: String = "빨강"
+    var selectedThemeHex: String = "FEE0EA"
     
     private lazy var themeCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -94,7 +95,7 @@ extension PostThemePickerView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? PostThemePickerViewCell else { return }
         
-        selectedTheme = themeList[indexPath.row].title
+        selectedThemeHex = themeList[indexPath.row].themeHex
         cell.themeLabel.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
         cell.themeLabel.layer.borderWidth = 2
         
