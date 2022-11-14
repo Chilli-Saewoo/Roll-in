@@ -141,7 +141,6 @@ private extension SetNicknameWhileLoginViewController {
         titleMessageLabel.text = "닉네임을 설정해주세요"
         titleMessageLabel.font = .systemFont(ofSize: 24, weight: .bold)
         titleMessageLabel.textColor = .systemBlack
-        
     }
     
     func setNameTextFieldLayout() {
