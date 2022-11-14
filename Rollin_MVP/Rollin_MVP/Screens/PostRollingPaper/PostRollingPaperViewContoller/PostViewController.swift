@@ -163,7 +163,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let rollingPaperDetailViewController = DetailRollingPaperViewController()
         rollingPaperDetailViewController.view.backgroundColor = .white
         rollingPaperDetailViewController.modalPresentationStyle = .pageSheet
-        rollingPaperDetailViewController.myModel = dataSource[indexPath.item]
+        rollingPaperDetailViewController.postRollingPaperModel = dataSource[indexPath.item]
         
         if let halfModal = rollingPaperDetailViewController.sheetPresentationController {
             halfModal.preferredCornerRadius = 10

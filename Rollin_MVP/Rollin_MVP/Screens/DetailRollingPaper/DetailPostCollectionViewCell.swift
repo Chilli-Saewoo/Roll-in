@@ -9,8 +9,18 @@ import UIKit
 
 final class DetailPostCollectionViewCell: UICollectionViewCell {
     var detailPostView = UIView()
-    var message = UILabel()
     var image = UIImageView()
+    var message: UILabel = {
+        let label = UILabel()
+        label.numberOfLines = 0
+        label.font = .systemFont(ofSize: 22, weight: .regular)
+        return label
+    }()
+    var from: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 18, weight: .bold)
+        return label
+    }()
     var isPhoto: Bool = false
     
     required init?(coder: NSCoder) {
@@ -43,18 +53,18 @@ final class DetailPostCollectionViewCell: UICollectionViewCell {
         } else {
             self.contentView.addSubview(message)
             message.translatesAutoresizingMaskIntoConstraints = false
+            message.numberOfLines = 0
             NSLayoutConstraint.activate([
-                message.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-                message.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-                message.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 5),
+                message.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 14),
+                message.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+                message.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             ])
-//            self.contentView.addSubview(from)
-//            from.translatesAutoresizingMaskIntoConstraints = false
-//            NSLayoutConstraint.activate([
-//                from.topAnchor.constraint(equalTo: message.bottomAnchor, constant: 5),
-//                from.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
-//                from.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 5),
-//            ])
+            self.contentView.addSubview(from)
+            from.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                from.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+                from.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            ])
         }
     }
     func setBackgroundColor(color: UIColor?) {
