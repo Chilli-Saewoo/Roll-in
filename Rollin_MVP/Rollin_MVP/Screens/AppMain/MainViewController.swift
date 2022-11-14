@@ -168,7 +168,7 @@ private extension MainViewController {
             mainTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
         ])
         mainTitleLabel.font = .systemFont(ofSize: 26, weight: .medium)
-        mainTitleLabel.text = "\(UserDefaults.standard.string(forKey: "nickname") ?? "")의 롤링페이퍼"
+        mainTitleLabel.text = "\(UserDefaults.standard.string(forKey: "nickname") ?? "")의 롤인 그룹"
     }
     
     
