@@ -42,6 +42,8 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
         image.contentMode = .scaleToFill
         image.image = UIImage(named: "cat")
         image.layer.cornerRadius = 4
+        image.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        image.clipsToBounds = true
         return image
     }()
 
