@@ -16,6 +16,18 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
     var myModel: PostRollingPaperModel? {
         didSet { bind() }
     }
+    
+    lazy var blurView: UIView = {
+        let blurEffect = UIBlurEffect(style: .regular)
+        let visualEffectView = UIVisualEffectView(effect: blurEffect)
+        visualEffectView.alpha = 0.8
+        return visualEffectView
+    }()
+    
+    lazy var lockImage: UIImage = {
+        let image = UIImage()
+        return image
+    }()
 
     lazy var PostRollingPaperContainerView: UIView = {
         let view = UIView()
@@ -62,6 +74,16 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
         PostRollingPaperTitleLabel.text = myModel?.commentString
         guard let from = myModel?.from else { return }
         PostRollingPaperFromLabel.text = "From. \(from)"
+        guard let isPublic = myModel?.isPublic else { return }
+        var receiverUserId: String?
+        if isPublic != true{
+            contentView.addSubview(blurView)
+            blurView.translatesAutoresizingMaskIntoConstraints = false
+            blurView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+            blurView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+            blurView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+            blurView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        }
     }
 }
 
@@ -73,7 +95,6 @@ private extension PostRollingPaperCollectionViewCell {
         PostRollingPaperContainerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         PostRollingPaperContainerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         PostRollingPaperContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-    
         
         PostRollingPaperContainerView.addSubview(PostRollingPaperTitleLabel)
         PostRollingPaperTitleLabel.text = myModel?.commentString
@@ -82,7 +103,13 @@ private extension PostRollingPaperCollectionViewCell {
         PostRollingPaperTitleLabel.topAnchor.constraint(equalTo: PostRollingPaperContainerView.topAnchor, constant: 10).isActive = true
         PostRollingPaperTitleLabel.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor, constant: -10).isActive = true
         
-        PostRollingPaperContainerView.addSubview(PostRollingPaperFromLabel)
+        PostRollingPaperContainerView.addSubview(PostRolling
+        
+        
+        
+        
+        
+        Label)
         PostRollingPaperFromLabel.translatesAutoresizingMaskIntoConstraints = false
         PostRollingPaperFromLabel.topAnchor.constraint(equalTo: PostRollingPaperTitleLabel.bottomAnchor, constant: 10).isActive = true
         PostRollingPaperFromLabel.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor, constant: -10).isActive = true
