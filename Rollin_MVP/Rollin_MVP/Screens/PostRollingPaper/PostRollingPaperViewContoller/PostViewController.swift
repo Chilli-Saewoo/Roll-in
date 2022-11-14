@@ -183,7 +183,7 @@ private extension PostViewController {
         let snapshot = try await db.collection("groupUsers").document(groupId ?? "").collection("participants").document(receiverUserId ?? "").collection("posts").order(by: "timeStamp", descending: true).getDocuments()
         let uid = UserDefaults.standard.string(forKey: "uid")
         let myGroupNickname = try await db.collection("groupUsers").document(groupId ?? "").collection("participants").document(uid ?? "").getDocument().data()
-        guard let myGroupNickname = myGroupNickname else { return [RollingPaperPostData(from: "", postTheme: "", message: "", image: "", isPublic: false, timeStamp: FirebaseFirestore.Timestamp())]}
+        guard let myGroupNickname = myGroupNickname else { return [RollingPaperPostData(from: "", postTheme: "", message: "", image: "", isPublic: false, timeStamp: Date())]}
         self.myGroupNickname = String(describing: myGroupNickname["groupNickname"] ?? "")
         let dtoDocuments = try snapshot.documents.map { document -> RollingPaperPostData in
             let data = try document.data(as: RollingPaperPostData.self)
