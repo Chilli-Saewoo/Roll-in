@@ -86,13 +86,14 @@ private extension PostViewController {
             view.addSubview(writeButton)
             writeButton.translatesAutoresizingMaskIntoConstraints = false
             var writeButtonImage = UIImage(systemName: "plus")
-            writeButtonImage = writeButtonImage?.resizeImage(newWidth: 22)
             writeButton.setImage(writeButtonImage, for: .normal)
             writeButton.tintColor = .systemBlack
             writeButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
             NSLayoutConstraint.activate([
                 writeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 122),
                 writeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28),
+                writeButton.widthAnchor.constraint(equalToConstant: 25),
+                writeButton.heightAnchor.constraint(equalToConstant: 25),
             ])
         }
         
