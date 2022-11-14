@@ -22,6 +22,7 @@
 		79340B41292173380097D111 /* ParticipateGroupConfirmCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B40292173380097D111 /* ParticipateGroupConfirmCardView.swift */; };
 		79340B49292180170097D111 /* RollingPaperPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B48292180170097D111 /* RollingPaperPostModel.swift */; };
 		79340B4B2921AA330097D111 /* RollingPaperInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B4A2921AA330097D111 /* RollingPaperInfo.swift */; };
+		79340B4F292259920097D111 /* GroupUserRollingPaper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B4E292259920097D111 /* GroupUserRollingPaper.swift */; };
 		7980D12E291C3F3F00915C72 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980D12D291C3F3F00915C72 /* UIColor+.swift */; };
 		79A9100D291B84B700A0672F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A9100C291B84B700A0672F /* PostView.swift */; };
 		79A91011291C091B00A0672F /* Alert+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A91010291C091B00A0672F /* Alert+.swift */; };
@@ -115,6 +116,7 @@
 		79340B40292173380097D111 /* ParticipateGroupConfirmCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticipateGroupConfirmCardView.swift; sourceTree = "<group>"; };
 		79340B48292180170097D111 /* RollingPaperPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperPostModel.swift; sourceTree = "<group>"; };
 		79340B4A2921AA330097D111 /* RollingPaperInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperInfo.swift; sourceTree = "<group>"; };
+		79340B4E292259920097D111 /* GroupUserRollingPaper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupUserRollingPaper.swift; sourceTree = "<group>"; };
 		7980D12D291C3F3F00915C72 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		79A9100C291B84B700A0672F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		79A91010291C091B00A0672F /* Alert+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+.swift"; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 				79340B4A2921AA330097D111 /* RollingPaperInfo.swift */,
 				79340B28292171420097D111 /* ParticipateGroupInfo.swift */,
 				79340B48292180170097D111 /* RollingPaperPostModel.swift */,
+				79340B4E292259920097D111 /* GroupUserRollingPaper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -730,6 +733,7 @@
 				79A9100D291B84B700A0672F /* PostView.swift in Sources */,
 				79BAA9A9291AED9500C5636E /* NSObject+.swift in Sources */,
 				AB032AA4291E872400B22C13 /* String+.swift in Sources */,
+				79340B4F292259920097D111 /* GroupUserRollingPaper.swift in Sources */,
 				F663324D292034D100A7310A /* Image+.swift in Sources */,
 				F663324B292033F300A7310A /* SetNickNameWhileLoginViewController.swift in Sources */,
 				7980D12E291C3F3F00915C72 /* UIColor+.swift in Sources */,

@@ -7,6 +7,9 @@
 
 import UIKit
 
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+
 class PostViewController: UIViewController {
 
     var collectionView: UICollectionView!
@@ -15,19 +18,40 @@ class PostViewController: UIViewController {
     private lazy var writeButton = UIButton()
     private lazy var plusButton = UIButton()
     var rollingPaperInfo: RollingPaperInfo?
+    var writerNickname: String = "Nick"
+    var groupId: String = "fa8cce5a-1522-473e-9eb4-08aae407b015"
+    var receiverUserId: String = "rmEM5tNdBP7bi1v8Jgi4"
+    var posts: [RollingPaperPostData] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupDataSource()
         configurePostViewController()
         setupPostViewControllerLayout()
+        fetchAllPosts()
         setTitleMessageLayout()
         setWriteButtonLayout()
     }
     
     
     private func setupDataSource() {
-        dataSource = PostRollingPaperModel.getMock()
+        for post in posts {
+            var image = UIImage()
+            FirebaseStorageManager.downloadImage(urlString: post.image) { uiImage in
+                guard let uiImage = uiImage else { return }
+                image = uiImage
+                let color = UIColor(hex: "#\(post.postTheme)")
+                self.dataSource.append(PostRollingPaperModel(color: color, commentString: post.message, image: image, contentHeightSize: CGFloat(arc4random_uniform(500))))
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
+    func fetchAllPosts() {
+        Task {
+            let posts = try await fetchPosts()
+            self.posts = posts
+            setupDataSource()
+        }
     }
     
     @objc private func didTapButton() {
@@ -110,3 +134,26 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
 }
 
+
+private extension PostViewController {
+    func fetchPosts() async throws -> [RollingPaperPostData] {
+        let db = FirebaseFirestore.Firestore.firestore()
+        let snapshot = try await db.collection("groupUsers").document(groupId).collection("participants").document(receiverUserId).collection("posts").order(by: "timeStamp", descending: true).getDocuments()
+        
+        let dtoDocuments = try snapshot.documents.map { document -> RollingPaperPostData in
+            let data = try document.data(as: RollingPaperPostData.self)
+            return RollingPaperPostData(from: data.from,
+                                        postTheme: data.postTheme,
+                                        message: data.message,
+                                        image: data.image,
+                                        isPublic: data.isPublic,
+                                        timeStamp: data.timeStamp)
+        }
+        
+        var documents: [RollingPaperPostData] = []
+        for dtoDocument in dtoDocuments {
+            documents.append(dtoDocument)
+        }
+        return documents
+    }
+}
