@@ -35,12 +35,12 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        fetchAllPosts()
+//        fetchAllPosts()
     }
     
     private func setupDataSource() {
         self.dataSource = []
-        for (i, post) in posts.enumerated() {
+        for post in posts {
             var image = UIImage()
             FirebaseStorageManager.downloadImage(urlString: post.image) { uiImage in
                 guard let uiImage = uiImage else { return }
