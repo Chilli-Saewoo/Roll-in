@@ -23,6 +23,10 @@ final class DetailRollingPaperViewController: UIViewController {
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.collectionViewFlowLayout)
     //TODO: 후에 글, 사진 포스트로 변경 예정
     private var post = [UIColor.blue, UIColor.red]
+    var myModel: PostRollingPaperModel?
+    var message: String? = ""
+    var from: String? = ""
+    var image: UIImage? = UIImage()
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -74,7 +78,12 @@ extension DetailRollingPaperViewController: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailPostCollectionViewCell.className, for: indexPath) as! DetailPostCollectionViewCell
-        cell.setBackgroundColor(color: self.post[indexPath.item])
+        if indexPath.row == 1 {
+            cell.isPhoto = true
+        }
+        cell.message.text = myModel?.commentString
+        cell.image.image = myModel?.image
+        cell.detailPostView.backgroundColor = myModel?.color
         return cell
     }
 }

@@ -12,8 +12,8 @@ struct PostRollingPaperModel: Comparable {
     let color: UIColor
     let commentString: String
     let image: UIImage
-    let contentHeightSize: CGFloat
     let timestamp: Date
+    let from: String
     
     static func < (lhs: PostRollingPaperModel, rhs: PostRollingPaperModel) -> Bool {
         lhs.timestamp < rhs.timestamp
@@ -43,10 +43,8 @@ struct PostRollingPaperModel: Comparable {
             let color = UIColor.init(red: red / 255, green: green / 255, blue: blue / 255, alpha: alpha)
             let myImage: UIImage = UIImage(named: "cat")?.resizeImage(newWidth: UIScreen.main.bounds.width-128) ?? UIImage()
             print((UIScreen.main.bounds.width)/2)
-            let tmpHeight = CGFloat(arc4random_uniform(500))
             let myModel: PostRollingPaperModel = .init(color: color,
-                                                       commentString: dummyIdx, image: myImage,
-                                                       contentHeightSize: tmpHeight, timestamp: Date())
+                                                       commentString: dummyIdx, image: myImage, timestamp: Date(), from: "")
             datas += [myModel]
         }
 
