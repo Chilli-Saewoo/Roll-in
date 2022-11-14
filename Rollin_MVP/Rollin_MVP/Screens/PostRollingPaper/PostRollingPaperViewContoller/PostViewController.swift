@@ -73,17 +73,20 @@ private extension PostViewController {
     }
     
     func setWriteButtonLayout() {
-        view.addSubview(writeButton)
-        writeButton.translatesAutoresizingMaskIntoConstraints = false
-        var writeButtonImage = UIImage(systemName: "plus")
-        writeButtonImage = writeButtonImage?.resizeImage(newWidth: 22)
-        writeButton.setImage(writeButtonImage, for: .normal)
-        writeButton.tintColor = .systemBlack
-        writeButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-        NSLayoutConstraint.activate([
-            writeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 122),
-            writeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28),
-        ])
+        if receiverUserId != UserDefaults.standard.string(forKey: "uid") {
+            view.addSubview(writeButton)
+            writeButton.translatesAutoresizingMaskIntoConstraints = false
+            var writeButtonImage = UIImage(systemName: "plus")
+            writeButtonImage = writeButtonImage?.resizeImage(newWidth: 22)
+            writeButton.setImage(writeButtonImage, for: .normal)
+            writeButton.tintColor = .systemBlack
+            writeButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+            NSLayoutConstraint.activate([
+                writeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 122),
+                writeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28),
+            ])
+        }
+        
     }
 
     func setTitleMessageLayout() {
