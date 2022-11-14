@@ -51,6 +51,7 @@ final class SetThemeViewController: UIViewController {
         iconCollectionViewDelegate()
         setNextButton()
         setNextButtonAction()
+        setNavigationBarBackButton()
     }
     
     private func setNextButtonAction() {
@@ -83,6 +84,12 @@ private extension SetThemeViewController {
         nextButton.setTitleColor(.white, for: .normal)
         nextButton.setTitleColor(.inactiveTextGray, for: .disabled)
         nextButton.backgroundColor = .inactiveBgGray
+    }
+    
+    func setNavigationBarBackButton() {
+        let backBarButtonItem = UIBarButtonItem(title: "그룹 선택", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = .black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
 }
 

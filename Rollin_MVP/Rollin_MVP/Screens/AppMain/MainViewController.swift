@@ -24,6 +24,7 @@ final class MainViewController: UIViewController {
         super.viewDidLoad()
         setMainTitleLabel()
         setAddGroupCard()
+        setNavigationBarBackButton()
         addGroupCard.delegate = self
         configureCollectionView()
         registerCollectionView()
@@ -78,6 +79,12 @@ private extension MainViewController {
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "GroupDetail") as? GroupDetailViewController ?? UIViewController()
+        (secondViewController as? GroupDetailViewController)?.group = groups[indexPath.row]
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return groups.count
@@ -174,6 +181,12 @@ private extension MainViewController {
             addGroupCard.topAnchor.constraint(equalTo: mainTitleLabel.bottomAnchor, constant: 40),
             addGroupCard.heightAnchor.constraint(equalToConstant: 100),
         ])
+    }
+    
+    func setNavigationBarBackButton() {
+        let backBarButtonItem = UIBarButtonItem(title: "롤인 그룹", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = .black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
 }
 

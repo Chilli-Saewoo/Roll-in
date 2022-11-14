@@ -12,7 +12,9 @@ class PostViewController: UIViewController {
     var collectionView: UICollectionView!
     var dataSource: [PostRollingPaperModel] = []
     private lazy var titleMessageLabel = UILabel()
-    private let writeButton = UIButton()
+    private lazy var writeButton = UIButton()
+    private lazy var plusButton = UIButton()
+    var rollingPaperInfo: RollingPaperInfo?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,19 +22,21 @@ class PostViewController: UIViewController {
         configurePostViewController()
         setupPostViewControllerLayout()
         setTitleMessageLayout()
+        setWriteButtonLayout()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        navigationController?.isNavigationBarHidden = true
-    }
     
     private func setupDataSource() {
         dataSource = PostRollingPaperModel.getMock()
     }
+    
+    @objc private func didTapButton() {
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "WriteRollingPaperViewController") else {return}
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 private extension PostViewController {
-    
     private func configurePostViewController() {
         let collectionViewLayout = PostRollingPaperLayout()
         collectionViewLayout.delegate = self
@@ -42,6 +46,20 @@ private extension PostViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(PostRollingPaperCollectionViewCell.self, forCellWithReuseIdentifier: PostRollingPaperCollectionViewCell.id)
+    }
+    
+    func setWriteButtonLayout() {
+        view.addSubview(writeButton)
+        writeButton.translatesAutoresizingMaskIntoConstraints = false
+        var writeButtonImage = UIImage(systemName: "plus")
+        writeButtonImage = writeButtonImage?.resizeImage(newWidth: 22)
+        writeButton.setImage(writeButtonImage, for: .normal)
+        writeButton.tintColor = .systemBlack
+        writeButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        NSLayoutConstraint.activate([
+            writeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 122),
+            writeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28),
+        ])
     }
 
     func setTitleMessageLayout() {
@@ -54,11 +72,6 @@ private extension PostViewController {
         titleMessageLabel.setTextWithLineHeight(text: "Key의 롤링페이퍼", lineHeight: 40)
         titleMessageLabel.font = .systemFont(ofSize: 26, weight: .bold)
         titleMessageLabel.numberOfLines = 0
-    }
-    
-    func setupWriteButtonLayout() {
-        view.addSubview(writeButton)
-        let configuration = UIImage.SymbolConfiguration(pointSize: 24)
     }
     
     private func setupPostViewControllerLayout() {
@@ -74,7 +87,7 @@ private extension PostViewController {
 extension PostViewController: PostRollingPaperLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat {
         let imageHeight = dataSource[indexPath.item].image.size.height
-        let labelHeight = dataSource[indexPath.item].commentString.heightWithConstrainedWidth(width: 100, font: UIFont.systemFont(ofSize: 15, weight: .bold))
+        let labelHeight = dataSource[indexPath.item].commentString.heightWithConstrainedWidth(width: UIScreen.main.bounds.width/2-55, font: UIFont.systemFont(ofSize: 15, weight: .medium))
         print(imageHeight)
         print(labelHeight)
         return imageHeight + labelHeight + 40

@@ -80,7 +80,6 @@ final class PostView: UIView {
     
     let fromLabel: UILabel = {
         let label = UILabel()
-        label.text = "From. 닉"
         label.font = .systemFont(ofSize: 16, weight: .bold)
         label.textColor = .textRed
         return label

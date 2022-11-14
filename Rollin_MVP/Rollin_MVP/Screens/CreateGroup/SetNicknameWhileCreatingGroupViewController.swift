@@ -27,6 +27,7 @@ final class SetNicknameWhileCreatingGroupViewController: UIViewController {
         setNextButtonLayout()
         setNextButtonAction()
         setCancelButton()
+        setNavigationBarBackButton()
         nameTextField.delegate = self
     }
     
@@ -102,6 +103,12 @@ private extension SetNicknameWhileCreatingGroupViewController {
         cancelButton.setImage(.init(systemName: "x.circle.fill"), for: .normal)
         cancelButton.tintColor = .systemGray
         cancelButton.addTarget(self, action: #selector(removeTextField), for: .touchUpInside)
+    }
+    
+    func setNavigationBarBackButton() {
+        let backBarButtonItem = UIBarButtonItem(title: "그룹 내 닉네임 입력", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = .black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
     @objc func removeTextField() {
