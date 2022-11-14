@@ -18,9 +18,9 @@ class PostViewController: UIViewController {
     private lazy var writeButton = UIButton()
     private lazy var plusButton = UIButton()
     var rollingPaperInfo: RollingPaperInfo?
-    var writerNickname: String = "Nick"
-    var groupId: String = "fa8cce5a-1522-473e-9eb4-08aae407b015"
-    var receiverUserId: String = "rmEM5tNdBP7bi1v8Jgi4"
+    var writerNickname: String?
+    var groupId: String?
+    var receiverUserId: String?
     var posts: [RollingPaperPostData] = []
 
     override func viewDidLoad() {
@@ -138,7 +138,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
 private extension PostViewController {
     func fetchPosts() async throws -> [RollingPaperPostData] {
         let db = FirebaseFirestore.Firestore.firestore()
-        let snapshot = try await db.collection("groupUsers").document(groupId).collection("participants").document(receiverUserId).collection("posts").order(by: "timeStamp", descending: true).getDocuments()
+        let snapshot = try await db.collection("groupUsers").document(groupId ?? "").collection("participants").document(receiverUserId ?? "").collection("posts").order(by: "timeStamp", descending: true).getDocuments()
         
         let dtoDocuments = try snapshot.documents.map { document -> RollingPaperPostData in
             let data = try document.data(as: RollingPaperPostData.self)

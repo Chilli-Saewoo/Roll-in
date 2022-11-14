@@ -72,7 +72,13 @@ final class GroupDetailViewController: UIViewController {
 extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardSwiperDelegate {
     
     func didTapCard(verticalCardSwiperView: VerticalCardSwiperView, index: Int) {
-        print("??????")
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostViewController") as? PostViewController ?? UIViewController()
+        let vc = secondViewController as? PostViewController
+        vc?.writerNickname = group?.participants[index].1
+        vc?.receiverUserId = group?.participants[index].0
+        vc?.groupId = group?.groupId
+        
+        self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
