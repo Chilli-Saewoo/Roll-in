@@ -40,7 +40,7 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
                 guard let uiImage = uiImage else { return }
                 image = uiImage
                 let color = UIColor(hex: "#\(post.postTheme)")
-                self.dataSource.append(PostRollingPaperModel(color: color, commentString: post.message, image: image.resizeImage(newWidth: 170) ?? UIImage(), contentHeightSize: CGFloat(arc4random_uniform(500))))
+                self.dataSource.append(PostRollingPaperModel(color: color, commentString: post.message, image: image.resizeImage(newWidth: 170) ?? UIImage(), contentHeightSize: CGFloat(arc4random_uniform(500)), from: post.from))
                 self.collectionView.reloadData()
             }
         }
@@ -55,7 +55,12 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
     }
     
     @objc private func didTapButton() {
-        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "WriteRollingPaperViewController") else {return}
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "WriteRollingPaperViewController") as? WriteRollingPaperViewController ?? UIViewController()
+        let vc = viewController as? WriteRollingPaperViewController
+        guard let groupId = groupId else {return}
+        guard let receiverUserId = receiverUserId else {return}
+        vc?.groupId = groupId
+        vc?.receiverUserId = receiverUserId
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
@@ -154,7 +159,19 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presentDetailViewHalfModal()
+        let rollingPaperDetailViewController = DetailRollingPaperViewController()
+        rollingPaperDetailViewController.view.backgroundColor = .white
+        rollingPaperDetailViewController.modalPresentationStyle = .pageSheet
+        rollingPaperDetailViewController.myModel = dataSource[indexPath.item]
+        
+        if let halfModal = rollingPaperDetailViewController.sheetPresentationController {
+            halfModal.preferredCornerRadius = 10
+            halfModal.detents = [.medium()]
+            halfModal.delegate = self
+            halfModal.prefersGrabberVisible = true
+        }
+        
+        present(rollingPaperDetailViewController, animated: true, completion: nil)
     }
 }
 

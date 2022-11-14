@@ -85,7 +85,7 @@ private extension PostRollingPaperCollectionViewCell {
         PostRollingPaperTitleLabel.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor).isActive = true
         
         PostRollingPaperContainerView.addSubview(PostRollingPapeFromLabel)
-        PostRollingPapeFromLabel.text = "From."
+        PostRollingPapeFromLabel.text = "From.\(myModel?.from)"
         PostRollingPapeFromLabel.translatesAutoresizingMaskIntoConstraints = false
         PostRollingPapeFromLabel.topAnchor.constraint(equalTo: PostRollingPaperTitleLabel.bottomAnchor).isActive = true
         PostRollingPapeFromLabel.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor).isActive = true

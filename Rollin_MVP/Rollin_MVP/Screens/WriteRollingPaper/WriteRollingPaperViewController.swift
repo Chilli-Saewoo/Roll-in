@@ -24,7 +24,7 @@ final class WriteRollingPaperViewController: UIViewController {
     private let rollingPaperPostAPI = RollingPaperPostAPI()
     private var isBeingSaved: Bool = false
     private var postImage: UIImage = UIImage()
-    var writerNickname: String = ""
+    var writerNickname: String = "니쿠"
     var groupId: String = ""
     var receiverUserId: String = ""
     
