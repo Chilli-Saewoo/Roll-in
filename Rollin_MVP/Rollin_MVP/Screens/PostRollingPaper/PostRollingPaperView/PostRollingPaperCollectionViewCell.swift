@@ -88,6 +88,7 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
         blurView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         if isPublic {
             blurView.layer.opacity = 0.0
+
         } else {
             blurView.layer.opacity = 1.0
         }
