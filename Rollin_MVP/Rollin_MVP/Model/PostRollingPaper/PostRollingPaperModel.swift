@@ -44,9 +44,9 @@ struct PostRollingPaperModel: Comparable {
             let color = UIColor.init(red: red / 255, green: green / 255, blue: blue / 255, alpha: alpha)
             let myImage: UIImage = UIImage(named: "cat")?.resizeImage(newWidth: UIScreen.main.bounds.width-128) ?? UIImage()
             let myPublic: Bool = true
-            let myModel: PostRollingPaperModel = .init(color: color,
+            let PostRollingPaperModel: PostRollingPaperModel = .init(color: color,
                                                        commentString: dummyIdx, image: myImage, timestamp: Date(), from: "", isPublic: myPublic)
-            datas += [myModel]
+            datas += [PostRollingPaperModel]
         }
 
         return datas

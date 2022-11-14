@@ -157,7 +157,9 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostRollingPaperCollectionViewCell.id, for: indexPath) as? PostRollingPaperCollectionViewCell ?? PostRollingPaperCollectionViewCell()
-        cell.myModel = dataSource[indexPath.row]
+        cell.PostRollingPaperModel = dataSource[indexPath.row]
+        cell.receiverUserId = receiverUserId ?? ""
+        cell.bind()
         return cell
     }
     
@@ -165,7 +167,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let rollingPaperDetailViewController = DetailRollingPaperViewController()
         rollingPaperDetailViewController.view.backgroundColor = .white
         rollingPaperDetailViewController.modalPresentationStyle = .pageSheet
-        rollingPaperDetailViewController.myModel = dataSource[indexPath.item]
+        rollingPaperDetailViewController.PostRollingPaperModel = dataSource[indexPath.item]
         
         if let halfModal = rollingPaperDetailViewController.sheetPresentationController {
             halfModal.preferredCornerRadius = 10

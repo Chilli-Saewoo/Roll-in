@@ -8,12 +8,13 @@
 import UIKit
 
 class PostRollingPaperCollectionViewCell: UICollectionViewCell {
+    var receiverUserId: String = ""
 
     static var id: String {
         return NSStringFromClass(Self.self).components(separatedBy: ".").last ?? ""
     }
 
-    var myModel: PostRollingPaperModel? {
+    var PostRollingPaperModel: PostRollingPaperModel? {
         didSet {
             bind()
         }
@@ -26,8 +27,12 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
         return visualEffectView
     }()
     
-    lazy var lockImage: UIImage = {
-        let image = UIImage()
+    lazy var lockImage: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFill
+        image.image = UIImage(systemName: "lock.fill")
+        image.tintColor = .systemBlack
+        image.clipsToBounds = true
         return image
     }()
 
@@ -71,25 +76,30 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
         fatalError()
     }
 
-    private func bind() {
+    func bind() {
         blurView.removeFromSuperview()
-        PostRollingPaperContainerView.backgroundColor = myModel?.color
-        PostRollingPaperImageView.image = myModel?.image
-        PostRollingPaperTitleLabel.text = myModel?.commentString
-        guard let from = myModel?.from else { return }
+        lockImage.removeFromSuperview()
+        PostRollingPaperContainerView.backgroundColor = PostRollingPaperModel?.color
+        PostRollingPaperImageView.image = PostRollingPaperModel?.image
+        PostRollingPaperTitleLabel.text = PostRollingPaperModel?.commentString
+        guard let from = PostRollingPaperModel?.from else { return }
         PostRollingPaperFromLabel.text = "From. \(from)"
-        guard let isPublic = myModel?.isPublic else { return }
-        var receiverUserId: String?
+        guard let isPublic = PostRollingPaperModel?.isPublic else { return }
+        
         contentView.addSubview(blurView)
         blurView.translatesAutoresizingMaskIntoConstraints = false
         blurView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         blurView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         blurView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         blurView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        if isPublic {
+        if isPublic || receiverUserId == UserDefaults.standard.string(forKey: "uid") {
             blurView.layer.opacity = 0.0
         } else {
             blurView.layer.opacity = 1.0
+            contentView.addSubview(lockImage)
+            lockImage.translatesAutoresizingMaskIntoConstraints = false
+            lockImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
+            lockImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
         }
     }
 }
@@ -104,7 +114,7 @@ private extension PostRollingPaperCollectionViewCell {
         PostRollingPaperContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         
         PostRollingPaperContainerView.addSubview(PostRollingPaperTitleLabel)
-        PostRollingPaperTitleLabel.text = myModel?.commentString
+        PostRollingPaperTitleLabel.text = PostRollingPaperModel?.commentString
         PostRollingPaperTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         PostRollingPaperTitleLabel.leadingAnchor.constraint(equalTo: PostRollingPaperContainerView.leadingAnchor, constant: 10).isActive = true
         PostRollingPaperTitleLabel.topAnchor.constraint(equalTo: PostRollingPaperContainerView.topAnchor, constant: 10).isActive = true
