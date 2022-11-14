@@ -62,8 +62,6 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
         guard let groupId = groupId else {return}
         guard let receiverUserId = receiverUserId else {return}
         guard let myGroupNickname = myGroupNickname else {return}
-        print(myGroupNickname)
-        print(receiverUserId)
         vc?.groupId = groupId
         vc?.receiverUserId = receiverUserId
         vc?.writerNickname = myGroupNickname
@@ -141,8 +139,8 @@ private extension PostViewController {
 
 extension PostViewController: PostRollingPaperLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat {
-        let imageHeight = dataSource[indexPath.item].image.size.height
-        let labelHeight = dataSource[indexPath.item].commentString.heightWithConstrainedWidth(width: UIScreen.main.bounds.width/2-55, font: UIFont.systemFont(ofSize: 15, weight: .medium))
+        let imageHeight = (UIScreen.main.bounds.width - 10)/2
+        let labelHeight = dataSource[indexPath.item].commentString.heightWithConstrainedWidth(width: UIScreen.main.bounds.width/2-50, font: UIFont.systemFont(ofSize: 17, weight: .medium))
         return imageHeight + labelHeight + 40
     }
 }

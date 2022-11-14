@@ -25,12 +25,12 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
 
     lazy var PostRollingPaperTitleLabel: UILabel = {
         let label = UILabel()
-        label.lineBreakStrategy = .hangulWordPriority
+        label.lineBreakMode = .byCharWrapping
         label.numberOfLines = 0
         return label
     }()
     
-    lazy var PostRollingPapeFromLabel: UILabel = {
+    lazy var PostRollingPaperFromLabel: UILabel = {
         let label = UILabel()
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 1
@@ -61,7 +61,7 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
         PostRollingPaperImageView.image = myModel?.image
         PostRollingPaperTitleLabel.text = myModel?.commentString
         guard let from = myModel?.from else { return }
-        PostRollingPapeFromLabel.text = "From. \(from)"
+        PostRollingPaperFromLabel.text = "From. \(from)"
     }
 }
 
@@ -75,12 +75,6 @@ private extension PostRollingPaperCollectionViewCell {
         PostRollingPaperContainerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
     
         
-        PostRollingPaperContainerView.addSubview(PostRollingPaperImageView)
-        PostRollingPaperImageView.translatesAutoresizingMaskIntoConstraints = false
-        PostRollingPaperImageView.leadingAnchor.constraint(equalTo: PostRollingPaperContainerView.leadingAnchor).isActive = true
-        PostRollingPaperImageView.bottomAnchor.constraint(equalTo: PostRollingPaperContainerView.bottomAnchor).isActive = true
-        PostRollingPaperImageView.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor).isActive = true
-        
         PostRollingPaperContainerView.addSubview(PostRollingPaperTitleLabel)
         PostRollingPaperTitleLabel.text = myModel?.commentString
         PostRollingPaperTitleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -88,10 +82,19 @@ private extension PostRollingPaperCollectionViewCell {
         PostRollingPaperTitleLabel.topAnchor.constraint(equalTo: PostRollingPaperContainerView.topAnchor, constant: 10).isActive = true
         PostRollingPaperTitleLabel.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor, constant: -10).isActive = true
         
-        PostRollingPaperContainerView.addSubview(PostRollingPapeFromLabel)
-        PostRollingPapeFromLabel.translatesAutoresizingMaskIntoConstraints = false
-        PostRollingPapeFromLabel.topAnchor.constraint(equalTo: PostRollingPaperTitleLabel.bottomAnchor, constant: 10).isActive = true
-        PostRollingPapeFromLabel.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor, constant: -10).isActive = true
+        PostRollingPaperContainerView.addSubview(PostRollingPaperFromLabel)
+        PostRollingPaperFromLabel.translatesAutoresizingMaskIntoConstraints = false
+        PostRollingPaperFromLabel.topAnchor.constraint(equalTo: PostRollingPaperTitleLabel.bottomAnchor, constant: 10).isActive = true
+        PostRollingPaperFromLabel.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor, constant: -10).isActive = true
+        
+        PostRollingPaperContainerView.addSubview(PostRollingPaperImageView)
+        PostRollingPaperImageView.translatesAutoresizingMaskIntoConstraints = false
+        PostRollingPaperImageView.topAnchor.constraint(equalTo: PostRollingPaperFromLabel.bottomAnchor, constant: 10).isActive = true
+        PostRollingPaperImageView.leadingAnchor.constraint(equalTo: PostRollingPaperContainerView.leadingAnchor).isActive = true
+        PostRollingPaperImageView.bottomAnchor.constraint(equalTo: PostRollingPaperContainerView.bottomAnchor).isActive = true
+        PostRollingPaperImageView.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor).isActive = true
+        PostRollingPaperImageView.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 50)/2).isActive = true
+        
     }
 }
 
