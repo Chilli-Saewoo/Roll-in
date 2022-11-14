@@ -34,7 +34,7 @@ final class AddGroupButtonBackgroundView: UIView {
     }
     
     private func setActionSheet() {
-        let participateAction = UIAlertAction(title: "참가하기", style: .destructive, handler: {
+        let participateAction = UIAlertAction(title: "참가하기", style: .default, handler: {
             (alert: UIAlertAction!) -> Void in
             if let delegate = self.delegate {
                 delegate.participateActionSelected()

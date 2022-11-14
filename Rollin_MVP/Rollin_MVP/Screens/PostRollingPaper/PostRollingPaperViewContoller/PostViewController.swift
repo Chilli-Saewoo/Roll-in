@@ -42,7 +42,7 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
                 guard let uiImage = uiImage else { return }
                 image = uiImage
                 let color = UIColor(hex: "#\(post.postTheme)")
-                self.dataSource.append(PostRollingPaperModel(color: color, commentString: post.message, image: image.resizeImage(newWidth: 170) ?? UIImage(), timestamp: post.timeStamp, from: post.from))
+                self.dataSource.append(PostRollingPaperModel(color: color, commentString: post.message, image: image.resizeImage(newWidth: 170) ?? UIImage(), timestamp: post.timeStamp, from: post.from, isPublic: post.isPublic))
                 self.dataSource.sort(by: >)
                 self.collectionView.reloadData()
             }
@@ -56,6 +56,8 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
             setupDataSource()
         }
     }
+    
+    
     
     @objc private func didTapButton() {
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "WriteRollingPaperViewController") as? WriteRollingPaperViewController ?? UIViewController()
@@ -194,7 +196,6 @@ private extension PostViewController {
                                         isPublic: data.isPublic,
                                         timeStamp: data.timeStamp)
         }
-        
         var documents: [RollingPaperPostData] = []
         for dtoDocument in dtoDocuments {
             documents.append(dtoDocument)
