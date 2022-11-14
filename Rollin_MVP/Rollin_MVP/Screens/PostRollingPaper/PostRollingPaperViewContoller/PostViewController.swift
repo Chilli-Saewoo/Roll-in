@@ -11,6 +11,9 @@ class PostViewController: UIViewController {
 
     var collectionView: UICollectionView!
     var dataSource: [PostRollingPaperModel] = []
+    private lazy var titleMessageLabel = UILabel()
+    private lazy var writeButton = UIButton()
+    private lazy var plusButton = UIButton()
     var rollingPaperInfo: RollingPaperInfo?
 
     override func viewDidLoad() {
@@ -18,15 +21,22 @@ class PostViewController: UIViewController {
         setupDataSource()
         configurePostViewController()
         setupPostViewControllerLayout()
+        setTitleMessageLayout()
+        setWriteButtonLayout()
     }
+    
     
     private func setupDataSource() {
         dataSource = PostRollingPaperModel.getMock()
     }
+    
+    @objc private func didTapButton() {
+        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "WriteRollingPaperViewController") else {return}
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 private extension PostViewController {
-    
     private func configurePostViewController() {
         let collectionViewLayout = PostRollingPaperLayout()
         collectionViewLayout.delegate = self
@@ -38,22 +48,46 @@ private extension PostViewController {
         collectionView.register(PostRollingPaperCollectionViewCell.self, forCellWithReuseIdentifier: PostRollingPaperCollectionViewCell.id)
     }
     
+    func setWriteButtonLayout() {
+        view.addSubview(writeButton)
+        writeButton.translatesAutoresizingMaskIntoConstraints = false
+        var writeButtonImage = UIImage(systemName: "plus")
+        writeButtonImage = writeButtonImage?.resizeImage(newWidth: 22)
+        writeButton.setImage(writeButtonImage, for: .normal)
+        writeButton.tintColor = .systemBlack
+        writeButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        NSLayoutConstraint.activate([
+            writeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 122),
+            writeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28),
+        ])
+    }
+
+    func setTitleMessageLayout() {
+        view.addSubview(titleMessageLabel)
+        titleMessageLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
+            titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+        ])
+        titleMessageLabel.setTextWithLineHeight(text: "Key의 롤링페이퍼", lineHeight: 40)
+        titleMessageLabel.font = .systemFont(ofSize: 26, weight: .bold)
+        titleMessageLabel.numberOfLines = 0
+    }
+    
     private func setupPostViewControllerLayout() {
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 10).isActive = true
-        collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -10).isActive = true
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 500).isActive = true
+        collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 8).isActive = true
+        collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -8).isActive = true
+        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 150).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
 }
 
 extension PostViewController: PostRollingPaperLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat {
-        let cellWidth: CGFloat = (view.bounds.width - 4) / 2
         let imageHeight = dataSource[indexPath.item].image.size.height
-        let labelHeight = dataSource[indexPath.item].commentString.heightWithConstrainedWidth(width: 100, font: UIFont.systemFont(ofSize: 15, weight: .bold))
+        let labelHeight = dataSource[indexPath.item].commentString.heightWithConstrainedWidth(width: UIScreen.main.bounds.width/2-55, font: UIFont.systemFont(ofSize: 15, weight: .medium))
         print(imageHeight)
         print(labelHeight)
         return imageHeight + labelHeight + 40

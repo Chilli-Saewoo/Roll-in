@@ -137,6 +137,7 @@ final class WriteRollingPaperViewController: UIViewController {
                 isBeingSaved = false
             }
         }
+        self.navigationController?.popViewController(animated: true)
     }
     
     private func setupLayout() {

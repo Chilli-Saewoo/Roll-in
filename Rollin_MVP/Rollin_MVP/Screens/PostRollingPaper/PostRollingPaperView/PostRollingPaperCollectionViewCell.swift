@@ -25,7 +25,7 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
 
     lazy var PostRollingPaperTitleLabel: UILabel = {
         let label = UILabel()
-        label.lineBreakMode = .byWordWrapping
+        label.lineBreakStrategy = .hangulWordPriority
         label.numberOfLines = 0
         return label
     }()
