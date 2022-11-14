@@ -34,12 +34,12 @@ final class MainViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         fetchGroups()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -143,7 +143,7 @@ private extension MainViewController {
                                         }
                                         group.groupId = groupIds[idx]
                                         newGroups.append(group)
-                                        newGroups.sort(by: <)
+                                        newGroups.sort(by: >)
                                         if newGroups.count == groupIds.count {
                                             self.groups = newGroups
                                         }

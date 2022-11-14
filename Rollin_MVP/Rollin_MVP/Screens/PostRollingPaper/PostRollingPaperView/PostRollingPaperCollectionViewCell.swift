@@ -94,6 +94,7 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
         blurView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
         if isPublic || receiverUserId == UserDefaults.standard.string(forKey: "uid") {
             blurView.layer.opacity = 0.0
+
         } else {
             blurView.layer.opacity = 1.0
             contentView.addSubview(lockImage)
