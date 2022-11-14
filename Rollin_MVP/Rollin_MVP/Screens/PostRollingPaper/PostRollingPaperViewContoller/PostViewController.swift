@@ -26,11 +26,12 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTitleMessageLayout()
+        setWriteButtonLayout()
         configurePostViewController()
         setupPostViewControllerLayout()
         fetchAllPosts()
-        setTitleMessageLayout()
-        setWriteButtonLayout()
+        setNavigationBarBackButton()
     }
     
     
@@ -64,8 +65,6 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
         guard let groupId = groupId else {return}
         guard let receiverUserId = receiverUserId else {return}
         guard let myGroupNickname = myGroupNickname else {return}
-        print(myGroupNickname)
-        print(receiverUserId)
         vc?.groupId = groupId
         vc?.receiverUserId = receiverUserId
         vc?.writerNickname = myGroupNickname
@@ -90,13 +89,14 @@ private extension PostViewController {
             view.addSubview(writeButton)
             writeButton.translatesAutoresizingMaskIntoConstraints = false
             var writeButtonImage = UIImage(systemName: "plus")
-            writeButtonImage = writeButtonImage?.resizeImage(newWidth: 22)
             writeButton.setImage(writeButtonImage, for: .normal)
             writeButton.tintColor = .systemBlack
             writeButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
             NSLayoutConstraint.activate([
                 writeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 122),
                 writeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28),
+                writeButton.widthAnchor.constraint(equalToConstant: 25),
+                writeButton.heightAnchor.constraint(equalToConstant: 25),
             ])
         }
         
@@ -120,7 +120,7 @@ private extension PostViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 8).isActive = true
         collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -8).isActive = true
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40).isActive = true
+        collectionView.topAnchor.constraint(equalTo: titleMessageLabel.bottomAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
     }
     
@@ -143,8 +143,8 @@ private extension PostViewController {
 
 extension PostViewController: PostRollingPaperLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat {
-        let imageHeight = dataSource[indexPath.item].image.size.height
-        let labelHeight = dataSource[indexPath.item].commentString.heightWithConstrainedWidth(width: UIScreen.main.bounds.width/2-55, font: UIFont.systemFont(ofSize: 15, weight: .medium))
+        let imageHeight = (UIScreen.main.bounds.width - 10)/2
+        let labelHeight = dataSource[indexPath.item].commentString.heightWithConstrainedWidth(width: UIScreen.main.bounds.width/2-50, font: UIFont.systemFont(ofSize: 17, weight: .medium))
         return imageHeight + labelHeight + 40
     }
 }
@@ -201,5 +201,14 @@ private extension PostViewController {
             documents.append(dtoDocument)
         }
         return documents.sorted(by: >)
+    }
+}
+
+extension PostViewController {
+    func setNavigationBarBackButton() {
+        guard let groupNickname = groupNickname else { return }
+        let backBarButtonItem = UIBarButtonItem(title: "\(groupNickname)님의 롤링페이퍼", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = .black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
     }
 }
