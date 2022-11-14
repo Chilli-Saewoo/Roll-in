@@ -34,9 +34,13 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
         setNavigationBarBackButton()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        fetchAllPosts()
+    }
     
     private func setupDataSource() {
-        for post in posts {
+        self.dataSource = []
+        for (i, post) in posts.enumerated() {
             var image = UIImage()
             FirebaseStorageManager.downloadImage(urlString: post.image) { uiImage in
                 guard let uiImage = uiImage else { return }
@@ -44,20 +48,20 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
                 let color = UIColor(hex: "#\(post.postTheme)")
                 self.dataSource.append(PostRollingPaperModel(color: color, commentString: post.message, image: image.resizeImage(newWidth: 170) ?? UIImage(), timestamp: post.timeStamp, from: post.from, isPublic: post.isPublic))
                 self.dataSource.sort(by: >)
-                self.collectionView.reloadData()
+                if self.dataSource.count == self.posts.count {
+                    self.collectionView.reloadData()
+                }
             }
         }
     }
     
     func fetchAllPosts() {
         Task {
-            let posts = try await fetchPosts()
+            posts = try await fetchPosts()
             self.posts = posts
             setupDataSource()
         }
     }
-    
-    
     
     @objc private func didTapButton() {
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "WriteRollingPaperViewController") as? WriteRollingPaperViewController ?? UIViewController()
@@ -99,7 +103,6 @@ private extension PostViewController {
                 writeButton.heightAnchor.constraint(equalToConstant: 25),
             ])
         }
-        
     }
 
     func setTitleMessageLayout() {
