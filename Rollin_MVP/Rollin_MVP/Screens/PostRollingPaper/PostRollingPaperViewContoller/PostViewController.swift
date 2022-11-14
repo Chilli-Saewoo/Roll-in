@@ -46,7 +46,7 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
                 image = uiImage
                 let color = UIColor(hex: "#\(post.postTheme)")
                 self.dataSource.append(PostRollingPaperModel(color: color, commentString: post.message, image: image.resizeImage(newWidth: 170) ?? UIImage(), timestamp: post.timeStamp, from: post.from, isPublic: post.isPublic))
-                self.dataSource.sort(by: >)
+                self.dataSource.sort(by: <)
                 if self.dataSource.count == self.posts.count {
                     self.collectionView.reloadData()
                 }
@@ -202,7 +202,7 @@ private extension PostViewController {
         for dtoDocument in dtoDocuments {
             documents.append(dtoDocument)
         }
-        return documents.sorted(by: >)
+        return documents.sorted(by: <)
     }
 }
 
