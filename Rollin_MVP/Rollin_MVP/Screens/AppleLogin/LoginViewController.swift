@@ -13,12 +13,14 @@ import CryptoKit
 
 final class LoginViewController: UIViewController {
     let db = Firestore.firestore()
-    private let appleButton = ASAuthorizationAppleIDButton(type: .continue, style: .black)
+    private lazy var titleMessageLabel = UILabel()
+    private let appleButton = ASAuthorizationAppleIDButton(type: .signIn, style: .black)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupAppleButtonLayout()
         setAppleLoginButtonAction()
+        setTitleMessageLayout() 
     }
     
     private var currentNonce: String?
@@ -84,14 +86,28 @@ final class LoginViewController: UIViewController {
 }
 
 private extension LoginViewController {
+    func setTitleMessageLayout() {
+        view.addSubview(titleMessageLabel)
+        titleMessageLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
+            titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+        ])
+        titleMessageLabel.setTextWithLineHeight(text: "간편하게 로그인하고\n롤링페이퍼를 이용해보세요", lineHeight: 40)
+        titleMessageLabel.font = .systemFont(ofSize: 26, weight: .bold)
+        titleMessageLabel.numberOfLines = 0
+        
+    }
+    
     func setupAppleButtonLayout() {
         view.addSubview(appleButton)
-        appleButton.cornerRadius = 12
+        appleButton.cornerRadius = 4
         appleButton.translatesAutoresizingMaskIntoConstraints = false
-        appleButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        appleButton.widthAnchor.constraint(equalToConstant: 235).isActive = true
+        appleButton.heightAnchor.constraint(equalToConstant: 56).isActive = true
+        appleButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
+        appleButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         appleButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        appleButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70).isActive = true
+        appleButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34).isActive = true
     }
 }
 

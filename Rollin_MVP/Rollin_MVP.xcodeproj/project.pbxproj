@@ -38,6 +38,8 @@
 		AB437573291A442F00C3688D /* Model_example.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437572291A442F00C3688D /* Model_example.swift */; };
 		AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */; };
 		AB7E6B0829201795001F6716 /* PostRollingPaperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E6B0729201795001F6716 /* PostRollingPaperModel.swift */; };
+		ABA0343E2921946000A50471 /* VerticalCardSwiper in Frameworks */ = {isa = PBXBuildFile; productRef = ABA0343D2921946000A50471 /* VerticalCardSwiper */; };
+		ABA034412921969C00A50471 /* GroupDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABA034402921969C00A50471 /* GroupDetailViewController.swift */; };
 		ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */; };
 		ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */; };
 		ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */; };
@@ -64,6 +66,7 @@
 		F663324B292033F300A7310A /* SetNickNameWhileLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324A292033F300A7310A /* SetNickNameWhileLoginViewController.swift */; };
 		F663324D292034D100A7310A /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324C292034D100A7310A /* Image+.swift */; };
 		F663324F2920398200A7310A /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324E2920398200A7310A /* UITextField+.swift */; };
+		F6667F2C2921763100CD480F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6667F2B2921763100CD480F /* GoogleService-Info.plist */; };
 		F8173D1D291A521400E545E0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D1C291A521400E545E0 /* FirebaseAuth */; };
 		F8173D1F291A521400E545E0 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D1E291A521400E545E0 /* FirebaseDatabase */; };
 		F8173D21291A521400E545E0 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D20291A521400E545E0 /* FirebaseDatabaseSwift */; };
@@ -124,6 +127,7 @@
 		AB437572291A442F00C3688D /* Model_example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model_example.swift; sourceTree = "<group>"; };
 		AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGroupNameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
 		AB7E6B0729201795001F6716 /* PostRollingPaperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRollingPaperModel.swift; sourceTree = "<group>"; };
+		ABA034402921969C00A50471 /* GroupDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupDetailViewController.swift; sourceTree = "<group>"; };
 		ABB96EAA291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetNicknameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
 		ABB96EAD291AB754003C5B1D /* CreatingGroupInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingGroupInfo.swift; sourceTree = "<group>"; };
 		ABB96EAF291ABB5D003C5B1D /* ConfirmGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmGroupViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 		F663324A292033F300A7310A /* SetNickNameWhileLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetNickNameWhileLoginViewController.swift; sourceTree = "<group>"; };
 		F663324C292034D100A7310A /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
 		F663324E2920398200A7310A /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
+		F6667F2B2921763100CD480F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../dataSet/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F6F411E1291FBA55007094DE /* Rollin_MVP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rollin_MVP.entitlements; sourceTree = "<group>"; };
 		F84DFC06292183A500B2AFDD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -172,6 +177,7 @@
 				F8173D29291A521400E545E0 /* FirebaseStorage in Frameworks */,
 				F8173D1D291A521400E545E0 /* FirebaseAuth in Frameworks */,
 				F8173D27291A521400E545E0 /* FirebaseFirestoreSwift in Frameworks */,
+				ABA0343E2921946000A50471 /* VerticalCardSwiper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +302,14 @@
 			path = PostRollingPaper;
 			sourceTree = "<group>";
 		};
+		ABA0343F2921968400A50471 /* GroupDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				ABA034402921969C00A50471 /* GroupDetailViewController.swift */,
+			);
+			path = GroupDetailView;
+			sourceTree = "<group>";
+		};
 		ABB96EAC291AB71B003C5B1D /* CreatingGroup */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,7 +423,7 @@
 		ABDBD2BC291A3F97008FB3A6 /* Rollin_MVP */ = {
 			isa = PBXGroup;
 			children = (
-				F66332462920338D00A7310A /* Firebase */,
+				F6667F2A2921762A00CD480F /* Firebase */,
 				F6F411E1291FBA55007094DE /* Rollin_MVP.entitlements */,
 				ABB96EB6291B69DF003C5B1D /* Global */,
 				ABDBD2ED291A42DA008FB3A6 /* App */,
@@ -464,6 +478,7 @@
 		ABDBD2EF291A4307008FB3A6 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				ABA0343F2921968400A50471 /* GroupDetailView */,
 				79340B38292172390097D111 /* ParticipateGroup */,
 				79340B2C292171AD0097D111 /* AppMain */,
 				F6633249292033F300A7310A /* LoginSetNickName */,
@@ -486,15 +501,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		F66332462920338D00A7310A /* Firebase */ = {
-			isa = PBXGroup;
-			children = (
-				F84DFC06292183A500B2AFDD /* GoogleService-Info.plist */,
-				790FF81B291E7188004BDA20 /* API */,
-			);
-			path = Firebase;
-			sourceTree = "<group>";
-		};
 		F6633249292033F300A7310A /* LoginSetNickName */ = {
 			isa = PBXGroup;
 			children = (
@@ -503,6 +509,14 @@
 			name = LoginSetNickName;
 			path = Rollin_MVP/Screens/LoginSetNickName;
 			sourceTree = SOURCE_ROOT;
+		};
+		F6667F2A2921762A00CD480F /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				F6667F2B2921763100CD480F /* GoogleService-Info.plist */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -529,6 +543,7 @@
 				F8173D26291A521400E545E0 /* FirebaseFirestoreSwift */,
 				F8173D28291A521400E545E0 /* FirebaseStorage */,
 				F8173D2A291A521400E545E0 /* FirebaseStorageCombine-Community */,
+				ABA0343D2921946000A50471 /* VerticalCardSwiper */,
 			);
 			productName = Rollin_MVP;
 			productReference = ABDBD2BA291A3F97008FB3A6 /* Rollin_MVP.app */;
@@ -604,6 +619,7 @@
 			mainGroup = ABDBD2B1291A3F97008FB3A6;
 			packageReferences = (
 				F8173D1B291A521400E545E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				ABA0343C2921946000A50471 /* XCRemoteSwiftPackageReference "VerticalCardSwiper" */,
 			);
 			productRefGroup = ABDBD2BB291A3F97008FB3A6 /* Products */;
 			projectDirPath = "";
@@ -622,7 +638,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABDBD2CA291A3F99008FB3A6 /* LaunchScreen.storyboard in Resources */,
-				F84DFC07292183A500B2AFDD /* GoogleService-Info.plist in Resources */,
+				ABA0343B292193AB00A50471 /* GoogleService-Info.plist in Resources */,
 				ABDBD2C7291A3F99008FB3A6 /* Assets.xcassets in Resources */,
 				ABDBD2C5291A3F97008FB3A6 /* Main.storyboard in Resources */,
 			);
@@ -690,6 +706,7 @@
 				AB437573291A442F00C3688D /* Model_example.swift in Sources */,
 				AB032AA0291E870300B22C13 /* IconSet.swift in Sources */,
 				ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */,
+				ABA034412921969C00A50471 /* GroupDetailViewController.swift in Sources */,
 				79BAA9AF291B732F00C5636E /* PostThemePickerView.swift in Sources */,
 				790FF81D291E7195004BDA20 /* RollingPaperPostAPI.swift in Sources */,
 				ABCFC8372920158A006DB26B /* PostRollingPaperLayout.swift in Sources */,
@@ -878,7 +895,7 @@
 				CODE_SIGN_ENTITLEMENTS = Rollin_MVP/Rollin_MVP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8QSTXVD8H9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
@@ -913,7 +930,7 @@
 				CODE_SIGN_ENTITLEMENTS = Rollin_MVP/Rollin_MVP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8QSTXVD8H9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
@@ -1058,6 +1075,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		ABA0343C2921946000A50471 /* XCRemoteSwiftPackageReference "VerticalCardSwiper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JoniVR/VerticalCardSwiper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		F8173D1B291A521400E545E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1069,6 +1094,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		ABA0343D2921946000A50471 /* VerticalCardSwiper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ABA0343C2921946000A50471 /* XCRemoteSwiftPackageReference "VerticalCardSwiper" */;
+			productName = VerticalCardSwiper;
+		};
 		F8173D1C291A521400E545E0 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F8173D1B291A521400E545E0 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
