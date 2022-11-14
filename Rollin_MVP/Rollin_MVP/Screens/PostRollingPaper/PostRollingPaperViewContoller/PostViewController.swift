@@ -93,7 +93,7 @@ private extension PostViewController {
             titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
             titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
-        titleMessageLabel.setTextWithLineHeight(text: "\(groupNickname)의 롤링페이퍼", lineHeight: 40)
+        titleMessageLabel.setTextWithLineHeight(text: "\(groupNickname ?? "누군가")의 롤링페이퍼", lineHeight: 40)
         titleMessageLabel.font = .systemFont(ofSize: 26, weight: .bold)
         titleMessageLabel.numberOfLines = 0
     }
