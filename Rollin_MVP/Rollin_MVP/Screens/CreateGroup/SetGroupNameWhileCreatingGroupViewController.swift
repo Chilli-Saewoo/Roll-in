@@ -58,6 +58,7 @@ final class SetGroupNameWhileCreatingGroupViewController: UIViewController {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             self.keyboardHeight = keyboardHeight
+            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: keyboardHeight * -1).isActive = true
         }
     }
 }
