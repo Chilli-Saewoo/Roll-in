@@ -30,12 +30,11 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
         setWriteButtonLayout()
         configurePostViewController()
         setupPostViewControllerLayout()
-        fetchAllPosts()
         setNavigationBarBackButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        fetchAllPosts()
+        fetchAllPosts()
     }
     
     private func setupDataSource() {
