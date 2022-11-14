@@ -95,7 +95,7 @@ private extension ConfirmGroupWhileParticipateViewController {
             completeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             completeButton.heightAnchor.constraint(equalToConstant: 56),
         ])
-        completeButton.setTitle("입장하기", for: .normal)
+        completeButton.setTitle("추가하기", for: .normal)
         completeButton.layer.cornerRadius = 4.0
         completeButton.backgroundColor = .systemBlack
     }
