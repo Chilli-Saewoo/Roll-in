@@ -19,6 +19,7 @@ final class DetailPostLabelCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.numberOfLines = 0
         label.font = .systemFont(ofSize: 22, weight: .regular)
+        label.lineBreakMode = .byCharWrapping
         return label
     }()
     
