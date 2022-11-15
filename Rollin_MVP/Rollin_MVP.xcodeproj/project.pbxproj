@@ -71,7 +71,6 @@
 		F663324D292034D100A7310A /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324C292034D100A7310A /* Image+.swift */; };
 		F663324F2920398200A7310A /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324E2920398200A7310A /* UITextField+.swift */; };
 		F6667F3029219FD000CD480F /* RollingPaperPostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6667F2F29219FD000CD480F /* RollingPaperPostAPI.swift */; };
-		F69CFECA29230BC4002CA5F9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F69CFEC929230BC4002CA5F9 /* GoogleService-Info.plist */; };
 		F8173D1D291A521400E545E0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D1C291A521400E545E0 /* FirebaseAuth */; };
 		F8173D1F291A521400E545E0 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D1E291A521400E545E0 /* FirebaseDatabase */; };
 		F8173D21291A521400E545E0 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D20291A521400E545E0 /* FirebaseDatabaseSwift */; };
@@ -80,6 +79,7 @@
 		F8173D27291A521400E545E0 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D26291A521400E545E0 /* FirebaseFirestoreSwift */; };
 		F8173D29291A521400E545E0 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D28291A521400E545E0 /* FirebaseStorage */; };
 		F8173D2B291A521400E545E0 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D2A291A521400E545E0 /* FirebaseStorageCombine-Community */; };
+		F84DFC0D29230BA400B2AFDD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F84DFC0C29230BA400B2AFDD /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,8 +170,12 @@
 		F663324C292034D100A7310A /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
 		F663324E2920398200A7310A /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		F6667F2F29219FD000CD480F /* RollingPaperPostAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RollingPaperPostAPI.swift; path = API/RollingPaperPostAPI.swift; sourceTree = "<group>"; };
+<<<<<<< HEAD
+=======
 		F69CFEC929230BC4002CA5F9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../dataSet/GoogleService-Info.plist"; sourceTree = "<group>"; };
+>>>>>>> 3fc69ea524a65f5182063c7d6e0ed28312a006c4
 		F6F411E1291FBA55007094DE /* Rollin_MVP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rollin_MVP.entitlements; sourceTree = "<group>"; };
+		F84DFC0C29230BA400B2AFDD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../RollinTemp/Rollin_MVP/Rollin_MVP/Firebase/GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -528,7 +532,7 @@
 		F6667F2A2921762A00CD480F /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				F69CFEC929230BC4002CA5F9 /* GoogleService-Info.plist */,
+				F84DFC0C29230BA400B2AFDD /* GoogleService-Info.plist */,
 				F6667F2F29219FD000CD480F /* RollingPaperPostAPI.swift */,
 				F64694F82921A4BB0094CB68 /* FirebaseStorageManager.swift */,
 				ABA034442921BB0100A50471 /* API */,
@@ -656,7 +660,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABDBD2CA291A3F99008FB3A6 /* LaunchScreen.storyboard in Resources */,
-				F69CFECA29230BC4002CA5F9 /* GoogleService-Info.plist in Resources */,
+				F84DFC0D29230BA400B2AFDD /* GoogleService-Info.plist in Resources */,
 				ABDBD2C7291A3F99008FB3A6 /* Assets.xcassets in Resources */,
 				ABDBD2C5291A3F97008FB3A6 /* Main.storyboard in Resources */,
 			);

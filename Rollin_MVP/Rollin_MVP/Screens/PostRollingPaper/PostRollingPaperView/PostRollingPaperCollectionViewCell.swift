@@ -101,6 +101,10 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
             lockImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
             lockImage.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
         }
+        PostRollingPaperTitleLabel.textColor = getTextColor()
+        PostRollingPaperTitleLabel.font = .systemFont(ofSize: 12, weight: .regular)
+        PostRollingPaperFromLabel.textColor = getTextColor()
+        PostRollingPaperFromLabel.font = .systemFont(ofSize: 10, weight: .bold)
     }
 }
 
@@ -133,6 +137,25 @@ private extension PostRollingPaperCollectionViewCell {
         PostRollingPaperImageView.trailingAnchor.constraint(equalTo: PostRollingPaperContainerView.trailingAnchor).isActive = true
         PostRollingPaperImageView.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 50)/2).isActive = true
         
+    }
+    
+    func getTextColor() -> UIColor {
+        guard let backgroundColor = PostRollingPaperModel?.colorHex else { return .black }
+        print(backgroundColor)
+        switch backgroundColor  {
+        case "FFFCDD":
+            return hexStringToUIColor(hex: "9E6003")
+        case "FEE0EA":
+            return hexStringToUIColor(hex: "D61951")
+        case "EBDDFF":
+            return hexStringToUIColor(hex: "4D2980")
+        case "DDEBFF":
+            return hexStringToUIColor(hex: "4069CE")
+        case "C8F6D5":
+            return hexStringToUIColor(hex: "15843B")
+        default:
+            return hexStringToUIColor(hex: "9E6003")
+        }
     }
 }
 

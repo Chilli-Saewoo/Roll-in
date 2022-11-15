@@ -75,14 +75,35 @@ extension DetailRollingPaperViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailPostLabelCollectionViewCell.className, for: indexPath) as! DetailPostLabelCollectionViewCell
             guard let postRollingPaperModel = postRollingPaperModel else { return cell }
             cell.message.text = postRollingPaperModel.commentString
+            cell.message.textColor = getTextColor()
             cell.detailPostView.backgroundColor = postRollingPaperModel.color
             cell.from.text = "From. \(postRollingPaperModel.from)"
+            cell.from.textColor = getTextColor()
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailPostImageCollectionViewCell.className, for: indexPath) as! DetailPostImageCollectionViewCell
             guard let postRollingPaperModel = postRollingPaperModel else { return cell }
             cell.imageView.image = postRollingPaperModel.image
             return cell
+        }
+    }
+    
+    func getTextColor() -> UIColor {
+        guard let backgroundColor = postRollingPaperModel?.colorHex else { return .black }
+        print(backgroundColor)
+        switch backgroundColor  {
+        case "FFFCDD":
+            return hexStringToUIColor(hex: "9E6003")
+        case "FEE0EA":
+            return hexStringToUIColor(hex: "D61951")
+        case "EBDDFF":
+            return hexStringToUIColor(hex: "4D2980")
+        case "DDEBFF":
+            return hexStringToUIColor(hex: "4069CE")
+        case "C8F6D5":
+            return hexStringToUIColor(hex: "15843B")
+        default:
+            return hexStringToUIColor(hex: "9E6003")
         }
     }
 }
