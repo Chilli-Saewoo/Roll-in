@@ -140,7 +140,7 @@ private extension PostRollingPaperCollectionViewCell {
     }
     
     func getTextColor() -> UIColor {
-        guard let backgroundColor = PostRollingPaperModel?.colorHex else { return .black }
+        guard let backgroundColor = postRollingPaperModel?.colorHex else { return .black }
         print(backgroundColor)
         switch backgroundColor  {
         case "FFFCDD":
