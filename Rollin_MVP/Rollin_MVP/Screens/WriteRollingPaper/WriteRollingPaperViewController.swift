@@ -134,9 +134,9 @@ final class WriteRollingPaperViewController: UIViewController {
                                                   groupId: self.groupId,
                                                   receiver: self.receiverUserId)
                     self.navigationController?.popViewController(animated: true)
+                    self.isBeingSaved = false
                 }
-            }
-            isBeingSaved = false
+            } 
         }
     }
     
