@@ -15,6 +15,7 @@ struct PostRollingPaperModel: Comparable {
     let timestamp: Date
     let from: String
     let isPublic: Bool
+    let colorHex: String
     
     static func < (lhs: PostRollingPaperModel, rhs: PostRollingPaperModel) -> Bool {
         lhs.timestamp < rhs.timestamp
@@ -45,7 +46,7 @@ struct PostRollingPaperModel: Comparable {
             let myImage: UIImage = UIImage(named: "cat")?.resizeImage(newWidth: UIScreen.main.bounds.width-128) ?? UIImage()
             let myPublic: Bool = true
             let PostRollingPaperModel: PostRollingPaperModel = .init(color: color,
-                                                       commentString: dummyIdx, image: myImage, timestamp: Date(), from: "", isPublic: myPublic)
+                                                                     commentString: dummyIdx, image: myImage, timestamp: Date(), from: "", isPublic: myPublic, colorHex: "")
             datas += [PostRollingPaperModel]
         }
 

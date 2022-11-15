@@ -45,7 +45,7 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
                 guard let uiImage = uiImage else { return }
                 image = uiImage
                 let color = UIColor(hex: "#\(post.postTheme)")
-                self.dataSource.append(PostRollingPaperModel(color: color, commentString: post.message, image: image.resizeImage(newWidth: 170) ?? UIImage(), timestamp: post.timeStamp, from: post.from, isPublic: post.isPublic))
+                self.dataSource.append(PostRollingPaperModel(color: color, commentString: post.message, image: image.resizeImage(newWidth: 170) ?? UIImage(), timestamp: post.timeStamp, from: post.from, isPublic: post.isPublic, colorHex: post.postTheme))
                 self.dataSource.sort(by: <)
                 if self.dataSource.count == self.posts.count {
                     self.collectionView.reloadData()
@@ -146,8 +146,8 @@ private extension PostViewController {
 extension PostViewController: PostRollingPaperLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat {
         let imageHeight = (UIScreen.main.bounds.width - 10)/2
-        let labelHeight = dataSource[indexPath.item].commentString.heightWithConstrainedWidth(width: UIScreen.main.bounds.width/2-50, font: UIFont.systemFont(ofSize: 17.2, weight: .medium))
-        return imageHeight + labelHeight + 40
+        let labelHeight = dataSource[indexPath.item].commentString.heightWithConstrainedWidth(width: UIScreen.main.bounds.width/2-50, font: UIFont.systemFont(ofSize: 12, weight: .medium))
+        return imageHeight + labelHeight + 35
     }
 }
 
@@ -159,7 +159,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostRollingPaperCollectionViewCell.id, for: indexPath) as? PostRollingPaperCollectionViewCell ?? PostRollingPaperCollectionViewCell()
-        cell.PostRollingPaperModel = dataSource[indexPath.row]
+        cell.PostRollingPaperModel = dataSource[indexPath.item]
         cell.receiverUserId = receiverUserId ?? ""
         cell.bind()
         return cell
