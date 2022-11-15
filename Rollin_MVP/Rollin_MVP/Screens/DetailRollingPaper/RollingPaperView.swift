@@ -29,7 +29,6 @@ final class RollingPaperView: UIViewController, UISheetPresentationControllerDel
             halfModal.delegate = self
             halfModal.prefersGrabberVisible = true
         }
-        
         present(rollingPaperDetailViewController, animated: true, completion: nil)
     }
 }

@@ -23,6 +23,7 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
     var receiverUserId: String?
     var posts: [RollingPaperPostData] = []
     var myGroupNickname: String?
+    var postRollingPaperModel: PostRollingPaperModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,7 +92,7 @@ private extension PostViewController {
         if receiverUserId != UserDefaults.standard.string(forKey: "uid") {
             view.addSubview(writeButton)
             writeButton.translatesAutoresizingMaskIntoConstraints = false
-            var writeButtonImage = UIImage(systemName: "plus")
+            let writeButtonImage = UIImage(systemName: "plus")
             writeButton.setImage(writeButtonImage, for: .normal)
             writeButton.tintColor = .systemBlack
             writeButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
@@ -124,22 +125,6 @@ private extension PostViewController {
         collectionView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -8).isActive = true
         collectionView.topAnchor.constraint(equalTo: titleMessageLabel.bottomAnchor).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-    }
-    
-    private func presentDetailViewHalfModal() {
-        
-        let rollingPaperDetailViewController = DetailRollingPaperViewController()
-        rollingPaperDetailViewController.view.backgroundColor = .white
-        rollingPaperDetailViewController.modalPresentationStyle = .pageSheet
-        
-        if let halfModal = rollingPaperDetailViewController.sheetPresentationController {
-            halfModal.preferredCornerRadius = 10
-            halfModal.detents = [.medium()]
-            halfModal.delegate = self
-            halfModal.prefersGrabberVisible = true
-        }
-        
-        present(rollingPaperDetailViewController, animated: true, completion: nil)
     }
 }
 
@@ -177,7 +162,9 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
             halfModal.prefersGrabberVisible = true
         }
         
-        present(rollingPaperDetailViewController, animated: true, completion: nil)
+        if dataSource[indexPath.item].isPublic || receiverUserId == UserDefaults.standard.string(forKey: "uid") {
+            present(rollingPaperDetailViewController, animated: true, completion: nil)
+        }
     }
 }
 
