@@ -20,6 +20,15 @@ final class MainViewController: UIViewController {
             groupsCollectionView.reloadData()
         }
     }
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.center = self.view.center
+        activityIndicator.style = UIActivityIndicatorView.Style.large
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
+        activityIndicator.color = .systemBlack
+        return activityIndicator
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +40,9 @@ final class MainViewController: UIViewController {
         registerCollectionView()
         collectionViewDelegate()
         setBottomGradientLayout()
+        view.addSubview(activityIndicator)
+        activityIndicator.stopAnimating()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -117,6 +129,8 @@ extension MainViewController: AddGroupButtonBackgroundDelegate {
 
 private extension MainViewController {
     func fetchGroups() {
+        activityIndicator.startAnimating()
+        view.isUserInteractionEnabled = false
         if let uid = UserDefaults.standard.string(forKey: "uid") {
             let docRef = db.collection("userGroups").document(uid)
             docRef.getDocument { (document, error) in
@@ -146,6 +160,8 @@ private extension MainViewController {
                                         newGroups.sort(by: >)
                                         if newGroups.count == groupIds.count {
                                             self.groups = newGroups
+                                            self.activityIndicator.stopAnimating()
+                                            self.view.isUserInteractionEnabled = true
                                         }
                                     }
                                 }
