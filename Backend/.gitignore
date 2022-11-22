@@ -1,6 +1,6 @@
 ### Custom ###
 # no secrets.json file
-RollIN/secrets.json
+*secrets.json
 
 # Created by https://www.toptal.com/developers/gitignore/api/django
 # Edit at https://www.toptal.com/developers/gitignore?templates=django
