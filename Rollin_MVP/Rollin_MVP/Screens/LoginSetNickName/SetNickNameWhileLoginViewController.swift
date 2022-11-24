@@ -59,7 +59,6 @@ final class SetNicknameWhileLoginViewController: UIViewController {
                 print("닉네임 생성")
                 self.setNicknameUserDefault()
                 guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") else {return}
-                        
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
         }

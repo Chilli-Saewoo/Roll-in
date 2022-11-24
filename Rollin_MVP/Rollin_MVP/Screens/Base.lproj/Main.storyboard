@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v3r-W4-C83">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="LqD-AF-1pl">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -164,7 +164,8 @@
         <!--Navigation Controller-->
         <scene sceneID="o9x-hg-p5h">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Mhy-OT-xJo" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kcc-eT-pcO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="MainNC" automaticallyAdjustsScrollViewInsets="NO" id="Mhy-OT-xJo" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ia7-1Y-KfN">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
@@ -175,7 +176,6 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="fXb-og-SdL"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Kcc-eT-pcO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1152" y="4"/>
         </scene>
@@ -243,7 +243,8 @@
         <!--Navigation Controller-->
         <scene sceneID="Ifc-J1-ipD">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="LqD-AF-1pl" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XY0-SY-CUT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="LoginNC" automaticallyAdjustsScrollViewInsets="NO" id="LqD-AF-1pl" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="byh-5i-7kV">
                         <rect key="frame" x="0.0" y="47" width="390" height="44"/>
@@ -254,7 +255,6 @@
                         <segue destination="jRJ-fI-dU1" kind="relationship" relationship="rootViewController" id="UdH-1q-4gu"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="XY0-SY-CUT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2310.7692307692305" y="733.64928909952607"/>
         </scene>

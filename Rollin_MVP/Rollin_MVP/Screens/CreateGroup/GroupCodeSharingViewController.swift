@@ -24,7 +24,12 @@ final class GroupCodeSharingViewController: UIViewController {
     }
     
     @objc func goToRoot(_ sender: UIButton) {
-        self.navigationController?.popToRootViewController(animated: true)
+        guard let viewControllerStack  = self.navigationController?.viewControllers else { return }
+        for viewController in viewControllerStack {
+            if let mainView = viewController as? MainViewController {
+                self.navigationController?.popToViewController(mainView, animated: true)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
