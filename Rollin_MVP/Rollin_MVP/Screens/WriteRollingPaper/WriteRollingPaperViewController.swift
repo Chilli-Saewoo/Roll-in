@@ -151,14 +151,7 @@ final class WriteRollingPaperViewController: UIViewController {
             postThemePicerkView.heightAnchor.constraint(equalToConstant: postThemePickerItemWidth + 25)
         ])
         
-        postView.fromLabel.text = "From. \(writerNickname)"
-        view.addSubview(postView)
-        postView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            postView.topAnchor.constraint(equalTo: postThemePicerkView.bottomAnchor, constant: 43),
-            postView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-        ])
+        setupPostLayout()
         
         view.addSubview(confirmButton)
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
@@ -177,9 +170,13 @@ final class WriteRollingPaperViewController: UIViewController {
         NSLayoutConstraint.activate([
             postView.topAnchor.constraint(equalTo: postThemePicerkView.bottomAnchor, constant: 35),
             postView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            postView.heightAnchor.constraint(equalToConstant: 164 + UIScreen.main.bounds.width - 40),
+            postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
+        if postView.isPhotoAdded {
+            NSLayoutConstraint.activate([
+                postView.heightAnchor.constraint(equalToConstant: 164 + UIScreen.main.bounds.width - 40),
+            ])
+        }
     }
 }
 
@@ -200,8 +197,8 @@ extension WriteRollingPaperViewController: UIImagePickerControllerDelegate, UINa
                 postView.emptyImageButton.removeFromSuperview()
                 postView.setupAddedImageButtonLayout()
                 postView.removeFromSuperview()
-                setupPostLayout()
                 postView.isPhotoAdded = true
+                setupPostLayout()
             }
             postView.addedImageButton.setBackgroundImage(image, for: .normal)
             postView.addedImageButton.layer.cornerRadius = 4
