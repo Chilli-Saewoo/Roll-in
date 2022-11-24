@@ -7,27 +7,28 @@
 
 import UIKit
 
-final class GroupBaseViewController: UIViewController {
+class GroupBaseViewController: UIViewController {
     
     lazy var confirmButton = UIButton()
     lazy var viewTitle = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setLayout()
     }
-    
+      
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
     }
 }
 
-private extension GroupBaseViewController {
+extension GroupBaseViewController {
     
     func setLayout() {
         //Override Layout
     }
     
-    func setConfirmButton(buttonTitle: String) {
+    func setConfirmButtonLayout() {
         view.addSubview(confirmButton)
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -36,21 +37,26 @@ private extension GroupBaseViewController {
             confirmButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             confirmButton.heightAnchor.constraint(equalToConstant: 56),
         ])
+    }
+    
+    func setConfirmButton(buttonTitle: String) {
         confirmButton.setTitle(buttonTitle, for: .normal)
         confirmButton.layer.cornerRadius = 4.0
         confirmButton.backgroundColor = .systemBlack
     }
     
-    func setViewTitle(title: String) {
+    func setViewTitleLayout() {
         view.addSubview(viewTitle)
         viewTitle.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             viewTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
             viewTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
+    }
+    
+    func setViewTitle(title: String) {
         viewTitle.text = title
         viewTitle.font = .systemFont(ofSize: 24, weight: .bold)
         viewTitle.textColor = .systemBlack
-        
     }
 }
