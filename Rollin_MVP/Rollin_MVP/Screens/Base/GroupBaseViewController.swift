@@ -10,6 +10,7 @@ import UIKit
 final class GroupBaseViewController: UIViewController {
     
     lazy var confirmButton = UIButton()
+    lazy var viewTitle = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,5 +39,18 @@ private extension GroupBaseViewController {
         confirmButton.setTitle(buttonTitle, for: .normal)
         confirmButton.layer.cornerRadius = 4.0
         confirmButton.backgroundColor = .systemBlack
+    }
+    
+    func setViewTitle(title: String) {
+        view.addSubview(viewTitle)
+        viewTitle.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            viewTitle.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
+            viewTitle.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+        ])
+        viewTitle.text = title
+        viewTitle.font = .systemFont(ofSize: 24, weight: .bold)
+        viewTitle.textColor = .systemBlack
+        
     }
 }
