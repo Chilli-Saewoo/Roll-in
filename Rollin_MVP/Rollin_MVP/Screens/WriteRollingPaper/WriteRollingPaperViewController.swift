@@ -18,13 +18,14 @@ final class WriteRollingPaperViewController: UIViewController {
     private let postThemePicerkView = PostThemePickerView()
     private let postView = PostView()
     private let imagePickerViewController = UIImagePickerController()
+    private let rollingPaperPostAPI = RollingPaperPostAPI()
+    private let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5
+    
     private lazy var authorizationOfCameraAlert: () = makeAlert(title: "알림", message: "카메라 접근이 허용되어 있지 않습니다.")
     private lazy var authorizationOfPhotoLibraryAlert: () = makeAlert(title: "알림", message: "라이브러리 접근이 허용되어 있지 않습니다.")
-    private let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5
-    private let rollingPaperPostAPI = RollingPaperPostAPI()
     private var isBeingSaved: Bool = false
     private var postImage: UIImage = UIImage()
-    var writerNickname: String = "니쿠"
+    var writerNickname: String = ""
     var groupId: String = ""
     var receiverUserId: String = ""
     
