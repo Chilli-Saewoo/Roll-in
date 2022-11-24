@@ -41,7 +41,7 @@ final class WriteRollingPaperViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLayout()
+        setupWholeLayout()
         setupButtonAction()
         configureDelegate()
         hideKeyboardWhenTappedAround()
@@ -141,7 +141,7 @@ final class WriteRollingPaperViewController: UIViewController {
         }
     }
     
-    private func setupLayout() {
+    private func setupWholeLayout() {
         view.addSubview(postThemePicerkView)
         postThemePicerkView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
