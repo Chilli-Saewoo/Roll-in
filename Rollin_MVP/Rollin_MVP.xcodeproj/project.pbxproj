@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A49A12C292E5DE100897379 /* GroupBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A49A12B292E5DE100897379 /* GroupBaseViewController.swift */; };
 		2AF46850291E1EF200AB2DE4 /* RollingPaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF4684F291E1EF200AB2DE4 /* RollingPaperView.swift */; };
 		2AF46852291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */; };
 		2AF46854291E20E300AB2DE4 /* DetailPostLabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46853291E20E300AB2DE4 /* DetailPostLabelCollectionViewCell.swift */; };
@@ -100,6 +101,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A49A12B292E5DE100897379 /* GroupBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupBaseViewController.swift; sourceTree = "<group>"; };
 		2AF4684F291E1EF200AB2DE4 /* RollingPaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperView.swift; sourceTree = "<group>"; };
 		2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRollingPaperViewController.swift; sourceTree = "<group>"; };
 		2AF46853291E20E300AB2DE4 /* DetailPostLabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostLabelCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -208,6 +210,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A49A12A292E5D8000897379 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				2A49A12B292E5DE100897379 /* GroupBaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		2AF4684E291E1E9E00AB2DE4 /* DetailRollingPaper */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,6 +503,7 @@
 		ABDBD2EF291A4307008FB3A6 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				2A49A12A292E5D8000897379 /* Base */,
 				ABA0343F2921968400A50471 /* GroupDetailView */,
 				79340B38292172390097D111 /* ParticipateGroup */,
 				79340B2C292171AD0097D111 /* AppMain */,
@@ -697,6 +708,7 @@
 				ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */,
 				79340B41292173380097D111 /* ParticipateGroupConfirmCardView.swift in Sources */,
 				ABA034482921BB0100A50471 /* FirebaseStorageManager.swift in Sources */,
+				2A49A12C292E5DE100897379 /* GroupBaseViewController.swift in Sources */,
 				ABCFC80D291FE32D006DB26B /* GroupWithThemeView.swift in Sources */,
 				AB032AA2291E870900B22C13 /* BackgroundColorSet.swift in Sources */,
 				79340B4B2921AA330097D111 /* RollingPaperInfo.swift in Sources */,
