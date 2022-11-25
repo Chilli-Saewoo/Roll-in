@@ -26,6 +26,8 @@ extension GroupBaseViewController {
     
     func setLayout() {
         //Override Layout
+        setConfirmButtonLayout()
+        setViewTitleLayout()
     }
     
     func setConfirmButtonLayout() {
@@ -38,7 +40,7 @@ extension GroupBaseViewController {
             confirmButton.heightAnchor.constraint(equalToConstant: 56),
         ])
     }
-    
+
     func setConfirmButton(buttonTitle: String) {
         confirmButton.setTitle(buttonTitle, for: .normal)
         confirmButton.layer.cornerRadius = 4.0
