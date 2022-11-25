@@ -16,10 +16,6 @@ class GroupBaseViewController: UIViewController {
         super.viewDidLoad()
         setLayout()
     }
-      
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
 }
 
 extension GroupBaseViewController {
