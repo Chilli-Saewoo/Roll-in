@@ -45,7 +45,6 @@ final class GroupDetailViewController: UIViewController {
     private let participantsCountLabel = UILabel()
     private let screenWidth = UIScreen.main.bounds.width
     private let screenHeight = UIScreen.main.bounds.height
-    
     private let ingroupCodeCopyLabel = UILabel()
     private let ingroupCodeCopyButton = UIButton()
     
@@ -54,6 +53,7 @@ final class GroupDetailViewController: UIViewController {
         setGroupMessageLabel()
         setIngroupCodeCopyButton()
         setIngroupCodeCopyLabel()
+        setCopyButtonAction()
         setNavigationBarBackButton()
         cardSwiper = VerticalCardSwiper(frame: CGRect(x: 0.0, y: screenHeight * 0.2, width: screenWidth, height: screenHeight * 0.8))
         cardSwiper.isSideSwipingEnabled = false
@@ -71,6 +71,15 @@ final class GroupDetailViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         let _ = cardSwiper.scrollToCard(at: (group?.participants.count ?? 1) - 1, animated: false)
+    }
+    
+    private func setCopyButtonAction() {
+        ingroupCodeCopyButton.addTarget(self, action: #selector(ingroupCopyButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc func ingroupCopyButtonPressed(_ sender: UIButton) {
+        UIPasteboard.general.string = group?.code ?? ""
+        print(group?.code ?? "")
     }
 }
 
@@ -161,4 +170,6 @@ private extension GroupDetailViewController {
            ingroupCodeCopyLabel.textColor = .white
            ingroupCodeCopyLabel.textAlignment = .center
        }
+    
+
 }
