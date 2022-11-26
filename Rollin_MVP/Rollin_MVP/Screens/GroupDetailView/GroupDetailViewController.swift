@@ -53,6 +53,7 @@ final class GroupDetailViewController: UIViewController {
         super.viewDidLoad()
         setGroupMessageLabel()
         setIngroupCodeCopyButton()
+        setIngroupCodeCopyLabel()
         setNavigationBarBackButton()
         cardSwiper = VerticalCardSwiper(frame: CGRect(x: 0.0, y: screenHeight * 0.2, width: screenWidth, height: screenHeight * 0.8))
         cardSwiper.isSideSwipingEnabled = false
@@ -140,4 +141,24 @@ private extension GroupDetailViewController {
         ingroupCodeCopyButton.backgroundColor = .systemBlack
         ingroupCodeCopyButton.layer.cornerRadius = 4.0
     }
+    
+    func setIngroupCodeCopyLabel() {
+           ingroupCodeCopyButton.addSubview(ingroupCodeCopyLabel)
+           ingroupCodeCopyLabel.translatesAutoresizingMaskIntoConstraints = false
+           NSLayoutConstraint.activate([
+               ingroupCodeCopyLabel.centerXAnchor.constraint(equalTo: ingroupCodeCopyButton.centerXAnchor),
+               ingroupCodeCopyLabel.centerYAnchor.constraint(equalTo: ingroupCodeCopyButton.centerYAnchor),
+               ingroupCodeCopyLabel.widthAnchor.constraint(equalTo: ingroupCodeCopyButton.widthAnchor),
+               ingroupCodeCopyLabel.heightAnchor.constraint(equalTo: ingroupCodeCopyButton.heightAnchor),
+           ])
+           ingroupCodeCopyLabel.isUserInteractionEnabled = false
+           let imageAttachment = NSTextAttachment()
+           imageAttachment.image = UIImage(systemName: "square.on.square")?.withTintColor(.white)
+           let buttonTitle = NSMutableAttributedString(attachment: imageAttachment)
+           buttonTitle.append(NSMutableAttributedString(string: " 코드 복사"))
+           ingroupCodeCopyLabel.attributedText = buttonTitle
+           ingroupCodeCopyLabel.font = .systemFont(ofSize: 12, weight: .semibold)
+           ingroupCodeCopyLabel.textColor = .white
+           ingroupCodeCopyLabel.textAlignment = .center
+       }
 }
