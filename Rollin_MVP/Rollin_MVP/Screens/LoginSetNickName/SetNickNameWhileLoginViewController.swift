@@ -45,6 +45,12 @@ final class SetNicknameWhileLoginViewController: UIViewController {
         UserDefaults.standard.set(nameTextField.text, forKey: "nickname")
     }
     
+    private func observeKeboardHeight() {
+        NotificationCenter.default.addObserver( self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    
+    
     @objc func nextButtonPressed(_ sender: UIButton) {
         let db = Firestore.firestore()
         let email = UserDefaults.standard.string(forKey: "userEmail")
@@ -60,12 +66,20 @@ final class SetNicknameWhileLoginViewController: UIViewController {
                 self.setNicknameUserDefault()
                 guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") else {return}
                 self.navigationController?.pushViewController(viewController, animated: true)
+                self.changeRootViewController()
             }
         }
     }
     
-    private func observeKeboardHeight() {
-        NotificationCenter.default.addObserver( self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardWillShowNotification, object: nil)
+    private func changeRootViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MainView")
+        let navigationController = UINavigationController(rootViewController: vc)
+        let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+        guard let delegate = sceneDelegate else {
+            return
+        }
+        delegate.window?.rootViewController = navigationController
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {

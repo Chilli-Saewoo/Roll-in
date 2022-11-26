@@ -55,12 +55,7 @@ class SetNicknameWhileParticipateViewController: UIViewController {
                 print("Error writing batch \(err)")
             } else {
                 print("Batch write succeeded.")
-                guard let viewControllerStack  = self.navigationController?.viewControllers else { return }
-                for viewController in viewControllerStack {
-                    if let mainView = viewController as? MainViewController {
-                        self.navigationController?.popToViewController(mainView, animated: true)
-                    }
-                }
+                self.navigationController?.popToRootViewController(animated: true)
             }
         }
     }

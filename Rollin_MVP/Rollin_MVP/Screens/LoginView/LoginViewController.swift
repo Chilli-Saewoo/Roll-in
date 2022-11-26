@@ -20,7 +20,7 @@ final class LoginViewController: UIViewController {
         super.viewDidLoad()
         setupAppleButtonLayout()
         setAppleLoginButtonAction()
-        setTitleMessageLayout() 
+        setTitleMessageLayout()
     }
     
     private var currentNonce: String?
@@ -134,8 +134,20 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 }
                 guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") else {return}
                 self.navigationController?.pushViewController(viewController, animated: true)
+                self.changeRootViewController()
             }
         }
+    }
+    
+    private func changeRootViewController() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "MainView")
+        let navigationController = UINavigationController(rootViewController: vc)
+        let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+        guard let delegate = sceneDelegate else {
+            return
+        }
+        delegate.window?.rootViewController = navigationController
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {

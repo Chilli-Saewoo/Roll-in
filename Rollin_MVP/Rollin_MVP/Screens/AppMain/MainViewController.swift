@@ -42,7 +42,6 @@ final class MainViewController: UIViewController {
         setBottomGradientLayout()
         view.addSubview(activityIndicator)
         activityIndicator.stopAnimating()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -58,6 +57,7 @@ final class MainViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
+    
 }
 
 private extension MainViewController {
