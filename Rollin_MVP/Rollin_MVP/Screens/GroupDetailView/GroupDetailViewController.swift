@@ -55,14 +55,7 @@ final class GroupDetailViewController: UIViewController {
         setIngroupCodeCopyLabel()
         setCopyButtonAction()
         setNavigationBarBackButton()
-        cardSwiper = VerticalCardSwiper(frame: CGRect(x: 0.0, y: screenHeight * 0.2, width: screenWidth, height: screenHeight * 0.8))
-        cardSwiper.isSideSwipingEnabled = false
-        cardSwiper.topInset = 40
-        cardSwiper.stackedCardsCount = 5
-        cardSwiper.cardSpacing = 30
-        cardSwiper.isStackOnBottom = false
-        cardSwiper.visibleNextCardHeight = 50
-        cardSwiper.firstItemTransform = 0.08
+        setCardSwiper()
         view.addSubview(cardSwiper)
         cardSwiper.datasource = self
         cardSwiper.delegate = self
@@ -80,7 +73,6 @@ final class GroupDetailViewController: UIViewController {
     @objc func ingroupCopyButtonPressed(_ sender: UIButton) {
         UIPasteboard.general.string = group?.code ?? ""
         print(group?.code ?? "")
-        
     }
 }
 
@@ -106,6 +98,19 @@ extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardS
     
     func numberOfCards(verticalCardSwiperView: VerticalCardSwiperView) -> Int {
         return group?.participants.count ?? 0
+    }
+}
+
+private extension GroupDetailViewController {
+    func setCardSwiper() {
+        cardSwiper = VerticalCardSwiper(frame: CGRect(x: 0.0, y: screenHeight * 0.2, width: screenWidth, height: screenHeight * 0.8))
+        cardSwiper.isSideSwipingEnabled = false
+        cardSwiper.topInset = 40
+        cardSwiper.stackedCardsCount = 5
+        cardSwiper.cardSpacing = 30
+        cardSwiper.isStackOnBottom = false
+        cardSwiper.visibleNextCardHeight = 50
+        cardSwiper.firstItemTransform = 0.08
     }
 }
 
