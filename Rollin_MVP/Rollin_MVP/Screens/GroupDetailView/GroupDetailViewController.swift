@@ -73,7 +73,6 @@ final class GroupDetailViewController: UIViewController {
     
     @objc func ingroupCopyButtonPressed(_ sender: UIButton) {
         UIPasteboard.general.string = group?.code ?? ""
-        print(group?.code ?? "")
         setToastView()
         showToastView()
     }
@@ -180,7 +179,7 @@ private extension GroupDetailViewController {
         ingroupCodeCopyLabel.textAlignment = .center
     }
     
-    func setToastMessage() {
+    func setToastView() {
         view.addSubview(codeCopyToastView)
         codeCopyToastView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
