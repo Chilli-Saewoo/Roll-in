@@ -38,9 +38,19 @@ extension GroupBaseViewController {
     }
 
     func setConfirmButton(buttonTitle: String) {
+        confirmButton.isEnabled = true
         confirmButton.setTitle(buttonTitle, for: .normal)
         confirmButton.layer.cornerRadius = 4.0
         confirmButton.backgroundColor = .systemBlack
+    }
+    
+    func setDisabledConfirmButton(disabledButtonTitle: String) {
+        confirmButton.isEnabled = false
+        confirmButton.layer.cornerRadius = 4.0
+        confirmButton.setTitle(disabledButtonTitle, for: .disabled)
+        confirmButton.setTitleColor(.white, for: .normal)
+        confirmButton.setTitleColor(.inactiveTextGray, for: .disabled)
+        confirmButton.backgroundColor = .inactiveBgGray
     }
     
     func setViewTitleLayout() {
