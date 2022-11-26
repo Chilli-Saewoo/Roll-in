@@ -7,9 +7,9 @@
 
 import UIKit
 
-final class SetThemeViewController: UIViewController {
+final class SetThemeViewController: GroupBaseViewController {
     var creatingGroupInfo: CreatingGroupInfo?
-    private var setBackgroundPaperTextLabel = UILabel()
+    //private var setBackgroundPaperTextLabel = UILabel()
     private var backgroundPapersCollectionView: UICollectionView!
     private let screenWidth = UIScreen.main.bounds.width
     private let backgroundColorDatas = BackgroundColorSet.datas
@@ -41,7 +41,7 @@ final class SetThemeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = false
-        setSetBackgroundPaperTextLayout()
+        setViewTitle(title: "그룹 배경지 선택")
         configureCollectionView()
         registerBackgroundCollectionView()
         backgroundCollectionViewDelegate()
@@ -154,7 +154,7 @@ private extension SetThemeViewController {
         backgroundPapersCollectionView.backgroundColor = .clear
         view.addSubview(backgroundPapersCollectionView)
         NSLayoutConstraint.activate([
-            backgroundPapersCollectionView.topAnchor.constraint(equalTo: setBackgroundPaperTextLabel.bottomAnchor, constant: 20),
+            backgroundPapersCollectionView.topAnchor.constraint(equalTo: viewTitle.bottomAnchor, constant: 20),
             backgroundPapersCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
             backgroundPapersCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -21),
             backgroundPapersCollectionView.heightAnchor.constraint(equalToConstant: 100)
@@ -238,18 +238,4 @@ extension SetThemeViewController: UICollectionViewDelegate, UICollectionViewData
             return cell
         }
     }
-}
-
-private extension SetThemeViewController {
-    func setSetBackgroundPaperTextLayout() {
-        view.addSubview(setBackgroundPaperTextLabel)
-        setBackgroundPaperTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            setBackgroundPaperTextLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 115),
-            setBackgroundPaperTextLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-        ])
-        setBackgroundPaperTextLabel.text = "그룹 배경지 선택"
-        setBackgroundPaperTextLabel.font = .systemFont(ofSize: 24, weight: .medium)
-    }
-    
 }
