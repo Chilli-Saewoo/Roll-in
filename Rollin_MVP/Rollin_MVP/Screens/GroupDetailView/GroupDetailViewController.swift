@@ -53,7 +53,7 @@ final class GroupDetailViewController: UIViewController {
         setGroupMessageLabel()
         setIngroupCodeCopyButton()
         setIngroupCodeCopyLabel()
-        setCopyButtonAction()
+        setIngroupCopyButtonAction()
         setNavigationBarBackButton()
         setCardSwiper()
         view.addSubview(cardSwiper)
@@ -66,13 +66,15 @@ final class GroupDetailViewController: UIViewController {
         let _ = cardSwiper.scrollToCard(at: (group?.participants.count ?? 1) - 1, animated: false)
     }
     
-    private func setCopyButtonAction() {
+    private func setIngroupCopyButtonAction() {
         ingroupCodeCopyButton.addTarget(self, action: #selector(ingroupCopyButtonPressed), for: .touchUpInside)
     }
     
     @objc func ingroupCopyButtonPressed(_ sender: UIButton) {
         UIPasteboard.general.string = group?.code ?? ""
         print(group?.code ?? "")
+        setToastMessage()
+        showToastMessage()
     }
 }
 
@@ -158,26 +160,26 @@ private extension GroupDetailViewController {
     }
     
     func setIngroupCodeCopyLabel() {
-           ingroupCodeCopyButton.addSubview(ingroupCodeCopyLabel)
-           ingroupCodeCopyLabel.translatesAutoresizingMaskIntoConstraints = false
-           NSLayoutConstraint.activate([
-               ingroupCodeCopyLabel.centerXAnchor.constraint(equalTo: ingroupCodeCopyButton.centerXAnchor),
-               ingroupCodeCopyLabel.centerYAnchor.constraint(equalTo: ingroupCodeCopyButton.centerYAnchor),
-               ingroupCodeCopyLabel.widthAnchor.constraint(equalTo: ingroupCodeCopyButton.widthAnchor),
-               ingroupCodeCopyLabel.heightAnchor.constraint(equalTo: ingroupCodeCopyButton.heightAnchor),
-           ])
-           ingroupCodeCopyLabel.isUserInteractionEnabled = false
-           let imageAttachment = NSTextAttachment()
-           imageAttachment.image = UIImage(systemName: "square.on.square")?.withTintColor(.white)
-           let buttonTitle = NSMutableAttributedString(attachment: imageAttachment)
-           buttonTitle.append(NSMutableAttributedString(string: " 코드 복사"))
-           ingroupCodeCopyLabel.attributedText = buttonTitle
-           ingroupCodeCopyLabel.font = .systemFont(ofSize: 12, weight: .semibold)
-           ingroupCodeCopyLabel.textColor = .white
-           ingroupCodeCopyLabel.textAlignment = .center
-       }
+        ingroupCodeCopyButton.addSubview(ingroupCodeCopyLabel)
+        ingroupCodeCopyLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            ingroupCodeCopyLabel.centerXAnchor.constraint(equalTo: ingroupCodeCopyButton.centerXAnchor),
+            ingroupCodeCopyLabel.centerYAnchor.constraint(equalTo: ingroupCodeCopyButton.centerYAnchor),
+            ingroupCodeCopyLabel.widthAnchor.constraint(equalTo: ingroupCodeCopyButton.widthAnchor),
+            ingroupCodeCopyLabel.heightAnchor.constraint(equalTo: ingroupCodeCopyButton.heightAnchor),
+        ])
+        ingroupCodeCopyLabel.isUserInteractionEnabled = false
+        let imageAttachment = NSTextAttachment()
+        imageAttachment.image = UIImage(systemName: "square.on.square")?.withTintColor(.white)
+        let buttonTitle = NSMutableAttributedString(attachment: imageAttachment)
+        buttonTitle.append(NSMutableAttributedString(string: " 코드 복사"))
+        ingroupCodeCopyLabel.attributedText = buttonTitle
+        ingroupCodeCopyLabel.font = .systemFont(ofSize: 12, weight: .semibold)
+        ingroupCodeCopyLabel.textColor = .white
+        ingroupCodeCopyLabel.textAlignment = .center
+    }
     
-    func setToastMessageLayout() {
+    func setToastMessage() {
         view.addSubview(codeCopyToastMessage)
         codeCopyToastMessage.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -197,5 +199,17 @@ private extension GroupDetailViewController {
         codeCopyToastMessage.backgroundColor = .black.withAlphaComponent(0.7)
         codeCopyToastMessage.layer.cornerRadius = 16
         codeCopyToastMessage.clipsToBounds  =  true
+    }
+    
+    func showToastMessage() {
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {
+            self.codeCopyToastMessage.transform = CGAffineTransform(translationX: 0, y: -97)
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.3, delay: 1, options: .curveEaseOut, animations: {
+                self.codeCopyToastMessage.transform = CGAffineTransform(translationX: 0, y: 41)
+            }, completion: {_ in
+                self.codeCopyToastMessage.removeFromSuperview()
+            })
+        })
     }
 }
