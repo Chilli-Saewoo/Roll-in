@@ -103,7 +103,7 @@ private extension GroupDetailViewController {
             groupMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 117),
         ])
         groupMessageLabel.font = .systemFont(ofSize: 26, weight: .medium)
-        groupMessageLabel.text = "\(group?.groupName ?? "")의 롤링페이퍼"
+        groupMessageLabel.text = "\(group?.groupName ?? "")"
     }
     
     func setParticipantsCountLabel() {
@@ -117,7 +117,7 @@ private extension GroupDetailViewController {
     }
     
     func setNavigationBarBackButton() {
-        let backBarButtonItem = UIBarButtonItem(title: "\(group?.groupName ?? "")의 롤링페이퍼", style: .plain, target: self, action: nil)
+        let backBarButtonItem = UIBarButtonItem(title: "\(group?.groupName ?? "")", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .black
         self.navigationItem.backBarButtonItem = backBarButtonItem
     }
