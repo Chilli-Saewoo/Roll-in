@@ -16,24 +16,17 @@ final class SetThemeViewController: GroupBaseViewController {
     private let iconDatas = IconsSet.datas
     private var iconTextSettingLabel = UILabel()
     private var iconsCollectionView: UICollectionView!
-    private var nextButton = UIButton()
     private var selectedBackgroundColor: String? = nil {
         didSet {
             if selectedBackgroundColor != nil && selectedIcon != nil {
-                nextButton.isEnabled = true
-                nextButton.backgroundColor = .systemBlack
-                nextButton.setTitle("다음", for: .normal)
-                nextButton.setTitleColor(.white, for: .normal)
+                setConfirmButton(buttonTitle: "다음")
             }
         }
     }
     private var selectedIcon: String? = nil {
         didSet {
             if selectedBackgroundColor != nil && selectedIcon != nil {
-                nextButton.isEnabled = true
-                nextButton.backgroundColor = .systemBlack
-                nextButton.setTitle("다음", for: .normal)
-                nextButton.setTitleColor(.white, for: .normal)
+                setConfirmButton(buttonTitle: "다음")
             }
         }
     }
@@ -49,13 +42,13 @@ final class SetThemeViewController: GroupBaseViewController {
         configureIconCollectionView()
         registerIconCollectionView()
         iconCollectionViewDelegate()
-        setNextButton()
+        setDisabledConfirmButton(buttonTitle: "다음")
         setNextButtonAction()
         setNavigationBarBackButton()
     }
     
     private func setNextButtonAction() {
-        nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
+        confirmButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
     }
     
     @objc func nextButtonPressed(_ sender: UIButton) {
@@ -69,22 +62,6 @@ final class SetThemeViewController: GroupBaseViewController {
 }
 
 private extension SetThemeViewController {
-    func setNextButton() {
-        view.addSubview(nextButton)
-        nextButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34),
-            nextButton.heightAnchor.constraint(equalToConstant: 56)
-        ])
-        nextButton.isEnabled = false
-        nextButton.layer.cornerRadius = 4.0
-        nextButton.setTitle("다음", for: .disabled)
-        nextButton.setTitleColor(.white, for: .normal)
-        nextButton.setTitleColor(.inactiveTextGray, for: .disabled)
-        nextButton.backgroundColor = .inactiveBgGray
-    }
     
     func setNavigationBarBackButton() {
         let backBarButtonItem = UIBarButtonItem(title: "그룹 테마 선택", style: .plain, target: self, action: nil)
