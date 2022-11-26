@@ -47,7 +47,8 @@ final class GroupDetailViewController: UIViewController {
     private let screenHeight = UIScreen.main.bounds.height
     private let ingroupCodeCopyLabel = UILabel()
     private let ingroupCodeCopyButton = UIButton()
-    private let codeCopyToastMessage = UILabel()
+    private let codeCopyToastView = UILabel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setGroupMessageLabel()
@@ -73,8 +74,8 @@ final class GroupDetailViewController: UIViewController {
     @objc func ingroupCopyButtonPressed(_ sender: UIButton) {
         UIPasteboard.general.string = group?.code ?? ""
         print(group?.code ?? "")
-        setToastMessage()
-        showToastMessage()
+        setToastView()
+        showToastView()
     }
 }
 
@@ -180,35 +181,35 @@ private extension GroupDetailViewController {
     }
     
     func setToastMessage() {
-        view.addSubview(codeCopyToastMessage)
-        codeCopyToastMessage.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(codeCopyToastView)
+        codeCopyToastView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            codeCopyToastMessage.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 41),
-            codeCopyToastMessage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            codeCopyToastMessage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            codeCopyToastMessage.heightAnchor.constraint(equalToConstant: 56)
+            codeCopyToastView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 41),
+            codeCopyToastView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            codeCopyToastView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            codeCopyToastView.heightAnchor.constraint(equalToConstant: 56)
         ])
         let imageAttachment = NSTextAttachment()
         imageAttachment.image = UIImage(systemName: "checkmark.circle.fill")?.withTintColor(.white)
         let toastMessage = NSMutableAttributedString(attachment: imageAttachment)
         toastMessage.append(NSMutableAttributedString(string: " \(group?.groupName ?? "") 그룹 코드가 복사되었어요"))
-        codeCopyToastMessage.attributedText = toastMessage
-        codeCopyToastMessage.font = .systemFont(ofSize: 16, weight: .medium)
-        codeCopyToastMessage.textColor = .white
-        codeCopyToastMessage.textAlignment = .center
-        codeCopyToastMessage.backgroundColor = .black.withAlphaComponent(0.7)
-        codeCopyToastMessage.layer.cornerRadius = 16
-        codeCopyToastMessage.clipsToBounds  =  true
+        codeCopyToastView.attributedText = toastMessage
+        codeCopyToastView.font = .systemFont(ofSize: 16, weight: .medium)
+        codeCopyToastView.textColor = .white
+        codeCopyToastView.textAlignment = .center
+        codeCopyToastView.backgroundColor = .black.withAlphaComponent(0.7)
+        codeCopyToastView.layer.cornerRadius = 16
+        codeCopyToastView.clipsToBounds  =  true
     }
     
-    func showToastMessage() {
+    func showToastView() {
         UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {
-            self.codeCopyToastMessage.transform = CGAffineTransform(translationX: 0, y: -97)
+            self.codeCopyToastView.transform = CGAffineTransform(translationX: 0, y: -97)
         }, completion: { _ in
             UIView.animate(withDuration: 0.3, delay: 1, options: .curveEaseOut, animations: {
-                self.codeCopyToastMessage.transform = CGAffineTransform(translationX: 0, y: 41)
+                self.codeCopyToastView.transform = CGAffineTransform(translationX: 0, y: 41)
             }, completion: {_ in
-                self.codeCopyToastMessage.removeFromSuperview()
+                self.codeCopyToastView.removeFromSuperview()
             })
         })
     }
