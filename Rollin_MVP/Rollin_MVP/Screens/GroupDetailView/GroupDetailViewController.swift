@@ -46,9 +46,13 @@ final class GroupDetailViewController: UIViewController {
     private let screenWidth = UIScreen.main.bounds.width
     private let screenHeight = UIScreen.main.bounds.height
     
+    private let ingroupCodeCopyLabel = UILabel()
+    private let ingroupCodeCopyButton = UIButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setGroupMessageLabel()
+        setIngroupCodeCopyButton()
         setNavigationBarBackButton()
         cardSwiper = VerticalCardSwiper(frame: CGRect(x: 0.0, y: screenHeight * 0.2, width: screenWidth, height: screenHeight * 0.8))
         cardSwiper.isSideSwipingEnabled = false
@@ -123,4 +127,17 @@ private extension GroupDetailViewController {
     }
 }
 
-
+private extension GroupDetailViewController {
+    func setIngroupCodeCopyButton() {
+        view.addSubview(ingroupCodeCopyButton)
+        ingroupCodeCopyButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            ingroupCodeCopyButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 129),
+            ingroupCodeCopyButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            ingroupCodeCopyButton.widthAnchor.constraint(equalToConstant: 77),
+            ingroupCodeCopyButton.heightAnchor.constraint(equalToConstant: 24),
+        ])
+        ingroupCodeCopyButton.backgroundColor = .systemBlack
+        ingroupCodeCopyButton.layer.cornerRadius = 4.0
+    }
+}
