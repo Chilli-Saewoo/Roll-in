@@ -44,10 +44,10 @@ extension GroupBaseViewController {
         confirmButton.backgroundColor = .systemBlack
     }
     
-    func setDisabledConfirmButton(buttonTitle: String) {
+    func setDisabledConfirmButton(disabledButtonTitle: String) {
         confirmButton.isEnabled = false
         confirmButton.layer.cornerRadius = 4.0
-        confirmButton.setTitle(buttonTitle, for: .disabled)
+        confirmButton.setTitle(disabledButtonTitle, for: .disabled)
         confirmButton.setTitleColor(.white, for: .normal)
         confirmButton.setTitleColor(.inactiveTextGray, for: .disabled)
         confirmButton.backgroundColor = .inactiveBgGray

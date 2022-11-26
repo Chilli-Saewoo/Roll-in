@@ -42,7 +42,7 @@ final class SetThemeViewController: GroupBaseViewController {
         configureIconCollectionView()
         registerIconCollectionView()
         iconCollectionViewDelegate()
-        setDisabledConfirmButton(buttonTitle: "다음")
+        setDisabledConfirmButton(disabledButtonTitle: "다음")
         setNextButtonAction()
         setNavigationBarBackButton()
     }
