@@ -47,7 +47,7 @@ final class GroupDetailViewController: UIViewController {
     private let screenHeight = UIScreen.main.bounds.height
     private let ingroupCodeCopyLabel = UILabel()
     private let ingroupCodeCopyButton = UIButton()
-    
+    private let codeCopyToastMessage = UILabel()
     override func viewDidLoad() {
         super.viewDidLoad()
         setGroupMessageLabel()
@@ -80,6 +80,7 @@ final class GroupDetailViewController: UIViewController {
     @objc func ingroupCopyButtonPressed(_ sender: UIButton) {
         UIPasteboard.general.string = group?.code ?? ""
         print(group?.code ?? "")
+        
     }
 }
 
@@ -171,5 +172,25 @@ private extension GroupDetailViewController {
            ingroupCodeCopyLabel.textAlignment = .center
        }
     
-
+    func setToastMessageLayout() {
+        view.addSubview(codeCopyToastMessage)
+        codeCopyToastMessage.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            codeCopyToastMessage.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 41),
+            codeCopyToastMessage.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            codeCopyToastMessage.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            codeCopyToastMessage.heightAnchor.constraint(equalToConstant: 56)
+        ])
+        let imageAttachment = NSTextAttachment()
+        imageAttachment.image = UIImage(systemName: "checkmark.circle.fill")?.withTintColor(.white)
+        let toastMessage = NSMutableAttributedString(attachment: imageAttachment)
+        toastMessage.append(NSMutableAttributedString(string: " \(group?.groupName ?? "") 그룹 코드가 복사되었어요"))
+        codeCopyToastMessage.attributedText = toastMessage
+        codeCopyToastMessage.font = .systemFont(ofSize: 16, weight: .medium)
+        codeCopyToastMessage.textColor = .white
+        codeCopyToastMessage.textAlignment = .center
+        codeCopyToastMessage.backgroundColor = .black.withAlphaComponent(0.7)
+        codeCopyToastMessage.layer.cornerRadius = 16
+        codeCopyToastMessage.clipsToBounds  =  true
+    }
 }
