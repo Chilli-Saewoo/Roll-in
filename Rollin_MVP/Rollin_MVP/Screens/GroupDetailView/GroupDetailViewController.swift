@@ -44,7 +44,7 @@ final class CardSwiperCell: CardCell {
         self.addSubview(bookMarkLabel)
         bookMarkLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            bookMarkLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -14),
+            bookMarkLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -6),
             bookMarkLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
         ])
         bookMarkLabel.image = UIImage(named: "bookmark")
