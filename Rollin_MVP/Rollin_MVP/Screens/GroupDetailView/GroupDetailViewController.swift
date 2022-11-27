@@ -42,7 +42,6 @@ final class GroupDetailViewController: UIViewController {
     var group: Group?
     private var cardSwiper: VerticalCardSwiper!
     private let groupMessageLabel = UILabel()
-    private let participantsCountLabel = UILabel()
     private let screenWidth = UIScreen.main.bounds.width
     private let screenHeight = UIScreen.main.bounds.height
     private let ingroupCodeCopyLabel = UILabel()
@@ -127,16 +126,6 @@ private extension GroupDetailViewController {
         ])
         groupMessageLabel.font = .systemFont(ofSize: 26, weight: .medium)
         groupMessageLabel.text = "\(group?.groupName ?? "")"
-    }
-    
-    func setParticipantsCountLabel() {
-        view.addSubview(participantsCountLabel)
-        participantsCountLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            participantsCountLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
-            participantsCountLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 125),
-        ])
-        participantsCountLabel.font = .systemFont(ofSize: 26, weight: .medium)
     }
     
     func setNavigationBarBackButton() {
