@@ -9,13 +9,16 @@ import UIKit
 import VerticalCardSwiper
 
 final class CardSwiperCell: CardCell {
-    
     private let nameLabel = UILabel()
+    private let bookMarkLabel = UIImageView()
     
-    public func setCell(index: Int, name: String) {
+    public func setCell(index: Int, name: String, userId: String) {
         let colors: [UIColor] = [.cardRed, .cardBlue, .cardPink, .cardGreen, .cardPurple, .cardYellow, .cardDeepBlue]
         self.backgroundColor = colors[index % colors.count]
         nameLabel.text = name
+        if userId == UserDefaults.standard.string(forKey: "uid") {
+            setBookMarkLabel()
+        }
     }
     
     override init(frame: CGRect) {
@@ -35,6 +38,16 @@ final class CardSwiperCell: CardCell {
             nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
         ])
         nameLabel.font = .systemFont(ofSize: 20, weight: .semibold)
+    }
+    
+    private func setBookMarkLabel() {
+        self.addSubview(bookMarkLabel)
+        bookMarkLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            bookMarkLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -6),
+            bookMarkLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+        ])
+        bookMarkLabel.image = UIImage(named: "bookmark")
     }
 }
 
@@ -92,7 +105,7 @@ extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardS
     
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: index) as? CardSwiperCell {
-            cardCell.setCell(index: index, name: group?.participants[index].1 ?? "error")
+            cardCell.setCell(index: index, name: group?.participants[index].1 ?? "error", userId: group?.participants[index].0 ?? "error")
             return cardCell
         }
         return CardCell()
