@@ -72,7 +72,8 @@ final class GroupDetailViewController: UIViewController {
     }
     
     @objc func ingroupCopyButtonPressed(_ sender: UIButton) {
-        UIPasteboard.general.string = group?.code ?? ""
+        guard let code = group?.code else { return }
+        UIPasteboard.general.string = code
         setToastView()
         showToastView()
     }
@@ -139,7 +140,8 @@ private extension GroupDetailViewController {
     }
     
     func setNavigationBarBackButton() {
-        let backBarButtonItem = UIBarButtonItem(title: "\(group?.groupName ?? "")", style: .plain, target: self, action: nil)
+        guard let groupName = group?.groupName else { return }
+        let backBarButtonItem = UIBarButtonItem(title: "\(groupName)", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .black
         self.navigationItem.backBarButtonItem = backBarButtonItem
     }
@@ -188,10 +190,11 @@ private extension GroupDetailViewController {
             codeCopyToastView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             codeCopyToastView.heightAnchor.constraint(equalToConstant: 56)
         ])
+        guard let groupName = group?.groupName else { return }
         let imageAttachment = NSTextAttachment()
         imageAttachment.image = UIImage(systemName: "checkmark.circle.fill")?.withTintColor(.white)
         let toastMessage = NSMutableAttributedString(attachment: imageAttachment)
-        toastMessage.append(NSMutableAttributedString(string: " \(group?.groupName ?? "") 그룹 코드가 복사되었어요"))
+        toastMessage.append(NSMutableAttributedString(string: " \(groupName) 그룹 코드가 복사되었어요"))
         codeCopyToastView.attributedText = toastMessage
         codeCopyToastView.font = .systemFont(ofSize: 16, weight: .medium)
         codeCopyToastView.textColor = .white
