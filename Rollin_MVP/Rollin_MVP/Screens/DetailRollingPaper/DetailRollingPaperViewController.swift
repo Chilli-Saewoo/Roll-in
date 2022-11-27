@@ -5,7 +5,9 @@
 //  Created by 한택환 on 2022/11/11.
 //
 
+
 import UIKit
+import MessageUI
 
 final class DetailRollingPaperViewController: UIViewController {
     
@@ -32,6 +34,13 @@ final class DetailRollingPaperViewController: UIViewController {
     private let dismissButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "xmark"), for: .normal)
+        button.tintColor = .black
+        return button
+    }()
+    
+    private let reportPostButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "light.beacon.max.fill"), for: .normal)
         button.tintColor = .black
         return button
     }()
@@ -176,6 +185,15 @@ private extension DetailRollingPaperViewController {
             self.dismissButton.widthAnchor.constraint(equalToConstant: 40),
         ])
         
+        reportPostButton.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(self.reportPostButton)
+        NSLayoutConstraint.activate([
+            self.reportPostButton.centerYAnchor.constraint(equalTo: self.titleLabel.centerYAnchor),
+            self.reportPostButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
+            self.reportPostButton.heightAnchor.constraint(equalToConstant: 40),
+            self.reportPostButton.widthAnchor.constraint(equalToConstant: 40),
+        ])
+        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         self.view.addSubview(self.collectionView)
         NSLayoutConstraint.activate([
@@ -217,10 +235,83 @@ private extension DetailRollingPaperViewController {
     
     func setButton() {
         dismissButton.addTarget(self, action: #selector(touchUpInsideToDismiss), for: .touchUpInside)
+        reportPostButton.addTarget(self, action: #selector(showActionSheet), for: .touchUpInside)
+    }
+    
+    func touchUpMoveToDeclarePage() {
+        if MFMailComposeViewController.canSendMail() {
+                let composeViewController = MFMailComposeViewController()
+                guard let postRollingPaperModel = postRollingPaperModel else { return }
+                composeViewController.mailComposeDelegate = self
+                let date = Date()
+                let bodyString = """
+                                 
+                                 -------------------
+                                 
+                                 
+                                 - 신고자 닉네임 : \(postRollingPaperModel.from)
+                                 - 신고 메시지 내용 :
+                                 \(postRollingPaperModel.commentString)
+                                 - 신고 날짜: \(date.toString_koreaTime())
+                                 
+                                 -------------------
+                                 
+                                 신고 내용을 작성해주세요.
+                                 
+                                 신고 사유:
+                                 
+                                 """
+                
+                composeViewController.setToRecipients(["chillijo2022@gmail.com"])
+                composeViewController.setSubject("[신고 관련 문의]")
+                composeViewController.setMessageBody(bodyString, isHTML: false)
+                
+                self.present(composeViewController, animated: true, completion: nil)
+            } else {
+                print("메일 보내기 실패")
+                let sendMailErrorAlert = UIAlertController(title: "메일 전송 실패", message: "메일을 보내려면 'Mail' 앱이 필요합니다. App Store에서 해당 앱을 복원하거나 이메일 설정을 확인하고 다시 시도해주세요.", preferredStyle: .alert)
+                let goAppStoreAction = UIAlertAction(title: "App Store로 이동하기", style: .default) { _ in
+                    // 앱스토어로 이동하기(Mail)
+                    if let url = URL(string: "https://apps.apple.com/kr/app/mail/id1108187098"), UIApplication.shared.canOpenURL(url) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                }
+                let cancleAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+                
+                sendMailErrorAlert.addAction(goAppStoreAction)
+                sendMailErrorAlert.addAction(cancleAction)
+                self.present(sendMailErrorAlert, animated: true, completion: nil)
+            }
+    }
+    
+    @objc
+    func showActionSheet() {
+        let actionSheet = UIAlertController(title: "해당 포스트를 신고하시겠습니까?", message: nil, preferredStyle: .actionSheet)
+        
+        let reportSheet = UIAlertAction(title: "신고 하기", style: .default) { action in
+            self.touchUpMoveToDeclarePage()
+        }
+        
+        let cancelSheet = UIAlertAction(title: "취소", style: .cancel) { action in
+        }
+        actionSheet.addAction(reportSheet)
+        actionSheet.addAction(cancelSheet)
+        
+        reportSheet.setValue(UIColor.red, forKey: "titleTextColor")
+        present(actionSheet, animated: true, completion: nil)
     }
     
     @objc
     func touchUpInsideToDismiss() {
         self.dismiss(animated: true)
+    }
+    
+}
+
+// MARK: - MFMailComposeViewControllerDelegate
+extension DetailRollingPaperViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController,
+                               didFinishWith result: MFMailComposeResult, error: Error?) {
+        dismiss(animated: true, completion: nil)
     }
 }
