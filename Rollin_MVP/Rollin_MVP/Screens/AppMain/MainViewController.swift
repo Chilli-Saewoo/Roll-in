@@ -42,6 +42,7 @@ final class MainViewController: UIViewController {
         registerCollectionView()
         collectionViewDelegate()
         setBottomGradientLayout()
+        setSettingButtonAction()
         view.addSubview(activityIndicator)
         activityIndicator.stopAnimating()
     }
@@ -60,6 +61,14 @@ final class MainViewController: UIViewController {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
+    private func setSettingButtonAction() {
+        settingButton.addTarget(self, action: #selector(settingButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc func settingButtonPressed(_ sender: UIButton) {
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as? SettingViewController ?? UIViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 private extension MainViewController {
