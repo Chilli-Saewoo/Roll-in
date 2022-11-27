@@ -152,7 +152,7 @@ private extension GroupDetailViewController {
         view.addSubview(ingroupCodeCopyButton)
         ingroupCodeCopyButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            ingroupCodeCopyButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 129),
+            ingroupCodeCopyButton.centerYAnchor.constraint(equalTo: groupMessageLabel.centerYAnchor),
             ingroupCodeCopyButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             ingroupCodeCopyButton.widthAnchor.constraint(equalToConstant: 77),
             ingroupCodeCopyButton.heightAnchor.constraint(equalToConstant: 24),
@@ -172,11 +172,12 @@ private extension GroupDetailViewController {
         ])
         ingroupCodeCopyLabel.isUserInteractionEnabled = false
         let imageAttachment = NSTextAttachment()
-        imageAttachment.image = UIImage(systemName: "square.on.square")?.withTintColor(.white)
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 12, weight: .medium)
+        imageAttachment.image = UIImage(systemName: "square.on.square", withConfiguration: imageConfig)?.withTintColor(.white)
         let buttonTitle = NSMutableAttributedString(attachment: imageAttachment)
         buttonTitle.append(NSMutableAttributedString(string: " 코드 복사"))
         ingroupCodeCopyLabel.attributedText = buttonTitle
-        ingroupCodeCopyLabel.font = .systemFont(ofSize: 12, weight: .semibold)
+        ingroupCodeCopyLabel.font = .systemFont(ofSize: 12, weight: .medium)
         ingroupCodeCopyLabel.textColor = .white
         ingroupCodeCopyLabel.textAlignment = .center
     }
