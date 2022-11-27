@@ -63,7 +63,6 @@ final class PostView: UIView {
         button.setImage(UIImage(systemName: "plus"), for: .normal)
         button.tintColor = .systemBlack
         button.backgroundColor = .white
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
         button.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 4
