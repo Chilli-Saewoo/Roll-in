@@ -7,6 +7,6 @@
 
 import UIKit
 
-final class GroupUserRollingPaper: Codable {
-    var posts: [RollingPaperPostData] = []
-}
+//final class GroupUserRollingPaper: Codable {
+//    var posts: [RollingPaperPostData] = []
+//}

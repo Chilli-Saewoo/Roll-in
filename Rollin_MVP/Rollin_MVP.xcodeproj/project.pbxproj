@@ -36,6 +36,7 @@
 		AB032AA4291E872400B22C13 /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB032AA3291E872400B22C13 /* String+.swift */; };
 		AB032AA9291E875900B22C13 /* SelectBackgroundColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB032AA8291E875900B22C13 /* SelectBackgroundColorCell.swift */; };
 		AB032AAB291E875E00B22C13 /* SelectIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB032AAA291E875E00B22C13 /* SelectIconCell.swift */; };
+		AB04EA6729332AA300A9CDF0 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB04EA6629332AA300A9CDF0 /* PostData.swift */; };
 		AB437573291A442F00C3688D /* Model_example.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437572291A442F00C3688D /* Model_example.swift */; };
 		AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */; };
 		AB7E6B0829201795001F6716 /* PostRollingPaperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7E6B0729201795001F6716 /* PostRollingPaperModel.swift */; };
@@ -131,6 +132,7 @@
 		AB032AA3291E872400B22C13 /* String+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		AB032AA8291E875900B22C13 /* SelectBackgroundColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectBackgroundColorCell.swift; sourceTree = "<group>"; };
 		AB032AAA291E875E00B22C13 /* SelectIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectIconCell.swift; sourceTree = "<group>"; };
+		AB04EA6629332AA300A9CDF0 /* PostData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		AB437572291A442F00C3688D /* Model_example.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model_example.swift; sourceTree = "<group>"; };
 		AB437580291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGroupNameWhileCreatingGroupViewController.swift; sourceTree = "<group>"; };
 		AB7E6B0729201795001F6716 /* PostRollingPaperModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRollingPaperModel.swift; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				AB7E6B0729201795001F6716 /* PostRollingPaperModel.swift */,
+				AB04EA6629332AA300A9CDF0 /* PostData.swift */,
 			);
 			path = PostRollingPaper;
 			sourceTree = "<group>";
@@ -688,6 +691,7 @@
 				AB032AA9291E875900B22C13 /* SelectBackgroundColorCell.swift in Sources */,
 				79340B33292171AD0097D111 /* AddGroupButtonBackgroundView.swift in Sources */,
 				ABCFC8392920158A006DB26B /* PostViewController.swift in Sources */,
+				AB04EA6729332AA300A9CDF0 /* PostData.swift in Sources */,
 				AB7E6B0829201795001F6716 /* PostRollingPaperModel.swift in Sources */,
 				F663324F2920398200A7310A /* UITextField+.swift in Sources */,
 				2AF46852291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift in Sources */,

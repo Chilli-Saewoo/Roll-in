@@ -13,17 +13,14 @@ import FirebaseFirestoreSwift
 class PostViewController: UIViewController, UISheetPresentationControllerDelegate {
 
     var collectionView: UICollectionView!
-    var dataSource: [PostRollingPaperModel] = []
     private lazy var titleMessageLabel = UILabel()
     private lazy var writeButton = UIButton()
     private lazy var plusButton = UIButton()
-    var rollingPaperInfo: RollingPaperInfo?
     var groupNickname: String?
     var groupId: String?
     var receiverUserId: String?
-    var posts: [RollingPaperPostData] = []
+    var posts: [PostData]?
     var myGroupNickname: String?
-    var postRollingPaperModel: PostRollingPaperModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,28 +35,56 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
         fetchAllPosts()
     }
     
-    private func setupDataSource() {
-        self.dataSource = []
-        for post in posts {
-            var image = UIImage()
-            FirebaseStorageManager.downloadImage(urlString: post.image) { uiImage in
-                guard let uiImage = uiImage else { return }
-                image = uiImage
-                let color = UIColor(hex: "#\(post.postTheme)")
-                self.dataSource.append(PostRollingPaperModel(color: color, commentString: post.message, image: image.resizeImage(newWidth: 170) ?? UIImage(), timestamp: post.timeStamp, from: post.from, isPublic: post.isPublic, colorHex: post.postTheme))
-                self.dataSource.sort(by: >)
-                if self.dataSource.count == self.posts.count {
-                    self.collectionView.reloadData()
-                }
+    private func fetchPosts() async throws -> [PostData]? {
+        let db = FirebaseFirestore.Firestore.firestore()
+        let snapshot = try await db.collection("groupUsers").document(groupId ?? "").collection("participants").document(receiverUserId ?? "").collection("posts").order(by: "timeStamp", descending: true).getDocuments()
+        
+        let uid = UserDefaults.standard.string(forKey: "uid")
+        let groupNicknameData = try await db.collection("groupUsers").document(groupId ?? "").collection("participants").document(uid ?? "").getDocument().data()
+        
+        guard let groupNicknameData = groupNicknameData else { return nil }
+        
+        self.myGroupNickname = String(describing: groupNicknameData["groupNickname"] ?? "")
+        
+        let postDocuments = try snapshot.documents.map { document -> PostData? in
+            let data = try document.data(as: PostCodableData.self)
+            
+            // TODO: - type은 이후에 Firebase에서 받아와서 들어와져야 합니다. 현재는 한 종류이기 때문에 상수로 들어가게 됩니다.
+            // switch로 type을 받아온 후, type에 따라서 return 형식이 달라져야 합니다.
+            guard let image = data.image, let message = data.message, let postTheme = data.postTheme  else { return nil }
+            return PostWithImageAndMessage(type: .imageAndMessage, id: UUID().uuidString, timestamp: data.timeStamp, from: data.from, isPublic: data.isPublic, imageURL: image, message: message, postTheme: postTheme)
+        }
+        
+        var newPosts: [PostData] = []
+        for postDocument in postDocuments {
+            if let result = postDocument {
+                newPosts.append(result)
             }
         }
+        return newPosts.sorted(by: >)
     }
+    
+//    private func setupDataSource() {
+//        self.dataSources = []
+//        for post in posts {
+//            var image = UIImage()
+//            FirebaseStorageManager.downloadImage(urlString: post.image) { uiImage in
+//                guard let uiImage = uiImage else { return }
+//                image = uiImage
+//                let color = UIColor(hex: "#\(post.postTheme)")
+//                self.dataSources.append(PostRollingPaperModel(color: color, commentString: post.message, image: image.resizeImage(newWidth: 170) ?? UIImage(), timestamp: post.timeStamp, from: post.from, isPublic: post.isPublic, colorHex: post.postTheme))
+//                if self.dataSources.count == self.posts.count {
+//                    self.dataSources.sort(by: >)
+//                    self.collectionView.reloadData()
+//                }
+//            }
+//        }
+//    }
     
     func fetchAllPosts() {
         Task {
-            posts = try await fetchPosts()
-            self.posts = posts
-            setupDataSource()
+            self.posts = try await fetchPosts()
+            collectionView.reloadData()
         }
     }
     
@@ -130,8 +155,9 @@ private extension PostViewController {
 
 extension PostViewController: PostRollingPaperLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat {
+        guard let post = posts?[indexPath.item] as? PostWithImageAndMessage else { return 0 }
         let imageHeight = (UIScreen.main.bounds.width - 10)/2
-        let labelHeight = dataSource[indexPath.item].commentString.heightWithConstrainedWidth(width: UIScreen.main.bounds.width/2-50, font: UIFont.systemFont(ofSize: 12, weight: .medium))
+        let labelHeight = post.message.heightWithConstrainedWidth(width: UIScreen.main.bounds.width / 2 - 50, font: UIFont.systemFont(ofSize: 12, weight: .medium))
         return imageHeight + labelHeight + 35
     }
 }
@@ -139,12 +165,12 @@ extension PostViewController: PostRollingPaperLayoutDelegate {
 extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.count
+        return posts?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostRollingPaperCollectionViewCell.id, for: indexPath) as? PostRollingPaperCollectionViewCell ?? PostRollingPaperCollectionViewCell()
-        cell.postRollingPaperModel = dataSource[indexPath.item]
+        cell.postRollingPaperModel// = dataSources[indexPath.item]
         cell.receiverUserId = receiverUserId ?? ""
         cell.bind()
         return cell
@@ -154,7 +180,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let rollingPaperDetailViewController = DetailRollingPaperViewController()
         rollingPaperDetailViewController.view.backgroundColor = .white
         rollingPaperDetailViewController.modalPresentationStyle = .pageSheet
-        rollingPaperDetailViewController.postRollingPaperModel = dataSource[indexPath.item]        
+        rollingPaperDetailViewController.postRollingPaperModel = dataSources[indexPath.item]        
         if let halfModal = rollingPaperDetailViewController.sheetPresentationController {
             halfModal.preferredCornerRadius = 10
             halfModal.detents = [.medium()]
@@ -162,7 +188,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
             halfModal.prefersGrabberVisible = true
         }
         
-        if dataSource[indexPath.item].isPublic || receiverUserId == UserDefaults.standard.string(forKey: "uid") {
+        if dataSources[indexPath.item].isPublic || receiverUserId == UserDefaults.standard.string(forKey: "uid") {
             present(rollingPaperDetailViewController, animated: true, completion: nil)
         }
     }
@@ -170,28 +196,6 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 
 private extension PostViewController {
-    func fetchPosts() async throws -> [RollingPaperPostData] {
-        let db = FirebaseFirestore.Firestore.firestore()
-        let snapshot = try await db.collection("groupUsers").document(groupId ?? "").collection("participants").document(receiverUserId ?? "").collection("posts").order(by: "timeStamp", descending: true).getDocuments()
-        let uid = UserDefaults.standard.string(forKey: "uid")
-        let myGroupNickname = try await db.collection("groupUsers").document(groupId ?? "").collection("participants").document(uid ?? "").getDocument().data()
-        guard let myGroupNickname = myGroupNickname else { return [RollingPaperPostData(from: "", postTheme: "", message: "", image: "", isPublic: false, timeStamp: Date())]}
-        self.myGroupNickname = String(describing: myGroupNickname["groupNickname"] ?? "")
-        let dtoDocuments = try snapshot.documents.map { document -> RollingPaperPostData in
-            let data = try document.data(as: RollingPaperPostData.self)
-            return RollingPaperPostData(from: data.from,
-                                        postTheme: data.postTheme,
-                                        message: data.message,
-                                        image: data.image,
-                                        isPublic: data.isPublic,
-                                        timeStamp: data.timeStamp)
-        }
-        var documents: [RollingPaperPostData] = []
-        for dtoDocument in dtoDocuments {
-            documents.append(dtoDocument)
-        }
-        return documents.sorted(by: >)
-    }
 }
 
 extension PostViewController {

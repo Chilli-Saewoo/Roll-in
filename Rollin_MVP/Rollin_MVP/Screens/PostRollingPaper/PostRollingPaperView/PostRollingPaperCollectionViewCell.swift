@@ -13,12 +13,6 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
     static var id: String {
         return NSStringFromClass(Self.self).components(separatedBy: ".").last ?? ""
     }
-
-    var postRollingPaperModel: PostRollingPaperModel? {
-        didSet {
-            bind()
-        }
-    }
     
     lazy var blurView: UIView = {
         let blurEffect = UIBlurEffect(style: .regular)
