@@ -15,7 +15,7 @@ struct RollingPaperPostAPI {
     
     private let db = FirebaseFirestore.Firestore.firestore()
     
-    func writePost(document: RollingPaperPostData, imageUrl: String, groupId: String, receiver: String) {
+    func writePost(document: PostWithImageAndMessage, imageUrl: String, groupId: String, receiver: String) {
         let groupId = groupId
         let receiver = receiver
         let uuid = UUID().uuidString
@@ -26,7 +26,7 @@ struct RollingPaperPostAPI {
                        "message": document.message,
                        "image": imageUrl,
                        "isPublic": document.isPublic,
-                       "timeStamp": document.timeStamp], forDocument: db.collection("groupUsers").document(groupId).collection("participants").document(receiver).collection("posts").document(uuid), merge: true)
+                       "timeStamp": document.timestamp], forDocument: db.collection("groupUsers").document(groupId).collection("participants").document(receiver).collection("posts").document(uuid), merge: true)
         batch.commit() { err in
             if let err = err {
                 print("Error writing batch \(err)")
