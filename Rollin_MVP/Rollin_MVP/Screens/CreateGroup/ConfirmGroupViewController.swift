@@ -8,23 +8,21 @@
 import UIKit
 import FirebaseFirestore
 
-final class ConfirmGroupViewController: UIViewController {
+final class ConfirmGroupViewController: GroupBaseViewController {
     var creatingGroupInfo: CreatingGroupInfo?
-    private lazy var titleMessageLabel = UILabel()
     private lazy var confirmGroupCard = GroupWithThemeView(info: creatingGroupInfo ?? CreatingGroupInfo())
-    private let completeButton = UIButton()
     private let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setTitleMessageLayout()
+        setViewTitle(title: "해당 그룹이 맞으신가요?")
+        setConfirmButton(buttonTitle: "완료")
         setConfirmGroupCard()
-        setCompleteButton()
         setCompleteButtonAction()
     }
     
     private func setCompleteButtonAction() {
-        completeButton.addTarget(self, action: #selector(completeButtonPressed), for: .touchUpInside)
+        confirmButton.addTarget(self, action: #selector(completeButtonPressed), for: .touchUpInside)
     }
     
     @objc func completeButtonPressed(_ sender: UIButton) {
@@ -65,41 +63,15 @@ final class ConfirmGroupViewController: UIViewController {
 }
 
 private extension ConfirmGroupViewController {
-    func setTitleMessageLayout() {
-        view.addSubview(titleMessageLabel)
-        titleMessageLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
-            titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-        ])
-        titleMessageLabel.text = "해당 그룹이 맞으신가요?"
-        titleMessageLabel.font = .systemFont(ofSize: 24, weight: .bold)
-        titleMessageLabel.textColor = .systemBlack
-        
-    }
     
     func setConfirmGroupCard() {
         view.addSubview(confirmGroupCard)
         confirmGroupCard.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            confirmGroupCard.topAnchor.constraint(equalTo: titleMessageLabel.bottomAnchor, constant: 186),
+            confirmGroupCard.topAnchor.constraint(equalTo: viewTitle.bottomAnchor, constant: 186),
             confirmGroupCard.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 17),
             confirmGroupCard.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -17),
             confirmGroupCard.heightAnchor.constraint(equalToConstant: 120),
         ])
-    }
-    
-    func setCompleteButton() {
-        view.addSubview(completeButton)
-        completeButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            completeButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -34),
-            completeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            completeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            completeButton.heightAnchor.constraint(equalToConstant: 56),
-        ])
-        completeButton.setTitle("완료", for: .normal)
-        completeButton.layer.cornerRadius = 4.0
-        completeButton.backgroundColor = .systemBlack
     }
 }

@@ -7,33 +7,26 @@
 
 import UIKit
 
-final class SetThemeViewController: UIViewController {
+final class SetThemeViewController: GroupBaseViewController {
     var creatingGroupInfo: CreatingGroupInfo?
-    private var setBackgroundPaperTextLabel = UILabel()
+    //private var setBackgroundPaperTextLabel = UILabel()
     private var backgroundPapersCollectionView: UICollectionView!
     private let screenWidth = UIScreen.main.bounds.width
     private let backgroundColorDatas = BackgroundColorSet.datas
     private let iconDatas = IconsSet.datas
     private var iconTextSettingLabel = UILabel()
     private var iconsCollectionView: UICollectionView!
-    private var nextButton = UIButton()
     private var selectedBackgroundColor: String? = nil {
         didSet {
             if selectedBackgroundColor != nil && selectedIcon != nil {
-                nextButton.isEnabled = true
-                nextButton.backgroundColor = .systemBlack
-                nextButton.setTitle("다음", for: .normal)
-                nextButton.setTitleColor(.white, for: .normal)
+                setConfirmButton(buttonTitle: "다음")
             }
         }
     }
     private var selectedIcon: String? = nil {
         didSet {
             if selectedBackgroundColor != nil && selectedIcon != nil {
-                nextButton.isEnabled = true
-                nextButton.backgroundColor = .systemBlack
-                nextButton.setTitle("다음", for: .normal)
-                nextButton.setTitleColor(.white, for: .normal)
+                setConfirmButton(buttonTitle: "다음")
             }
         }
     }
@@ -41,7 +34,7 @@ final class SetThemeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.isHidden = false
-        setSetBackgroundPaperTextLayout()
+        setViewTitle(title: "그룹 배경지 선택")
         configureCollectionView()
         registerBackgroundCollectionView()
         backgroundCollectionViewDelegate()
@@ -49,13 +42,13 @@ final class SetThemeViewController: UIViewController {
         configureIconCollectionView()
         registerIconCollectionView()
         iconCollectionViewDelegate()
-        setNextButton()
+        setDisabledConfirmButton(disabledButtonTitle: "다음")
         setNextButtonAction()
         setNavigationBarBackButton()
     }
     
     private func setNextButtonAction() {
-        nextButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
+        confirmButton.addTarget(self, action: #selector(nextButtonPressed), for: .touchUpInside)
     }
     
     @objc func nextButtonPressed(_ sender: UIButton) {
@@ -69,22 +62,6 @@ final class SetThemeViewController: UIViewController {
 }
 
 private extension SetThemeViewController {
-    func setNextButton() {
-        view.addSubview(nextButton)
-        nextButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            nextButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34),
-            nextButton.heightAnchor.constraint(equalToConstant: 56)
-        ])
-        nextButton.isEnabled = false
-        nextButton.layer.cornerRadius = 4.0
-        nextButton.setTitle("다음", for: .disabled)
-        nextButton.setTitleColor(.white, for: .normal)
-        nextButton.setTitleColor(.inactiveTextGray, for: .disabled)
-        nextButton.backgroundColor = .inactiveBgGray
-    }
     
     func setNavigationBarBackButton() {
         let backBarButtonItem = UIBarButtonItem(title: "그룹 테마 선택", style: .plain, target: self, action: nil)
@@ -154,7 +131,7 @@ private extension SetThemeViewController {
         backgroundPapersCollectionView.backgroundColor = .clear
         view.addSubview(backgroundPapersCollectionView)
         NSLayoutConstraint.activate([
-            backgroundPapersCollectionView.topAnchor.constraint(equalTo: setBackgroundPaperTextLabel.bottomAnchor, constant: 20),
+            backgroundPapersCollectionView.topAnchor.constraint(equalTo: viewTitle.bottomAnchor, constant: 20),
             backgroundPapersCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
             backgroundPapersCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -21),
             backgroundPapersCollectionView.heightAnchor.constraint(equalToConstant: 100)
@@ -238,18 +215,4 @@ extension SetThemeViewController: UICollectionViewDelegate, UICollectionViewData
             return cell
         }
     }
-}
-
-private extension SetThemeViewController {
-    func setSetBackgroundPaperTextLayout() {
-        view.addSubview(setBackgroundPaperTextLabel)
-        setBackgroundPaperTextLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            setBackgroundPaperTextLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 115),
-            setBackgroundPaperTextLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-        ])
-        setBackgroundPaperTextLabel.text = "그룹 배경지 선택"
-        setBackgroundPaperTextLabel.font = .systemFont(ofSize: 24, weight: .medium)
-    }
-    
 }
