@@ -58,7 +58,6 @@
 		ABCFC8372920158A006DB26B /* PostRollingPaperLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFC8322920158A006DB26B /* PostRollingPaperLayout.swift */; };
 		ABCFC8382920158A006DB26B /* PostRollingPaperCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFC8342920158A006DB26B /* PostRollingPaperCollectionViewCell.swift */; };
 		ABCFC8392920158A006DB26B /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCFC8362920158A006DB26B /* PostViewController.swift */; };
-		ABD83D4E2923220E0055E7A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABD83D4D2923220E0055E7A3 /* GoogleService-Info.plist */; };
 		ABDBD2BE291A3F97008FB3A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2BD291A3F97008FB3A6 /* AppDelegate.swift */; };
 		ABDBD2C0291A3F97008FB3A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2BF291A3F97008FB3A6 /* SceneDelegate.swift */; };
 		ABDBD2C5291A3F97008FB3A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABDBD2C3291A3F97008FB3A6 /* Main.storyboard */; };
@@ -73,6 +72,7 @@
 		F663324D292034D100A7310A /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324C292034D100A7310A /* Image+.swift */; };
 		F663324F2920398200A7310A /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324E2920398200A7310A /* UITextField+.swift */; };
 		F6667F3029219FD000CD480F /* RollingPaperPostAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6667F2F29219FD000CD480F /* RollingPaperPostAPI.swift */; };
+		F6AD64D6292CB8330053C518 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6AD64D5292CB8330053C518 /* GoogleService-Info.plist */; };
 		F8173D1D291A521400E545E0 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D1C291A521400E545E0 /* FirebaseAuth */; };
 		F8173D1F291A521400E545E0 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D1E291A521400E545E0 /* FirebaseDatabase */; };
 		F8173D21291A521400E545E0 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = F8173D20291A521400E545E0 /* FirebaseDatabaseSwift */; };
@@ -154,7 +154,6 @@
 		ABCFC8322920158A006DB26B /* PostRollingPaperLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRollingPaperLayout.swift; sourceTree = "<group>"; };
 		ABCFC8342920158A006DB26B /* PostRollingPaperCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostRollingPaperCollectionViewCell.swift; sourceTree = "<group>"; };
 		ABCFC8362920158A006DB26B /* PostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
-		ABD83D4D2923220E0055E7A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ABDBD2BA291A3F97008FB3A6 /* Rollin_MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rollin_MVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDBD2BD291A3F97008FB3A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABDBD2BF291A3F97008FB3A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +172,7 @@
 		F663324C292034D100A7310A /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
 		F663324E2920398200A7310A /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
 		F6667F2F29219FD000CD480F /* RollingPaperPostAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RollingPaperPostAPI.swift; path = API/RollingPaperPostAPI.swift; sourceTree = "<group>"; };
+		F6AD64D5292CB8330053C518 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "API/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F6F411E1291FBA55007094DE /* Rollin_MVP.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Rollin_MVP.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -379,13 +379,13 @@
 			path = "Extension+";
 			sourceTree = "<group>";
 		};
-		ABCFC81029201518006DB26B /* AppleLogin */ = {
+		ABCFC81029201518006DB26B /* LoginView */ = {
 			isa = PBXGroup;
 			children = (
 				ABCFC81129201518006DB26B /* LoginViewController.swift */,
 			);
-			name = AppleLogin;
-			path = Rollin_MVP/Screens/AppleLogin;
+			name = LoginView;
+			path = Rollin_MVP/Screens/LoginView;
 			sourceTree = SOURCE_ROOT;
 		};
 		ABCFC8302920158A006DB26B /* PostRollingPaper */ = {
@@ -509,7 +509,7 @@
 				79340B2C292171AD0097D111 /* AppMain */,
 				F6633249292033F300A7310A /* LoginSetNickName */,
 				ABCFC8302920158A006DB26B /* PostRollingPaper */,
-				ABCFC81029201518006DB26B /* AppleLogin */,
+				ABCFC81029201518006DB26B /* LoginView */,
 				2AF4684E291E1E9E00AB2DE4 /* DetailRollingPaper */,
 				ABDBD2C3291A3F97008FB3A6 /* Main.storyboard */,
 				AB43757F291A5B5D00C3688D /* CreateGroup */,
@@ -539,9 +539,9 @@
 		F6667F2A2921762A00CD480F /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				ABD83D4D2923220E0055E7A3 /* GoogleService-Info.plist */,
 				F6667F2F29219FD000CD480F /* RollingPaperPostAPI.swift */,
 				F64694F82921A4BB0094CB68 /* FirebaseStorageManager.swift */,
+				F6AD64D5292CB8330053C518 /* GoogleService-Info.plist */,
 				ABA034442921BB0100A50471 /* API */,
 			);
 			path = Firebase;
@@ -667,8 +667,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABDBD2CA291A3F99008FB3A6 /* LaunchScreen.storyboard in Resources */,
-				ABD83D4E2923220E0055E7A3 /* GoogleService-Info.plist in Resources */,
 				ABDBD2C7291A3F99008FB3A6 /* Assets.xcassets in Resources */,
+				F6AD64D6292CB8330053C518 /* GoogleService-Info.plist in Resources */,
 				ABDBD2C5291A3F97008FB3A6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

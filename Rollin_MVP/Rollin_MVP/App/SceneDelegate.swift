@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             userRef.getDocument { (document, error) in
                 if let document = document, document.exists {
                     UserDefaults.standard.set(document.data()?["usernickname"] ?? "익명의 유저", forKey: "nickname")
-                    print("로그인 되어 있음", user.email ?? "-")
+                    print("로그인 되어 있습니다.", user.email ?? "-")
                     let vc = storyboard.instantiateViewController(withIdentifier: "MainView")
                     let navigation = UINavigationController(rootViewController: vc)
                     self.window?.rootViewController = navigation
