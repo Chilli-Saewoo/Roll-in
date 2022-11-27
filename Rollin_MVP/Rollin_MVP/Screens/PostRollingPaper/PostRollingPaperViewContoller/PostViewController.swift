@@ -10,7 +10,7 @@ import UIKit
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-class PostViewController: UIViewController, UISheetPresentationControllerDelegate {
+final class PostViewController: UIViewController, UISheetPresentationControllerDelegate {
 
     var collectionView: UICollectionView!
     private lazy var titleMessageLabel = UILabel()
