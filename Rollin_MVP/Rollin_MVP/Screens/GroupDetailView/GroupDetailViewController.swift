@@ -42,22 +42,20 @@ final class GroupDetailViewController: UIViewController {
     var group: Group?
     private var cardSwiper: VerticalCardSwiper!
     private let groupMessageLabel = UILabel()
-    private let participantsCountLabel = UILabel()
     private let screenWidth = UIScreen.main.bounds.width
     private let screenHeight = UIScreen.main.bounds.height
+    private let ingroupCodeCopyLabel = UILabel()
+    private let ingroupCodeCopyButton = UIButton()
+    private let codeCopyToastView = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setGroupMessageLabel()
+        setIngroupCodeCopyButton()
+        setIngroupCodeCopyLabel()
+        setIngroupCopyButtonAction()
         setNavigationBarBackButton()
-        cardSwiper = VerticalCardSwiper(frame: CGRect(x: 0.0, y: screenHeight * 0.2, width: screenWidth, height: screenHeight * 0.8))
-        cardSwiper.isSideSwipingEnabled = false
-        cardSwiper.topInset = 40
-        cardSwiper.stackedCardsCount = 5
-        cardSwiper.cardSpacing = 30
-        cardSwiper.isStackOnBottom = false
-        cardSwiper.visibleNextCardHeight = 50
-        cardSwiper.firstItemTransform = 0.08
+        setCardSwiper()
         view.addSubview(cardSwiper)
         cardSwiper.datasource = self
         cardSwiper.delegate = self
@@ -66,6 +64,17 @@ final class GroupDetailViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         let _ = cardSwiper.scrollToCard(at: (group?.participants.count ?? 1) - 1, animated: false)
+    }
+    
+    private func setIngroupCopyButtonAction() {
+        ingroupCodeCopyButton.addTarget(self, action: #selector(ingroupCopyButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc func ingroupCopyButtonPressed(_ sender: UIButton) {
+        guard let code = group?.code else { return }
+        UIPasteboard.general.string = code
+        setToastView()
+        showToastView()
     }
 }
 
@@ -95,6 +104,19 @@ extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardS
 }
 
 private extension GroupDetailViewController {
+    func setCardSwiper() {
+        cardSwiper = VerticalCardSwiper(frame: CGRect(x: 0.0, y: screenHeight * 0.2, width: screenWidth, height: screenHeight * 0.8))
+        cardSwiper.isSideSwipingEnabled = false
+        cardSwiper.topInset = 40
+        cardSwiper.stackedCardsCount = 5
+        cardSwiper.cardSpacing = 30
+        cardSwiper.isStackOnBottom = false
+        cardSwiper.visibleNextCardHeight = 50
+        cardSwiper.firstItemTransform = 0.08
+    }
+}
+
+private extension GroupDetailViewController {
     func setGroupMessageLabel() {
         view.addSubview(groupMessageLabel)
         groupMessageLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -103,24 +125,84 @@ private extension GroupDetailViewController {
             groupMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 117),
         ])
         groupMessageLabel.font = .systemFont(ofSize: 26, weight: .medium)
-        groupMessageLabel.text = "\(group?.groupName ?? "")의 롤링페이퍼"
-    }
-    
-    func setParticipantsCountLabel() {
-        view.addSubview(participantsCountLabel)
-        participantsCountLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            participantsCountLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 20),
-            participantsCountLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 125),
-        ])
-        participantsCountLabel.font = .systemFont(ofSize: 26, weight: .medium)
+        groupMessageLabel.text = "\(group?.groupName ?? "")"
     }
     
     func setNavigationBarBackButton() {
-        let backBarButtonItem = UIBarButtonItem(title: "\(group?.groupName ?? "")의 롤링페이퍼", style: .plain, target: self, action: nil)
+        guard let groupName = group?.groupName else { return }
+        let backBarButtonItem = UIBarButtonItem(title: "\(groupName)", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .black
         self.navigationItem.backBarButtonItem = backBarButtonItem
     }
 }
 
-
+private extension GroupDetailViewController {
+    func setIngroupCodeCopyButton() {
+        view.addSubview(ingroupCodeCopyButton)
+        ingroupCodeCopyButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            ingroupCodeCopyButton.centerYAnchor.constraint(equalTo: groupMessageLabel.centerYAnchor),
+            ingroupCodeCopyButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            ingroupCodeCopyButton.widthAnchor.constraint(equalToConstant: 77),
+            ingroupCodeCopyButton.heightAnchor.constraint(equalToConstant: 24),
+        ])
+        ingroupCodeCopyButton.backgroundColor = .systemBlack
+        ingroupCodeCopyButton.layer.cornerRadius = 4.0
+    }
+    
+    func setIngroupCodeCopyLabel() {
+        ingroupCodeCopyButton.addSubview(ingroupCodeCopyLabel)
+        ingroupCodeCopyLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            ingroupCodeCopyLabel.centerXAnchor.constraint(equalTo: ingroupCodeCopyButton.centerXAnchor),
+            ingroupCodeCopyLabel.centerYAnchor.constraint(equalTo: ingroupCodeCopyButton.centerYAnchor),
+            ingroupCodeCopyLabel.widthAnchor.constraint(equalTo: ingroupCodeCopyButton.widthAnchor),
+            ingroupCodeCopyLabel.heightAnchor.constraint(equalTo: ingroupCodeCopyButton.heightAnchor),
+        ])
+        ingroupCodeCopyLabel.isUserInteractionEnabled = false
+        let imageAttachment = NSTextAttachment()
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 12, weight: .medium)
+        imageAttachment.image = UIImage(systemName: "square.on.square", withConfiguration: imageConfig)?.withTintColor(.white)
+        let buttonTitle = NSMutableAttributedString(attachment: imageAttachment)
+        buttonTitle.append(NSMutableAttributedString(string: " 코드 복사"))
+        ingroupCodeCopyLabel.attributedText = buttonTitle
+        ingroupCodeCopyLabel.font = .systemFont(ofSize: 12, weight: .medium)
+        ingroupCodeCopyLabel.textColor = .white
+        ingroupCodeCopyLabel.textAlignment = .center
+    }
+    
+    func setToastView() {
+        view.addSubview(codeCopyToastView)
+        codeCopyToastView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            codeCopyToastView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 41),
+            codeCopyToastView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            codeCopyToastView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            codeCopyToastView.heightAnchor.constraint(equalToConstant: 56)
+        ])
+        guard let groupName = group?.groupName else { return }
+        let imageAttachment = NSTextAttachment()
+        imageAttachment.image = UIImage(systemName: "checkmark.circle.fill")?.withTintColor(.white)
+        let toastMessage = NSMutableAttributedString(attachment: imageAttachment)
+        toastMessage.append(NSMutableAttributedString(string: " \(groupName) 그룹 코드가 복사되었어요"))
+        codeCopyToastView.attributedText = toastMessage
+        codeCopyToastView.font = .systemFont(ofSize: 16, weight: .medium)
+        codeCopyToastView.textColor = .white
+        codeCopyToastView.textAlignment = .center
+        codeCopyToastView.backgroundColor = .black.withAlphaComponent(0.7)
+        codeCopyToastView.layer.cornerRadius = 16
+        codeCopyToastView.clipsToBounds  =  true
+    }
+    
+    func showToastView() {
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: {
+            self.codeCopyToastView.transform = CGAffineTransform(translationX: 0, y: -97)
+        }, completion: { _ in
+            UIView.animate(withDuration: 0.3, delay: 1, options: .curveEaseOut, animations: {
+                self.codeCopyToastView.transform = CGAffineTransform(translationX: 0, y: 0)
+            }, completion: { _ in
+                self.codeCopyToastView.removeFromSuperview()
+            })
+        })
+    }
+}
