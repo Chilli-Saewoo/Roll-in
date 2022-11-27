@@ -211,7 +211,7 @@ private extension GroupDetailViewController {
         }, completion: { _ in
             UIView.animate(withDuration: 0.3, delay: 1, options: .curveEaseOut, animations: {
                 self.codeCopyToastView.transform = CGAffineTransform(translationX: 0, y: 0)
-            }, completion: {_ in
+            }, completion: { _ in
                 self.codeCopyToastView.removeFromSuperview()
             })
         })
