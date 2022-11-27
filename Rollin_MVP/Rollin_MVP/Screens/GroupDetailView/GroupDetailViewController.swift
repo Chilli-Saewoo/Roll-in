@@ -9,17 +9,19 @@ import UIKit
 import VerticalCardSwiper
 
 final class CardSwiperCell: CardCell {
-    
     private let nameLabel = UILabel()
+    private let bookMarkLabel = UILabel()
     
     public func setCell(index: Int, name: String) {
         let colors: [UIColor] = [.cardRed, .cardBlue, .cardPink, .cardGreen, .cardPurple, .cardYellow, .cardDeepBlue]
         self.backgroundColor = colors[index % colors.count]
         nameLabel.text = name
+        bookMarkLabel.text = "내꺼"
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        setBookMarkLabel()
         setNameLabel()
     }
     
@@ -35,6 +37,15 @@ final class CardSwiperCell: CardCell {
             nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
         ])
         nameLabel.font = .systemFont(ofSize: 20, weight: .semibold)
+    }
+    
+    private func setBookMarkLabel() {
+        self.addSubview(bookMarkLabel)
+        bookMarkLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            bookMarkLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -14),
+            bookMarkLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+        ])
     }
 }
 
