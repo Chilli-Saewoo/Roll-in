@@ -23,7 +23,9 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
     var posts: [PostData]?
     var images: [String : UIImage] = [:] {
         didSet {
-            collectionView.reloadData()
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
         }
     }
 
@@ -38,6 +40,14 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
     
     override func viewDidAppear(_ animated: Bool) {
         fetchAllPosts()
+    }
+    
+    func fetchAllPosts() {
+        Task {
+            self.posts = try await fetchPosts()
+            collectionView.reloadData()
+            self.fetchImagesByPostId()
+        }
     }
     
     private func fetchPosts() async throws -> [PostData]? {
@@ -75,32 +85,27 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
         return newPosts.sorted(by: >)
     }
     
-//    private func setupDataSource() {
-//        self.dataSources = []
-//        for post in posts {
-//            var image = UIImage()
-//            FirebaseStorageManager.downloadImage(urlString: post.image) { uiImage in
-//                guard let uiImage = uiImage else { return }
-//                image = uiImage
-//                let color = UIColor(hex: "#\(post.postTheme)")
-//                self.dataSources.append(PostRollingPaperModel(color: color, commentString: post.message, image: image.resizeImage(newWidth: 170) ?? UIImage(), timestamp: post.timeStamp, from: post.from, isPublic: post.isPublic, colorHex: post.postTheme))
-//                if self.dataSources.count == self.posts.count {
-//                    self.dataSources.sort(by: >)
-//                    self.collectionView.reloadData()
-//                }
-//            }
-//        }
-//    }
-    
-    func fetchAllPosts() {
-        Task {
-            self.posts = try await fetchPosts()
-            collectionView.reloadData()
-            DispatchQueue.global(qos: .default).async {
-                // TODO: - fetch images by Post id
+    private func fetchImagesByPostId() {
+        guard let posts = posts else { return }
+        
+        for post in posts {
+            switch post.type {
+            case .imageAndMessage:
+                let postWithType = post as? PostWithImageAndMessage
+                guard let imageURL = postWithType?.imageURL else { return }
+                FirebaseStorageManager.downloadImage(urlString: imageURL) { fetchedImage in
+                    guard let fetchedImage = fetchedImage else { return }
+                    self.images[post.id] = fetchedImage
+                }
+            case .image:
+                print("preparing")
+            case .message:
+                print("preparing")
             }
         }
     }
+    
+
     
     @objc private func didTapButton() {
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "WriteRollingPaperViewController") as? WriteRollingPaperViewController ?? UIViewController()
@@ -199,6 +204,11 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
         cell.fromLabel.text = "From. \(post.from)"
         cell.fromLabel.textColor = textColor
         cell.containerView.backgroundColor = hexStringToUIColor(hex: post.postTheme)
+        if let image = images[post.id] {
+            cell.imageView.image = image
+        } else {
+            cell.imageView.image = nil // TODO: - 대기 중 이미지가 들어가야 합니다.
+        }
         return cell
     }
     
