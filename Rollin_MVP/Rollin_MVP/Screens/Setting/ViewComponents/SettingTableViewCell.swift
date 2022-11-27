@@ -10,7 +10,7 @@ import UIKit
 class SettingTableViewCell: UITableViewCell {
     private let settingTitleLabel: UILabel = {
         let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .body)
+        label.font = .systemFont(ofSize: 16)
         return label
     }()
     
@@ -49,8 +49,11 @@ class SettingTableViewCell: UITableViewCell {
         ])
     }
     
-    func configureUI(title: String, isArrowHidden: Bool) {
+    func configureUI(title: String, isArrowHidden: Bool, isRed: Bool) {
         self.settingTitleLabel.text = title
+        if isRed {
+            self.settingTitleLabel.textColor = .red
+        }
         self.navigationArrowImageView.isHidden = isArrowHidden
     }
 }
