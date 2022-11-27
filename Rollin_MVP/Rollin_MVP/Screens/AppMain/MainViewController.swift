@@ -169,10 +169,12 @@ private extension MainViewController {
                                         group.groupId = groupIds[idx]
                                         newGroups.append(group)
                                         newGroups.sort(by: >)
+                                        
                                         if newGroups.count == groupIds.count {
                                             self.groups = newGroups
                                             self.activityIndicator.stopAnimating()
                                             self.view.isUserInteractionEnabled = true
+                                            
                                         }
                                     }
                                 }
@@ -183,6 +185,8 @@ private extension MainViewController {
                     }
                 } else {
                     print("Document does not exist")
+                    self.activityIndicator.stopAnimating()
+                    self.view.isUserInteractionEnabled = true
                 }
             }
         }
