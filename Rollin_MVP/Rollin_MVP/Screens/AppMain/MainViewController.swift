@@ -12,6 +12,7 @@ import FirebaseFirestoreSwift
 final class MainViewController: UIViewController {
     private let db = Firestore.firestore()
     private let mainTitleLabel = UILabel()
+    private let settingButton = UIButton()
     private lazy var bottomGradientView = UIView()
     private let addGroupCard = AddGroupButtonBackgroundView()
     private var groupsCollectionView: UICollectionView!
@@ -33,6 +34,7 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setMainTitleLabel()
+        setSettingButton()
         setAddGroupCard()
         setNavigationBarBackButton()
         addGroupCard.delegate = self
@@ -208,6 +210,18 @@ private extension MainViewController {
         bottomGradientView.frame = CGRect(origin: CGPoint(x: 0, y: view.frame.height * 0.9),
                                           size: CGSize(width: view.frame.width, height: view.frame.height * 0.1))
         bottomGradientView.setGradient(color1: .init(red: 1, green: 1, blue: 1, alpha: 0), color2: .white)
+    }
+    
+    func setSettingButton() {
+        view.addSubview(settingButton)
+        settingButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            settingButton.centerYAnchor.constraint(equalTo: mainTitleLabel.centerYAnchor),
+            settingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+        ])
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 24, weight: .medium)
+        settingButton.setImage(UIImage(systemName: "gear", withConfiguration: imageConfig), for: .normal)
+        settingButton.tintColor = .systemBlack
     }
     
     func setNavigationBarBackButton() {
