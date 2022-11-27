@@ -10,7 +10,7 @@ import VerticalCardSwiper
 
 final class CardSwiperCell: CardCell {
     private let nameLabel = UILabel()
-    private let bookMarkLabel = UILabel()
+    private let bookMarkLabel = UIImageView()
     
     public func setCell(index: Int, name: String, userId: String) {
         let colors: [UIColor] = [.cardRed, .cardBlue, .cardPink, .cardGreen, .cardPurple, .cardYellow, .cardDeepBlue]
@@ -18,13 +18,12 @@ final class CardSwiperCell: CardCell {
         nameLabel.text = name
         if userId == UserDefaults.standard.string(forKey: "uid") {
             setBookMarkLabel()
-            bookMarkLabel.text = "내꺼"
         }
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setBookMarkLabel()
+        setNameLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -48,6 +47,7 @@ final class CardSwiperCell: CardCell {
             bookMarkLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -14),
             bookMarkLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
         ])
+        bookMarkLabel.image = UIImage(named: "bookmark")
     }
 }
 
