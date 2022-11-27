@@ -30,6 +30,8 @@ final class SettingViewController: UIViewController {
         tableView.rowHeight = 60
         return tableView
     }()
+
+    
     
     private let settingTitleList: [SettingTitle] = [.setNickname, .privacyPolicy, .openLicense, .mailToDeveloper, .logout, .signout]
     
@@ -69,6 +71,8 @@ final class SettingViewController: UIViewController {
 extension SettingViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        settingTableView.deselectRow(at: indexPath, animated: true)
+        
         switch settingTitleList[indexPath.row] {
         case .setNickname:
             let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ResetNicknameViewController") as? ResetNicknameViewController ?? UIViewController()
@@ -111,6 +115,7 @@ extension SettingViewController: UITableViewDataSource {
         }
         return cell
     }
+    
 }
 
 extension SettingViewController {
