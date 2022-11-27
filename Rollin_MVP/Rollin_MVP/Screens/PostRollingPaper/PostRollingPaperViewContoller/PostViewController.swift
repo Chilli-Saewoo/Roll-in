@@ -68,7 +68,7 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
             // switch로 type을 받아온 후, type에 따라서 return 형식이 달라져야 합니다.
             guard let image = data.image, let message = data.message, let postTheme = data.postTheme  else { return nil }
             return PostWithImageAndMessage(type: .imageAndMessage,
-                                           id: UUID().uuidString,
+                                           id: UUID().uuidString, // TODO: - DB에 POST 아이디가 필요
                                            timestamp: data.timeStamp,
                                            from: data.from, isPublic: data.isPublic,
                                            imageURL: image,
@@ -87,7 +87,7 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
     
     private func fetchImagesByPostId() {
         guard let posts = posts else { return }
-        
+        images = [:] // TODO: - ID가 새로 만들어지기 때문에 Dict을 비워주기 위한 임시 해결책
         for post in posts {
             switch post.type {
             case .imageAndMessage:
@@ -95,7 +95,9 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
                 guard let imageURL = postWithType?.imageURL else { return }
                 FirebaseStorageManager.downloadImage(urlString: imageURL) { fetchedImage in
                     guard let fetchedImage = fetchedImage else { return }
-                    self.images[post.id] = fetchedImage
+                    if self.images[post.id] == nil {
+                        self.images[post.id] = fetchedImage
+                    }
                 }
             case .image:
                 print("preparing")
