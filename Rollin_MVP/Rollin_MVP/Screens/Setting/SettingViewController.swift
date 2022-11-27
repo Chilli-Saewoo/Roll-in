@@ -13,7 +13,7 @@ final class SettingViewController: UIViewController {
         case setNickname = "닉네임 설정"
         case privacyPolicy = "개인정보 보호정책"
         case openLicense = "오픈소스 라이선스"
-        case mailToDeveloper = "개발제에게 의견 남기기"
+        case mailToDeveloper = "개발자에게 의견 남기기"
         case logout = "로그아웃"
         case signout = "회원탈퇴"
     }
@@ -30,11 +30,14 @@ final class SettingViewController: UIViewController {
         tableView.rowHeight = 60
         return tableView
     }()
+
+    
     
     private let settingTitleList: [SettingTitle] = [.setNickname, .privacyPolicy, .openLicense, .mailToDeveloper, .logout, .signout]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBarBackButton()
         setupLayout()
         configureDelegate()
     }
@@ -66,7 +69,32 @@ final class SettingViewController: UIViewController {
 }
 
 extension SettingViewController: UITableViewDelegate {
-    
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        settingTableView.deselectRow(at: indexPath, animated: true)
+        
+        switch settingTitleList[indexPath.row] {
+        case .setNickname:
+            let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ResetNicknameViewController") as? ResetNicknameViewController ?? UIViewController()
+            self.navigationController?.pushViewController(viewController, animated: true)
+        case .privacyPolicy:
+            if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "AppInfoWebViewController") as? AppInfoWebViewController {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+        case .openLicense:
+            if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "AppInfoWebViewController") as? AppInfoWebViewController {
+                self.navigationController?.pushViewController(viewController, animated: true)
+            }
+        case .mailToDeveloper:
+            //TODO: 추후 메일 들어갈 예정
+            print("mailToDeveloper")
+        case .logout:
+            //TODO: 추후 로그아웃 들어갈 예정
+            print("logout")
+        case .signout: break
+            //TODO: 추후 회원탈퇴 로직 들어갈 예정
+            }
+        }
 }
 
 extension SettingViewController: UITableViewDataSource {
@@ -88,5 +116,12 @@ extension SettingViewController: UITableViewDataSource {
         return cell
     }
     
-    
+}
+
+extension SettingViewController {
+    func setNavigationBarBackButton() {
+        let backBarButtonItem = UIBarButtonItem(title: "설정", style: .plain, target: self, action: nil)
+        backBarButtonItem.tintColor = .black
+        self.navigationItem.backBarButtonItem = backBarButtonItem
+    }
 }

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2A49A12C292E5DE100897379 /* GroupBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A49A12B292E5DE100897379 /* GroupBaseViewController.swift */; };
+		2A49A1362933C93F00897379 /* ResetNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A49A1352933C93E00897379 /* ResetNicknameViewController.swift */; };
+		2A49A1382933C9E800897379 /* AppInfoWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A49A1372933C9E800897379 /* AppInfoWebViewController.swift */; };
 		2AF46850291E1EF200AB2DE4 /* RollingPaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF4684F291E1EF200AB2DE4 /* RollingPaperView.swift */; };
 		2AF46852291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */; };
 		2AF46854291E20E300AB2DE4 /* DetailPostLabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46853291E20E300AB2DE4 /* DetailPostLabelCollectionViewCell.swift */; };
@@ -104,6 +106,8 @@
 
 /* Begin PBXFileReference section */
 		2A49A12B292E5DE100897379 /* GroupBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupBaseViewController.swift; sourceTree = "<group>"; };
+		2A49A1352933C93E00897379 /* ResetNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetNicknameViewController.swift; sourceTree = "<group>"; };
+		2A49A1372933C9E800897379 /* AppInfoWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoWebViewController.swift; sourceTree = "<group>"; };
 		2AF4684F291E1EF200AB2DE4 /* RollingPaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperView.swift; sourceTree = "<group>"; };
 		2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRollingPaperViewController.swift; sourceTree = "<group>"; };
 		2AF46853291E20E300AB2DE4 /* DetailPostLabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostLabelCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -275,6 +279,8 @@
 			children = (
 				79675CAC29333E030049533E /* ViewComponents */,
 				79675CAA29333CAB0049533E /* SettingViewController.swift */,
+				2A49A1352933C93E00897379 /* ResetNicknameViewController.swift */,
+				2A49A1372933C9E800897379 /* AppInfoWebViewController.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -728,6 +734,7 @@
 				2AF46852291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift in Sources */,
 				ABB96EB9291B69FA003C5B1D /* Date+.swift in Sources */,
 				79340B3A292172580097D111 /* ConfirmGroupWhileParticipateViewController.swift in Sources */,
+				2A49A1362933C93F00897379 /* ResetNicknameViewController.swift in Sources */,
 				ABB96EBE291BA0AE003C5B1D /* GroupCodeView.swift in Sources */,
 				ABB96EAE291AB754003C5B1D /* CreatingGroupInfo.swift in Sources */,
 				79340B41292173380097D111 /* ParticipateGroupConfirmCardView.swift in Sources */,
@@ -742,6 +749,7 @@
 				79340B35292171BD0097D111 /* MainGroupCardViewCell.swift in Sources */,
 				ABB96EC0291C244E003C5B1D /* SetThemeViewController.swift in Sources */,
 				ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */,
+				2A49A1382933C9E800897379 /* AppInfoWebViewController.swift in Sources */,
 				79340B3C292172760097D111 /* SearchGroupWithCodeViewController.swift in Sources */,
 				790FF814291E5733004BDA20 /* UIViewController+.swift in Sources */,
 				ABB96EB3291AC71F003C5B1D /* ConfirmGroupCardView.swift in Sources */,
