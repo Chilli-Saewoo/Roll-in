@@ -13,7 +13,7 @@ enum PostType: String {
     case message = "message"
 }
 
-final class PostCodableData: Codable {
+struct PostCodableData: Codable {
     var timeStamp: Date
     var isPublic: Bool
     var postTheme: String?
