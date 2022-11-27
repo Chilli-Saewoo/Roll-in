@@ -16,11 +16,12 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
     private lazy var titleMessageLabel = UILabel()
     private lazy var writeButton = UIButton()
     private lazy var plusButton = UIButton()
+    var currentGroupNickname: String?
     var groupNickname: String?
     var groupId: String?
     var receiverUserId: String?
     var posts: [PostData]?
-    var myGroupNickname: String?
+    var images: [String : UIImage] = [:]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +45,7 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
         
         guard let groupNicknameData = groupNicknameData else { return nil }
         
-        self.myGroupNickname = String(describing: groupNicknameData["groupNickname"] ?? "")
+        self.currentGroupNickname = String(describing: groupNicknameData["groupNickname"] ?? "")
         
         let postDocuments = try snapshot.documents.map { document -> PostData? in
             let data = try document.data(as: PostCodableData.self)
@@ -57,8 +58,8 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
         
         var newPosts: [PostData] = []
         for postDocument in postDocuments {
-            if let result = postDocument {
-                newPosts.append(result)
+            if let postWithoutNil = postDocument {
+                newPosts.append(postWithoutNil)
             }
         }
         return newPosts.sorted(by: >)
@@ -93,7 +94,7 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
         let vc = viewController as? WriteRollingPaperViewController
         guard let groupId = groupId else {return}
         guard let receiverUserId = receiverUserId else {return}
-        guard let myGroupNickname = myGroupNickname else {return}
+        guard let myGroupNickname = currentGroupNickname else {return}
         vc?.groupId = groupId
         vc?.receiverUserId = receiverUserId
         vc?.writerNickname = myGroupNickname
@@ -170,7 +171,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostRollingPaperCollectionViewCell.id, for: indexPath) as? PostRollingPaperCollectionViewCell ?? PostRollingPaperCollectionViewCell()
-        cell.postRollingPaperModel// = dataSources[indexPath.item]
+        cell.postRollingPaperModel = dataSources[indexPath.item]
         cell.receiverUserId = receiverUserId ?? ""
         cell.bind()
         return cell
@@ -188,7 +189,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
             halfModal.prefersGrabberVisible = true
         }
         
-        if dataSources[indexPath.item].isPublic || receiverUserId == UserDefaults.standard.string(forKey: "uid") {
+        if posts?[indexPath.item].isPublic || receiverUserId == UserDefaults.standard.string(forKey: "uid") {
             present(rollingPaperDetailViewController, animated: true, completion: nil)
         }
     }
