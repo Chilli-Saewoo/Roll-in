@@ -18,6 +18,13 @@ final class SettingViewController: UIViewController {
         case signout = "회원탈퇴"
     }
     
+    private let settingTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "설정"
+        label.font = .systemFont(ofSize: 24, weight: .bold)
+        return label
+    }()
+    
     private let settingTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.rowHeight = 60
@@ -39,10 +46,18 @@ final class SettingViewController: UIViewController {
     }
     
     private func setupLayout() {
+        view.addSubview(settingTitleLabel)
+        settingTitleLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            settingTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            settingTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            settingTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        ])
+        
         view.addSubview(settingTableView)
         settingTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            settingTableView.topAnchor.constraint(equalTo: view.topAnchor),
+            settingTableView.topAnchor.constraint(equalTo: settingTitleLabel.bottomAnchor, constant: 7),
             settingTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             settingTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             settingTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
