@@ -12,17 +12,19 @@ final class CardSwiperCell: CardCell {
     private let nameLabel = UILabel()
     private let bookMarkLabel = UILabel()
     
-    public func setCell(index: Int, name: String) {
+    public func setCell(index: Int, name: String, userId: String) {
         let colors: [UIColor] = [.cardRed, .cardBlue, .cardPink, .cardGreen, .cardPurple, .cardYellow, .cardDeepBlue]
         self.backgroundColor = colors[index % colors.count]
         nameLabel.text = name
-        bookMarkLabel.text = "내꺼"
+        if userId == UserDefaults.standard.string(forKey: "uid") {
+            setBookMarkLabel()
+            bookMarkLabel.text = "내꺼"
+        }
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setBookMarkLabel()
-        setNameLabel()
     }
     
     required init?(coder: NSCoder) {
@@ -103,7 +105,7 @@ extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardS
     
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: index) as? CardSwiperCell {
-            cardCell.setCell(index: index, name: group?.participants[index].1 ?? "error")
+            cardCell.setCell(index: index, name: group?.participants[index].1 ?? "error", userId: group?.participants[index].0 ?? "error")
             return cardCell
         }
         return CardCell()
