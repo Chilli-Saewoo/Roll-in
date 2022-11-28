@@ -90,7 +90,7 @@ extension SettingViewController: UITableViewDelegate {
         case .openLicense:
             appInfoCellPressed(webURL: "https://mercury-comte-8e6.notion.site/1fe800c1beb94913b278e9a690d914bd")
         case .mailToDeveloper:
-            touchUpInsideMailToDeveloperPage()
+            touchUpInsideToMailToDeveloperPage()
         case .logout:
             //TODO: 추후 로그아웃 들어갈 예정
             print("logout")
@@ -128,12 +128,12 @@ private extension SettingViewController {
         self.navigationItem.backBarButtonItem = backBarButtonItem
     }
     
-    func touchUpInsideMailToDeveloperPage() {
+    func touchUpInsideToMailToDeveloperPage() {
         if MFMailComposeViewController.canSendMail() {
                 let composeViewController = MFMailComposeViewController()
                 composeViewController.mailComposeDelegate = self
                 let bodyString = """
-                                 - 문의 내용
+                                 문의 내용을 입력해주세요
                                  """
                 
                 composeViewController.setToRecipients(["chillijo2022@gmail.com"])
