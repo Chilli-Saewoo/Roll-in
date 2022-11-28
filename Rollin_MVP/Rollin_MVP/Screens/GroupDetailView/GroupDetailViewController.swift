@@ -35,7 +35,7 @@ final class CardSwiperCell: CardCell {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+            nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
         ])
         nameLabel.font = .systemFont(ofSize: 20, weight: .semibold)
     }
@@ -96,7 +96,7 @@ extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardS
     func didTapCard(verticalCardSwiperView: VerticalCardSwiperView, index: Int) {
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostViewController") as? PostViewController ?? UIViewController()
         let vc = secondViewController as? PostViewController
-        vc?.groupNickname = group?.participants[index].1
+        vc?.receiverNickname = group?.participants[index].1
         vc?.receiverUserId = group?.participants[index].0
         vc?.groupId = group?.groupId
         

@@ -13,7 +13,7 @@ final class PostThemePickerViewCell: UICollectionViewCell {
         let label = UILabel()
         label.backgroundColor = .red
         label.textColor = .red
-        label.text = "안녕.."
+        label.text = "안녕"
         label.font = .preferredFont(forTextStyle: .body)
         label.textAlignment = .center
         label.layer.cornerRadius = 4

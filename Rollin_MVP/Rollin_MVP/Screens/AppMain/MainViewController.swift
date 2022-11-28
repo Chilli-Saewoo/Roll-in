@@ -21,15 +21,7 @@ final class MainViewController: UIViewController {
             groupsCollectionView.reloadData()
         }
     }
-    private lazy var activityIndicator: UIActivityIndicatorView = {
-        let activityIndicator = UIActivityIndicatorView()
-        activityIndicator.center = self.view.center
-        activityIndicator.style = UIActivityIndicatorView.Style.large
-        activityIndicator.startAnimating()
-        activityIndicator.isHidden = false
-        activityIndicator.color = .systemBlack
-        return activityIndicator
-    }()
+    private var isFirstLoading = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,13 +35,12 @@ final class MainViewController: UIViewController {
         collectionViewDelegate()
         setBottomGradientLayout()
         setSettingButtonAction()
-        view.addSubview(activityIndicator)
-        activityIndicator.stopAnimating()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         fetchGroups()
+        mainTitleLabel.text = "\(UserDefaults.standard.string(forKey: "nickname") ?? "")의 롤인 그룹"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -112,12 +103,22 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return groups.count
+        if !isFirstLoading {
+            return groups.count
+        } else {
+            return 10
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = groupsCollectionView.dequeueReusableCell(withReuseIdentifier: "mainGroupCard", for: indexPath) as? MainGroupCardViewCell ?? MainGroupCardViewCell()
-        cell.setCardView(info: groups[indexPath.row])
+        if !isFirstLoading {
+            cell.isUserInteractionEnabled = true
+            cell.setCardView(info: groups[indexPath.row])
+        } else {
+            cell.isUserInteractionEnabled = false
+            cell.setSkeletonCardView()
+        }
         return cell
     }
 }
@@ -140,8 +141,6 @@ extension MainViewController: AddGroupButtonBackgroundDelegate {
 
 private extension MainViewController {
     func fetchGroups() {
-        activityIndicator.startAnimating()
-        view.isUserInteractionEnabled = false
         if let uid = UserDefaults.standard.string(forKey: "uid") {
             let docRef = db.collection("userGroups").document(uid)
             docRef.getDocument { (document, error) in
@@ -150,7 +149,7 @@ private extension MainViewController {
                         $0["division"] as? [String] ?? []
                     } ?? [String]()
                     var newGroups: [Group] = []
-                    for idx in 0..<groupIds.count {
+                    for idx in 0 ..< groupIds.count {
                         let groupsRef = self.db.collection("groups").document(groupIds[idx])
                         groupsRef.getDocument(as: Group.self) { result in
                             switch result {
@@ -172,9 +171,7 @@ private extension MainViewController {
                                         
                                         if newGroups.count == groupIds.count {
                                             self.groups = newGroups
-                                            self.activityIndicator.stopAnimating()
-                                            self.view.isUserInteractionEnabled = true
-                                            
+                                            self.isFirstLoading = false
                                         }
                                     }
                                 }
@@ -185,8 +182,6 @@ private extension MainViewController {
                     }
                 } else {
                     print("Document does not exist")
-                    self.activityIndicator.stopAnimating()
-                    self.view.isUserInteractionEnabled = true
                 }
             }
         }
@@ -201,8 +196,7 @@ private extension MainViewController {
             mainTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             mainTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
         ])
-        mainTitleLabel.font = .systemFont(ofSize: 26, weight: .medium)
-        mainTitleLabel.text = "\(UserDefaults.standard.string(forKey: "nickname") ?? "")의 롤인 그룹"
+        mainTitleLabel.font = .systemFont(ofSize: 26, weight: .bold)
     }
     
     

@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
+import MessageUI
 
 final class SettingViewController: UIViewController {
     
@@ -56,7 +57,7 @@ final class SettingViewController: UIViewController {
         view.addSubview(settingTitleLabel)
         settingTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            settingTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            settingTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             settingTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             settingTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
@@ -73,6 +74,13 @@ final class SettingViewController: UIViewController {
 }
 
 extension SettingViewController: UITableViewDelegate {
+
+    func appInfoCellPressed(webURL: String) {
+        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "AppInfoWebViewController") as? AppInfoWebViewController {
+            viewController.webURL = webURL
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         settingTableView.deselectRow(at: indexPath, animated: true)
@@ -82,16 +90,11 @@ extension SettingViewController: UITableViewDelegate {
             let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ResetNicknameViewController") as? ResetNicknameViewController ?? UIViewController()
             self.navigationController?.pushViewController(viewController, animated: true)
         case .privacyPolicy:
-            if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "AppInfoWebViewController") as? AppInfoWebViewController {
-                self.navigationController?.pushViewController(viewController, animated: true)
-            }
+            appInfoCellPressed(webURL: "https://mercury-comte-8e6.notion.site/ea8b9c2b9cfd469da4c70285362e6a28")
         case .openLicense:
-            if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "AppInfoWebViewController") as? AppInfoWebViewController {
-                self.navigationController?.pushViewController(viewController, animated: true)
-            }
+            appInfoCellPressed(webURL: "https://mercury-comte-8e6.notion.site/1fe800c1beb94913b278e9a690d914bd")
         case .mailToDeveloper:
-            //TODO: 추후 메일 들어갈 예정
-            print("mailToDeveloper")
+            touchUpInsideToMailToDeveloperPage()
         case .logout:
             //TODO: 추후 로그아웃 들어갈 예정
             let alert = UIAlertController(title: "로그아웃 하시겠습니까?", message: nil, preferredStyle: .alert)
@@ -201,10 +204,47 @@ extension SettingViewController: UITableViewDataSource {
     
 }
 
-extension SettingViewController {
+private extension SettingViewController {
     func setNavigationBarBackButton() {
         let backBarButtonItem = UIBarButtonItem(title: "설정", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .black
         self.navigationItem.backBarButtonItem = backBarButtonItem
+    }
+    
+    func touchUpInsideToMailToDeveloperPage() {
+        if MFMailComposeViewController.canSendMail() {
+                let composeViewController = MFMailComposeViewController()
+                composeViewController.mailComposeDelegate = self
+                let bodyString = """
+                                 문의 내용을 입력해주세요
+                                 """
+                
+                composeViewController.setToRecipients(["chillijo2022@gmail.com"])
+                composeViewController.setSubject("[문의]")
+                composeViewController.setMessageBody(bodyString, isHTML: false)
+                
+                self.present(composeViewController, animated: true, completion: nil)
+            } else {
+                print("메일 보내기 실패")
+                let sendMailErrorAlert = UIAlertController(title: "메일 전송 실패", message: "메일을 보내려면 'Mail' 앱이 필요합니다. App Store에서 해당 앱을 복원하거나 이메일 설정을 확인하고 다시 시도해주세요.", preferredStyle: .alert)
+                let goAppStoreAction = UIAlertAction(title: "App Store로 이동하기", style: .default) { _ in
+                    // 앱스토어로 이동하기(Mail)
+                    if let url = URL(string: "https://apps.apple.com/kr/app/mail/id1108187098"), UIApplication.shared.canOpenURL(url) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                }
+                let cancleAction = UIAlertAction(title: "취소", style: .destructive, handler: nil)
+                
+                sendMailErrorAlert.addAction(goAppStoreAction)
+                sendMailErrorAlert.addAction(cancleAction)
+                self.present(sendMailErrorAlert, animated: true, completion: nil)
+            }
+    }
+}
+
+extension SettingViewController: MFMailComposeViewControllerDelegate {
+    func mailComposeController(_ controller: MFMailComposeViewController,
+                               didFinishWith result: MFMailComposeResult, error: Error?) {
+        dismiss(animated: true, completion: nil)
     }
 }
