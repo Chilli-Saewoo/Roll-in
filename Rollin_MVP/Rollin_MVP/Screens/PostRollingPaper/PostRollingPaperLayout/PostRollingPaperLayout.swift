@@ -18,7 +18,7 @@ protocol PostRollingPaperLayoutDelegate: AnyObject {
     private var cellPadding: CGFloat = 7.0
     private var cache: [UICollectionViewLayoutAttributes] = []
     private var contentHeight: CGFloat = 0.0
-    var isButtonHidden: Bool = false
+    var isWriteButtonHidden: Bool = false
     
     private var contentWidth: CGFloat {
         guard let collectionView = collectionView else {
@@ -49,7 +49,7 @@ protocol PostRollingPaperLayoutDelegate: AnyObject {
         // yOffset 계산
         var column = 1
         var yOffset = [CGFloat](repeating: 0, count: numberOfColumns)
-        if isButtonHidden {
+        if isWriteButtonHidden {
             column = 0
         } else {
             yOffset[0] = (UIScreen.main.bounds.width - 34) / 2
