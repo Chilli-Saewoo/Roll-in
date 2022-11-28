@@ -86,7 +86,7 @@ extension SetNicknameWhileParticipateViewController: UITextFieldDelegate {
                 return true
             }
         }
-        guard textField.text!.count < 20 else { return false }
+        guard textField.text!.count < 10 else { return false }
         if range.location == 0 && range.length != 0 {
             self.nextButton.isEnabled = false
             self.nextButton.backgroundColor = .inactiveBgGray

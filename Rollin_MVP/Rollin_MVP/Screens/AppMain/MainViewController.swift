@@ -202,7 +202,7 @@ private extension MainViewController {
             mainTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             mainTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
         ])
-        mainTitleLabel.font = .systemFont(ofSize: 26, weight: .medium)
+        mainTitleLabel.font = .systemFont(ofSize: 26, weight: .bold)
     }
     
     

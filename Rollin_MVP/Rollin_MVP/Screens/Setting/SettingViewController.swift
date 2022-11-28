@@ -52,7 +52,7 @@ final class SettingViewController: UIViewController {
         view.addSubview(settingTitleLabel)
         settingTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            settingTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            settingTitleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
             settingTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             settingTitleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ])
