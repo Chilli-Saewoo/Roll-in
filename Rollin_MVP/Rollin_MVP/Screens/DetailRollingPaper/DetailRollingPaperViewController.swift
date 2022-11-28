@@ -265,8 +265,8 @@ private extension DetailRollingPaperViewController {
     
     func touchUpInsideDeclarePage() {
         if MFMailComposeViewController.canSendMail() {
+                guard let post = post else { return }
                 let composeViewController = MFMailComposeViewController()
-                guard let postRollingPaperModel = postRollingPaperModel else { return }
                 composeViewController.mailComposeDelegate = self
                 let date = Date()
                 let bodyString = """
@@ -274,9 +274,9 @@ private extension DetailRollingPaperViewController {
                                  -------------------
                                  
                                  
-                                 - 신고자 닉네임 : \(postRollingPaperModel.from)
+                                 - 신고자 닉네임 : \(post.from)
                                  - 신고 메시지 내용 :
-                                 \(postRollingPaperModel.commentString)
+                                 \(post.message)
                                  - 신고 날짜: \(date.toString_koreaTime())
                                  
                                  -------------------
