@@ -15,7 +15,7 @@ protocol PostRollingPaperLayoutDelegate: AnyObject {
     weak var delegate: PostRollingPaperLayoutDelegate?
 
     private var numberOfColumns: Int = 2
-     private var cellPadding: CGFloat = 7.0
+    private var cellPadding: CGFloat = 7.0
     private var cache: [UICollectionViewLayoutAttributes] = []
     private var contentHeight: CGFloat = 0.0
     var isButtonHidden: Bool = false
