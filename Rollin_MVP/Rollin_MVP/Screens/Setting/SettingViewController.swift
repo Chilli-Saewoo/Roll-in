@@ -96,7 +96,6 @@ extension SettingViewController: UITableViewDelegate {
         case .mailToDeveloper:
             touchUpInsideToMailToDeveloperPage()
         case .logout:
-            //TODO: 추후 로그아웃 들어갈 예정
             let alert = UIAlertController(title: "로그아웃 하시겠습니까?", message: nil, preferredStyle: .alert)
             let action = UIAlertAction(title: "로그아웃하기", style: .destructive, handler: {_ in
                 try! FirebaseAuth.Auth.auth().signOut()
@@ -114,8 +113,6 @@ extension SettingViewController: UITableViewDelegate {
             alert.addAction(action)
             present(alert, animated: true, completion: nil)
         case .signout:
-            //TODO: 추후 회원탈퇴 로직 들어갈 예정
-            //              users에 해당하는 user_uid값을 체크
             let alert = UIAlertController(title: "회원탈퇴 하시겠습니까?", message: nil, preferredStyle: .alert)
             let action = UIAlertAction(title: "회원탈퇴하기", style: .destructive, handler: {_ in
                 if let uid = UserDefaults.standard.string(forKey: "uid") {

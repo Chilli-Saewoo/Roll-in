@@ -8,7 +8,6 @@
 import UIKit
 import FirebaseFirestore
 
-//TODO: Hi-fi 디자인 나오면 구현 예정
 class ResetNicknameViewController: UIViewController {
     private let db = Firestore.firestore()
     private lazy var titleMessageLabel = UILabel()
