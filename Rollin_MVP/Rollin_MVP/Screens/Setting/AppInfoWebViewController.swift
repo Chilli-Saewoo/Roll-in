@@ -20,6 +20,20 @@ final class AppInfoWebViewController: UIViewController {
         webView.load(myRequest)
         setWebView()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+           super.viewDidAppear(animated)
+           
+           guard Reachability.networkConnected() else {
+               let alert = UIAlertController(title: "NetworkError", message: "네트워크가 연결되어있지 않습니다.", preferredStyle: .alert)
+               let okAction = UIAlertAction(title: "닫기", style: .default) {  _ in
+               }
+               alert.addAction(okAction)
+               self.present(alert, animated: true, completion: nil)
+               return
+           }
+           
+    }
 }
 
 private extension AppInfoWebViewController {
