@@ -141,17 +141,18 @@ private extension PostViewController {
     
     func setWriteButtonLayout() {
         if receiverUserId != UserDefaults.standard.string(forKey: "uid") {
-            view.addSubview(writeButton)
+            collectionView.addSubview(writeButton)
             writeButton.setTitle("+ 추가하기", for: .normal)
             writeButton.setTitleColor(.black, for: .normal)
             writeButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+            writeButton.backgroundColor = .white
             writeButton.layer.borderWidth = 1
             writeButton.layer.cornerRadius = 4
             writeButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
             writeButton.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                writeButton.topAnchor.constraint(equalTo: titleMessageLabel.bottomAnchor, constant: 30),
-                writeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+                writeButton.topAnchor.constraint(equalTo: collectionView.topAnchor, constant: 7),
+                writeButton.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor, constant: 7),
                 writeButton.widthAnchor.constraint(equalToConstant: contentWidth),
                 writeButton.heightAnchor.constraint(equalToConstant: contentWidth),
             ])
