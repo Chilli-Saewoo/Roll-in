@@ -90,7 +90,6 @@ extension SettingViewController: UITableViewDelegate {
         case .openLicense:
             appInfoCellPressed(webURL: "https://mercury-comte-8e6.notion.site/1fe800c1beb94913b278e9a690d914bd")
         case .mailToDeveloper:
-            //TODO: 추후 메일 들어갈 예정
             touchUpInsideMailToDeveloperPage()
         case .logout:
             //TODO: 추후 로그아웃 들어갈 예정
