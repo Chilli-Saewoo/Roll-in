@@ -125,6 +125,9 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
 private extension PostViewController {
     private func configurePostViewController() {
         let collectionViewLayout = PostRollingPaperLayout()
+        if receiverUserId == UserDefaults.standard.string(forKey: "uid") {
+            collectionViewLayout.isButtonHidden = true
+        }
         collectionViewLayout.delegate = self
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.backgroundColor = .systemBackground
