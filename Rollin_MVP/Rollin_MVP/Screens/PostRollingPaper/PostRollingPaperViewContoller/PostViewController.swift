@@ -193,7 +193,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let post = posts?[indexPath.item] as? PostWithImageAndMessage else { return UICollectionViewCell() }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostRollingPaperCollectionViewCell.id, for: indexPath) as? PostRollingPaperCollectionViewCell ?? PostRollingPaperCollectionViewCell()
         cell.receiverUserId = receiverUserId ?? ""
-        if post.isPublic {
+        if post.isPublic || receiverUserId == UserDefaults.standard.string(forKey: "uid") {
             cell.blurView.layer.opacity = 0.0
             cell.lockImage.layer.opacity = 0.0
         } else {
