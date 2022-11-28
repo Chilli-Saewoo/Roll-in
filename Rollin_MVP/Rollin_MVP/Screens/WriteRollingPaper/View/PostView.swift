@@ -198,7 +198,7 @@ extension PostView: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         let textWithoutWhiteSpace = textView.text.trimmingCharacters(in: .whitespaces)
         if isTextEdited && textWithoutWhiteSpace == "" {
-            textView.text = "롤링페이퍼를 입력하세요"
+            textView.text = "글과 사진을 모두 등록해야 업로드 됩니다"
             textCountLabel.text = "0/100"
             isTextEdited = false
             delegate?.inactiveConfirmButton()
