@@ -14,12 +14,8 @@ final class AppInfoWebViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let webConfiguration = WKWebViewConfiguration()
-        webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        let AppInfoURL = URL(string: webURL)
-        let AppInfoRequest = URLRequest(url: AppInfoURL!)
-        webView.load(AppInfoRequest)
         setWebView()
+        setWebViewLayout()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -39,6 +35,14 @@ final class AppInfoWebViewController: UIViewController {
 
 private extension AppInfoWebViewController {
     func setWebView() {
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        let AppInfoURL = URL(string: webURL)
+        let AppInfoRequest = URLRequest(url: AppInfoURL!)
+        webView.load(AppInfoRequest)
+    }
+    
+    func setWebViewLayout() {
         view.addSubview(webView)
         webView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
