@@ -201,15 +201,20 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.lockImage.layer.opacity = 1.0
         }
         let textColor = getTextColor(textColorString: post.postTheme)
-        cell.messageLabel.text = post.message
-        cell.messageLabel.textColor = textColor
-        cell.fromLabel.text = "From. \(post.from)"
-        cell.fromLabel.textColor = textColor
-        cell.containerView.backgroundColor = hexStringToUIColor(hex: post.postTheme)
         if let image = images[post.id] {
+            cell.messageLabel.text = post.message
+            cell.messageLabel.textColor = textColor
+            cell.fromLabel.text = "From. \(post.from)"
+            cell.fromLabel.textColor = textColor
+            cell.containerView.backgroundColor = hexStringToUIColor(hex: post.postTheme)
             cell.imageView.image = image
+            cell.isUserInteractionEnabled = true
         } else {
-            cell.imageView.image = nil // TODO: - 대기 중 이미지가 들어가야 합니다.
+            cell.messageLabel.text = ""
+            cell.fromLabel.text = ""
+            cell.containerView.backgroundColor = hexStringToUIColor(hex: "F1F1F1")
+            cell.imageView.image = UIImage(named: "skeleton")
+            cell.isUserInteractionEnabled = false
         }
         return cell
     }
