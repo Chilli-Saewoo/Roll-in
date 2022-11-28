@@ -18,13 +18,14 @@ final class WriteRollingPaperViewController: UIViewController {
     private let postThemePicerkView = PostThemePickerView()
     private let postView = PostView()
     private let imagePickerViewController = UIImagePickerController()
+    private let rollingPaperPostAPI = RollingPaperPostAPI()
+    private let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5
+    
     private lazy var authorizationOfCameraAlert: () = makeAlert(title: "알림", message: "카메라 접근이 허용되어 있지 않습니다.")
     private lazy var authorizationOfPhotoLibraryAlert: () = makeAlert(title: "알림", message: "라이브러리 접근이 허용되어 있지 않습니다.")
-    private let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5
-    private let rollingPaperPostAPI = RollingPaperPostAPI()
     private var isBeingSaved: Bool = false
     private var postImage: UIImage = UIImage()
-    var writerNickname: String = "니쿠"
+    var writerNickname: String = ""
     var groupId: String = ""
     var receiverUserId: String = ""
     
@@ -40,7 +41,7 @@ final class WriteRollingPaperViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLayout()
+        setupWholeLayout()
         setupButtonAction()
         configureDelegate()
         hideKeyboardWhenTappedAround()
@@ -135,7 +136,7 @@ final class WriteRollingPaperViewController: UIViewController {
         }
     }
     
-    private func setupLayout() {
+    private func setupWholeLayout() {
         view.addSubview(postThemePicerkView)
         postThemePicerkView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -145,14 +146,7 @@ final class WriteRollingPaperViewController: UIViewController {
             postThemePicerkView.heightAnchor.constraint(equalToConstant: postThemePickerItemWidth + 25)
         ])
         
-        postView.fromLabel.text = "From. \(writerNickname)"
-        view.addSubview(postView)
-        postView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            postView.topAnchor.constraint(equalTo: postThemePicerkView.bottomAnchor, constant: 43),
-            postView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-        ])
+        setupPostLayout()
         
         view.addSubview(confirmButton)
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
@@ -171,9 +165,13 @@ final class WriteRollingPaperViewController: UIViewController {
         NSLayoutConstraint.activate([
             postView.topAnchor.constraint(equalTo: postThemePicerkView.bottomAnchor, constant: 35),
             postView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            postView.heightAnchor.constraint(equalToConstant: 164 + UIScreen.main.bounds.width - 40),
+            postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
         ])
+        if postView.isPhotoAdded {
+            NSLayoutConstraint.activate([
+                postView.heightAnchor.constraint(equalToConstant: 164 + UIScreen.main.bounds.width - 40),
+            ])
+        }
     }
 }
 
@@ -194,8 +192,8 @@ extension WriteRollingPaperViewController: UIImagePickerControllerDelegate, UINa
                 postView.emptyImageButton.removeFromSuperview()
                 postView.setupAddedImageButtonLayout()
                 postView.removeFromSuperview()
-                setupPostLayout()
                 postView.isPhotoAdded = true
+                setupPostLayout()
             }
             postView.addedImageButton.setBackgroundImage(image, for: .normal)
             postView.addedImageButton.layer.cornerRadius = 4

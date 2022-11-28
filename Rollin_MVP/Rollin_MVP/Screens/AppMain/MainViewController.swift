@@ -12,6 +12,7 @@ import FirebaseFirestoreSwift
 final class MainViewController: UIViewController {
     private let db = Firestore.firestore()
     private let mainTitleLabel = UILabel()
+    private let settingButton = UIButton()
     private lazy var bottomGradientView = UIView()
     private let addGroupCard = AddGroupButtonBackgroundView()
     private var groupsCollectionView: UICollectionView!
@@ -33,6 +34,7 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setMainTitleLabel()
+        setSettingButton()
         setAddGroupCard()
         setNavigationBarBackButton()
         addGroupCard.delegate = self
@@ -40,9 +42,9 @@ final class MainViewController: UIViewController {
         registerCollectionView()
         collectionViewDelegate()
         setBottomGradientLayout()
+        setSettingButtonAction()
         view.addSubview(activityIndicator)
         activityIndicator.stopAnimating()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,6 +59,15 @@ final class MainViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = false
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+    
+    private func setSettingButtonAction() {
+        settingButton.addTarget(self, action: #selector(settingButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc func settingButtonPressed(_ sender: UIButton) {
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "SettingViewController") as? SettingViewController ?? UIViewController()
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 
@@ -158,10 +169,12 @@ private extension MainViewController {
                                         group.groupId = groupIds[idx]
                                         newGroups.append(group)
                                         newGroups.sort(by: >)
+                                        
                                         if newGroups.count == groupIds.count {
                                             self.groups = newGroups
                                             self.activityIndicator.stopAnimating()
                                             self.view.isUserInteractionEnabled = true
+                                            
                                         }
                                     }
                                 }
@@ -172,6 +185,8 @@ private extension MainViewController {
                     }
                 } else {
                     print("Document does not exist")
+                    self.activityIndicator.stopAnimating()
+                    self.view.isUserInteractionEnabled = true
                 }
             }
         }
@@ -208,6 +223,18 @@ private extension MainViewController {
         bottomGradientView.frame = CGRect(origin: CGPoint(x: 0, y: view.frame.height * 0.9),
                                           size: CGSize(width: view.frame.width, height: view.frame.height * 0.1))
         bottomGradientView.setGradient(color1: .init(red: 1, green: 1, blue: 1, alpha: 0), color2: .white)
+    }
+    
+    func setSettingButton() {
+        view.addSubview(settingButton)
+        settingButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            settingButton.centerYAnchor.constraint(equalTo: mainTitleLabel.centerYAnchor),
+            settingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+        ])
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 24, weight: .medium)
+        settingButton.setImage(UIImage(systemName: "gear", withConfiguration: imageConfig), for: .normal)
+        settingButton.tintColor = .systemBlack
     }
     
     func setNavigationBarBackButton() {
