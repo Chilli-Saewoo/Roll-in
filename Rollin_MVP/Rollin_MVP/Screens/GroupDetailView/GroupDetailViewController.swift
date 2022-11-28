@@ -35,7 +35,7 @@ final class CardSwiperCell: CardCell {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
+            nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
         ])
         nameLabel.font = .systemFont(ofSize: 20, weight: .semibold)
     }

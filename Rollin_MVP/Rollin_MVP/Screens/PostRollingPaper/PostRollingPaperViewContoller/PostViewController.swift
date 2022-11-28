@@ -30,13 +30,36 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
             }
         }
     }
-
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.center = self.view.center
+        activityIndicator.style = UIActivityIndicatorView.Style.medium
+        activityIndicator.isHidden = false
+        activityIndicator.color = .systemBlack
+        return activityIndicator
+    }()
+    private var isEmptyTextLabel: UILabel = {
+        let label = UILabel()
+        label.text = "아직 아무도 답장을 하지 않았어요"
+        label.textColor = .inactiveBgGray
+        label.font = .systemFont(ofSize: 17, weight: .regular)
+        label.layer.opacity = 0.0
+        label.isUserInteractionEnabled = false
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTitleMessageLayout()
         configurePostViewController()
         setupPostViewControllerLayout()
         setNavigationBarBackButton()
+        view.addSubview(activityIndicator)
+        setIsEmptyTextLabelLayout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.activityIndicator.stopAnimating()
         setWriteButtonLayout()
     }
     
@@ -44,11 +67,26 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
         fetchAllPosts()
     }
     
-    func fetchAllPosts() {
+    private func setIsEmptyTextLabelLayout() {
+        view.addSubview(isEmptyTextLabel)
+        isEmptyTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            isEmptyTextLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            isEmptyTextLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
+    }
+    
+    private func fetchAllPosts() {
         Task {
+            self.activityIndicator.startAnimating()
             self.posts = try await fetchPosts()
             collectionView.reloadData()
+            self.activityIndicator.stopAnimating()
             self.fetchImagesByPostId()
+            if posts?.isEmpty ?? true {
+                print("opacity 1.0")
+                isEmptyTextLabel.layer.opacity = 1.0
+            }
         }
     }
     
@@ -201,7 +239,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let post = posts?[indexPath.item] as? PostWithImageAndMessage else { return UICollectionViewCell() }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostRollingPaperCollectionViewCell.id, for: indexPath) as? PostRollingPaperCollectionViewCell ?? PostRollingPaperCollectionViewCell()
         cell.receiverUserId = receiverUserId ?? ""
-        if post.isPublic {
+        if post.isPublic || receiverUserId == UserDefaults.standard.string(forKey: "uid") {
             cell.blurView.layer.opacity = 0.0
             cell.lockImage.layer.opacity = 0.0
         } else {
@@ -209,15 +247,20 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.lockImage.layer.opacity = 1.0
         }
         let textColor = getTextColor(textColorString: post.postTheme)
-        cell.messageLabel.text = post.message
-        cell.messageLabel.textColor = textColor
-        cell.fromLabel.text = "From. \(post.from)"
-        cell.fromLabel.textColor = textColor
-        cell.containerView.backgroundColor = hexStringToUIColor(hex: post.postTheme)
         if let image = images[post.id] {
+            cell.messageLabel.text = post.message
+            cell.messageLabel.textColor = textColor
+            cell.fromLabel.text = "From. \(post.from)"
+            cell.fromLabel.textColor = textColor
+            cell.containerView.backgroundColor = hexStringToUIColor(hex: post.postTheme)
             cell.imageView.image = image
+            cell.isUserInteractionEnabled = true
         } else {
-            cell.imageView.image = nil // TODO: - 대기 중 이미지가 들어가야 합니다.
+            cell.messageLabel.text = ""
+            cell.fromLabel.text = ""
+            cell.containerView.backgroundColor = hexStringToUIColor(hex: "F1F1F1")
+            cell.imageView.image = UIImage(named: "skeleton")
+            cell.isUserInteractionEnabled = false
         }
         return cell
     }
