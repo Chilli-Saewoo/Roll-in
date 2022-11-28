@@ -36,6 +36,15 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
         activityIndicator.color = .systemBlack
         return activityIndicator
     }()
+    private var isEmptyTextLabel: UILabel = {
+        let label = UILabel()
+        label.text = "아직 아무도 답장을 하지 않았어요"
+        label.textColor = .inactiveBgGray
+        label.font = .systemFont(ofSize: 17, weight: .regular)
+        label.layer.opacity = 0.0
+        label.isUserInteractionEnabled = false
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +54,7 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
         setupPostViewControllerLayout()
         setNavigationBarBackButton()
         view.addSubview(activityIndicator)
+        setIsEmptyTextLabelLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,13 +65,26 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
         fetchAllPosts()
     }
     
-    func fetchAllPosts() {
+    private func setIsEmptyTextLabelLayout() {
+        view.addSubview(isEmptyTextLabel)
+        isEmptyTextLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            isEmptyTextLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            isEmptyTextLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
+    }
+    
+    private func fetchAllPosts() {
         Task {
             self.activityIndicator.startAnimating()
             self.posts = try await fetchPosts()
             collectionView.reloadData()
             self.activityIndicator.stopAnimating()
             self.fetchImagesByPostId()
+            if posts?.isEmpty ?? true {
+                print("opacity 1.0")
+                isEmptyTextLabel.layer.opacity = 1.0
+            }
         }
     }
     

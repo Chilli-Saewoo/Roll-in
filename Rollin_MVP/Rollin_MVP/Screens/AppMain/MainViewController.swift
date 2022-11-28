@@ -113,8 +113,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = groupsCollectionView.dequeueReusableCell(withReuseIdentifier: "mainGroupCard", for: indexPath) as? MainGroupCardViewCell ?? MainGroupCardViewCell()
         if !isFirstLoading {
+            cell.isUserInteractionEnabled = true
             cell.setCardView(info: groups[indexPath.row])
         } else {
+            cell.isUserInteractionEnabled = false
             cell.setSkeletonCardView()
         }
         return cell
