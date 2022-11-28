@@ -122,20 +122,15 @@ final class WriteRollingPaperViewController: UIViewController {
                 FirebaseStorageManager.uploadImage(image: postImage, pathRoot: receiverUserId) { url in
                     guard let url = url else { return }
                     let absoluteUrl = url.absoluteString
-                    let rollingPaperPostData = RollingPaperPostData(from: self.writerNickname,
-                                                                    postTheme: self.postThemePicerkView.selectedThemeHex,
-                                                                    message: self.postView.textView.text,
-                                                                    image: absoluteUrl,
-                                                                    isPublic: self.postView.privateSwitch.isOn,
-                                                                    timeStamp: Date())
+                    let rollingPaperPostData = PostWithImageAndMessage(type: .imageAndMessage, id: "", timestamp: Date(), from: self.writerNickname, isPublic: self.postView.privateSwitch.isOn, imageURL: absoluteUrl, message: self.postView.textView.text, postTheme: self.postThemePicerkView.selectedThemeHex)
                     
                     let rollingPaperPostAPI = RollingPaperPostAPI()
                     rollingPaperPostAPI.writePost(document: rollingPaperPostData,
                                                   imageUrl: absoluteUrl,
                                                   groupId: self.groupId,
                                                   receiver: self.receiverUserId)
-                    self.navigationController?.popViewController(animated: true)
                     self.isBeingSaved = false
+                    _ = self.navigationController?.popViewController(animated: true)
                 }
             } 
         }

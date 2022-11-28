@@ -9,6 +9,9 @@ import UIKit
 
 final class DetailRollingPaperViewController: UIViewController {
     
+    var post: PostWithImageAndMessage?
+    var image: UIImage?
+    
     private enum LayoutValue {
         static let postSize = CGSize(width: UIScreen.main.bounds.width - 76, height: (UIScreen.main.bounds.height / 2) - 114)
         static let postSpacing = 38.0
@@ -21,7 +24,6 @@ final class DetailRollingPaperViewController: UIViewController {
     
     private let collectionViewFlowLayout = UICollectionViewFlowLayout()
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.collectionViewFlowLayout)
-    var postRollingPaperModel: PostRollingPaperModel?
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "상세보기"
@@ -71,27 +73,25 @@ extension DetailRollingPaperViewController: UICollectionViewDataSource {
         2
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let post = post else { return UICollectionViewCell() }
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailPostLabelCollectionViewCell.className, for: indexPath) as! DetailPostLabelCollectionViewCell
-            guard let postRollingPaperModel = postRollingPaperModel else { return cell }
-            cell.message.text = postRollingPaperModel.commentString
-            cell.message.textColor = getTextColor()
-            cell.detailPostView.backgroundColor = postRollingPaperModel.color
-            cell.from.text = "From. \(postRollingPaperModel.from)"
-            cell.from.textColor = getTextColor()
+            let textColor = getTextColor(backgroundColorString: post.postTheme)
+            cell.message.text = post.message
+            cell.message.textColor = textColor
+            cell.detailPostView.backgroundColor = hexStringToUIColor(hex: post.postTheme)
+            cell.from.text = "From. \(post.from)"
+            cell.from.textColor = textColor
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailPostImageCollectionViewCell.className, for: indexPath) as! DetailPostImageCollectionViewCell
-            guard let postRollingPaperModel = postRollingPaperModel else { return cell }
-            cell.imageView.image = postRollingPaperModel.image
+            cell.imageView.image = image ?? UIImage()
             return cell
         }
     }
     
-    func getTextColor() -> UIColor {
-        guard let backgroundColor = postRollingPaperModel?.colorHex else { return .black }
-        print(backgroundColor)
-        switch backgroundColor  {
+    func getTextColor(backgroundColorString: String) -> UIColor {
+        switch backgroundColorString  {
         case "FFFCDD":
             return hexStringToUIColor(hex: "9E6003")
         case "FEE0EA":
@@ -106,6 +106,31 @@ extension DetailRollingPaperViewController: UICollectionViewDataSource {
             return hexStringToUIColor(hex: "9E6003")
         }
     }
+    
+    
+    // https://stackoverflow.com/questions/31314412/how-to-resize-image-in-swift
+    func resizeImage(image: UIImage, targetSize: CGSize) -> UIImage? {
+        let size = image.size
+        let widthRatio  = targetSize.width  / size.width
+        let heightRatio = targetSize.height / size.height
+        var newSize: CGSize
+        
+        if(widthRatio > heightRatio) {
+            newSize = CGSize(width: size.width * heightRatio, height: size.height * heightRatio)
+        } else {
+            newSize = CGSize(width: size.width * widthRatio, height: size.height * widthRatio)
+        }
+        
+        let rect = CGRect(origin: .zero, size: newSize)
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 1.0)
+        image.draw(in: rect)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+
 }
 
 extension DetailRollingPaperViewController: UICollectionViewDelegateFlowLayout {

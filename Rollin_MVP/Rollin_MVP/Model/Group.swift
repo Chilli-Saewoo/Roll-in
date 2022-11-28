@@ -22,6 +22,7 @@ final class Group: Codable, Comparable {
     var groupNickname: String?
     var participants: [(String, String)] = []
     
+    
     enum CodingKeys: String, CodingKey {
         case groupName
         case groupTheme

@@ -10,20 +10,24 @@ import UIKit
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-class PostViewController: UIViewController, UISheetPresentationControllerDelegate {
+final class PostViewController: UIViewController, UISheetPresentationControllerDelegate {
 
     var collectionView: UICollectionView!
-    var dataSource: [PostRollingPaperModel] = []
     private lazy var titleMessageLabel = UILabel()
     private lazy var writeButton = UIButton()
     private lazy var plusButton = UIButton()
-    var rollingPaperInfo: RollingPaperInfo?
-    var groupNickname: String?
     var groupId: String?
+    var writerNickname: String?
+    var receiverNickname: String?
     var receiverUserId: String?
-    var posts: [RollingPaperPostData] = []
-    var myGroupNickname: String?
-    var postRollingPaperModel: PostRollingPaperModel?
+    var posts: [PostData]?
+    var images: [String : UIImage] = [:] {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,37 +42,79 @@ class PostViewController: UIViewController, UISheetPresentationControllerDelegat
         fetchAllPosts()
     }
     
-    private func setupDataSource() {
-        self.dataSource = []
+    func fetchAllPosts() {
+        Task {
+            self.posts = try await fetchPosts()
+            collectionView.reloadData()
+            self.fetchImagesByPostId()
+        }
+    }
+    
+    private func fetchPosts() async throws -> [PostData]? {
+        let db = FirebaseFirestore.Firestore.firestore()
+        let snapshot = try await db.collection("groupUsers").document(groupId ?? "").collection("participants").document(receiverUserId ?? "").collection("posts").order(by: "timeStamp", descending: true).getDocuments()
+        
+        let uid = UserDefaults.standard.string(forKey: "uid")
+        let groupNicknameData = try await db.collection("groupUsers").document(groupId ?? "").collection("participants").document(uid ?? "").getDocument().data()
+        
+        guard let groupNicknameData = groupNicknameData else { return nil }
+        
+        self.writerNickname = String(describing: groupNicknameData["groupNickname"] ?? "")
+        
+        let postDocuments = try snapshot.documents.map { document -> PostData? in
+            let data = try document.data(as: PostCodableData.self)
+            
+            // TODO: - type은 이후에 Firebase에서 받아와서 들어와져야 합니다. 현재는 한 종류이기 때문에 상수로 들어가게 됩니다.
+            // switch로 type을 받아온 후, type에 따라서 return 형식이 달라져야 합니다.
+            guard let image = data.image, let message = data.message, let postTheme = data.postTheme  else { return nil }
+            return PostWithImageAndMessage(type: .imageAndMessage,
+                                           id: UUID().uuidString, // TODO: - DB에 POST 아이디가 필요
+                                           timestamp: data.timeStamp,
+                                           from: data.from, isPublic: data.isPublic,
+                                           imageURL: image,
+                                           message: message,
+                                           postTheme: postTheme)
+        }
+        
+        var newPosts: [PostData] = []
+        for postDocument in postDocuments {
+            if let postWithoutNil = postDocument {
+                newPosts.append(postWithoutNil)
+            }
+        }
+        return newPosts.sorted(by: >)
+    }
+    
+    private func fetchImagesByPostId() {
+        guard let posts = posts else { return }
+        images = [:] // TODO: - ID가 새로 만들어지기 때문에 Dict을 비워주기 위한 임시 해결책
         for post in posts {
-            var image = UIImage()
-            FirebaseStorageManager.downloadImage(urlString: post.image) { uiImage in
-                guard let uiImage = uiImage else { return }
-                image = uiImage
-                let color = UIColor(hex: "#\(post.postTheme)")
-                self.dataSource.append(PostRollingPaperModel(color: color, commentString: post.message, image: image.resizeImage(newWidth: 170) ?? UIImage(), timestamp: post.timeStamp, from: post.from, isPublic: post.isPublic, colorHex: post.postTheme))
-                self.dataSource.sort(by: >)
-                if self.dataSource.count == self.posts.count {
-                    self.collectionView.reloadData()
+            switch post.type {
+            case .imageAndMessage:
+                let postWithType = post as? PostWithImageAndMessage
+                guard let imageURL = postWithType?.imageURL else { return }
+                FirebaseStorageManager.downloadImage(urlString: imageURL) { fetchedImage in
+                    guard let fetchedImage = fetchedImage else { return }
+                    if self.images[post.id] == nil {
+                        self.images[post.id] = fetchedImage
+                    }
                 }
+            case .image:
+                print("preparing")
+            case .message:
+                print("preparing")
             }
         }
     }
     
-    func fetchAllPosts() {
-        Task {
-            posts = try await fetchPosts()
-            self.posts = posts
-            setupDataSource()
-        }
-    }
+
     
     @objc private func didTapButton() {
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "WriteRollingPaperViewController") as? WriteRollingPaperViewController ?? UIViewController()
         let vc = viewController as? WriteRollingPaperViewController
         guard let groupId = groupId else {return}
         guard let receiverUserId = receiverUserId else {return}
-        guard let myGroupNickname = myGroupNickname else {return}
+        guard let myGroupNickname = writerNickname else {return}
         vc?.groupId = groupId
         vc?.receiverUserId = receiverUserId
         vc?.writerNickname = myGroupNickname
@@ -112,7 +158,7 @@ private extension PostViewController {
             titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
             titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
-        guard let groupNickname = groupNickname else { return }
+        guard let groupNickname = receiverNickname else { return }
         titleMessageLabel.setTextWithLineHeight(text: "\(groupNickname)의 롤링페이퍼", lineHeight: 40)
         titleMessageLabel.font = .systemFont(ofSize: 26, weight: .bold)
         titleMessageLabel.numberOfLines = 0
@@ -130,8 +176,9 @@ private extension PostViewController {
 
 extension PostViewController: PostRollingPaperLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat {
+        guard let post = posts?[indexPath.item] as? PostWithImageAndMessage else { return 0 }
         let imageHeight = (UIScreen.main.bounds.width - 10)/2
-        let labelHeight = dataSource[indexPath.item].commentString.heightWithConstrainedWidth(width: UIScreen.main.bounds.width/2-50, font: UIFont.systemFont(ofSize: 12, weight: .medium))
+        let labelHeight = post.message.heightWithConstrainedWidth(width: UIScreen.main.bounds.width / 2 - 50, font: UIFont.systemFont(ofSize: 12, weight: .medium))
         return imageHeight + labelHeight + 35
     }
 }
@@ -139,30 +186,48 @@ extension PostViewController: PostRollingPaperLayoutDelegate {
 extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource.count
+        return posts?.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let post = posts?[indexPath.item] as? PostWithImageAndMessage else { return UICollectionViewCell() }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostRollingPaperCollectionViewCell.id, for: indexPath) as? PostRollingPaperCollectionViewCell ?? PostRollingPaperCollectionViewCell()
-        cell.postRollingPaperModel = dataSource[indexPath.item]
         cell.receiverUserId = receiverUserId ?? ""
-        cell.bind()
+        if post.isPublic {
+            cell.blurView.layer.opacity = 0.0
+            cell.lockImage.layer.opacity = 0.0
+        } else {
+            cell.blurView.layer.opacity = 1.0
+            cell.lockImage.layer.opacity = 1.0
+        }
+        let textColor = getTextColor(textColorString: post.postTheme)
+        cell.messageLabel.text = post.message
+        cell.messageLabel.textColor = textColor
+        cell.fromLabel.text = "From. \(post.from)"
+        cell.fromLabel.textColor = textColor
+        cell.containerView.backgroundColor = hexStringToUIColor(hex: post.postTheme)
+        if let image = images[post.id] {
+            cell.imageView.image = image
+        } else {
+            cell.imageView.image = nil // TODO: - 대기 중 이미지가 들어가야 합니다.
+        }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let post = posts?[indexPath.item] as? PostWithImageAndMessage else { return }
         let rollingPaperDetailViewController = DetailRollingPaperViewController()
+        rollingPaperDetailViewController.post = post
+        rollingPaperDetailViewController.image = images[post.id]
         rollingPaperDetailViewController.view.backgroundColor = .white
         rollingPaperDetailViewController.modalPresentationStyle = .pageSheet
-        rollingPaperDetailViewController.postRollingPaperModel = dataSource[indexPath.item]        
         if let halfModal = rollingPaperDetailViewController.sheetPresentationController {
             halfModal.preferredCornerRadius = 10
             halfModal.detents = [.medium()]
             halfModal.delegate = self
             halfModal.prefersGrabberVisible = true
         }
-        
-        if dataSource[indexPath.item].isPublic || receiverUserId == UserDefaults.standard.string(forKey: "uid") {
+        if post.isPublic || receiverUserId == UserDefaults.standard.string(forKey: "uid") {
             present(rollingPaperDetailViewController, animated: true, completion: nil)
         }
     }
@@ -170,33 +235,27 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
 
 
 private extension PostViewController {
-    func fetchPosts() async throws -> [RollingPaperPostData] {
-        let db = FirebaseFirestore.Firestore.firestore()
-        let snapshot = try await db.collection("groupUsers").document(groupId ?? "").collection("participants").document(receiverUserId ?? "").collection("posts").order(by: "timeStamp", descending: true).getDocuments()
-        let uid = UserDefaults.standard.string(forKey: "uid")
-        let myGroupNickname = try await db.collection("groupUsers").document(groupId ?? "").collection("participants").document(uid ?? "").getDocument().data()
-        guard let myGroupNickname = myGroupNickname else { return [RollingPaperPostData(from: "", postTheme: "", message: "", image: "", isPublic: false, timeStamp: Date())]}
-        self.myGroupNickname = String(describing: myGroupNickname["groupNickname"] ?? "")
-        let dtoDocuments = try snapshot.documents.map { document -> RollingPaperPostData in
-            let data = try document.data(as: RollingPaperPostData.self)
-            return RollingPaperPostData(from: data.from,
-                                        postTheme: data.postTheme,
-                                        message: data.message,
-                                        image: data.image,
-                                        isPublic: data.isPublic,
-                                        timeStamp: data.timeStamp)
+    func getTextColor(textColorString: String) -> UIColor {
+        switch textColorString  {
+        case "FFFCDD":
+            return hexStringToUIColor(hex: "9E6003")
+        case "FEE0EA":
+            return hexStringToUIColor(hex: "D61951")
+        case "EBDDFF":
+            return hexStringToUIColor(hex: "4D2980")
+        case "DDEBFF":
+            return hexStringToUIColor(hex: "4069CE")
+        case "C8F6D5":
+            return hexStringToUIColor(hex: "15843B")
+        default:
+            return hexStringToUIColor(hex: "9E6003")
         }
-        var documents: [RollingPaperPostData] = []
-        for dtoDocument in dtoDocuments {
-            documents.append(dtoDocument)
-        }
-        return documents.sorted(by: >)
     }
 }
 
 extension PostViewController {
     func setNavigationBarBackButton() {
-        guard let groupNickname = groupNickname else { return }
+        guard let groupNickname = receiverNickname else { return }
         let backBarButtonItem = UIBarButtonItem(title: "\(groupNickname)님의 롤링페이퍼", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .black
         self.navigationItem.backBarButtonItem = backBarButtonItem
