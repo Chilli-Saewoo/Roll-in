@@ -70,6 +70,13 @@ final class SettingViewController: UIViewController {
 
 extension SettingViewController: UITableViewDelegate {
 
+    func appInfoCellPressed(webURL: String) {
+        if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "AppInfoWebViewController") as? AppInfoWebViewController {
+            viewController.webURL = webURL
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         settingTableView.deselectRow(at: indexPath, animated: true)
         
@@ -78,13 +85,9 @@ extension SettingViewController: UITableViewDelegate {
             let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ResetNicknameViewController") as? ResetNicknameViewController ?? UIViewController()
             self.navigationController?.pushViewController(viewController, animated: true)
         case .privacyPolicy:
-            if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "AppInfoWebViewController") as? AppInfoWebViewController {
-                self.navigationController?.pushViewController(viewController, animated: true)
-            }
+            appInfoCellPressed(webURL: "https://mercury-comte-8e6.notion.site/ea8b9c2b9cfd469da4c70285362e6a28")
         case .openLicense:
-            if let viewController = self.storyboard?.instantiateViewController(withIdentifier: "AppInfoWebViewController") as? AppInfoWebViewController {
-                self.navigationController?.pushViewController(viewController, animated: true)
-            }
+            appInfoCellPressed(webURL: "https://mercury-comte-8e6.notion.site/1fe800c1beb94913b278e9a690d914bd")
         case .mailToDeveloper:
             //TODO: 추후 메일 들어갈 예정
             print("mailToDeveloper")

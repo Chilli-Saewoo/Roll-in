@@ -10,6 +10,7 @@
 		2A49A12C292E5DE100897379 /* GroupBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A49A12B292E5DE100897379 /* GroupBaseViewController.swift */; };
 		2A49A1362933C93F00897379 /* ResetNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A49A1352933C93E00897379 /* ResetNicknameViewController.swift */; };
 		2A49A1382933C9E800897379 /* AppInfoWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A49A1372933C9E800897379 /* AppInfoWebViewController.swift */; };
+		2A49A13D293489E500897379 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A49A13C293489E500897379 /* Reachability.swift */; };
 		2AF46850291E1EF200AB2DE4 /* RollingPaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF4684F291E1EF200AB2DE4 /* RollingPaperView.swift */; };
 		2AF46852291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */; };
 		2AF46854291E20E300AB2DE4 /* DetailPostLabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46853291E20E300AB2DE4 /* DetailPostLabelCollectionViewCell.swift */; };
@@ -108,6 +109,7 @@
 		2A49A12B292E5DE100897379 /* GroupBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupBaseViewController.swift; sourceTree = "<group>"; };
 		2A49A1352933C93E00897379 /* ResetNicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetNicknameViewController.swift; sourceTree = "<group>"; };
 		2A49A1372933C9E800897379 /* AppInfoWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoWebViewController.swift; sourceTree = "<group>"; };
+		2A49A13C293489E500897379 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		2AF4684F291E1EF200AB2DE4 /* RollingPaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperView.swift; sourceTree = "<group>"; };
 		2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRollingPaperViewController.swift; sourceTree = "<group>"; };
 		2AF46853291E20E300AB2DE4 /* DetailPostLabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostLabelCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -281,6 +283,7 @@
 				79675CAA29333CAB0049533E /* SettingViewController.swift */,
 				2A49A1352933C93E00897379 /* ResetNicknameViewController.swift */,
 				2A49A1372933C9E800897379 /* AppInfoWebViewController.swift */,
+				2A49A13C293489E500897379 /* Reachability.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -784,6 +787,7 @@
 				79340B4F292259920097D111 /* GroupUserRollingPaper.swift in Sources */,
 				F663324D292034D100A7310A /* Image+.swift in Sources */,
 				F663324B292033F300A7310A /* SetNickNameWhileLoginViewController.swift in Sources */,
+				2A49A13D293489E500897379 /* Reachability.swift in Sources */,
 				7980D12E291C3F3F00915C72 /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
