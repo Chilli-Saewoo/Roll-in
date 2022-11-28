@@ -50,6 +50,7 @@ final class MainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         fetchGroups()
+        mainTitleLabel.text = "\(UserDefaults.standard.string(forKey: "nickname") ?? "")의 롤인 그룹"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -201,8 +202,7 @@ private extension MainViewController {
             mainTitleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             mainTitleLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 70),
         ])
-        mainTitleLabel.font = .systemFont(ofSize: 26, weight: .medium)
-        mainTitleLabel.text = "\(UserDefaults.standard.string(forKey: "nickname") ?? "")의 롤인 그룹"
+        mainTitleLabel.font = .systemFont(ofSize: 26, weight: .bold)
     }
     
     
