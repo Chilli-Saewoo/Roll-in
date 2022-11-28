@@ -35,6 +35,14 @@ final class MainGroupCardViewCell: UICollectionViewCell {
         participateCountLabel.attributedText = fullString
     }
     
+    public func setSkeletonCardView() {
+        self.backgroundColor = hexStringToUIColor(hex: "F1F1F1")
+        setIconContents(data: "")
+        groupNameLabel.text = ""
+        createdDateLabel.text = ""
+        participateCountLabel.text = ""
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -63,7 +71,7 @@ final class MainGroupCardViewCell: UICollectionViewCell {
         case "heart":
             iconView.text = "❤️"
         default:
-            iconView.text = "❤️"
+            iconView.text = ""
         }
     }
     

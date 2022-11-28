@@ -28,7 +28,15 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
             }
         }
     }
-
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.center = self.view.center
+        activityIndicator.style = UIActivityIndicatorView.Style.medium
+        activityIndicator.isHidden = false
+        activityIndicator.color = .systemBlack
+        return activityIndicator
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTitleMessageLayout()
@@ -36,6 +44,11 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
         configurePostViewController()
         setupPostViewControllerLayout()
         setNavigationBarBackButton()
+        view.addSubview(activityIndicator)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.activityIndicator.stopAnimating()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,8 +57,10 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
     
     func fetchAllPosts() {
         Task {
+            self.activityIndicator.startAnimating()
             self.posts = try await fetchPosts()
             collectionView.reloadData()
+            self.activityIndicator.stopAnimating()
             self.fetchImagesByPostId()
         }
     }
