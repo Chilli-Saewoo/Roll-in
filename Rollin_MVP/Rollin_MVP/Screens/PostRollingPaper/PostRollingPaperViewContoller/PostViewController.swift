@@ -12,6 +12,8 @@ import FirebaseFirestoreSwift
 
 final class PostViewController: UIViewController, UISheetPresentationControllerDelegate {
 
+    private let contentWidth: CGFloat = (UIScreen.main.bounds.width - 34) / 2 - 7 * 2
+    
     var collectionView: UICollectionView!
     private lazy var titleMessageLabel = UILabel()
     private lazy var writeButton = UIButton()
@@ -32,10 +34,10 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         setTitleMessageLayout()
-        setWriteButtonLayout()
         configurePostViewController()
         setupPostViewControllerLayout()
         setNavigationBarBackButton()
+        setWriteButtonLayout()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -140,16 +142,17 @@ private extension PostViewController {
     func setWriteButtonLayout() {
         if receiverUserId != UserDefaults.standard.string(forKey: "uid") {
             view.addSubview(writeButton)
-            writeButton.translatesAutoresizingMaskIntoConstraints = false
             let writeButtonImage = UIImage(systemName: "plus")
             writeButton.setImage(writeButtonImage, for: .normal)
             writeButton.tintColor = .systemBlack
+            writeButton.backgroundColor = .yellow
             writeButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+            writeButton.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                writeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 122),
-                writeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28),
-                writeButton.widthAnchor.constraint(equalToConstant: 25),
-                writeButton.heightAnchor.constraint(equalToConstant: 25),
+                writeButton.topAnchor.constraint(equalTo: titleMessageLabel.bottomAnchor, constant: 30),
+                writeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
+                writeButton.widthAnchor.constraint(equalToConstant: contentWidth),
+                writeButton.heightAnchor.constraint(equalToConstant: contentWidth),
             ])
         }
     }

@@ -15,7 +15,7 @@ protocol PostRollingPaperLayoutDelegate: AnyObject {
     weak var delegate: PostRollingPaperLayoutDelegate?
 
     private var numberOfColumns: Int = 2
-    private var cellPadding: CGFloat = 7.0
+     private var cellPadding: CGFloat = 7.0
     private var cache: [UICollectionViewLayoutAttributes] = []
     private var contentHeight: CGFloat = 0.0
     var isButtonHidden: Bool = false
@@ -52,7 +52,7 @@ protocol PostRollingPaperLayoutDelegate: AnyObject {
         if isButtonHidden {
             column = 0
         } else {
-            yOffset[0] = 177
+            yOffset[0] = (UIScreen.main.bounds.width - 34) / 2
         }
         for item in 0..<collectionView.numberOfItems(inSection: 0) {
             let indexPath = IndexPath(item: item, section: 0)
