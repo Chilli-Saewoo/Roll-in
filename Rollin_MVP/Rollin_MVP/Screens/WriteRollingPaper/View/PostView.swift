@@ -48,7 +48,7 @@ final class PostView: UIView {
         textView.tintColor = .textRed
         textView.font = .preferredFont(forTextStyle: .body)
         textView.textContainerInset = UIEdgeInsets(top: 13, left: 12, bottom: 36, right: 12)
-        textView.text = "롤링페이퍼를 입력하세요"
+        textView.text = "글과 사진을 모두 등록해야 업로드 됩니다"
         textView.layer.cornerRadius = 4
         textView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         textView.autocorrectionType = .no
