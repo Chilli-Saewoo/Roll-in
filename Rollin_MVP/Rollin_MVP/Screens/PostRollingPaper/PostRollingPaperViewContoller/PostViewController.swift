@@ -216,7 +216,9 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let post = posts?[indexPath.item] as? PostWithImageAndMessage else { return }
-        let rollingPaperDetailViewController = DetailRollingPaperViewController(post: post)
+        let rollingPaperDetailViewController = DetailRollingPaperViewController()
+        rollingPaperDetailViewController.post = post
+        rollingPaperDetailViewController.image = images[post.id]
         rollingPaperDetailViewController.view.backgroundColor = .white
         rollingPaperDetailViewController.modalPresentationStyle = .pageSheet
         if let halfModal = rollingPaperDetailViewController.sheetPresentationController {

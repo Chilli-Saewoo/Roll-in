@@ -9,16 +9,8 @@ import UIKit
 
 final class DetailRollingPaperViewController: UIViewController {
     
-    let post: PostWithImageAndMessage
-    
-    init(post: PostWithImageAndMessage) {
-        self.post = post
-        super.init()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    var post: PostWithImageAndMessage?
+    var image: UIImage?
     
     private enum LayoutValue {
         static let postSize = CGSize(width: UIScreen.main.bounds.width - 76, height: (UIScreen.main.bounds.height / 2) - 114)
@@ -81,6 +73,7 @@ extension DetailRollingPaperViewController: UICollectionViewDataSource {
         2
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let post = post else { return UICollectionViewCell() }
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailPostLabelCollectionViewCell.className, for: indexPath) as! DetailPostLabelCollectionViewCell
             let textColor = getTextColor(backgroundColorString: post.postTheme)
@@ -92,7 +85,7 @@ extension DetailRollingPaperViewController: UICollectionViewDataSource {
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DetailPostImageCollectionViewCell.className, for: indexPath) as! DetailPostImageCollectionViewCell
-//            cell.imageView.image = .image
+            cell.imageView.image = image ?? UIImage()
             return cell
         }
     }
