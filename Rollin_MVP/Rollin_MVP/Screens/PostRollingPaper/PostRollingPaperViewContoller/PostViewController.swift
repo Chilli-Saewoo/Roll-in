@@ -12,6 +12,8 @@ import FirebaseFirestoreSwift
 
 final class PostViewController: UIViewController, UISheetPresentationControllerDelegate {
 
+    private let contentWidth: CGFloat = (UIScreen.main.bounds.width - 34) / 2 - 7 * 2
+    
     var collectionView: UICollectionView!
     private lazy var titleMessageLabel = UILabel()
     private lazy var writeButton = UIButton()
@@ -32,10 +34,10 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         setTitleMessageLayout()
-        setWriteButtonLayout()
         configurePostViewController()
         setupPostViewControllerLayout()
         setNavigationBarBackButton()
+        setWriteButtonLayout()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -125,6 +127,9 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
 private extension PostViewController {
     private func configurePostViewController() {
         let collectionViewLayout = PostRollingPaperLayout()
+        if receiverUserId == UserDefaults.standard.string(forKey: "uid") {
+            collectionViewLayout.isWriteButtonHidden = true
+        }
         collectionViewLayout.delegate = self
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionView.backgroundColor = .systemBackground
@@ -136,17 +141,20 @@ private extension PostViewController {
     
     func setWriteButtonLayout() {
         if receiverUserId != UserDefaults.standard.string(forKey: "uid") {
-            view.addSubview(writeButton)
-            writeButton.translatesAutoresizingMaskIntoConstraints = false
-            let writeButtonImage = UIImage(systemName: "plus")
-            writeButton.setImage(writeButtonImage, for: .normal)
-            writeButton.tintColor = .systemBlack
+            collectionView.addSubview(writeButton)
+            writeButton.setTitle("+ 추가하기", for: .normal)
+            writeButton.setTitleColor(.black, for: .normal)
+            writeButton.titleLabel?.font = .systemFont(ofSize: 16, weight: .medium)
+            writeButton.backgroundColor = .white
+            writeButton.layer.borderWidth = 1
+            writeButton.layer.cornerRadius = 4
             writeButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+            writeButton.translatesAutoresizingMaskIntoConstraints = false
             NSLayoutConstraint.activate([
-                writeButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 122),
-                writeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28),
-                writeButton.widthAnchor.constraint(equalToConstant: 25),
-                writeButton.heightAnchor.constraint(equalToConstant: 25),
+                writeButton.topAnchor.constraint(equalTo: collectionView.topAnchor, constant: 7),
+                writeButton.leadingAnchor.constraint(equalTo: collectionView.leadingAnchor, constant: 7),
+                writeButton.widthAnchor.constraint(equalToConstant: contentWidth),
+                writeButton.heightAnchor.constraint(equalToConstant: contentWidth),
             ])
         }
     }
