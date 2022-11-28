@@ -238,7 +238,7 @@ private extension DetailRollingPaperViewController {
         reportPostButton.addTarget(self, action: #selector(showActionSheet), for: .touchUpInside)
     }
     
-    func touchUpMoveToDeclarePage() {
+    func touchUpInsideDeclarePage() {
         if MFMailComposeViewController.canSendMail() {
                 let composeViewController = MFMailComposeViewController()
                 guard let postRollingPaperModel = postRollingPaperModel else { return }
@@ -287,11 +287,9 @@ private extension DetailRollingPaperViewController {
     @objc
     func showActionSheet() {
         let actionSheet = UIAlertController(title: "해당 포스트를 신고하시겠습니까?", message: nil, preferredStyle: .actionSheet)
-        
         let reportSheet = UIAlertAction(title: "신고 하기", style: .default) { action in
-            self.touchUpMoveToDeclarePage()
+            self.touchUpInsideDeclarePage()
         }
-        
         let cancelSheet = UIAlertAction(title: "취소", style: .cancel) { action in
         }
         actionSheet.addAction(reportSheet)
