@@ -17,7 +17,7 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
     lazy var blurView: UIView = {
         let blurEffect = UIBlurEffect(style: .regular)
         let visualEffectView = UIVisualEffectView(effect: blurEffect)
-        visualEffectView.alpha = 0.8
+        visualEffectView.clipsToBounds = true
         return visualEffectView
     }()
     
@@ -77,6 +77,7 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
         blurView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         blurView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         blurView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        blurView.layer.cornerRadius = 4
         contentView.addSubview(lockImage)
         lockImage.translatesAutoresizingMaskIntoConstraints = false
         lockImage.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
