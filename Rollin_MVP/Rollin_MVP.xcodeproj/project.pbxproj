@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2AF46850291E1EF200AB2DE4 /* RollingPaperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF4684F291E1EF200AB2DE4 /* RollingPaperView.swift */; };
 		2AF46852291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */; };
 		2AF46854291E20E300AB2DE4 /* DetailPostLabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46853291E20E300AB2DE4 /* DetailPostLabelCollectionViewCell.swift */; };
 		790FF814291E5733004BDA20 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FF813291E5733004BDA20 /* UIViewController+.swift */; };
@@ -101,7 +100,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2AF4684F291E1EF200AB2DE4 /* RollingPaperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperView.swift; sourceTree = "<group>"; };
 		2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRollingPaperViewController.swift; sourceTree = "<group>"; };
 		2AF46853291E20E300AB2DE4 /* DetailPostLabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostLabelCollectionViewCell.swift; sourceTree = "<group>"; };
 		790FF813291E5733004BDA20 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
@@ -213,7 +211,6 @@
 		2AF4684E291E1E9E00AB2DE4 /* DetailRollingPaper */ = {
 			isa = PBXGroup;
 			children = (
-				2AF4684F291E1EF200AB2DE4 /* RollingPaperView.swift */,
 				2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */,
 				2AF46853291E20E300AB2DE4 /* DetailPostLabelCollectionViewCell.swift */,
 				79B38A822922E62100F084E3 /* DetailPostImageCollectionViewCell.swift */,
@@ -715,7 +712,6 @@
 				ABB96EB3291AC71F003C5B1D /* ConfirmGroupCardView.swift in Sources */,
 				ABB96EB0291ABB5D003C5B1D /* ConfirmGroupViewController.swift in Sources */,
 				AB032AAB291E875E00B22C13 /* SelectIconCell.swift in Sources */,
-				2AF46850291E1EF200AB2DE4 /* RollingPaperView.swift in Sources */,
 				ABCFC8382920158A006DB26B /* PostRollingPaperCollectionViewCell.swift in Sources */,
 				79340B3E292172990097D111 /* SetNicknameWhileParticipateViewController.swift in Sources */,
 				F6667F3029219FD000CD480F /* RollingPaperPostAPI.swift in Sources */,
