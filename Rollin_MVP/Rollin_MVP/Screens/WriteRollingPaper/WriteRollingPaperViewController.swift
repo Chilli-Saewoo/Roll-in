@@ -39,6 +39,31 @@ final class WriteRollingPaperViewController: UIViewController {
         return button
     }()
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.center = self.view.center
+        activityIndicator.style = UIActivityIndicatorView.Style.large
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
+        activityIndicator.color = .white
+        return activityIndicator
+    }()
+    
+    private var activityIndicatorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "올라가고 있어요"
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 24, weight: .bold)
+        return label
+    }()
+    
+    lazy var activityIndicatorBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.layer.opacity = 0.3
+        return view
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupWholeLayout()
@@ -119,6 +144,7 @@ final class WriteRollingPaperViewController: UIViewController {
         Task {
             if !isBeingSaved {
                 isBeingSaved = true
+                setupActivityIndicatorLayout()
                 FirebaseStorageManager.uploadImage(image: postImage, pathRoot: receiverUserId) { url in
                     guard let url = url else { return }
                     let absoluteUrl = url.absoluteString
@@ -130,6 +156,7 @@ final class WriteRollingPaperViewController: UIViewController {
                                                   groupId: self.groupId,
                                                   receiver: self.receiverUserId)
                     self.isBeingSaved = false
+                    self.activityIndicator.stopAnimating()
                     _ = self.navigationController?.popViewController(animated: true)
                 }
             } 
@@ -172,6 +199,32 @@ final class WriteRollingPaperViewController: UIViewController {
                 postView.heightAnchor.constraint(equalToConstant: 164 + UIScreen.main.bounds.width - 40),
             ])
         }
+    }
+    
+    private func setupActivityIndicatorLayout() {
+        view.addSubview(activityIndicatorBackgroundView)
+        activityIndicatorBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicatorBackgroundView.topAnchor.constraint(equalTo: view.topAnchor),
+            activityIndicatorBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            activityIndicatorBackgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            activityIndicatorBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+        
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -16),
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
+        view.addSubview(activityIndicatorLabel)
+        activityIndicatorLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicatorLabel.topAnchor.constraint(equalTo: activityIndicator.bottomAnchor, constant: 20),
+            activityIndicatorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+        
     }
 }
 
