@@ -46,7 +46,18 @@ class ResetNicknameViewController: UIViewController {
     }
     
     @objc func completeButtonPressed(_ sender: UIButton) {
-
+        let uid = UserDefaults.standard.string(forKey: "uid") ?? ""
+        db.collection("users").document(uid).setData([
+            "usernickname": nameTextField.text ?? "",
+        ]) { err in
+            if let err = err {
+                print("Error writing document: \(err)")
+            } else {
+                print("닉네임 수정")
+                self.setNicknameUserDefault()
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
     }
     
     private func observeKeboardHeight() {
