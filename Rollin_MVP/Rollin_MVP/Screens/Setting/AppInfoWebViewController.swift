@@ -10,14 +10,15 @@ import WebKit
 
 final class AppInfoWebViewController: UIViewController {
     var webView: WKWebView!
+    var webURL: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
         let webConfiguration = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguration)
-        let myURL = URL(string:"https://mercury-comte-8e6.notion.site/ea8b9c2b9cfd469da4c70285362e6a28")
-        let myRequest = URLRequest(url: myURL!)
-        webView.load(myRequest)
+        let AppInfoURL = URL(string: webURL)
+        let AppInfoRequest = URLRequest(url: AppInfoURL!)
+        webView.load(AppInfoRequest)
         setWebView()
     }
     
