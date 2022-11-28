@@ -274,7 +274,7 @@ private extension DetailRollingPaperViewController {
                                  -------------------
                                  
                                  
-                                 - 신고자 닉네임 : \(post.from)
+                                 - 신고자 닉네임 : \(UserDefaults.standard.string(forKey: "nickname") ?? "신고자 이름 없음")
                                  - 신고 메시지 내용 :
                                  \(post.message)
                                  - 신고 날짜: \(date.toString_koreaTime())
