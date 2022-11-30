@@ -60,6 +60,7 @@ final class GroupDetailViewController: UIViewController {
     private let ingroupCodeCopyLabel = UILabel()
     private let ingroupCodeCopyButton = UIButton()
     private let codeCopyToastView = UILabel()
+    private var isFirstLoading = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,7 +77,10 @@ final class GroupDetailViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        let _ = cardSwiper.scrollToCard(at: (group?.participants.count ?? 1) - 1, animated: false)
+        if isFirstLoading {
+            let _ = cardSwiper.scrollToCard(at: (group?.participants.count ?? 1) - 1, animated: false)
+            isFirstLoading = false
+        }
     }
     
     private func setIngroupCopyButtonAction() {
