@@ -83,9 +83,10 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
             collectionView.reloadData()
             self.activityIndicator.stopAnimating()
             self.fetchImagesByPostId()
-            if posts?.isEmpty ?? true {
-                print("opacity 1.0")
+            if (posts?.isEmpty ?? true) && receiverUserId == UserDefaults.standard.string(forKey: "uid") {
                 isEmptyTextLabel.layer.opacity = 1.0
+            } else {
+                isEmptyTextLabel.layer.opacity = 0.0
             }
         }
     }

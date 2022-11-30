@@ -26,7 +26,6 @@
 		79340B4B2921AA330097D111 /* RollingPaperInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B4A2921AA330097D111 /* RollingPaperInfo.swift */; };
 		79675CAB29333CAB0049533E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79675CAA29333CAB0049533E /* SettingViewController.swift */; };
 		79675CAE29333E330049533E /* SettingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79675CAD29333E330049533E /* SettingTableViewCell.swift */; };
-		79675CB42934A2BC0049533E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79675CB32934A2BC0049533E /* GoogleService-Info.plist */; };
 		7980D12E291C3F3F00915C72 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980D12D291C3F3F00915C72 /* UIColor+.swift */; };
 		79A9100D291B84B700A0672F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A9100C291B84B700A0672F /* PostView.swift */; };
 		79A91011291C091B00A0672F /* Alert+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A91010291C091B00A0672F /* Alert+.swift */; };
@@ -125,7 +124,6 @@
 		79340B4A2921AA330097D111 /* RollingPaperInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperInfo.swift; sourceTree = "<group>"; };
 		79675CAA29333CAB0049533E /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		79675CAD29333E330049533E /* SettingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewCell.swift; sourceTree = "<group>"; };
-		79675CB32934A2BC0049533E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Documents/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7980D12D291C3F3F00915C72 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		79A9100C291B84B700A0672F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		79A91010291C091B00A0672F /* Alert+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+.swift"; sourceTree = "<group>"; };
@@ -416,35 +414,11 @@
 		ABCFC8302920158A006DB26B /* PostRollingPaper */ = {
 			isa = PBXGroup;
 			children = (
-				ABCFC8312920158A006DB26B /* PostRollingPaperLayout */,
-				ABCFC8332920158A006DB26B /* PostRollingPaperView */,
-				ABCFC8352920158A006DB26B /* PostRollingPaperViewContoller */,
-			);
-			path = PostRollingPaper;
-			sourceTree = "<group>";
-		};
-		ABCFC8312920158A006DB26B /* PostRollingPaperLayout */ = {
-			isa = PBXGroup;
-			children = (
 				ABCFC8322920158A006DB26B /* PostRollingPaperLayout.swift */,
-			);
-			path = PostRollingPaperLayout;
-			sourceTree = "<group>";
-		};
-		ABCFC8332920158A006DB26B /* PostRollingPaperView */ = {
-			isa = PBXGroup;
-			children = (
 				ABCFC8342920158A006DB26B /* PostRollingPaperCollectionViewCell.swift */,
-			);
-			path = PostRollingPaperView;
-			sourceTree = "<group>";
-		};
-		ABCFC8352920158A006DB26B /* PostRollingPaperViewContoller */ = {
-			isa = PBXGroup;
-			children = (
 				ABCFC8362920158A006DB26B /* PostViewController.swift */,
 			);
-			path = PostRollingPaperViewContoller;
+			path = PostRollingPaper;
 			sourceTree = "<group>";
 		};
 		ABDBD2B1291A3F97008FB3A6 = {
@@ -955,11 +929,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Rollin_MVP/Rollin_MVP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = A8RC8B498C;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8QSTXVD8H9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Roll in";
+				INFOPLIST_KEY_CFBundleDisplayName = "롤인";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
@@ -974,7 +948,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chillijo.RollinMVP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -993,11 +967,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Rollin_MVP/Rollin_MVP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8QSTXVD8H9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Roll in";
+				INFOPLIST_KEY_CFBundleDisplayName = "롤인";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
@@ -1012,7 +986,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chillijo.RollinMVP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
