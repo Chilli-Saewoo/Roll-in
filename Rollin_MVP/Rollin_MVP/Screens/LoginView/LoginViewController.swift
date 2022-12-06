@@ -126,15 +126,14 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 print("해당 이메일은 이미 가입이 되어있습니다.")
                 let userRef = self.db.collection("users").document(UserDefaults.standard.string(forKey: "uid") ?? "")
                 userRef.getDocument { (document, error) in
-                    if let document = document, document.exists {
-                        UserDefaults.standard.set(document.data()?["usernickname"] ?? "익명의 유저", forKey: "nickname")
-                    } else {
-                        print("Document does not exist")
-                    }
+                    UserDefaults.standard.set(document?.data()?["usernickname"] ?? "익명의 유저", forKey: "nickname")
+                        while UserDefaults.standard.string(forKey: "nickname") != nil {
+                        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") else {return}
+                        self.navigationController?.pushViewController(viewController, animated: true)
+                        self.changeRootViewController()
+                            break
+                        }
                 }
-                guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") else {return}
-                self.navigationController?.pushViewController(viewController, animated: true)
-                self.changeRootViewController()
             }
         }
     }

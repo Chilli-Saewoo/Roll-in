@@ -62,11 +62,15 @@ final class SetNicknameWhileLoginViewController: UIViewController {
             if let err = err {
                 print("Error writing document: \(err)")
             } else {
-                print("닉네임 생성")
                 self.setNicknameUserDefault()
-                guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") else {return}
-                self.navigationController?.pushViewController(viewController, animated: true)
-                self.changeRootViewController()
+                while UserDefaults.standard.string(forKey: "nickname") != nil {
+                    print("닉네임 생성")
+                    guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") else {return}
+                    self.navigationController?.pushViewController(viewController, animated: true)
+                    self.changeRootViewController()
+                    break
+                }
+                
             }
         }
     }
