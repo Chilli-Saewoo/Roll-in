@@ -126,13 +126,19 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                 print("해당 이메일은 이미 가입이 되어있습니다.")
                 let userRef = self.db.collection("users").document(UserDefaults.standard.string(forKey: "uid") ?? "")
                 userRef.getDocument { (document, error) in
-                    UserDefaults.standard.set(document?.data()?["usernickname"] ?? "익명의 유저", forKey: "nickname")
-                        while UserDefaults.standard.string(forKey: "nickname") != nil {
-                        guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") else {return}
-                        self.navigationController?.pushViewController(viewController, animated: true)
-                        self.changeRootViewController()
-                            break
+                    if let document = document, document.exists {
+                        UserDefaults.standard.set(document.data()?["usernickname"] ?? "익명의 유저", forKey: "nickname")
+                        while true {
+                            if UserDefaults.standard.string(forKey: "nickname") != nil {
+                                guard let viewController = self.storyboard?.instantiateViewController(withIdentifier: "MainView") else { return }
+                                self.navigationController?.pushViewController(viewController, animated: true)
+                                self.changeRootViewController()
+                                break
+                            }
                         }
+                    } else {
+                        print("Document does not exist")
+                    }
                 }
             }
         }
@@ -150,7 +156,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     }
     
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
-    if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             guard let nonce = currentNonce else {
                 fatalError("Invalid state: A login callback was received, but no login request was sent.")
             }
