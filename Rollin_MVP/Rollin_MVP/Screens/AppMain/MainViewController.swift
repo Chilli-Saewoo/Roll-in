@@ -22,6 +22,13 @@ final class MainViewController: UIViewController {
         }
     }
     private var isFirstLoading = true
+    private let emptyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "그룹을 추가해보세요"
+        label.textColor = .inactiveBgGray
+        label.font = .systemFont(ofSize: 17)
+        return label
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,35 +155,43 @@ private extension MainViewController {
                     let groupIds = document.data().map{
                         $0["division"] as? [String] ?? []
                     } ?? [String]()
-                    var newGroups: [Group] = []
-                    for idx in 0 ..< groupIds.count {
-                        let groupsRef = self.db.collection("groups").document(groupIds[idx])
-                        groupsRef.getDocument(as: Group.self) { result in
-                            switch result {
+                    if groupIds.isEmpty {
+                        self.groups = []
+                        self.isFirstLoading = false
+                        self.setEmptyLabel()
+                    } else {
+                        if groupIds.count == 1 {
+                            self.emptyLabel.removeFromSuperview()
+                        }
+                        var newGroups: [Group] = []
+                        for idx in 0 ..< groupIds.count {
+                            let groupsRef = self.db.collection("groups").document(groupIds[idx])
+                            groupsRef.getDocument(as: Group.self) { result in
+                                switch result {
                                 case .success(let group):
-                                self.db.collection("groupUsers").document(groupIds[idx]).collection("participants").getDocuments() { querySnapshot, error in
-                                    if let err = error {
-                                        print("Error getting documents: \(err)")
-                                    } else {
-                                        group.participants = []
-                                        for document in querySnapshot?.documents ?? [] {
-                                            group.participants.append((document.documentID, document.data()["groupNickname"] as? String ?? ""))
-                                            if document.documentID == UserDefaults.standard.string(forKey: "uid") ?? "" {
-                                                group.groupNickname = document.data()["groupNickname"] as? String ?? ""
+                                    self.db.collection("groupUsers").document(groupIds[idx]).collection("participants").getDocuments() { querySnapshot, error in
+                                        if let err = error {
+                                            print("Error getting documents: \(err)")
+                                        } else {
+                                            group.participants = []
+                                            for document in querySnapshot?.documents ?? [] {
+                                                group.participants.append((document.documentID, document.data()["groupNickname"] as? String ?? ""))
+                                                if document.documentID == UserDefaults.standard.string(forKey: "uid") ?? "" {
+                                                    group.groupNickname = document.data()["groupNickname"] as? String ?? ""
+                                                }
+                                            }
+                                            group.groupId = groupIds[idx]
+                                            newGroups.append(group)
+                                            newGroups.sort(by: >)
+                                            if newGroups.count == groupIds.count {
+                                                self.groups = newGroups
+                                                self.isFirstLoading = false
                                             }
                                         }
-                                        group.groupId = groupIds[idx]
-                                        newGroups.append(group)
-                                        newGroups.sort(by: >)
-                                        
-                                        if newGroups.count == groupIds.count {
-                                            self.groups = newGroups
-                                            self.isFirstLoading = false
-                                        }
                                     }
-                                }
                                 case .failure(let error):
-                                print("Error decoding group: \(error)")
+                                    print("Error decoding group: \(error)")
+                                }
                             }
                         }
                     }
@@ -199,6 +214,14 @@ private extension MainViewController {
         mainTitleLabel.font = .systemFont(ofSize: 26, weight: .bold)
     }
     
+    func setEmptyLabel() {
+        view.addSubview(emptyLabel)
+        emptyLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            emptyLabel.topAnchor.constraint(equalTo: groupsCollectionView.topAnchor, constant: 200),
+            emptyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
     
     func setAddGroupCard() {
         view.addSubview(addGroupCard)
