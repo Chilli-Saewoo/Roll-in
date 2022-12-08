@@ -276,7 +276,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
             halfModal.preferredCornerRadius = 10
             halfModal.detents = [.medium()]
             halfModal.delegate = self
-            halfModal.prefersGrabberVisible = true
+            halfModal.prefersGrabberVisible = false
         }
         if post.isPublic || receiverUserId == UserDefaults.standard.string(forKey: "uid") {
             present(rollingPaperDetailViewController, animated: true, completion: nil)
