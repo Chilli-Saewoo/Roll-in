@@ -1,4 +1,4 @@
-name: Fix Template
+name: Fix UI Template
 description: Fix 사항이 있을 때 사용하는 템플릿
 title: "[fix ui]: Fix 이슈 제목"
 labels: ["fix"]
