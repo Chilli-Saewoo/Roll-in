@@ -47,7 +47,7 @@ final class MainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         fetchGroups()
-        mainTitleLabel.text = "\(UserDefaults.standard.string(forKey: "nickname") ?? "")의 롤인 그룹"
+        self.mainTitleLabel.text = "\(UserDefaults.standard.string(forKey: "nickname") ?? "")의 롤인 그룹"
     }
     
     override func viewWillAppear(_ animated: Bool) {
