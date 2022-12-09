@@ -13,7 +13,7 @@ final class CardSwiperCell: CardCell {
     private let bookMarkLabel = UIImageView()
     
     public func setCell(index: Int, name: String, userId: String) {
-        let colors: [UIColor] = [.cardRed, .cardBlue, .cardPink, .cardGreen, .cardPurple, .cardYellow, .cardDeepBlue]
+        let colors: [UIColor] = [.cardBlue, .cardPink, .cardGreen, .cardPurple, .cardYellow]
         self.backgroundColor = colors[index % colors.count]
         nameLabel.text = name
         if userId == UserDefaults.standard.string(forKey: "uid") {
