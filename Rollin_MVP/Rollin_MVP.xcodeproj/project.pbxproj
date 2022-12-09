@@ -14,6 +14,7 @@
 		2AF46852291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */; };
 		2AF46854291E20E300AB2DE4 /* DetailPostLabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46853291E20E300AB2DE4 /* DetailPostLabelCollectionViewCell.swift */; };
 		790FF814291E5733004BDA20 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FF813291E5733004BDA20 /* UIViewController+.swift */; };
+		7932022F294318FE000ED09F /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7932022E294318FD000ED09F /* UILabel+.swift */; };
 		79340B27292171130097D111 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B26292171130097D111 /* Group.swift */; };
 		79340B29292171420097D111 /* ParticipateGroupInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B28292171420097D111 /* ParticipateGroupInfo.swift */; };
 		79340B31292171AD0097D111 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79340B2D292171AD0097D111 /* MainViewController.swift */; };
@@ -112,6 +113,7 @@
 		790FF813291E5733004BDA20 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		790FF81C291E7195004BDA20 /* RollingPaperPostAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollingPaperPostAPI.swift; sourceTree = "<group>"; };
 		790FF81E291ED661004BDA20 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageManager.swift; sourceTree = "<group>"; };
+		7932022E294318FD000ED09F /* UILabel+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		79340B26292171130097D111 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		79340B28292171420097D111 /* ParticipateGroupInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParticipateGroupInfo.swift; sourceTree = "<group>"; };
 		79340B2D292171AD0097D111 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 				AB032AA3291E872400B22C13 /* String+.swift */,
 				ABCFC80E291FEAC7006DB26B /* Int+.swift */,
 				F663324C292034D100A7310A /* Image+.swift */,
+				7932022E294318FD000ED09F /* UILabel+.swift */,
 				F663324E2920398200A7310A /* UITextField+.swift */,
 				F65517502920C89D00B09405 /* NSTextAttachment+.swift */,
 			);
@@ -730,6 +733,7 @@
 				F6667F3029219FD000CD480F /* RollingPaperPostAPI.swift in Sources */,
 				AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */,
 				79BAA9A5291AE8D400C5636E /* PostThemePickerViewCell.swift in Sources */,
+				7932022F294318FE000ED09F /* UILabel+.swift in Sources */,
 				79BAA9A2291AE53100C5636E /* WriteRollingPaperViewController.swift in Sources */,
 				ABCFC81229201518006DB26B /* LoginViewController.swift in Sources */,
 				79A91011291C091B00A0672F /* Alert+.swift in Sources */,

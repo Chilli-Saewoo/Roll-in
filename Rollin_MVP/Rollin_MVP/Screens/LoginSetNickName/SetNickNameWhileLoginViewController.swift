@@ -151,7 +151,7 @@ private extension SetNicknameWhileLoginViewController {
             titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
             titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
-        titleMessageLabel.text = "닉네임을 설정해주세요"
+        titleMessageLabel.text = "계정명을 설정해주세요"
         titleMessageLabel.font = .systemFont(ofSize: 24, weight: .bold)
         titleMessageLabel.textColor = .systemBlack
     }
