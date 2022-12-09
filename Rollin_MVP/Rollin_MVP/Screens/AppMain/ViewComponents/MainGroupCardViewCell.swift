@@ -19,7 +19,7 @@ final class MainGroupCardViewCell: UICollectionViewCell {
         setGroupNameLabel()
         setCreatedDateLabel()
         setParticipateCountLabel()
-        self.layer.cornerRadius = 8.0
+        self.layer.cornerRadius = 16.0
     }
     
     public func setCardView(info: Group) {
