@@ -116,7 +116,7 @@ extension SettingViewController: UITableViewDelegate {
             let alert = UIAlertController(title: "회원탈퇴 하시겠습니까?", message: nil, preferredStyle: .alert)
             let action = UIAlertAction(title: "회원탈퇴하기", style: .destructive, handler: {_ in
                 if let uid = UserDefaults.standard.string(forKey: "uid") {
-                    //                 userGroups에 해당하는 user_uid값을 체크하고 현재 참여중인 그룹을 확인
+                    // userGroups에 해당하는 user_uid값을 체크하고 현재 참여중인 그룹을 확인
                     let docRef = self.db.collection("userGroups").document(uid)
                     docRef.getDocument { (document, error) in
                         if let document = document, document.exists {
@@ -128,7 +128,7 @@ extension SettingViewController: UITableViewDelegate {
                                 groupsRef.getDocument(as: Group.self) { result in
                                     switch result {
                                     case .success(let group):
-                                        //                                  그 뒤에 GroupUsers에서 해당하는 그룹 group_UUID를 체크 한 후 participants에 들어가서 해당하는 user_uid값 삭제
+                                        //  그 뒤에 GroupUsers에서 해당하는 그룹 group_UUID를 체크 한 후 participants에 들어가서 해당하는 user_uid값 삭제
                                         self.db.collection("groupUsers").document(groupIds[idx]).collection("participants").getDocuments() { querySnapshot, error in
                                             if let err = error {
                                                 print("Error getting documents: \(err)")
