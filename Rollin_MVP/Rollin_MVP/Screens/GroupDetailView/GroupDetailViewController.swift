@@ -13,12 +13,22 @@ final class CardSwiperCell: CardCell {
     private let bookMarkLabel = UIImageView()
     
     public func setCell(index: Int, name: String, userId: String) {
-        let colors: [UIColor] = [.cardRed, .cardBlue, .cardPink, .cardGreen, .cardPurple, .cardYellow, .cardDeepBlue]
+        let colors: [UIColor] = [.cardBlue, .cardPink, .cardGreen, .cardPurple, .cardYellow]
         self.backgroundColor = colors[index % colors.count]
+        self.layer.cornerRadius = 4.0
+        setShadow()
         nameLabel.text = name
         if userId == UserDefaults.standard.string(forKey: "uid") {
             setBookMarkLabel()
         }
+    }
+    
+    private func setShadow() {
+        self.layer.shadowOpacity = 1
+        self.layer.shadowRadius = 1
+        self.layer.shadowOffset = CGSize(width: 0, height: -2)
+        self.layer.shadowPath = nil
+        self.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
     }
     
     override init(frame: CGRect) {
@@ -79,7 +89,7 @@ final class GroupDetailViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         if isFirstLoading {
             let _ = cardSwiper.scrollToCard(at: (group?.participants.count ?? 1) - 1, animated: false)
-            isFirstLoading = false
+            isFirstLoading = true
         }
     }
     
@@ -124,12 +134,12 @@ private extension GroupDetailViewController {
     func setCardSwiper() {
         cardSwiper = VerticalCardSwiper(frame: CGRect(x: 0.0, y: screenHeight * 0.2, width: screenWidth, height: screenHeight * 0.8))
         cardSwiper.isSideSwipingEnabled = false
-        cardSwiper.topInset = 40
-        cardSwiper.stackedCardsCount = 5
-        cardSwiper.cardSpacing = 30
+        cardSwiper.topInset = 54
+        cardSwiper.stackedCardsCount = 4
+        cardSwiper.cardSpacing = 14
         cardSwiper.isStackOnBottom = false
         cardSwiper.visibleNextCardHeight = 50
-        cardSwiper.firstItemTransform = 0.08
+        cardSwiper.firstItemTransform = 0.04
     }
 }
 
