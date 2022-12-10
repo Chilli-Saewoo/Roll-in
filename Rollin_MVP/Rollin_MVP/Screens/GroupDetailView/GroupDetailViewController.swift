@@ -72,6 +72,7 @@ final class GroupDetailViewController: UIViewController {
     private let ingroupCodeCopyLabel = UILabel()
     private let ingroupCodeCopyButton = UIButton()
     private let codeCopyToastView = UILabel()
+    private var isFirstLoading = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,9 +89,13 @@ final class GroupDetailViewController: UIViewController {
         cardSwiper.layer.opacity = 0.0
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
-        let _ = cardSwiper.scrollToCard(at: (group?.participants.count ?? 1) - 1, animated: false)
-        cardSwiper.layer.opacity = 1.0
+        if isFirstLoading {
+            let _ = cardSwiper.scrollToCard(at: (group?.participants.count ?? 1) - 1, animated: false)
+            cardSwiper.layer.opacity = 1.0
+            isFirstLoading = false
+        }
     }
     
     private func setIngroupCopyButtonAction() {
