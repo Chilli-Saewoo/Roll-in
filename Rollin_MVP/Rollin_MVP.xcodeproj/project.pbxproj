@@ -67,9 +67,9 @@
 		ABDBD2D5291A3F99008FB3A6 /* Rollin_MVPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2D4291A3F99008FB3A6 /* Rollin_MVPTests.swift */; };
 		ABDBD2DF291A3F99008FB3A6 /* Rollin_MVPUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2DE291A3F99008FB3A6 /* Rollin_MVPUITests.swift */; };
 		ABDBD2E1291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDBD2E0291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift */; };
+		ABF45DFA29445B9000D96CC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABF45DF929445B9000D96CC4 /* GoogleService-Info.plist */; };
 		F64694F92921A4BB0094CB68 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64694F82921A4BB0094CB68 /* FirebaseStorageManager.swift */; };
 		F65517512920C89D00B09405 /* NSTextAttachment+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65517502920C89D00B09405 /* NSTextAttachment+.swift */; };
-		F65CD8A2293ECF9100FDD484 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F65CD8A1293ECF9100FDD484 /* GoogleService-Info.plist */; };
 		F663324B292033F300A7310A /* SetNickNameWhileLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324A292033F300A7310A /* SetNickNameWhileLoginViewController.swift */; };
 		F663324D292034D100A7310A /* Image+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324C292034D100A7310A /* Image+.swift */; };
 		F663324F2920398200A7310A /* UITextField+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324E2920398200A7310A /* UITextField+.swift */; };
@@ -168,9 +168,9 @@
 		ABDBD2DA291A3F99008FB3A6 /* Rollin_MVPUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Rollin_MVPUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABDBD2DE291A3F99008FB3A6 /* Rollin_MVPUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rollin_MVPUITests.swift; sourceTree = "<group>"; };
 		ABDBD2E0291A3F99008FB3A6 /* Rollin_MVPUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rollin_MVPUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		ABF45DF929445B9000D96CC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F64694F82921A4BB0094CB68 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseStorageManager.swift; path = API/FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		F65517502920C89D00B09405 /* NSTextAttachment+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextAttachment+.swift"; sourceTree = "<group>"; };
-		F65CD8A1293ECF9100FDD484 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../dataSet/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F663324A292033F300A7310A /* SetNickNameWhileLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetNickNameWhileLoginViewController.swift; sourceTree = "<group>"; };
 		F663324C292034D100A7310A /* Image+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+.swift"; sourceTree = "<group>"; };
 		F663324E2920398200A7310A /* UITextField+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+.swift"; sourceTree = "<group>"; };
@@ -536,7 +536,7 @@
 			children = (
 				F6667F2F29219FD000CD480F /* RollingPaperPostAPI.swift */,
 				F64694F82921A4BB0094CB68 /* FirebaseStorageManager.swift */,
-				F65CD8A1293ECF9100FDD484 /* GoogleService-Info.plist */,
+				ABF45DF929445B9000D96CC4 /* GoogleService-Info.plist */,
 				ABA034442921BB0100A50471 /* API */,
 			);
 			path = Firebase;
@@ -662,7 +662,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABDBD2CA291A3F99008FB3A6 /* LaunchScreen.storyboard in Resources */,
-				F65CD8A2293ECF9100FDD484 /* GoogleService-Info.plist in Resources */,
+				ABF45DFA29445B9000D96CC4 /* GoogleService-Info.plist in Resources */,
 				ABDBD2C7291A3F99008FB3A6 /* Assets.xcassets in Resources */,
 				ABDBD2C5291A3F97008FB3A6 /* Main.storyboard in Resources */,
 			);
@@ -926,7 +926,7 @@
 				CODE_SIGN_ENTITLEMENTS = Rollin_MVP/Rollin_MVP.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = A8RC8B498C;
+				DEVELOPMENT_TEAM = 8QSTXVD8H9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Rollin_MVP/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "롤인";
