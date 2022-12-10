@@ -47,7 +47,8 @@ class ResetIngroupNicknameViewController: UIViewController {
     
     @objc func completeButtonPressed(_ sender: UIButton) {
         guard let text = nameTextField.text else { return }
-        db.collection("groupUsers").document(groupId).collection("participants").document(UserDefaults.standard.string(forKey: "uid") ?? "").setData([
+        guard let uid = UserDefaults.standard.string(forKey: "uid") else { return }
+        db.collection("groupUsers").document(groupId).collection("participants").document(uid).setData([
             "groupNickname": text
         ]) { err in
             if let err = err {
