@@ -16,12 +16,22 @@ final class MainViewController: UIViewController {
     private lazy var bottomGradientView = UIView()
     private let addGroupCard = AddGroupButtonBackgroundView()
     private var groupsCollectionView: UICollectionView!
+    private var isFirstLoading = true
+    private lazy var emptyLabel: UILabel = {
+        let label = UILabel()
+        label.text = "그룹을 추가해보세요"
+        label.textColor = .inactiveBgGray
+        label.font = .systemFont(ofSize: 17)
+        return label
+    }()
     private var groups: [Group] = [] {
-        didSet {
+        didSet(oldVal) {
+            if oldVal.count == 0 {
+                emptyLabel.removeFromSuperview()
+            }
             groupsCollectionView.reloadData()
         }
     }
-    private var isFirstLoading = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,11 +159,16 @@ private extension MainViewController {
                         $0["division"] as? [String] ?? []
                     } ?? [String]()
                     var newGroups: [Group] = []
+                    if groupIds.isEmpty {
+                        self.groups = []
+                        self.setEmptyLabel()
+                        self.isFirstLoading = false
+                    }
                     for idx in 0 ..< groupIds.count {
                         let groupsRef = self.db.collection("groups").document(groupIds[idx])
                         groupsRef.getDocument(as: Group.self) { result in
                             switch result {
-                                case .success(let group):
+                            case .success(let group):
                                 self.db.collection("groupUsers").document(groupIds[idx]).collection("participants").getDocuments() { querySnapshot, error in
                                     if let err = error {
                                         print("Error getting documents: \(err)")
@@ -168,14 +183,13 @@ private extension MainViewController {
                                         group.groupId = groupIds[idx]
                                         newGroups.append(group)
                                         newGroups.sort(by: >)
-                                        
                                         if newGroups.count == groupIds.count {
                                             self.groups = newGroups
                                             self.isFirstLoading = false
                                         }
                                     }
                                 }
-                                case .failure(let error):
+                            case .failure(let error):
                                 print("Error decoding group: \(error)")
                             }
                         }
@@ -199,6 +213,14 @@ private extension MainViewController {
         mainTitleLabel.font = .systemFont(ofSize: 26, weight: .bold)
     }
     
+    func setEmptyLabel() {
+        view.addSubview(emptyLabel)
+        emptyLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            emptyLabel.topAnchor.constraint(equalTo: groupsCollectionView.topAnchor, constant: 200),
+            emptyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+    }
     
     func setAddGroupCard() {
         view.addSubview(addGroupCard)
