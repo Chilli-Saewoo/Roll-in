@@ -72,7 +72,6 @@ final class GroupDetailViewController: UIViewController {
     private let ingroupCodeCopyLabel = UILabel()
     private let ingroupCodeCopyButton = UIButton()
     private let codeCopyToastView = UILabel()
-    private var isFirstLoading = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
