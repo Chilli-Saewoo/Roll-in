@@ -173,7 +173,9 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
         let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ResetIngroupNicknameViewController") as? ResetIngroupNicknameViewController ?? UIViewController()
         let vc = viewController as? ResetIngroupNicknameViewController
         guard let groupId = groupId else { return }
+        guard let receiverNickname = receiverNickname else { return }
         vc?.groupId = groupId
+        vc?.receiverNickname = receiverNickname
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 }

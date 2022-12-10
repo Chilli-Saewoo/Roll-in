@@ -24,6 +24,7 @@ class ResetIngroupNicknameViewController: UIViewController {
         }
     }
     var groupId: String = ""
+    var receiverNickname: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -139,6 +140,7 @@ private extension ResetIngroupNicknameViewController {
             nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
         ])
+        nameTextField.placeholder = receiverNickname
         
         view.addSubview(textFieldUnderLineView)
         textFieldUnderLineView.translatesAutoresizingMaskIntoConstraints = false
