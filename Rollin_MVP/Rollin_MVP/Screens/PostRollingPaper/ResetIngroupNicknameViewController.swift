@@ -23,7 +23,6 @@ class ResetIngroupNicknameViewController: UIViewController {
             completeButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: keyboardHeight * -1) .isActive = true
         }
     }
-    var writerNickname: String = ""
     var groupId: String = ""
     
     override func viewDidLoad() {

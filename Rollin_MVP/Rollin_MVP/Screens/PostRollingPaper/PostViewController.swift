@@ -164,6 +164,18 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
         vc?.writerNickname = myGroupNickname
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    private func setResetIngroupNicknameButton() {
+        resetIngroupNicknameButton.addTarget(self, action: #selector(resetIngroupNicknameButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc private func resetIngroupNicknameButtonPressed() {
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ResetIngroupNicknameViewController") as? ResetIngroupNicknameViewController ?? UIViewController()
+        let vc = viewController as? ResetIngroupNicknameViewController
+        guard let groupId = groupId else { return }
+        vc?.groupId = groupId
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 private extension PostViewController {
@@ -330,6 +342,7 @@ private extension PostViewController {
             ])
             resetIngroupNicknameButton.backgroundColor = .systemBlack
             resetIngroupNicknameButton.layer.cornerRadius = 4.0
+            setResetIngroupNicknameButton()
         }
     }
     
