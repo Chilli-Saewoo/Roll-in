@@ -223,7 +223,7 @@ private extension PostViewController {
             titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
         guard let groupNickname = receiverNickname else { return }
-        titleMessageLabel.text = "\(groupNickname)의 롤링페이퍼"
+        titleMessageLabel.text = groupNickname
         titleMessageLabel.font = .systemFont(ofSize: 26, weight: .bold)
         titleMessageLabel.numberOfLines = 0
     }
@@ -324,8 +324,7 @@ private extension PostViewController {
 
 extension PostViewController {
     func setNavigationBarBackButton() {
-        guard let groupNickname = receiverNickname else { return }
-        let backBarButtonItem = UIBarButtonItem(title: "\(groupNickname)님의 롤링페이퍼", style: .plain, target: self, action: nil)
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .black
         self.navigationItem.backBarButtonItem = backBarButtonItem
     }
