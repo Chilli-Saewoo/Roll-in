@@ -95,6 +95,15 @@ final class PostThemePickerView: UIView {
             return UIImage()
         }
     }
+    
+    func checkIsPictureTheme(imageString: String) -> Bool {
+        switch imageString {
+        case "mistletoe", "light", "orangeStripe", "redStripe" :
+            return true
+        default:
+            return false
+        }
+    }
 }
 
 extension PostThemePickerView: UICollectionViewDataSource {
@@ -131,6 +140,8 @@ extension PostThemePickerView: UICollectionViewDelegate {
         }
         postViewDelegate?.changePostColor(selectedTextColor: themeList[indexPath.row].textColor, selectedBgColor: themeList[indexPath.row].bgColor)
         postViewDelegate?.changePostTheme(theme: themeList[indexPath.row].themeName)
+        let isPicutreTheme = checkIsPictureTheme(imageString: themeList[indexPath.row].themeName)
+        postViewDelegate?.changePostTextInset(isPictureTheme: isPicutreTheme)
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {

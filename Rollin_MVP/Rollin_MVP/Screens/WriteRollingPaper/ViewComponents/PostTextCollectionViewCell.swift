@@ -72,12 +72,23 @@ final class PostTextCollectionViewCell: UICollectionViewCell {
             textView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
         
+        setFromLabelLayout(isPictureTheme: false)
+    }
+    
+    func setFromLabelLayout(isPictureTheme: Bool) {
         contentView.addSubview(fromLabel)
         fromLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            fromLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -7),
-            fromLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12)
-        ])
+        if isPictureTheme {
+            NSLayoutConstraint.activate([
+                fromLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -48),
+                fromLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -48)
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                fromLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -7),
+                fromLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12)
+            ])
+        }
     }
     
     func setBackgroundColor(color: UIColor?) {
@@ -101,7 +112,7 @@ extension PostTextCollectionViewCell: UITextViewDelegate {
         }
         return self.checkTextLimit(existingText: textView.text,
                                   newText: text,
-                                  limit: 200)
+                                  limit: 150)
     }
     
     func textViewDidChange(_ textView: UITextView) {

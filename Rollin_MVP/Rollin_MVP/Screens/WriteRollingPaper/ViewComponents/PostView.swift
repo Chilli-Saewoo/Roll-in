@@ -12,6 +12,8 @@ protocol PostViewDelegate: AnyObject {
     
     func changePostTheme(theme: String)
     
+    func changePostTextInset(isPictureTheme: Bool)
+    
     func setTextCount(textCount: Int)
 }
 
@@ -56,7 +58,7 @@ final class PostView: UIView {
     
     private let textCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "0/200"
+        label.text = "0/150"
         return label
     }()
     
@@ -327,7 +329,20 @@ extension PostView: PostViewDelegate {
         self.postTextCollectionViewCell.imageView.image = image
     }
     
+    func changePostTextInset(isPictureTheme: Bool) {
+        if isPictureTheme {
+            self.postTextCollectionViewCell.textView.textContainerInset = UIEdgeInsets(top: 48, left: 48, bottom: 36, right: 48)
+            self.postTextCollectionViewCell.fromLabel.removeFromSuperview()
+            self.postTextCollectionViewCell.setFromLabelLayout(isPictureTheme: true)
+        } else {
+            self.postTextCollectionViewCell.textView.textContainerInset = UIEdgeInsets(top: 24, left: 24, bottom: 36, right: 24)
+            self.postTextCollectionViewCell.fromLabel.removeFromSuperview()
+            self.postTextCollectionViewCell.setFromLabelLayout(isPictureTheme: false)
+            
+        }
+    }
+    
     func setTextCount(textCount: Int) {
-        textCountLabel.text = "\(textCount)/200"
+        textCountLabel.text = "\(textCount)/150"
     }
 }
