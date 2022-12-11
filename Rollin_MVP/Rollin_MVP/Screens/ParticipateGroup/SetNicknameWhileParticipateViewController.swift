@@ -129,7 +129,9 @@ private extension SetNicknameWhileParticipateViewController {
             titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
             titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
-        titleMessageLabel.text = "그룹 내 닉네임을 입력해주세요"
+        titleMessageLabel.numberOfLines = 2
+        titleMessageLabel.text = "그룹에서 사용할\n닉네임을 입력해주세요"
+        titleMessageLabel.addLabelSpacing(lineSpacing: 8.0)
         titleMessageLabel.font = .systemFont(ofSize: 24, weight: .bold)
         titleMessageLabel.textColor = .systemBlack
     }

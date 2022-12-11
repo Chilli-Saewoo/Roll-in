@@ -21,7 +21,7 @@ final class AddGroupButtonBackgroundView: UIView {
     
     init() {
         super.init(frame: .zero)
-        self.layer.cornerRadius = 4.0
+        self.layer.cornerRadius = 16.0
         self.backgroundColor = .black
         setAddGroupTextLabel()
         setAddGroupButton()
