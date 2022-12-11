@@ -25,11 +25,8 @@ final class GroupDetailViewController: UIViewController {
         tableView.rowHeight = 20
         return tableView
     }()
-    private var alphabet: [String] = ["Z", "Y", "X", "W", "V", "U", "T", "S", "R", "Q", "P", "O","N", "M", "L", "K", "J","I", "H", "G", "F","E","D", "C", "B", "A", "ㅎ", "ㅍ", "ㅌ", "ㅋ", "ㅊ", "ㅈ", "ㅇ", "ㅅ", "ㅂ", "ㅁ", "ㄹ", "ㄷ", "ㄴ", "ㄱ", "􀉟"]
     lazy var indexBarBackground = UIView()
     let koreanAlphabet = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
-    var array = [Int]()
-    var strArray = [String]()
     var userInitialDic = [String : Int]()
     var userInitialKeys = [String]()
     var userList: [(String, String)] {
