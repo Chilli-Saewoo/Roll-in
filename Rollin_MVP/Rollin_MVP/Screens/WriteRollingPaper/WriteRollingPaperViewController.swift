@@ -22,6 +22,7 @@ protocol WriteRollingPaperViewDelegate: AnyObject {
 final class WriteRollingPaperViewController: UIViewController {
     
     private let postThemePicerkView = PostThemePickerView()
+    private let postPhotoPickerView = PostPhotoPickerView()
     private let postView = PostView()
 //    private let imagePickerViewController = UIImagePickerController()
 //    private let rollingPaperPostAPI = RollingPaperPostAPI()
@@ -197,6 +198,7 @@ final class WriteRollingPaperViewController: UIViewController {
         if !isTemplateView {
             isTemplateView.toggle()
             setupUnderbarViewLayout()
+            postPhotoPickerView.removeFromSuperview()
             setupPostThemePickerViewLayout()
         }
     }
@@ -206,8 +208,9 @@ final class WriteRollingPaperViewController: UIViewController {
         underbarUIView.removeFromSuperview()
         if isTemplateView {
             isTemplateView.toggle()
-            postThemePicerkView.removeFromSuperview()
             setupUnderbarViewLayout()
+            postThemePicerkView.removeFromSuperview()
+            setupPostPhotoPickerViewLayout()
         }
     }
 //    @objc
@@ -301,15 +304,7 @@ final class WriteRollingPaperViewController: UIViewController {
         
         setupUnderbarViewLayout()
         
-        view.addSubview(postThemePicerkView)
-        postThemePicerkView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            postThemePicerkView.topAnchor.constraint(equalTo: underbarUIView.bottomAnchor, constant: 16),
-            postThemePicerkView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            postThemePicerkView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            postThemePicerkView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        
+        setupPostThemePickerViewLayout()
     }
     
     private func setupPostLayout() {
@@ -357,6 +352,17 @@ final class WriteRollingPaperViewController: UIViewController {
             postThemePicerkView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
             postThemePicerkView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             postThemePicerkView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    func setupPostPhotoPickerViewLayout() {
+        view.addSubview(postPhotoPickerView)
+        postPhotoPickerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            postPhotoPickerView.topAnchor.constraint(equalTo: underbarUIView.bottomAnchor, constant: 16),
+            postPhotoPickerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            postPhotoPickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            postPhotoPickerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
