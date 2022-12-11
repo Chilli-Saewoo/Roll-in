@@ -26,14 +26,14 @@ final class PostThemePickerView: UIView {
                                       theme(textColor: .textYellow, bgColor: .bgYellow, title: "노랑", themeHex: "FFF9C0"),
                                       theme(textColor: .textGreen, bgColor: .bgGreen, title: "초록", themeHex: "C8F6D5"),
                                       theme(textColor: .textBlue, bgColor: .bgBlue, title: "파랑", themeHex: "DDEBFF"),
-                                      theme(textColor: .textPurple, bgColor: .bgPurple, title: "보라", themeHex: "EBDDFF"),
-                                      theme(textColor: .textRed, bgColor: .bgRed, title: "빨강", themeHex: "FEE0EA"),
-                                      theme(textColor: .textYellow, bgColor: .bgYellow, title: "노랑", themeHex: "FFF9C0"),
-                                      theme(textColor: .textGreen, bgColor: .bgGreen, title: "초록", themeHex: "C8F6D5"),
-                                      theme(textColor: .textBlue, bgColor: .bgBlue, title: "파랑", themeHex: "DDEBFF"),
-                                      theme(textColor: .textPurple, bgColor: .bgPurple, title: "보라", themeHex: "EBDDFF"),
-                                      theme(textColor: .textBlue, bgColor: .bgBlue, title: "파랑", themeHex: "DDEBFF"),
-                                      theme(textColor: .textPurple, bgColor: .bgPurple, title: "보라", themeHex: "EBDDFF")]
+                                      theme(textColor: .textGold, bgColor: .bgPurple, title: "보라", themeHex: "mistletoe"),
+                                      theme(textColor: .textBrown, bgColor: .bgRed, title: "빨강", themeHex: "light"),
+                                      theme(textColor: .textBrown, bgColor: .bgYellow, title: "노랑", themeHex: "orangeStripe"),
+                                      theme(textColor: .textRed, bgColor: .bgGreen, title: "초록", themeHex: "redStripe"),
+                                      theme(textColor: .textGold, bgColor: .bgBlue, title: "파랑", themeHex: "deer"),
+                                      theme(textColor: .white, bgColor: .bgPurple, title: "보라", themeHex: "snowman"),
+                                      theme(textColor: .white, bgColor: .bgBlue, title: "파랑", themeHex: "gingerBread"),
+                                      theme(textColor: .white, bgColor: .bgPurple, title: "보라", themeHex: "santa")]
     
     let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 3) - (16 * 2))/4
     
