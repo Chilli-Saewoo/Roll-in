@@ -50,6 +50,14 @@ final class WriteRollingPaperViewController: UIViewController {
         return button
     }()
     
+    private let underbarUIView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        return view
+    }()
+    
+    private var isTemplateView: Bool = true
+    
 //    private let confirmButton: UIButton = {
 //        let button = UIButton()
 //        button.setTitle("올리기", for: .normal)
@@ -88,7 +96,7 @@ final class WriteRollingPaperViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupWholeLayout()
-//        setupButtonAction()
+        setupButtonAction()
         configureDelegate()
         hideKeyboardWhenTappedAround()
     }
@@ -142,13 +150,32 @@ final class WriteRollingPaperViewController: UIViewController {
 //        })
 //    }
     
-//    private func setupButtonAction() {
+    private func setupButtonAction() {
+        templateButton.addTarget(self, action: #selector(touchUpInsideToSetTemplateView), for: .touchUpInside)
+        photoButton.addTarget(self, action: #selector(touchUpInsideToSetPhotoView), for: .touchUpInside)
 //        postView.emptyImageButton.addTarget(self, action: #selector(touchUpInsideToSetPhoto), for: .touchUpInside)
 //        postView.addedImageButton.addTarget(self, action: #selector(touchUpInsideToSetPhoto), for: .touchUpInside)
 //        confirmButton.addTarget(self, action: #selector(touchUpInsideToConfirmPost), for: .touchUpInside)
 //        confirmButton.isEnabled = false
-//    }
+    }
     
+    @objc
+    private func touchUpInsideToSetTemplateView() {
+        underbarUIView.removeFromSuperview()
+        if !isTemplateView {
+            isTemplateView.toggle()
+        }
+        setupUnderbarView()
+    }
+    
+    @objc
+    private func touchUpInsideToSetPhotoView() {
+        underbarUIView.removeFromSuperview()
+        if isTemplateView {
+            isTemplateView.toggle()
+        }
+        setupUnderbarView()
+    }
 //    @objc
 //    private func touchUpInsideToSetPhoto() {
 //        let choosePhotoFromAlbumAction: ((UIAlertAction) -> ()) = { [weak self] _ in
@@ -213,6 +240,9 @@ final class WriteRollingPaperViewController: UIViewController {
             photoButton.bottomAnchor.constraint(equalTo: buttonStackView.bottomAnchor),
             photoButton.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 32) / 2)
         ])
+        
+        setupUnderbarView()
+        
 //                view.addSubview(postThemePicerkView)
 //                postThemePicerkView.translatesAutoresizingMaskIntoConstraints = false
 //                NSLayoutConstraint.activate([
@@ -247,6 +277,26 @@ final class WriteRollingPaperViewController: UIViewController {
 //                postView.heightAnchor.constraint(equalToConstant: 164 + UIScreen.main.bounds.width - 40),
 //            ])
 //        }
+    }
+    
+    func setupUnderbarView() {
+        view.addSubview(underbarUIView)
+        underbarUIView.translatesAutoresizingMaskIntoConstraints = false
+        if isTemplateView {
+            NSLayoutConstraint.activate([
+                underbarUIView.topAnchor.constraint(equalTo: buttonStackView.bottomAnchor, constant: 10),
+                underbarUIView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+                underbarUIView.heightAnchor.constraint(equalToConstant: 2),
+                underbarUIView.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 32) / 2)
+            ])
+        } else {
+            NSLayoutConstraint.activate([
+                underbarUIView.topAnchor.constraint(equalTo: buttonStackView.bottomAnchor, constant: 10),
+                underbarUIView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+                underbarUIView.heightAnchor.constraint(equalToConstant: 2),
+                underbarUIView.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 32) / 2)
+            ])
+        }
     }
     
 //    private func setupActivityIndicatorLayout() {
