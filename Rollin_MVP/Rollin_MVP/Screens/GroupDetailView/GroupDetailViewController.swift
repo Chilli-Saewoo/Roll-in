@@ -86,6 +86,7 @@ final class GroupDetailViewController: UIViewController {
         cardSwiper.delegate = self
         cardSwiper.register(CardSwiperCell.self, forCellWithReuseIdentifier: "CardCell")
         cardSwiper.layer.opacity = 0.0
+        configureDelegate()
     }
     
     
@@ -106,6 +107,12 @@ final class GroupDetailViewController: UIViewController {
         UIPasteboard.general.string = code
         setToastView()
         showToastView()
+    }
+    
+    private func configureDelegate() {
+        indexBarTableView.delegate = self
+        indexBarTableView.dataSource = self
+        indexBarTableView.register(IndexBarTableViewCell.self, forCellReuseIdentifier: IndexBarTableViewCell.className)
     }
     
     private func getInitialConsonant(word: String) -> String {
@@ -266,4 +273,30 @@ private extension GroupDetailViewController {
     }
 }
 
+
+extension GroupDetailViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let selectedIndex = indexBarTableView.indexPathForSelectedRow {
+            cardSwiper.scrollToCard(at: userInitialDic[userInitialKeys[selectedIndex.row]] ?? userList.count - 1, animated: true)
+        }
+        indexBarTableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+            cell.backgroundColor = UIColor.clear
+    }
+}
+
+extension GroupDetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return userInitialKeys.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = indexBarTableView.dequeueReusableCell(withIdentifier: IndexBarTableViewCell.className) as? IndexBarTableViewCell else { return UITableViewCell() }
+        cell.configureUI(title: userInitialKeys[indexPath.row])
+        return cell
+    }
+}
 
