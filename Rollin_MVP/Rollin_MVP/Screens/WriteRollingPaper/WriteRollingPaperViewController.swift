@@ -15,7 +15,7 @@ import Firebase
 
 final class WriteRollingPaperViewController: UIViewController {
     
-//    private let postThemePicerkView = PostThemePickerView()
+    private let postThemePicerkView = PostThemePickerView()
     private let postView = PostView()
 //    private let imagePickerViewController = UIImagePickerController()
 //    private let rollingPaperPostAPI = RollingPaperPostAPI()
@@ -102,7 +102,7 @@ final class WriteRollingPaperViewController: UIViewController {
     }
     
     private func configureDelegate() {
-//        postThemePicerkView.delegate = self
+//        postThemePicerkView.delegate? = self
 //        imagePickerViewController.delegate = self
 //        imagePickerViewController.allowsEditing = true
 //        postView.delegate = self
@@ -164,8 +164,9 @@ final class WriteRollingPaperViewController: UIViewController {
         underbarUIView.removeFromSuperview()
         if !isTemplateView {
             isTemplateView.toggle()
+            setupUnderbarViewLayout()
+            setupPostThemePickerViewLayout()
         }
-        setupUnderbarView()
     }
     
     @objc
@@ -173,8 +174,9 @@ final class WriteRollingPaperViewController: UIViewController {
         underbarUIView.removeFromSuperview()
         if isTemplateView {
             isTemplateView.toggle()
+            postThemePicerkView.removeFromSuperview()
+            setupUnderbarViewLayout()
         }
-        setupUnderbarView()
     }
 //    @objc
 //    private func touchUpInsideToSetPhoto() {
@@ -241,16 +243,16 @@ final class WriteRollingPaperViewController: UIViewController {
             photoButton.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 32) / 2)
         ])
         
-        setupUnderbarView()
+        setupUnderbarViewLayout()
         
-//                view.addSubview(postThemePicerkView)
-//                postThemePicerkView.translatesAutoresizingMaskIntoConstraints = false
-//                NSLayoutConstraint.activate([
-//                    postThemePicerkView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-//                    postThemePicerkView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
-//                    postThemePicerkView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -21),
-//                    postThemePicerkView.heightAnchor.constraint(equalToConstant: postThemePickerItemWidth + 25)
-//                ])
+        view.addSubview(postThemePicerkView)
+        postThemePicerkView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            postThemePicerkView.topAnchor.constraint(equalTo: underbarUIView.bottomAnchor, constant: 16),
+            postThemePicerkView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            postThemePicerkView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            postThemePicerkView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
         
 //        view.addSubview(confirmButton)
 //        confirmButton.translatesAutoresizingMaskIntoConstraints = false
@@ -279,7 +281,7 @@ final class WriteRollingPaperViewController: UIViewController {
 //        }
     }
     
-    func setupUnderbarView() {
+    func setupUnderbarViewLayout() {
         view.addSubview(underbarUIView)
         underbarUIView.translatesAutoresizingMaskIntoConstraints = false
         if isTemplateView {
@@ -297,6 +299,17 @@ final class WriteRollingPaperViewController: UIViewController {
                 underbarUIView.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 32) / 2)
             ])
         }
+    }
+    
+    func setupPostThemePickerViewLayout() {
+        view.addSubview(postThemePicerkView)
+        postThemePicerkView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            postThemePicerkView.topAnchor.constraint(equalTo: underbarUIView.bottomAnchor, constant: 16),
+            postThemePicerkView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            postThemePicerkView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            postThemePicerkView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
 //    private func setupActivityIndicatorLayout() {

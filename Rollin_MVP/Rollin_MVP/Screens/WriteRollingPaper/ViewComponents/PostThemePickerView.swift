@@ -22,16 +22,23 @@ final class PostThemePickerView: UIView {
                                       theme(textColor: .textYellow, bgColor: .bgYellow, title: "노랑", themeHex: "FFF9C0"),
                                       theme(textColor: .textGreen, bgColor: .bgGreen, title: "초록", themeHex: "C8F6D5"),
                                       theme(textColor: .textBlue, bgColor: .bgBlue, title: "파랑", themeHex: "DDEBFF"),
+                                      theme(textColor: .textPurple, bgColor: .bgPurple, title: "보라", themeHex: "EBDDFF"),
+                                      theme(textColor: .textRed, bgColor: .bgRed, title: "빨강", themeHex: "FEE0EA"),
+                                      theme(textColor: .textYellow, bgColor: .bgYellow, title: "노랑", themeHex: "FFF9C0"),
+                                      theme(textColor: .textGreen, bgColor: .bgGreen, title: "초록", themeHex: "C8F6D5"),
+                                      theme(textColor: .textBlue, bgColor: .bgBlue, title: "파랑", themeHex: "DDEBFF"),
+                                      theme(textColor: .textPurple, bgColor: .bgPurple, title: "보라", themeHex: "EBDDFF"),
+                                      theme(textColor: .textBlue, bgColor: .bgBlue, title: "파랑", themeHex: "DDEBFF"),
                                       theme(textColor: .textPurple, bgColor: .bgPurple, title: "보라", themeHex: "EBDDFF")]
     
-    let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5
+    let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 3) - (16 * 2))/4
     
     var selectedThemeHex: String = "FEE0EA"
     
     private lazy var themeCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumInteritemSpacing = 7
-        layout.itemSize = CGSize(width: postThemePickerItemWidth, height: postThemePickerItemWidth + 25)
+        layout.itemSize = CGSize(width: postThemePickerItemWidth, height: postThemePickerItemWidth)
        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
@@ -56,7 +63,7 @@ final class PostThemePickerView: UIView {
             themeCollectionView.topAnchor.constraint(equalTo: topAnchor),
             themeCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             themeCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            themeCollectionView.heightAnchor.constraint(equalToConstant: postThemePickerItemWidth + 25)
+            themeCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 
@@ -78,8 +85,6 @@ extension PostThemePickerView: UICollectionViewDataSource {
             cell.themeLabel.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
             cell.themeLabel.layer.borderWidth = 2
         }
-        
-        cell.themeTitleLabel.text = themeList[indexPath.row].title
         cell.themeLabel.textColor = themeList[indexPath.row].textColor
         cell.themeLabel.backgroundColor = themeList[indexPath.row].bgColor
         

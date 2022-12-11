@@ -13,18 +13,11 @@ final class PostThemePickerViewCell: UICollectionViewCell {
         let label = UILabel()
         label.backgroundColor = .red
         label.textColor = .red
-        label.text = "안녕"
+        label.text = "롤인"
         label.font = .preferredFont(forTextStyle: .body)
         label.textAlignment = .center
-        label.layer.cornerRadius = 4
+        label.layer.cornerRadius = 8
         label.clipsToBounds = true
-        return label
-    }()
-    
-    var themeTitleLabel: UILabel = {
-        let label = UILabel()
-        label.text = ""
-        label.font = .preferredFont(forTextStyle: .footnote)
         return label
     }()
     
@@ -43,15 +36,8 @@ final class PostThemePickerViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             themeLabel.topAnchor.constraint(equalTo: topAnchor),
             themeLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            themeLabel.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5),
-            themeLabel.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5),
-        ])
-        
-        addSubview(themeTitleLabel)
-        themeTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            themeTitleLabel.topAnchor.constraint(equalTo: themeLabel.bottomAnchor, constant: 8),
-            themeTitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor)
+            themeLabel.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - (7 * 3) - (16 * 2))/4),
+            themeLabel.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - (7 * 3) - (16 * 2))/4),
         ])
     }
 }
