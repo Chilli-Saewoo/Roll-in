@@ -86,6 +86,7 @@ final class GroupDetailViewController: UIViewController {
         cardSwiper.delegate = self
         cardSwiper.register(CardSwiperCell.self, forCellWithReuseIdentifier: "CardCell")
         cardSwiper.layer.opacity = 0.0
+        setIndexBar()
         configureDelegate()
     }
     
@@ -300,3 +301,38 @@ extension GroupDetailViewController: UITableViewDataSource {
     }
 }
 
+private extension GroupDetailViewController {
+    func setIndexBar() {
+        setIndexBarBackground()
+        setIndexBarTableView()
+    }
+    
+    func setIndexBarTableView() {
+        indexBarBackground.addSubview(indexBarTableView)
+        indexBarTableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            indexBarTableView.topAnchor.constraint(equalTo: indexBarBackground.topAnchor, constant: 4),
+            indexBarTableView.leadingAnchor.constraint(equalTo: indexBarBackground.leadingAnchor, constant: 1),
+            indexBarTableView.trailingAnchor.constraint(equalTo: indexBarBackground.trailingAnchor, constant: -1),
+            indexBarTableView.bottomAnchor.constraint(equalTo: indexBarBackground.bottomAnchor),
+            indexBarTableView.centerXAnchor.constraint(equalTo: indexBarBackground.centerXAnchor),
+            indexBarTableView.widthAnchor.constraint(equalToConstant: 9)
+        ])
+        indexBarTableView.backgroundColor = .clear
+        indexBarTableView.isScrollEnabled = false
+    }
+    
+    func setIndexBarBackground() {
+        view.addSubview(indexBarBackground)
+        indexBarBackground.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            indexBarBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
+            indexBarBackground.topAnchor.constraint(equalTo: cardSwiper.topAnchor, constant: 10),
+            indexBarBackground.heightAnchor.constraint(equalToConstant: CGFloat(20.2 * Double(userInitialKeys.count))),
+            indexBarBackground.widthAnchor.constraint(equalToConstant: 11)
+        ])
+        indexBarBackground.backgroundColor = .black.withAlphaComponent(0.25)
+        indexBarBackground.layer.cornerRadius = 5
+        indexBarBackground.clipsToBounds = true
+    }
+}
