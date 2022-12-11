@@ -22,6 +22,8 @@ extension UIColor {
     
     static let bgYellow = UIColor(named: "bgYellow") ?? .black
     
+    static let bgGray = UIColor(named: "bgGray") ?? .black
+    
     //MARK: Text Color
     static let systemBlack = UIColor(named: "systemBlack") ?? .white
     

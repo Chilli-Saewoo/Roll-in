@@ -17,16 +17,21 @@ protocol WriteRollingPaperViewDelegate: AnyObject {
     func activeConfirmButton()
 
     func inactiveConfirmButton()
+    
+    func presentImagePickerViewController(imageViewController: UIImagePickerController)
+    
+    func presentAlert(alertViewController: UIAlertController)
 }
 
 final class WriteRollingPaperViewController: UIViewController {
     
     private let postThemePicerkView = PostThemePickerView()
+    private let postPhotoPickerView = PostPhotoPickerView()
     private let postView = PostView()
-//    private let imagePickerViewController = UIImagePickerController()
 //    private let rollingPaperPostAPI = RollingPaperPostAPI()
 //    private let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5
     
+    //    private let imagePickerViewController = UIImagePickerController()
 //    private lazy var authorizationOfCameraAlert: () = makeAlert(title: "알림", message: "카메라 접근이 허용되어 있지 않습니다.")
 //    private lazy var authorizationOfPhotoLibraryAlert: () = makeAlert(title: "알림", message: "라이브러리 접근이 허용되어 있지 않습니다.")
     private let dismissButton: UIButton = {
@@ -92,30 +97,30 @@ final class WriteRollingPaperViewController: UIViewController {
 //        return button
 //    }()
     
-//    private lazy var activityIndicator: UIActivityIndicatorView = {
-//        let activityIndicator = UIActivityIndicatorView()
-//        activityIndicator.center = self.view.center
-//        activityIndicator.style = UIActivityIndicatorView.Style.large
-//        activityIndicator.startAnimating()
-//        activityIndicator.isHidden = false
-//        activityIndicator.color = .white
-//        return activityIndicator
-//    }()
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.center = self.view.center
+        activityIndicator.style = UIActivityIndicatorView.Style.large
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
+        activityIndicator.color = .white
+        return activityIndicator
+    }()
     
-//    private var activityIndicatorLabel: UILabel = {
-//        let label = UILabel()
-//        label.text = "올라가고 있어요"
-//        label.textColor = .white
-//        label.font = .systemFont(ofSize: 24, weight: .bold)
-//        return label
-//    }()
+    private var activityIndicatorLabel: UILabel = {
+        let label = UILabel()
+        label.text = "올라가고 있어요"
+        label.textColor = .white
+        label.font = .systemFont(ofSize: 24, weight: .bold)
+        return label
+    }()
     
-//    lazy var activityIndicatorBackgroundView: UIView = {
-//        let view = UIView()
-//        view.backgroundColor = .black
-//        view.layer.opacity = 0.3
-//        return view
-//    }()
+    lazy var activityIndicatorBackgroundView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.layer.opacity = 0.3
+        return view
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,6 +132,8 @@ final class WriteRollingPaperViewController: UIViewController {
     
     private func configureDelegate() {
         postThemePicerkView.postViewDelegate = postView
+        postPhotoPickerView.postViewDelegate = postView
+        postPhotoPickerView.delegate = self
         postView.delegate = self
 //        imagePickerViewController.delegate = self
 //        imagePickerViewController.allowsEditing = true
@@ -193,21 +200,23 @@ final class WriteRollingPaperViewController: UIViewController {
     
     @objc
     private func touchUpInsideToSetTemplateView() {
-        underbarUIView.removeFromSuperview()
         if !isTemplateView {
             isTemplateView.toggle()
+            underbarUIView.removeFromSuperview()
             setupUnderbarViewLayout()
+            postPhotoPickerView.removeFromSuperview()
             setupPostThemePickerViewLayout()
         }
     }
     
     @objc
     private func touchUpInsideToSetPhotoView() {
-        underbarUIView.removeFromSuperview()
         if isTemplateView {
             isTemplateView.toggle()
-            postThemePicerkView.removeFromSuperview()
+            underbarUIView.removeFromSuperview()
             setupUnderbarViewLayout()
+            postThemePicerkView.removeFromSuperview()
+            setupPostPhotoPickerViewLayout()
         }
     }
 //    @objc
@@ -226,11 +235,9 @@ final class WriteRollingPaperViewController: UIViewController {
         Task {
             if !isBeingSaved {
                 isBeingSaved = true
-//                setupActivityIndicatorLayout()
-//                FirebaseStorageManager.uploadImage(image: postImage, pathRoot: receiverUserId) { url in
-//                    guard let url = url else { return }
-//                    let absoluteUrl = url.absoluteString
-                let rollingPaperPostData = PostWithImageAndMessage(type: .imageAndMessage,
+                setupActivityIndicatorLayout()
+                guard let image = postView.postImageCollectionViewCell.imageView.image else {
+                    let rollingPaperPostData = PostWithImageAndMessage(type: .imageAndMessage,
                                                                    id: "", timestamp: Date(),
                                                                    from: self.writerNickname,
                                                                    isPublic: self.postView.isPublic,
@@ -244,9 +251,31 @@ final class WriteRollingPaperViewController: UIViewController {
                                                   groupId: self.groupId,
                                                   receiver: self.receiverUserId)
                     self.isBeingSaved = false
-//                    self.activityIndicator.stopAnimating()
-                    _ = self.navigationController?.popViewController(animated: true)
-//                }
+                    self.activityIndicator.stopAnimating()
+                    self.dismiss(animated: true)
+                    
+                    return
+                }
+                FirebaseStorageManager.uploadImage(image: image, pathRoot: receiverUserId) { url in
+                    guard let url = url else { return }
+                    let absoluteUrl = url.absoluteString
+                    let rollingPaperPostData = PostWithImageAndMessage(type: .imageAndMessage,
+                                                                   id: "", timestamp: Date(),
+                                                                   from: self.writerNickname,
+                                                                   isPublic: self.postView.isPublic,
+                                                                   imageURL: absoluteUrl,
+                                                                   message: self.postView.postTextCollectionViewCell.textView.text,
+                                                                   postTheme: self.postThemePicerkView.selectedThemeHex)
+
+                    let rollingPaperPostAPI = RollingPaperPostAPI()
+                    rollingPaperPostAPI.writePost(document: rollingPaperPostData,
+                                                  imageUrl: absoluteUrl,
+                                                  groupId: self.groupId,
+                                                  receiver: self.receiverUserId)
+                    self.isBeingSaved = false
+                    self.activityIndicator.stopAnimating()
+                    self.dismiss(animated: true)
+                }
             }
         }
     }
@@ -301,15 +330,7 @@ final class WriteRollingPaperViewController: UIViewController {
         
         setupUnderbarViewLayout()
         
-        view.addSubview(postThemePicerkView)
-        postThemePicerkView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            postThemePicerkView.topAnchor.constraint(equalTo: underbarUIView.bottomAnchor, constant: 16),
-            postThemePicerkView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            postThemePicerkView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            postThemePicerkView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-        
+        setupPostThemePickerViewLayout()
     }
     
     private func setupPostLayout() {
@@ -360,31 +381,42 @@ final class WriteRollingPaperViewController: UIViewController {
         ])
     }
     
-//    private func setupActivityIndicatorLayout() {
-//        view.addSubview(activityIndicatorBackgroundView)
-//        activityIndicatorBackgroundView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            activityIndicatorBackgroundView.topAnchor.constraint(equalTo: view.topAnchor),
-//            activityIndicatorBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            activityIndicatorBackgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-//            activityIndicatorBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//        ])
-//
-//        view.addSubview(activityIndicator)
-//        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -16),
-//            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-//        ])
-//
-//        view.addSubview(activityIndicatorLabel)
-//        activityIndicatorLabel.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            activityIndicatorLabel.topAnchor.constraint(equalTo: activityIndicator.bottomAnchor, constant: 20),
-//            activityIndicatorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-//        ])
-//
-//    }
+    func setupPostPhotoPickerViewLayout() {
+        view.addSubview(postPhotoPickerView)
+        postPhotoPickerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            postPhotoPickerView.topAnchor.constraint(equalTo: underbarUIView.bottomAnchor, constant: 16),
+            postPhotoPickerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            postPhotoPickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            postPhotoPickerView.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 20 * 2 - 8) / 2)
+        ])
+    }
+    
+    private func setupActivityIndicatorLayout() {
+        view.addSubview(activityIndicatorBackgroundView)
+        activityIndicatorBackgroundView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicatorBackgroundView.topAnchor.constraint(equalTo: view.topAnchor),
+            activityIndicatorBackgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            activityIndicatorBackgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            activityIndicatorBackgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -16),
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+
+        view.addSubview(activityIndicatorLabel)
+        activityIndicatorLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            activityIndicatorLabel.topAnchor.constraint(equalTo: activityIndicator.bottomAnchor, constant: 20),
+            activityIndicatorLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        ])
+
+    }
 }
 
 
@@ -418,6 +450,14 @@ final class WriteRollingPaperViewController: UIViewController {
 //}
 
 extension WriteRollingPaperViewController: WriteRollingPaperViewDelegate {
+    func presentImagePickerViewController(imageViewController: UIImagePickerController) {
+        present(imageViewController, animated: true, completion: nil)
+    }
+    
+    func presentAlert(alertViewController: UIAlertController) {
+        present(alertViewController, animated: true, completion: nil)
+    }
+    
     func activeConfirmButton() {
         completeButton.backgroundColor = .systemBlack
         completeButton.setTitleColor(.white, for: .normal)

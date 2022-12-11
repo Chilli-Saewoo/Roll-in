@@ -171,6 +171,7 @@ extension PostRollingPaperCollectionViewCell {
             messageLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 8),
             messageLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10)
         ])
+        
     }
     
     func setupFromLabelLayout() {

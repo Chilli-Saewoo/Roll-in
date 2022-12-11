@@ -12,8 +12,14 @@ final class PostImageCollectionViewCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.layer.cornerRadius = 8
         imageView.clipsToBounds = true
-        imageView.backgroundColor = .lightGray
+        imageView.backgroundColor = .bgGray
         return imageView
+    }()
+    
+    var photoLabel: UILabel = {
+        let label = UILabel()
+        label.text = "사진을 추가해주세요"
+        return label
     }()
 
     required init?(coder: NSCoder) {
@@ -26,7 +32,7 @@ final class PostImageCollectionViewCell: UICollectionViewCell {
     }
     
     private func setDetailPostLayout() {
-        self.contentView.addSubview(imageView)
+        addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             imageView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
@@ -34,6 +40,17 @@ final class PostImageCollectionViewCell: UICollectionViewCell {
             imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor)
         ])
+        
+        addSubview(photoLabel)
+        photoLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            photoLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            photoLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
+    }
+    
+    func setImage(image: UIImage) {
+        imageView.image = image
     }
 }
 

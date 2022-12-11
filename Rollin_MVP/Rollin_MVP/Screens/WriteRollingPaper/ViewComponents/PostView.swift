@@ -15,6 +15,8 @@ protocol PostViewDelegate: AnyObject {
     func changePostTextInset(isPictureTheme: Bool)
     
     func setTextCount(textCount: Int)
+    
+    func changePhoto(image: UIImage)
 }
 
 final class PostView: UIView {
@@ -29,13 +31,20 @@ final class PostView: UIView {
         static var collectionViewContentInset = UIEdgeInsets(top: 5, left: insetX, bottom: 0, right: insetX)
     }
     
-    private let collectionViewFlowLayout = UICollectionViewFlowLayout()
-    
-    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.collectionViewFlowLayout)
+    private let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = LayoutValue.postSize
+        layout.minimumLineSpacing = LayoutValue.postSpacing
+        layout.minimumInteritemSpacing = 0
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }()
     
     var writerNickname: String = ""
     
-//    var isPhotoAdded: Bool = false
     var isTextEdited: Bool = false
     var isPublic: Bool = true
     
@@ -86,6 +95,8 @@ final class PostView: UIView {
     
     var postTextCollectionViewCell: PostTextCollectionViewCell = PostTextCollectionViewCell(frame: CGRect())
     
+    var postImageCollectionViewCell: PostImageCollectionViewCell = PostImageCollectionViewCell(frame: CGRect())
+    
     private let pageControllerStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -111,7 +122,6 @@ final class PostView: UIView {
         super.init(frame: frame)
         setupPostLayout()
         setCollectionView()
-        setCollectionViewFlowLayout()
         setButton()
     }
     
@@ -225,19 +235,13 @@ extension PostView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
             self.postTextCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: PostTextCollectionViewCell.className, for: indexPath) as! PostTextCollectionViewCell
-//            let textColor = getTextColor(backgroundColorString: post.postTheme)
-//            cell.message.text = post.message
-//            cell.message.textColor = textColor
-//            cell.detailPostView.backgroundColor = hexStringToUIColor(hex: post.postTheme)
             self.postTextCollectionViewCell.fromLabel.text = "From. \(writerNickname)"
             self.postTextCollectionViewCell.postViewDelegate = self
             self.postTextCollectionViewCell.writeRollingPaperViewDelegate = delegate
-//            cell.from.textColor = textColor
             return self.postTextCollectionViewCell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostImageCollectionViewCell.className, for: indexPath) as! PostImageCollectionViewCell
-//            cell.imageView.image = image ?? UIImage()
-            return cell
+            self.postImageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: PostImageCollectionViewCell.className, for: indexPath) as! PostImageCollectionViewCell
+            return self.postImageCollectionViewCell
         }
     }
 }
@@ -271,13 +275,6 @@ extension PostView: UICollectionViewDelegate {
 }
 
 extension PostView {
-    func setCollectionViewFlowLayout() {
-        collectionViewFlowLayout.scrollDirection = .horizontal
-        collectionViewFlowLayout.itemSize = LayoutValue.postSize
-        collectionViewFlowLayout.minimumLineSpacing = LayoutValue.postSpacing
-        collectionViewFlowLayout.minimumInteritemSpacing = 0
-    }
-    
     func setCollectionView() {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
@@ -318,6 +315,15 @@ extension PostView {
 }
 
 extension PostView: PostViewDelegate {
+    func changePhoto(image: UIImage) {
+        print("change")
+//        self.postImageCollectionViewCell.imageView.backgroundColor = .clear
+        self.postImageCollectionViewCell.setImage(image: image)
+        self.postImageCollectionViewCell.photoLabel.text = ""
+        self.postImageCollectionViewCell.photoLabel.textColor = .white
+        self.collectionView.reloadData()
+    }
+    
     func changePostColor(selectedTextColor: UIColor, selectedBgColor: UIColor) {
         self.postTextCollectionViewCell.textView.textColor = selectedTextColor
         self.postTextCollectionViewCell.textView.tintColor = selectedTextColor
