@@ -71,7 +71,7 @@ final class GroupDetailViewController: UIViewController {
             
             let db = FirebaseFirestore.Firestore.firestore()
             db.collection("groupUsers").document(groupId ?? "").collection("participants").document(receiverUserId).collection("posts").order(by: "timeStamp", descending: true).getDocuments { snapshot, error in
-                print(snapshot?.count ?? 0)
+                self.countOfPostByUsers[self.userList[index].0] = snapshot?.count
             }
         }
     }
@@ -128,10 +128,7 @@ extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardS
     
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: index) as? CardSwiperCell {
-            
-            
-            
-            cardCell.setCell(index: index, name: userList[index].1, userId: userList[index].0, postCount: 4)
+            cardCell.setCell(index: index, name: userList[index].1, userId: userList[index].0, postCount: countOfPostByUsers[userList[index].0] as? Int)
             return cardCell
         }
         return CardCell()
