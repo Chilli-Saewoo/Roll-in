@@ -260,7 +260,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if post.isPublic {
             cell.blurView.layer.opacity = 0.0
             cell.blurLockImage.layer.opacity = 0.0
-        } else if receiverUserId == UserDefaults.standard.string(forKey: "uid") {
+        } else if receiverUserId == UserDefaults.standard.string(forKey: "uid") || post.from == writerNickname {
             cell.blurView.layer.opacity = 0.0
             cell.blurLockImage.layer.opacity = 0.0
         } else {
