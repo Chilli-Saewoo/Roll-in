@@ -58,7 +58,7 @@ final class PostView: UIView {
     
     private let textCountLabel: UILabel = {
         let label = UILabel()
-        label.text = "0/150"
+        label.text = "0/200"
         return label
     }()
     
@@ -320,6 +320,7 @@ extension PostView {
 extension PostView: PostViewDelegate {
     func changePostColor(selectedTextColor: UIColor, selectedBgColor: UIColor) {
         self.postTextCollectionViewCell.textView.textColor = selectedTextColor
+        self.postTextCollectionViewCell.textView.tintColor = selectedTextColor
         self.postTextCollectionViewCell.fromLabel.textColor = selectedTextColor
         self.postTextCollectionViewCell.textView.backgroundColor = selectedBgColor
     }
@@ -334,15 +335,17 @@ extension PostView: PostViewDelegate {
             self.postTextCollectionViewCell.textView.textContainerInset = UIEdgeInsets(top: 48, left: 48, bottom: 36, right: 48)
             self.postTextCollectionViewCell.fromLabel.removeFromSuperview()
             self.postTextCollectionViewCell.setFromLabelLayout(isPictureTheme: true)
+            self.postTextCollectionViewCell.textView.font = .systemFont(ofSize: 14)
         } else {
             self.postTextCollectionViewCell.textView.textContainerInset = UIEdgeInsets(top: 24, left: 24, bottom: 36, right: 24)
             self.postTextCollectionViewCell.fromLabel.removeFromSuperview()
             self.postTextCollectionViewCell.setFromLabelLayout(isPictureTheme: false)
+            self.postTextCollectionViewCell.textView.font = .systemFont(ofSize: 17)
             
         }
     }
     
     func setTextCount(textCount: Int) {
-        textCountLabel.text = "\(textCount)/150"
+        textCountLabel.text = "\(textCount)/200"
     }
 }

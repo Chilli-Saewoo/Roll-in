@@ -21,8 +21,8 @@ final class PostTextCollectionViewCell: UICollectionViewCell {
         textView.backgroundColor = .bgRed
         textView.textColor = .textRed
         textView.tintColor = .textRed
-        textView.font = .preferredFont(forTextStyle: .body)
-        textView.textContainerInset = UIEdgeInsets(top: 13, left: 12, bottom: 36, right: 12)
+        textView.font = .systemFont(ofSize: 17)
+        textView.textContainerInset = UIEdgeInsets(top: 24, left: 24, bottom: 36, right: 24)
         textView.text = "전달할 말을 입력해주세요"
         textView.layer.cornerRadius = 8
         textView.autocorrectionType = .no
@@ -80,8 +80,8 @@ final class PostTextCollectionViewCell: UICollectionViewCell {
         fromLabel.translatesAutoresizingMaskIntoConstraints = false
         if isPictureTheme {
             NSLayoutConstraint.activate([
-                fromLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -48),
-                fromLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -48)
+                fromLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -46),
+                fromLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -52)
             ])
         } else {
             NSLayoutConstraint.activate([
@@ -112,7 +112,7 @@ extension PostTextCollectionViewCell: UITextViewDelegate {
         }
         return self.checkTextLimit(existingText: textView.text,
                                   newText: text,
-                                  limit: 150)
+                                  limit: 200)
     }
     
     func textViewDidChange(_ textView: UITextView) {
