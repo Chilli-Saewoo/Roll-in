@@ -5,9 +5,12 @@
 //  Created by Noah Park on 2022/11/14.
 //
 
+import FirebaseFirestore
 import UIKit
 import VerticalCardSwiper
 
+
+var count = 0
 final class GroupDetailViewController: UIViewController {
     var group: Group?
     private var cardSwiper: VerticalCardSwiper!
@@ -18,6 +21,21 @@ final class GroupDetailViewController: UIViewController {
     private let ingroupCodeCopyButton = UIButton()
     private let codeCopyToastView = UILabel()
     private var isFirstLoading = true
+    private let indexBarTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.rowHeight = 20
+        return tableView
+    }()
+    lazy var indexBarBackground = UIView()
+    let koreanAlphabet = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
+    var userInitialDic = [String : Int]()
+    var userInitialKeys = [String]()
+
+    private var countOfPostByUsers: [String: Int?] = [:] {
+        didSet {
+            cardSwiper.reloadData()
+        }
+    }
     
     var userList: [(String, String)] {
         guard let group = group else { return [] }
@@ -45,6 +63,13 @@ final class GroupDetailViewController: UIViewController {
         return false
     }
     
+    private func isStartedWithKoreanAlphabet(str: String) -> Bool {
+        if str >= "ㄱ" && str <= "ㅎ" {
+            return true
+        }
+        return false
+    }
+    
     private func isStartedWithEnglish(str: String) -> Bool {
         if (str >= "a" && str <= "z") || (str >= "A" && str <= "Z") {
             return true
@@ -52,8 +77,27 @@ final class GroupDetailViewController: UIViewController {
         return false
     }
     
+    private func initCountOfPostByUsers() {
+        for list in userList {
+            countOfPostByUsers[list.0] = nil
+        }
+    }
+    
+    private func fetchCountOfPostByUSers() {
+        for index in 0..<userList.count {
+            let receiverUserId = userList[index].0
+            let groupId = group?.groupId
+            
+            let db = FirebaseFirestore.Firestore.firestore()
+            db.collection("groupUsers").document(groupId ?? "").collection("participants").document(receiverUserId).collection("posts").order(by: "timeStamp", descending: true).getDocuments { snapshot, error in
+                self.countOfPostByUsers[self.userList[index].0] = snapshot?.count
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUserInitial()
         setGroupMessageLabel()
         setIngroupCodeCopyButton()
         setIngroupCodeCopyLabel()
@@ -65,6 +109,10 @@ final class GroupDetailViewController: UIViewController {
         cardSwiper.delegate = self
         cardSwiper.register(CardSwiperCell.self, forCellWithReuseIdentifier: "CardCell")
         cardSwiper.layer.opacity = 0.0
+        setIndexBar()
+        configureDelegate()
+        initCountOfPostByUsers()
+        fetchCountOfPostByUSers()
     }
     
     
@@ -86,6 +134,40 @@ final class GroupDetailViewController: UIViewController {
         setToastView()
         showToastView()
     }
+    
+    private func configureDelegate() {
+        indexBarTableView.delegate = self
+        indexBarTableView.dataSource = self
+        indexBarTableView.register(IndexBarTableViewCell.self, forCellReuseIdentifier: IndexBarTableViewCell.className)
+    }
+    
+    private func getInitialConsonant(word: String) -> String {
+        let octal = word.unicodeScalars[word.unicodeScalars.startIndex].value
+        let index = (octal - 0xac00) / 28 / 21
+        return koreanAlphabet[Int(index)]
+    }
+
+    private func getUserInitial() {
+        for i in 0 ..< userList.count {
+            if userList[i].0 == UserDefaults.standard.string(forKey: "uid") {
+                continue
+            }
+            if isStartedWithKorean(str: userList[i].1) {
+                userInitialDic[getInitialConsonant(word: userList[i].1)] = i
+            }
+            else { userInitialDic[String(userList[i].1.prefix(1).uppercased())] = i }
+        }
+        userInitialKeys = [String](userInitialDic.keys)
+        userInitialKeys = userInitialKeys.sorted(by: {
+            if isStartedWithKoreanAlphabet(str: $0) && isStartedWithEnglish(str: $1) {
+                return false
+            } else if isStartedWithEnglish(str: $0) && isStartedWithKoreanAlphabet(str: $1) {
+                return true
+            }
+            return $0 > $1
+        })
+        userInitialKeys.append("★")
+    }
 }
 
 extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardSwiperDelegate {
@@ -102,7 +184,7 @@ extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardS
     
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: index) as? CardSwiperCell {
-            cardCell.setCell(index: index, name: userList[index].1, userId: userList[index].0)
+            cardCell.setCell(index: index, name: userList[index].1, userId: userList[index].0, postCount: countOfPostByUsers[userList[index].0] as? Int)
             return cardCell
         }
         return CardCell()
@@ -214,5 +296,68 @@ private extension GroupDetailViewController {
                 self.codeCopyToastView.removeFromSuperview()
             })
         })
+    }
+}
+
+
+extension GroupDetailViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let selectedIndex = indexBarTableView.indexPathForSelectedRow {
+            cardSwiper.scrollToCard(at: userInitialDic[userInitialKeys[selectedIndex.row]] ?? userList.count - 1, animated: true)
+        }
+        indexBarTableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+            cell.backgroundColor = UIColor.clear
+    }
+}
+
+extension GroupDetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return userInitialKeys.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = indexBarTableView.dequeueReusableCell(withIdentifier: IndexBarTableViewCell.className) as? IndexBarTableViewCell else { return UITableViewCell() }
+        cell.configureUI(title: userInitialKeys[indexPath.row])
+        return cell
+    }
+}
+
+private extension GroupDetailViewController {
+    func setIndexBar() {
+        setIndexBarBackground()
+        setIndexBarTableView()
+    }
+    
+    func setIndexBarTableView() {
+        indexBarBackground.addSubview(indexBarTableView)
+        indexBarTableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            indexBarTableView.topAnchor.constraint(equalTo: indexBarBackground.topAnchor, constant: 4),
+            indexBarTableView.leadingAnchor.constraint(equalTo: indexBarBackground.leadingAnchor, constant: 1),
+            indexBarTableView.trailingAnchor.constraint(equalTo: indexBarBackground.trailingAnchor, constant: -1),
+            indexBarTableView.bottomAnchor.constraint(equalTo: indexBarBackground.bottomAnchor),
+            indexBarTableView.centerXAnchor.constraint(equalTo: indexBarBackground.centerXAnchor),
+            indexBarTableView.widthAnchor.constraint(equalToConstant: 9)
+        ])
+        indexBarTableView.backgroundColor = .clear
+        indexBarTableView.isScrollEnabled = false
+    }
+    
+    func setIndexBarBackground() {
+        view.addSubview(indexBarBackground)
+        indexBarBackground.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            indexBarBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
+            indexBarBackground.topAnchor.constraint(equalTo: cardSwiper.topAnchor, constant: 10),
+            indexBarBackground.heightAnchor.constraint(equalToConstant: CGFloat(20.2 * Double(userInitialKeys.count))),
+            indexBarBackground.widthAnchor.constraint(equalToConstant: 11)
+        ])
+        indexBarBackground.backgroundColor = .black.withAlphaComponent(0.25)
+        indexBarBackground.layer.cornerRadius = 5
+        indexBarBackground.clipsToBounds = true
     }
 }

@@ -11,8 +11,16 @@ import VerticalCardSwiper
 final class CardSwiperCell: CardCell {
     private let nameLabel = UILabel()
     private let bookmarkLabel = UIImageView()
+    private var emptyMessage: UILabel = {
+        let label = UILabel()
+        label.text = "아직 아무도 답장하지 않았어요"
+        label.textColor = .systemBlack
+        label.font = .systemFont(ofSize: 17, weight: .regular)
+        return label
+    }()
+    private let cardSkeleton = CardSkeletonView()
     
-    public func setCell(index: Int, name: String, userId: String) {
+    public func setCell(index: Int, name: String, userId: String, postCount: Int?) {
         let colors: [UIColor] = [.cardBlue, .cardPink, .cardGreen, .cardPurple, .cardYellow]
         self.backgroundColor = colors[index % colors.count]
         self.layer.cornerRadius = 4.0
@@ -23,6 +31,34 @@ final class CardSwiperCell: CardCell {
         } else {
             bookmarkLabel.removeFromSuperview()
         }
+        if postCount == 0 {
+            setEmptyMessage()
+            cardSkeleton.removeFromSuperview()
+        } else {
+            emptyMessage.removeFromSuperview()
+            setCardSkeletonView()
+        }
+        cardSkeleton.setViews(count: postCount ?? 0)
+    }
+    
+    private func setCardSkeletonView() {
+        self.addSubview(cardSkeleton)
+        cardSkeleton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            cardSkeleton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            cardSkeleton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            cardSkeleton.topAnchor.constraint(equalTo: self.topAnchor, constant: 67),
+            cardSkeleton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30),
+        ])
+    }
+    
+    private func setEmptyMessage() {
+        self.addSubview(emptyMessage)
+        emptyMessage.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            emptyMessage.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0),
+            emptyMessage.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: 0),
+        ])
     }
     
     private func setShadow() {
