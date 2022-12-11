@@ -257,12 +257,15 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let post = posts?[indexPath.item] as? PostWithImageAndMessage else { return UICollectionViewCell() }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostRollingPaperCollectionViewCell.id, for: indexPath) as? PostRollingPaperCollectionViewCell ?? PostRollingPaperCollectionViewCell()
         cell.receiverUserId = receiverUserId ?? ""
-        if post.isPublic || receiverUserId == UserDefaults.standard.string(forKey: "uid") {
+        if post.isPublic {
             cell.blurView.layer.opacity = 0.0
-            cell.lockImage.layer.opacity = 0.0
+            cell.blurLockImage.layer.opacity = 0.0
+        } else if receiverUserId == UserDefaults.standard.string(forKey: "uid") {
+            cell.blurView.layer.opacity = 0.0
+            cell.blurLockImage.layer.opacity = 0.0
         } else {
             cell.blurView.layer.opacity = 1.0
-            cell.lockImage.layer.opacity = 1.0
+            cell.blurLockImage.layer.opacity = 1.0
         }
         let textColor = getTextColor(textColorString: post.postTheme)
         if let image = images[post.id] {
@@ -280,6 +283,12 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.imageView.image = UIImage(named: "skeleton")
             cell.isUserInteractionEnabled = false
         }
+        if post.isPublic {
+            cell.setupPublicPostViewLayout()
+        } else if !post.isPublic {
+            cell.setupPrivatePostViewLayout()
+        }
+        cell.setPrivacyViewLayout()
         return cell
     }
     

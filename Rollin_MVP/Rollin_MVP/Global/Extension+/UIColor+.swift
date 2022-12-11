@@ -50,6 +50,16 @@ extension UIColor {
     static let cardRed = UIColor(named: "cardRed") ?? .black
     
     static let cardYellow = UIColor(named: "cardYellow") ?? .black
+    
+    static let skeletonRed = UIColor(named: "skeletonRed") ?? .black
+    
+    static let skeletonYellow = UIColor(named: "skeletonYellow") ?? .black
+    
+    static let skeletonGreen = UIColor(named: "skeletonGreen") ?? .black
+    
+    static let skeletonBlue = UIColor(named: "skeletonBlue") ?? .black
+    
+    static let skeletonPurple = UIColor(named: "skeletonPurple") ?? .black
 }
 
 extension UIColor {

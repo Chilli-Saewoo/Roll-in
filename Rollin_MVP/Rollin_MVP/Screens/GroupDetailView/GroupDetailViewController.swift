@@ -5,6 +5,7 @@
 //  Created by Noah Park on 2022/11/14.
 //
 
+import FirebaseFirestore
 import UIKit
 import VerticalCardSwiper
 
@@ -29,6 +30,13 @@ final class GroupDetailViewController: UIViewController {
     let koreanAlphabet = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
     var userInitialDic = [String : Int]()
     var userInitialKeys = [String]()
+
+    private var countOfPostByUsers: [String: Int?] = [:] {
+        didSet {
+            cardSwiper.reloadData()
+        }
+    }
+    
     var userList: [(String, String)] {
         guard let group = group else { return [] }
         let list = group.participants.sorted {
@@ -69,6 +77,24 @@ final class GroupDetailViewController: UIViewController {
         return false
     }
     
+    private func initCountOfPostByUsers() {
+        for list in userList {
+            countOfPostByUsers[list.0] = nil
+        }
+    }
+    
+    private func fetchCountOfPostByUSers() {
+        for index in 0..<userList.count {
+            let receiverUserId = userList[index].0
+            let groupId = group?.groupId
+            
+            let db = FirebaseFirestore.Firestore.firestore()
+            db.collection("groupUsers").document(groupId ?? "").collection("participants").document(receiverUserId).collection("posts").order(by: "timeStamp", descending: true).getDocuments { snapshot, error in
+                self.countOfPostByUsers[self.userList[index].0] = snapshot?.count
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getUserInitial()
@@ -85,6 +111,8 @@ final class GroupDetailViewController: UIViewController {
         cardSwiper.layer.opacity = 0.0
         setIndexBar()
         configureDelegate()
+        initCountOfPostByUsers()
+        fetchCountOfPostByUSers()
     }
     
     
@@ -156,7 +184,7 @@ extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardS
     
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: index) as? CardSwiperCell {
-            cardCell.setCell(index: index, name: userList[index].1, userId: userList[index].0)
+            cardCell.setCell(index: index, name: userList[index].1, userId: userList[index].0, postCount: countOfPostByUsers[userList[index].0] as? Int)
             return cardCell
         }
         return CardCell()
