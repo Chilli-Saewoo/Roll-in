@@ -9,12 +9,6 @@ import UIKit
 
 class PostRollingPaperCollectionViewCell: UICollectionViewCell {
     var receiverUserId: String = ""
-    var isPrivatePost: Bool = false {
-        didSet {
-            messageLabel.removeFromSuperview()
-            setupView()
-        }
-    }
 
     static var id: String {
         return NSStringFromClass(Self.self).components(separatedBy: ".").last ?? ""
@@ -85,8 +79,6 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupView()
-        setPrivacyViewLayout()
     }
 
     required init?(coder: NSCoder) {
@@ -110,51 +102,78 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
     }
 }
 
-private extension PostRollingPaperCollectionViewCell {
-    private func setupView() {
+extension PostRollingPaperCollectionViewCell {
+    func setupPrivatePostViewLayout() {
+        setupContainerViewLayout()
+        setupPrivateMessageLayout()
+        setupFromLabelLayout()
+        setupImageViewLayout()
+    }
+    
+    func setupPublicPostViewLayout() {
+        setupContainerViewLayout()
+        setupPublicMessageLayout()
+        setupFromLabelLayout()
+        setupImageViewLayout()
+    }
+    
+    func setupContainerViewLayout() {
         contentView.addSubview(containerView)
         containerView.translatesAutoresizingMaskIntoConstraints = false
         containerView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+    }
+    
+    func setupPrivateMessageLayout() {
+        messageLabel.removeFromSuperview()
+        containerView.addSubview(lockImage)
+        lockImage.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            lockImage.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
+            lockImage.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
+            lockImage.heightAnchor.constraint(equalToConstant: 12),
+            lockImage.widthAnchor.constraint(equalToConstant: 10)
+        ])
+        
+        containerView.addSubview(privatePostLabel)
+        privatePostLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            privatePostLabel.centerYAnchor.constraint(equalTo: lockImage.centerYAnchor),
+            privatePostLabel.leadingAnchor.constraint(equalTo: lockImage.trailingAnchor, constant: 2),
+            privatePostLabel.heightAnchor.constraint(equalToConstant: 10),
+        ])
         
         containerView.addSubview(messageLabel)
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        if isPrivatePost {
-            containerView.addSubview(lockImage)
-            lockImage.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                lockImage.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
-                lockImage.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
-                lockImage.heightAnchor.constraint(equalToConstant: 12),
-                lockImage.widthAnchor.constraint(equalToConstant: 10)
-            ])
-            
-            containerView.addSubview(privatePostLabel)
-            privatePostLabel.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                privatePostLabel.centerYAnchor.constraint(equalTo: lockImage.centerYAnchor),
-                privatePostLabel.leadingAnchor.constraint(equalTo: lockImage.trailingAnchor, constant: 2),
-                privatePostLabel.heightAnchor.constraint(equalToConstant: 10),
-                messageLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
-                messageLabel.topAnchor.constraint(equalTo: privatePostLabel.bottomAnchor, constant: 8),
-                messageLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10)
-            ])
-        } else {
-            NSLayoutConstraint.activate([
-                messageLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
-                messageLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
-                messageLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10)
-            ])
-        }
-        
+        NSLayoutConstraint.activate([
+            messageLabel.topAnchor.constraint(equalTo: lockImage.bottomAnchor, constant: 4),
+            messageLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+            messageLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10)
+        ])
+    }
+    
+    func setupPublicMessageLayout() {
+        lockImage.removeFromSuperview()
+        privatePostLabel.removeFromSuperview()
+        containerView.addSubview(messageLabel)
+        messageLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            messageLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10),
+            messageLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 8),
+            messageLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10)
+        ])
+    }
+    
+    func setupFromLabelLayout() {
         containerView.addSubview(fromLabel)
         fromLabel.translatesAutoresizingMaskIntoConstraints = false
         fromLabel.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 10).isActive = true
         fromLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10).isActive = true
-        
+    }
+    
+    func setupImageViewLayout() {
         containerView.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.topAnchor.constraint(equalTo: fromLabel.bottomAnchor, constant: 10).isActive = true
@@ -162,7 +181,6 @@ private extension PostRollingPaperCollectionViewCell {
         imageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
         imageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
         imageView.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 50)/2).isActive = true
-        
     }
 }
 

@@ -239,13 +239,9 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let post = posts?[indexPath.item] as? PostWithImageAndMessage else { return UICollectionViewCell() }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostRollingPaperCollectionViewCell.id, for: indexPath) as? PostRollingPaperCollectionViewCell ?? PostRollingPaperCollectionViewCell()
         cell.receiverUserId = receiverUserId ?? ""
-//        print(post.id)
-//        print(UserDefaults.standard.string(forKey: "uid"))
         if post.isPublic {
             cell.blurView.layer.opacity = 0.0
             cell.blurLockImage.layer.opacity = 0.0
-            cell.privatePostLabel.removeFromSuperview()
-            cell.lockImage.removeFromSuperview()
         } else if receiverUserId == UserDefaults.standard.string(forKey: "uid") {
             cell.blurView.layer.opacity = 0.0
             cell.blurLockImage.layer.opacity = 0.0
@@ -255,7 +251,6 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
         }
         let textColor = getTextColor(textColorString: post.postTheme)
         if let image = images[post.id] {
-            cell.isPrivatePost = !post.isPublic
             cell.messageLabel.text = post.message
             cell.messageLabel.textColor = textColor
             cell.fromLabel.text = "From. \(post.from)"
@@ -270,6 +265,12 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.imageView.image = UIImage(named: "skeleton")
             cell.isUserInteractionEnabled = false
         }
+        if post.isPublic {
+            cell.setupPublicPostViewLayout()
+        } else if !post.isPublic {
+            cell.setupPrivatePostViewLayout()
+        }
+        cell.setPrivacyViewLayout()
         return cell
     }
     
