@@ -102,7 +102,7 @@ final class WriteRollingPaperViewController: UIViewController {
     }
     
     private func configureDelegate() {
-//        postThemePicerkView.delegate? = self
+        postThemePicerkView.postViewDelegate = postView
 //        imagePickerViewController.delegate = self
 //        imagePickerViewController.allowsEditing = true
 //        postView.delegate = self
@@ -339,15 +339,6 @@ final class WriteRollingPaperViewController: UIViewController {
 //    }
 }
 
-
-//extension WriteRollingPaperViewController: PostViewDelegate {
-//    func changePostColor(selectedTextColor: UIColor, selectedBgColor: UIColor) {
-//        postView.textView.textColor = selectedTextColor
-//        postView.textView.tintColor = selectedTextColor
-//        postView.textView.backgroundColor = selectedBgColor
-//        postView.fromLabel.textColor = selectedTextColor
-//    }
-//}
 
 extension WriteRollingPaperViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 //    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {

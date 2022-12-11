@@ -85,7 +85,9 @@ final class PostView: UIView {
 //        button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
 //        return button
 //    }()
-//
+    
+    var postTextCollectionViewCell: PostTextCollectionViewCell = PostTextCollectionViewCell(frame: CGRect())
+    
     private let pageControllerStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -224,15 +226,15 @@ extension PostView: UICollectionViewDataSource {
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostTextCollectionViewCell.className, for: indexPath) as! PostTextCollectionViewCell
+            self.postTextCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: PostTextCollectionViewCell.className, for: indexPath) as! PostTextCollectionViewCell
 //            let textColor = getTextColor(backgroundColorString: post.postTheme)
 //            cell.message.text = post.message
 //            cell.message.textColor = textColor
 //            cell.detailPostView.backgroundColor = hexStringToUIColor(hex: post.postTheme)
-            cell.fromLabel.text = "From. \(writerNickname)"
-            cell.delegate = self
+            self.postTextCollectionViewCell.fromLabel.text = "From. \(writerNickname)"
+            self.postTextCollectionViewCell.delegate = self
 //            cell.from.textColor = textColor
-            return cell
+            return self.postTextCollectionViewCell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostImageCollectionViewCell.className, for: indexPath) as! PostImageCollectionViewCell
 //            cell.imageView.image = image ?? UIImage()
@@ -295,6 +297,7 @@ extension PostView {
 
 extension PostView: PostViewDelegate {
     func changePostColor(selectedTextColor: UIColor, selectedBgColor: UIColor) {
+        self.postTextCollectionViewCell.textView.textColor = selectedTextColor
     }
     
     func setTextCount(textCount: Int) {
