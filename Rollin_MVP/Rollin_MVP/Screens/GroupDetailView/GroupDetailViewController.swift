@@ -18,6 +18,24 @@ final class GroupDetailViewController: UIViewController {
     private let ingroupCodeCopyButton = UIButton()
     private let codeCopyToastView = UILabel()
     private var isFirstLoading = true
+    var usersList: [(String, String)] {
+        guard let group = group else { return [] }
+        let list = group.participants.sorted {
+            $0.value > $1.value
+        }
+        return list
+    }
+    
+    func isStartWithKorean(string: String) -> Bool {
+//        if string > "ㄱ" && string < "ㅎ"
+    
+        return true
+    }
+    
+    func isStartWithEnglish(string: String) -> Bool {
+    
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,8 +78,8 @@ extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardS
     func didTapCard(verticalCardSwiperView: VerticalCardSwiperView, index: Int) {
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostViewController") as? PostViewController ?? UIViewController()
         let vc = secondViewController as? PostViewController
-        vc?.receiverNickname = group?.participants[index].value
-        vc?.receiverUserId = group?.participants[index].key
+        vc?.receiverNickname = usersList[index].1
+        vc?.receiverUserId = usersList[index].0
         vc?.groupId = group?.groupId
         
         self.navigationController?.pushViewController(secondViewController, animated: true)
@@ -69,7 +87,7 @@ extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardS
     
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: index) as? CardSwiperCell {
-            cardCell.setCell(index: index, name: group?.participants[index].1 ?? "error", userId: group?.participants[index].0 ?? "error")
+            cardCell.setCell(index: index, name: usersList[index].1, userId: usersList[index].0)
             return cardCell
         }
         return CardCell()
