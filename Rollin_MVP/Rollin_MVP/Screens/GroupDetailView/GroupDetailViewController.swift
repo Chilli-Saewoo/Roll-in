@@ -8,61 +8,6 @@
 import UIKit
 import VerticalCardSwiper
 
-final class CardSwiperCell: CardCell {
-    private let nameLabel = UILabel()
-    private let bookMarkLabel = UIImageView()
-    
-    public func setCell(index: Int, name: String, userId: String) {
-        let colors: [UIColor] = [.cardBlue, .cardPink, .cardGreen, .cardPurple, .cardYellow]
-        self.backgroundColor = colors[index % colors.count]
-        self.layer.cornerRadius = 4.0
-        setShadow()
-        nameLabel.text = name
-        if userId == UserDefaults.standard.string(forKey: "uid") {
-            setBookMarkLabel()
-        } else {
-            bookMarkLabel.removeFromSuperview()
-        }
-    }
-    
-    private func setShadow() {
-        self.layer.shadowOpacity = 1
-        self.layer.shadowRadius = 1
-        self.layer.shadowOffset = CGSize(width: 0, height: -2)
-        self.layer.shadowPath = nil
-        self.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.1).cgColor
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setNameLabel()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    private func setNameLabel() {
-        self.addSubview(nameLabel)
-        nameLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            nameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
-        ])
-        nameLabel.font = .systemFont(ofSize: 20, weight: .semibold)
-    }
-    
-    private func setBookMarkLabel() {
-        self.addSubview(bookMarkLabel)
-        bookMarkLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            bookMarkLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -6),
-            bookMarkLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
-        ])
-        bookMarkLabel.image = UIImage(named: "bookmark")
-    }
-}
-
 final class GroupDetailViewController: UIViewController {
     var group: Group?
     private var cardSwiper: VerticalCardSwiper!
@@ -73,6 +18,39 @@ final class GroupDetailViewController: UIViewController {
     private let ingroupCodeCopyButton = UIButton()
     private let codeCopyToastView = UILabel()
     private var isFirstLoading = true
+    
+    var userList: [(String, String)] {
+        guard let group = group else { return [] }
+        let list = group.participants.sorted {
+            if $0.key == UserDefaults.standard.string(forKey: "uid")  {
+                return false
+            }
+            if $1.key == UserDefaults.standard.string(forKey: "uid")  {
+                return true
+            }
+            if isStartedWithKorean(str: $0.value.lowercased()) && isStartedWithEnglish(str: $1.value.lowercased()) {
+                return false
+            } else if isStartedWithEnglish(str: $0.value.lowercased()) && isStartedWithKorean(str: $1.value.lowercased()) {
+                return true
+            }
+            return $0.value.lowercased() > $1.value.lowercased()
+        }
+        return list
+    }
+    
+    private func isStartedWithKorean(str: String) -> Bool {
+        if str >= "가" && str <= "힣" {
+            return true
+        }
+        return false
+    }
+    
+    private func isStartedWithEnglish(str: String) -> Bool {
+        if (str >= "a" && str <= "z") || (str >= "A" && str <= "Z") {
+            return true
+        }
+        return false
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -115,8 +93,8 @@ extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardS
     func didTapCard(verticalCardSwiperView: VerticalCardSwiperView, index: Int) {
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostViewController") as? PostViewController ?? UIViewController()
         let vc = secondViewController as? PostViewController
-        vc?.receiverNickname = group?.participants[index].1
-        vc?.receiverUserId = group?.participants[index].0
+        vc?.receiverNickname = userList[index].1
+        vc?.receiverUserId = userList[index].0
         vc?.groupId = group?.groupId
         
         self.navigationController?.pushViewController(secondViewController, animated: true)
@@ -124,7 +102,7 @@ extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardS
     
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: index) as? CardSwiperCell {
-            cardCell.setCell(index: index, name: group?.participants[index].1 ?? "error", userId: group?.participants[index].0 ?? "error")
+            cardCell.setCell(index: index, name: userList[index].1, userId: userList[index].0)
             return cardCell
         }
         return CardCell()

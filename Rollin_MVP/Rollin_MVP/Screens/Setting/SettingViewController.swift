@@ -133,7 +133,7 @@ extension SettingViewController: UITableViewDelegate {
                                             if let err = error {
                                                 print("Error getting documents: \(err)")
                                             } else {
-                                                group.participants = []
+                                                group.participants = [:]
                                                 for _ in querySnapshot?.documents ?? [] {
                                                     self.db.collection("groupUsers").document(groupIds[idx]).collection("participants").document(UserDefaults.standard.string(forKey: "uid") ?? "").delete()
                                                     self.db.collection("groupUsers").document(groupIds[idx]).collection("participants").getDocuments { querySnapshot, error in
