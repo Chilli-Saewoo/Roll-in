@@ -90,6 +90,7 @@ final class GroupDetailViewController: UIViewController {
         cardSwiper.register(CardSwiperCell.self, forCellWithReuseIdentifier: "CardCell")
         cardSwiper.layer.opacity = 0.0
         initCountOfPostByUsers()
+        fetchCountOfPostByUSers()
     }
     
     
@@ -99,7 +100,6 @@ final class GroupDetailViewController: UIViewController {
             cardSwiper.layer.opacity = 1.0
             isFirstLoading = false
         }
-        fetchCountOfPostByUSers()
     }
     
     private func setIngroupCopyButtonAction() {
