@@ -52,7 +52,7 @@ class ResetNicknameViewController: UIViewController {
             if let err = err {
                 print("Error writing document: \(err)")
             } else {
-                print("닉네임 수정")
+                print("계정명 수정")
                 self.setNicknameUserDefault()
                 self.navigationController?.popViewController(animated: true)
             }
@@ -128,7 +128,7 @@ private extension ResetNicknameViewController {
             titleMessageLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 120),
             titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
-        titleMessageLabel.text = "닉네임 수정"
+        titleMessageLabel.text = "계정명 수정"
         titleMessageLabel.font = .systemFont(ofSize: 24, weight: .bold)
         titleMessageLabel.textColor = .systemBlack
     }

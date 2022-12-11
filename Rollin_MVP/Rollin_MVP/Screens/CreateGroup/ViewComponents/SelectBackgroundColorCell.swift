@@ -92,7 +92,7 @@ final class SelectBackgroundColorCell: UICollectionViewCell {
     }
     private func setUpLabel() {
         textMessageLabel.font = .systemFont(ofSize: 16, weight: .regular)
-        textMessageLabel.text = "안녕..."
+        textMessageLabel.text = "안녕"
         textMessageLabel.textAlignment = .center
     }
 }

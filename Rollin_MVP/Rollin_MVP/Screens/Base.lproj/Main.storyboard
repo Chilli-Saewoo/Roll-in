@@ -318,6 +318,21 @@
             </objects>
             <point key="canvasLocation" x="2722" y="56"/>
         </scene>
+        <!--Reset Ingroup Nickname View Controller-->
+        <scene sceneID="jPn-5z-naK">
+            <objects>
+                <viewController storyboardIdentifier="ResetIngroupNicknameViewController" id="Owk-gN-6TL" customClass="ResetIngroupNicknameViewController" customModule="Rollin_MVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jeb-fW-dsI">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="AvG-VI-dI4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oxe-MR-CjJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="214" y="41"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">

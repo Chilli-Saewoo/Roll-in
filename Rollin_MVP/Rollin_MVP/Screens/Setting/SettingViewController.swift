@@ -13,7 +13,7 @@ import MessageUI
 final class SettingViewController: UIViewController {
     
     enum SettingTitle: String {
-        case setNickname = "닉네임 설정"
+        case setNickname = "계정명 설정"
         case privacyPolicy = "개인정보 보호정책"
         case openLicense = "오픈소스 라이선스"
         case mailToDeveloper = "개발자에게 의견 남기기"

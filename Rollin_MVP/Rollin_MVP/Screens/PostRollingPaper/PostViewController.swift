@@ -18,6 +18,8 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
     private lazy var titleMessageLabel = UILabel()
     private lazy var writeButton = UIButton()
     private lazy var plusButton = UIButton()
+    private lazy var resetIngroupNicknameLabel = UILabel()
+    private lazy var resetIngroupNicknameButton = UIButton()
     var groupId: String?
     var writerNickname: String?
     var receiverNickname: String?
@@ -54,6 +56,8 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
         configurePostViewController()
         setupPostViewControllerLayout()
         setNavigationBarBackButton()
+        setIngroupNicknameLabel()
+        setIngroupNicknameButton()
         view.addSubview(activityIndicator)
         setIsEmptyTextLabelLayout()
     }
@@ -160,6 +164,20 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
         vc?.writerNickname = myGroupNickname
         self.navigationController?.pushViewController(viewController, animated: true)
     }
+    
+    private func setResetIngroupNicknameButton() {
+        resetIngroupNicknameButton.addTarget(self, action: #selector(resetIngroupNicknameButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc private func resetIngroupNicknameButtonPressed() {
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "ResetIngroupNicknameViewController") as? ResetIngroupNicknameViewController ?? UIViewController()
+        let vc = viewController as? ResetIngroupNicknameViewController
+        guard let groupId = groupId else { return }
+        guard let receiverNickname = receiverNickname else { return }
+        vc?.groupId = groupId
+        vc?.receiverNickname = receiverNickname
+        self.navigationController?.pushViewController(viewController, animated: true)
+    }
 }
 
 private extension PostViewController {
@@ -205,7 +223,7 @@ private extension PostViewController {
             titleMessageLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
         ])
         guard let groupNickname = receiverNickname else { return }
-        titleMessageLabel.setTextWithLineHeight(text: "\(groupNickname)의 롤링페이퍼", lineHeight: 40)
+        titleMessageLabel.text = groupNickname
         titleMessageLabel.font = .systemFont(ofSize: 26, weight: .bold)
         titleMessageLabel.numberOfLines = 0
     }
@@ -285,7 +303,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
             halfModal.preferredCornerRadius = 10
             halfModal.detents = [.medium()]
             halfModal.delegate = self
-            halfModal.prefersGrabberVisible = true
+            halfModal.prefersGrabberVisible = false
         }
         if post.isPublic || receiverUserId == UserDefaults.standard.string(forKey: "uid") {
             present(rollingPaperDetailViewController, animated: true, completion: nil)
@@ -315,9 +333,49 @@ private extension PostViewController {
 
 extension PostViewController {
     func setNavigationBarBackButton() {
-        guard let groupNickname = receiverNickname else { return }
-        let backBarButtonItem = UIBarButtonItem(title: "\(groupNickname)님의 롤링페이퍼", style: .plain, target: self, action: nil)
+        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
         backBarButtonItem.tintColor = .black
         self.navigationItem.backBarButtonItem = backBarButtonItem
+    }
+}
+
+private extension PostViewController {
+    func setIngroupNicknameButton() {
+        if receiverUserId == UserDefaults.standard.string(forKey: "uid") {
+            view.addSubview(resetIngroupNicknameButton)
+            resetIngroupNicknameButton.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                resetIngroupNicknameButton.centerYAnchor.constraint(equalTo: titleMessageLabel.centerYAnchor),
+                resetIngroupNicknameButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+                resetIngroupNicknameButton.widthAnchor.constraint(equalToConstant: 75),
+                resetIngroupNicknameButton.heightAnchor.constraint(equalToConstant: 24),
+            ])
+            resetIngroupNicknameButton.backgroundColor = .systemBlack
+            resetIngroupNicknameButton.layer.cornerRadius = 4.0
+            setResetIngroupNicknameButton()
+        }
+    }
+    
+    func setIngroupNicknameLabel() {
+        if receiverUserId == UserDefaults.standard.string(forKey: "uid") {
+            resetIngroupNicknameButton.addSubview(resetIngroupNicknameLabel)
+            resetIngroupNicknameLabel.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                resetIngroupNicknameLabel.centerXAnchor.constraint(equalTo: resetIngroupNicknameButton.centerXAnchor),
+                resetIngroupNicknameLabel.centerYAnchor.constraint(equalTo: resetIngroupNicknameButton.centerYAnchor),
+                resetIngroupNicknameLabel.widthAnchor.constraint(equalTo: resetIngroupNicknameButton.widthAnchor),
+                resetIngroupNicknameLabel.heightAnchor.constraint(equalTo: resetIngroupNicknameButton.heightAnchor),
+            ])
+            resetIngroupNicknameLabel.isUserInteractionEnabled = false
+            let imageAttachment = NSTextAttachment()
+            let imageConfig = UIImage.SymbolConfiguration(pointSize: 10, weight: .medium)
+            imageAttachment.image = UIImage(systemName: "rectangle.and.pencil.and.ellipsis", withConfiguration: imageConfig)?.withTintColor(.white)
+            let buttonTitle = NSMutableAttributedString(attachment: imageAttachment)
+            buttonTitle.append(NSMutableAttributedString(string: " 닉네임 수정"))
+            resetIngroupNicknameLabel.attributedText = buttonTitle
+            resetIngroupNicknameLabel.font = .systemFont(ofSize: 10, weight: .medium)
+            resetIngroupNicknameLabel.textColor = .white
+            resetIngroupNicknameLabel.textAlignment = .center
+        }
     }
 }

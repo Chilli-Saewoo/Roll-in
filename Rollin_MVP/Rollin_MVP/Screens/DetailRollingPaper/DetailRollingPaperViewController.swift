@@ -224,7 +224,7 @@ private extension DetailRollingPaperViewController {
         NSLayoutConstraint.activate([
             self.collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             self.collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            self.collectionView.heightAnchor.constraint(equalToConstant: LayoutValue.postSize.height),
+            self.collectionView.heightAnchor.constraint(equalToConstant: LayoutValue.postSize.width),
             self.collectionView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 22),
         ])
         
