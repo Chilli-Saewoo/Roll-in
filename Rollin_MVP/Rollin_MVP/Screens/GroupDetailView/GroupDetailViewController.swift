@@ -8,6 +8,8 @@
 import UIKit
 import VerticalCardSwiper
 
+
+var count = 0
 final class GroupDetailViewController: UIViewController {
     var group: Group?
     private var cardSwiper: VerticalCardSwiper!
@@ -18,7 +20,18 @@ final class GroupDetailViewController: UIViewController {
     private let ingroupCodeCopyButton = UIButton()
     private let codeCopyToastView = UILabel()
     private var isFirstLoading = true
-    
+    private let indexBarTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.rowHeight = 20
+        return tableView
+    }()
+    private var alphabet: [String] = ["Z", "Y", "X", "W", "V", "U", "T", "S", "R", "Q", "P", "O","N", "M", "L", "K", "J","I", "H", "G", "F","E","D", "C", "B", "A", "ㅎ", "ㅍ", "ㅌ", "ㅋ", "ㅊ", "ㅈ", "ㅇ", "ㅅ", "ㅂ", "ㅁ", "ㄹ", "ㄷ", "ㄴ", "ㄱ", "􀉟"]
+    lazy var indexBarBackground = UIView()
+    let koreanAlphabet = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
+    var array = [Int]()
+    var strArray = [String]()
+    var userInitialDic = [String : Int]()
+    var userInitialKeys = [String]()
     var userList: [(String, String)] {
         guard let group = group else { return [] }
         let list = group.participants.sorted {
@@ -45,6 +58,13 @@ final class GroupDetailViewController: UIViewController {
         return false
     }
     
+    private func isStartedWithKoreanAlphabet(str: String) -> Bool {
+        if str >= "ㄱ" && str <= "ㅎ" {
+            return true
+        }
+        return false
+    }
+    
     private func isStartedWithEnglish(str: String) -> Bool {
         if (str >= "a" && str <= "z") || (str >= "A" && str <= "Z") {
             return true
@@ -54,6 +74,7 @@ final class GroupDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        getUserInitial()
         setGroupMessageLabel()
         setIngroupCodeCopyButton()
         setIngroupCodeCopyLabel()
@@ -85,6 +106,34 @@ final class GroupDetailViewController: UIViewController {
         UIPasteboard.general.string = code
         setToastView()
         showToastView()
+    }
+    
+    private func getInitialConsonant(word: String) -> String {
+        let octal = word.unicodeScalars[word.unicodeScalars.startIndex].value
+        let index = (octal - 0xac00) / 28 / 21
+        return koreanAlphabet[Int(index)]
+    }
+
+    private func getUserInitial() {
+        for i in 0 ..< userList.count {
+            if userList[i].0 == UserDefaults.standard.string(forKey: "uid") {
+                continue
+            }
+            if isStartedWithKorean(str: userList[i].1) {
+                userInitialDic[getInitialConsonant(word: userList[i].1)] = i
+            }
+            else { userInitialDic[String(userList[i].1.prefix(1).uppercased())] = i }
+        }
+        userInitialKeys = [String](userInitialDic.keys)
+        userInitialKeys = userInitialKeys.sorted(by: {
+            if isStartedWithKoreanAlphabet(str: $0) && isStartedWithEnglish(str: $1) {
+                return false
+            } else if isStartedWithEnglish(str: $0) && isStartedWithKoreanAlphabet(str: $1) {
+                return true
+            }
+            return $0 > $1
+        })
+        userInitialKeys.append("★")
     }
 }
 
@@ -216,3 +265,5 @@ private extension GroupDetailViewController {
         })
     }
 }
+
+
