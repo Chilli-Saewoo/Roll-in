@@ -18,23 +18,32 @@ final class GroupDetailViewController: UIViewController {
     private let ingroupCodeCopyButton = UIButton()
     private let codeCopyToastView = UILabel()
     private var isFirstLoading = true
+    
     var usersList: [(String, String)] {
         guard let group = group else { return [] }
         let list = group.participants.sorted {
-            $0.value > $1.value
+            if isStartWithKorean(str: $0.value.lowercased()) && isStartWithEnglish(str: $1.value.lowercased()) {
+                return false
+            } else if isStartWithEnglish(str: $0.value.lowercased()) && isStartWithKorean(str: $1.value.lowercased()) {
+                return true
+            }
+            return $0.value.lowercased() > $1.value.lowercased()
         }
         return list
     }
     
-    func isStartWithKorean(string: String) -> Bool {
-//        if string > "ㄱ" && string < "ㅎ"
-    
-        return true
+    private func isStartWithKorean(str: String) -> Bool {
+        if str >= "가" && str <= "힣" {
+            return true
+        }
+        return false
     }
     
-    func isStartWithEnglish(string: String) -> Bool {
-    
-        return true
+    private func isStartWithEnglish(str: String) -> Bool {
+        if (str >= "a" && str <= "z") || (str >= "A" && str <= "Z") {
+            return true
+        }
+        return false
     }
     
     override func viewDidLoad() {
