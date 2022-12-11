@@ -15,7 +15,7 @@ struct RollingPaperPostAPI {
     
     private let db = FirebaseFirestore.Firestore.firestore()
     
-    func writePost(document: PostWithImageAndMessage, imageUrl: String, groupId: String, receiver: String) {
+    func writePost(document: PostWithImageAndMessage, imageUrl: String?, groupId: String, receiver: String) {
         let groupId = groupId
         let receiver = receiver
         let uuid = UUID().uuidString
