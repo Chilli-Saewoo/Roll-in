@@ -30,10 +30,26 @@ final class PostPhotoPickerView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
+        setButton()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setButton() {
+        deletePhotoButton.addTarget(self, action: #selector(touchUpInsideToDeletePhoto), for: .touchUpInside)
+        addPhotoButton.addTarget(self, action: #selector(touchUpInsideToAddPhoto), for: .touchUpInside)
+    }
+    
+    @objc
+    func touchUpInsideToDeletePhoto() {
+        print("delete")
+    }
+    
+    @objc
+    func touchUpInsideToAddPhoto() {
+        print("add")
     }
     
     func setupLayout(){
