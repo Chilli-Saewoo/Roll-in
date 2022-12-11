@@ -20,6 +20,8 @@ final class CardSwiperCell: CardCell {
         nameLabel.text = name
         if userId == UserDefaults.standard.string(forKey: "uid") {
             setBookMarkLabel()
+        } else {
+            bookMarkLabel.removeFromSuperview()
         }
     }
     
@@ -84,12 +86,15 @@ final class GroupDetailViewController: UIViewController {
         cardSwiper.datasource = self
         cardSwiper.delegate = self
         cardSwiper.register(CardSwiperCell.self, forCellWithReuseIdentifier: "CardCell")
+        cardSwiper.layer.opacity = 0.0
     }
     
-    override func viewDidLayoutSubviews() {
+    
+    override func viewDidAppear(_ animated: Bool) {
         if isFirstLoading {
             let _ = cardSwiper.scrollToCard(at: (group?.participants.count ?? 1) - 1, animated: false)
-            isFirstLoading = true
+            cardSwiper.layer.opacity = 1.0
+            isFirstLoading = false
         }
     }
     
