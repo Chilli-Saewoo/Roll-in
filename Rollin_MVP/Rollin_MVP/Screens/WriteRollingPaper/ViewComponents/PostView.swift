@@ -31,9 +31,17 @@ final class PostView: UIView {
         static var collectionViewContentInset = UIEdgeInsets(top: 5, left: insetX, bottom: 0, right: insetX)
     }
     
-    private let collectionViewFlowLayout = UICollectionViewFlowLayout()
-    
-    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: self.collectionViewFlowLayout)
+    private let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = LayoutValue.postSize
+        layout.minimumLineSpacing = LayoutValue.postSpacing
+        layout.minimumInteritemSpacing = 0
+        
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .clear
+        return collectionView
+    }()
     
     var writerNickname: String = ""
     
@@ -114,7 +122,6 @@ final class PostView: UIView {
         super.init(frame: frame)
         setupPostLayout()
         setCollectionView()
-        setCollectionViewFlowLayout()
         setButton()
     }
     
@@ -268,13 +275,6 @@ extension PostView: UICollectionViewDelegate {
 }
 
 extension PostView {
-    func setCollectionViewFlowLayout() {
-        collectionViewFlowLayout.scrollDirection = .horizontal
-        collectionViewFlowLayout.itemSize = LayoutValue.postSize
-        collectionViewFlowLayout.minimumLineSpacing = LayoutValue.postSpacing
-        collectionViewFlowLayout.minimumInteritemSpacing = 0
-    }
-    
     func setCollectionView() {
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
