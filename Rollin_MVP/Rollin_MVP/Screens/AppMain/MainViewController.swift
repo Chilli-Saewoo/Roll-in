@@ -176,7 +176,6 @@ private extension MainViewController {
                                         group.participants = [:]
                                         for document in querySnapshot?.documents ?? [] {
                                             group.participants[document.documentID] = document.data()["groupNickname"] as? String ?? ""
-//                                            group.participants.append((document.documentID, document.data()["groupNickname"] as? String ?? ""))
                                             if document.documentID == UserDefaults.standard.string(forKey: "uid") ?? "" {
                                                 group.groupNickname = document.data()["groupNickname"] as? String ?? ""
                                             }
