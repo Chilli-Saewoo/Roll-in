@@ -37,26 +37,26 @@ final class PostView: UIView {
     
     var writerNickname: String = ""
     
-    
 //    var isPhotoAdded: Bool = false
     var isTextEdited: Bool = false
+    var isPublic: Bool = true
     
 //    weak var delegate: WriteRollingPaperViewControllerDelegate?
     
-//    let privateSwitch: UISwitch = {
-//        let privateSwitch = UISwitch()
-//        privateSwitch.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
-//        privateSwitch.onTintColor = .systemBlack
-//        privateSwitch.setOn(true, animated: false)
-//        return privateSwitch
-//    }()
-    
-//    private let privateSwitchTitleLabel: UILabel = {
-//        let label = UILabel()
-//        label.text = "그룹내 공개"
-//        label.font = .preferredFont(forTextStyle: .footnote)
-//        return label
-//    }()
+    let privateButton: UIButton = {
+        let button = UIButton()
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 15
+        button.setTitle(" 공개", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 12)
+        button.setImage(UIImage(systemName: "lock.open"), for: .normal)
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 12)
+        button.setPreferredSymbolConfiguration(imageConfig, forImageIn: .normal)
+        button.backgroundColor = .black
+        button.tintColor = .white
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
     
     private let textCountLabel: UILabel = {
         let label = UILabel()
@@ -64,21 +64,6 @@ final class PostView: UIView {
         return label
     }()
     
-//    let textView: UITextView = {
-//        let textView = UITextView()
-//        textView.backgroundColor = .bgRed
-//        textView.textColor = .textRed
-//        textView.tintColor = .textRed
-//        textView.font = .preferredFont(forTextStyle: .body)
-//        textView.textContainerInset = UIEdgeInsets(top: 13, left: 12, bottom: 36, right: 12)
-//        textView.text = "글과 사진을 모두 등록해야 업로드 됩니다"
-//        textView.layer.cornerRadius = 4
-//        textView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-//        textView.autocorrectionType = .no
-//        textView.spellCheckingType = .no
-//        return textView
-//    }()
-//
 //    let emptyImageButton: UIButton = {
 //        let button = UIButton()
 //        button.setTitle("사진 추가하기", for: .normal)
@@ -101,13 +86,6 @@ final class PostView: UIView {
 //        return button
 //    }()
 //
-//    let fromLabel: UILabel = {
-//        let label = UILabel()
-//        label.font = .systemFont(ofSize: 16, weight: .bold)
-//        label.textColor = .textRed
-//        return label
-//    }()
-    
     private let pageControllerStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .horizontal
@@ -134,66 +112,58 @@ final class PostView: UIView {
         setupPostLayout()
         setCollectionView()
         setCollectionViewFlowLayout()
-        
+        setButton()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func setButton() {
+        privateButton.addTarget(self, action: #selector(touchUpInsideToSetPrivate), for: .touchUpInside)
+    }
+    
+    @objc
+    func touchUpInsideToSetPrivate() {
+        isPublic.toggle()
+        if isPublic {
+            privateButton.setTitle(" 공개", for: .normal)
+            privateButton.setImage(UIImage(systemName: "lock.open.fill"), for: .normal)
+            privateButton.backgroundColor = .black
+            privateButton.tintColor = .white
+            privateButton.setTitleColor(.white, for: .normal)
+        } else {
+            privateButton.setTitle(" 비공개", for: .normal)
+            privateButton.setImage(UIImage(systemName: "lock.fill"), for: .normal)
+            privateButton.backgroundColor = .white
+            privateButton.tintColor = .black
+            privateButton.setTitleColor(.black, for: .normal)
+            
+        }
+    }
+    
     private func setupPostLayout() {
+        addSubview(privateButton)
+        privateButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            privateButton.topAnchor.constraint(equalTo: topAnchor),
+            privateButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 38),
+            privateButton.widthAnchor.constraint(equalToConstant: 62),
+            privateButton.heightAnchor.constraint(equalToConstant: 28)
+        ])
+        
         addSubview(textCountLabel)
         textCountLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            textCountLabel.topAnchor.constraint(equalTo: topAnchor),
+            textCountLabel.centerYAnchor.constraint(equalTo: privateButton.centerYAnchor),
             textCountLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -38),
             textCountLabel.heightAnchor.constraint(equalToConstant: 16)
         ])
         
-//        addSubview(privateSwitch)
-//        privateSwitch.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            privateSwitch.centerYAnchor.constraint(equalTo: textCountLabel.centerYAnchor),
-//            privateSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 4),
-//        ])
-//
-//        addSubview(privateSwitchTitleLabel)
-//        privateSwitchTitleLabel.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            privateSwitchTitleLabel.centerYAnchor.constraint(equalTo: privateSwitch.centerYAnchor),
-//            privateSwitchTitleLabel.trailingAnchor.constraint(equalTo: privateSwitch.leadingAnchor, constant: 0),
-//            privateSwitchTitleLabel.heightAnchor.constraint(equalToConstant: 16)
-//        ])
-//
-//        addSubview(textView)
-//        textView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            textView.topAnchor.constraint(equalTo: textCountLabel.bottomAnchor, constant: 8),
-//            textView.leadingAnchor.constraint(equalTo: leadingAnchor),
-//            textView.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            textView.heightAnchor.constraint(equalToConstant: 164),
-//        ])
-//
-//        addSubview(emptyImageButton)
-//        emptyImageButton.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            emptyImageButton.topAnchor.constraint(equalTo: textView.bottomAnchor, constant: 4),
-//            emptyImageButton.leadingAnchor.constraint(equalTo: leadingAnchor),
-//            emptyImageButton.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            emptyImageButton.bottomAnchor.constraint(equalTo: bottomAnchor),
-//            emptyImageButton.heightAnchor.constraint(equalToConstant: 66)
-//        ])
-//
-//        addSubview(fromLabel)
-//        fromLabel.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            fromLabel.bottomAnchor.constraint(equalTo: textView.bottomAnchor, constant: -8),
-//            fromLabel.trailingAnchor.constraint(equalTo: textView.trailingAnchor, constant: -12),
-//        ])
         addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: textCountLabel.bottomAnchor, constant: 4),
+            collectionView.topAnchor.constraint(equalTo: privateButton.bottomAnchor, constant: 4),
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
             collectionView.heightAnchor.constraint(equalToConstant: LayoutValue.postSize.width)
@@ -225,10 +195,6 @@ final class PostView: UIView {
             pageControllerSecondDotView.bottomAnchor.constraint(equalTo: pageControllerStackView.bottomAnchor),
             pageControllerSecondDotView.widthAnchor.constraint(equalToConstant: 8)
         ])
-        
-        
-        
-        
     }
     
 //    func setupAddedImageButtonLayout() {
@@ -252,50 +218,11 @@ final class PostView: UIView {
     }
 }
 
-
-extension PostView: UITextViewDelegate {
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if (text == "\n") {
-            textView.resignFirstResponder()
-        }
-        return self.checkTextLimit(existingText: textView.text,
-                                  newText: text,
-                                  limit: 200)
-    }
-    
-    func textViewDidChange(_ textView: UITextView) {
-//        textCountLabel.text = "\(textView.text.count)/100"
-//        if isTextEdited && isPhotoAdded {
-//            delegate?.activeConfirmButton()
-//        } else {
-//            delegate?.inactiveConfirmButton()
-//        }
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-//        if !isTextEdited {
-//            let cell = collectionView.cellForItem(at: index)
-//            isTextEdited = true
-//        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        let textWithoutWhiteSpace = textView.text.trimmingCharacters(in: .whitespaces)
-//        if isTextEdited && textWithoutWhiteSpace == "" {
-//            textView.text = "글과 사진을 모두 등록해야 업로드 됩니다"
-//            textCountLabel.text = "0/100"
-//            isTextEdited = false
-//            delegate?.inactiveConfirmButton()
-//        }
-    }
-}
-
 extension PostView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         2
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let post = post else { return UICollectionViewCell() }
         if indexPath.row == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostTextCollectionViewCell.className, for: indexPath) as! PostTextCollectionViewCell
 //            let textColor = getTextColor(backgroundColorString: post.postTheme)

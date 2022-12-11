@@ -29,6 +29,22 @@ final class WriteRollingPaperViewController: UIViewController {
     var groupId: String = ""
     var receiverUserId: String = ""
     
+//    private let buttonStackView: UIStackView = {
+//
+//    }()
+//
+//    private let templateButton: UIButton = {
+//        let button = UIButton()
+//        button.setTitle("템플릿", for: .normal)
+//        return button
+//    }()
+//
+//    private let photoButton: UIButton = {
+//        let button = UIButton()
+//        button.setTitle("사진", for: .normal)
+//        return button
+//    }()
+    
 //    private let confirmButton: UIButton = {
 //        let button = UIButton()
 //        button.setTitle("올리기", for: .normal)
@@ -164,16 +180,24 @@ final class WriteRollingPaperViewController: UIViewController {
 //    }
     
     private func setupWholeLayout() {
-//        view.addSubview(postThemePicerkView)
-//        postThemePicerkView.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            postThemePicerkView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-//            postThemePicerkView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
-//            postThemePicerkView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -21),
-//            postThemePicerkView.heightAnchor.constraint(equalToConstant: postThemePickerItemWidth + 25)
-//        ])
-        
         setupPostLayout()
+        
+//        view.addSubview(buttonStackView)
+//        
+//        view.addSubview(templateButton)
+//        templateButton.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint =
+//        
+//        view.addSubview(photoButton)
+//        photoButton.translatesAutoresizingMaskIntoConstraints = false
+//                view.addSubview(postThemePicerkView)
+//                postThemePicerkView.translatesAutoresizingMaskIntoConstraints = false
+//                NSLayoutConstraint.activate([
+//                    postThemePicerkView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+//                    postThemePicerkView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 21),
+//                    postThemePicerkView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -21),
+//                    postThemePicerkView.heightAnchor.constraint(equalToConstant: postThemePickerItemWidth + 25)
+//                ])
         
 //        view.addSubview(confirmButton)
 //        confirmButton.translatesAutoresizingMaskIntoConstraints = false

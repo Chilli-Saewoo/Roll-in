@@ -87,7 +87,6 @@ extension PostTextCollectionViewCell: UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-//        textCountLabel.text = "\(textView.text.count)"
 //        if isTextEdited && isPhotoAdded {
 //            delegate?.activeConfirmButton()
 //        } else {
@@ -107,7 +106,6 @@ extension PostTextCollectionViewCell: UITextViewDelegate {
         let textWithoutWhiteSpace = textView.text.trimmingCharacters(in: .whitespaces)
         if isTextEdited && textWithoutWhiteSpace == "" {
             textView.text = "전달할 말을 입력해주세요"
-//            textCountLabel.text = "0"
             delegate?.setTextCount(textCount: 0)
             isTextEdited = false
 //            delegate?.inactiveConfirmButton()
