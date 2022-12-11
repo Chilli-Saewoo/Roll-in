@@ -237,13 +237,13 @@ final class WriteRollingPaperViewController: UIViewController {
                                                                    id: "", timestamp: Date(),
                                                                    from: self.writerNickname,
                                                                    isPublic: self.postView.isPublic,
-                                                                   imageURL: "",
+                                                                   imageURL: nil,
                                                                    message: self.postView.postTextCollectionViewCell.textView.text,
                                                                    postTheme: self.postThemePicerkView.selectedThemeHex)
 
                     let rollingPaperPostAPI = RollingPaperPostAPI()
                     rollingPaperPostAPI.writePost(document: rollingPaperPostData,
-                                                  imageUrl: "",
+                                                  imageUrl: nil,
                                                   groupId: self.groupId,
                                                   receiver: self.receiverUserId)
                     self.isBeingSaved = false

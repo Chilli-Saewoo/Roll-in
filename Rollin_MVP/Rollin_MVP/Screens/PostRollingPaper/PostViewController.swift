@@ -254,7 +254,7 @@ extension PostViewController: PostRollingPaperLayoutDelegate {
         var padding: CGFloat = 35
         if post.imageURL == nil {
             imageHeight = 0
-            padding = 42
+            padding = 60
         }
         let labelHeight = post.message.heightWithConstrainedWidth(width: UIScreen.main.bounds.width / 2 - 50, font: UIFont.systemFont(ofSize: 12, weight: .medium))
         return imageHeight + labelHeight + padding
