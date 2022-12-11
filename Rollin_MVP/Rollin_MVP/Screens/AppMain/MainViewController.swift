@@ -173,9 +173,10 @@ private extension MainViewController {
                                     if let err = error {
                                         print("Error getting documents: \(err)")
                                     } else {
-                                        group.participants = []
+                                        group.participants = [:]
                                         for document in querySnapshot?.documents ?? [] {
-                                            group.participants.append((document.documentID, document.data()["groupNickname"] as? String ?? ""))
+                                            group.participants[document.documentID] = document.data()["groupNickname"] as? String ?? ""
+//                                            group.participants.append((document.documentID, document.data()["groupNickname"] as? String ?? ""))
                                             if document.documentID == UserDefaults.standard.string(forKey: "uid") ?? "" {
                                                 group.groupNickname = document.data()["groupNickname"] as? String ?? ""
                                             }
