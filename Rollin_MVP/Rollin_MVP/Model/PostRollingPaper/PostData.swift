@@ -47,11 +47,11 @@ class PostData: Equatable, Comparable {
 }
 
 final class PostWithImageAndMessage: PostData {
-    var imageURL: String
+    var imageURL: String?
     var message: String
     var postTheme: String
     
-    init(type: PostType, id: String, timestamp: Date, from: String, isPublic: Bool, imageURL: String, message: String, postTheme: String) {
+    init(type: PostType, id: String, timestamp: Date, from: String, isPublic: Bool, imageURL: String?, message: String, postTheme: String) {
         self.imageURL = imageURL
         self.message = message
         self.postTheme = postTheme

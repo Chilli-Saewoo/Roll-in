@@ -77,6 +77,7 @@
 		ABF45DFC2945816800D96CC4 /* CardSwiperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF45DFB2945816800D96CC4 /* CardSwiperCell.swift */; };
 		ABF45DFE2945C81A00D96CC4 /* ResetIngroupNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF45DFD2945C81A00D96CC4 /* ResetIngroupNicknameViewController.swift */; };
 		ABF45E00294613F200D96CC4 /* CardSkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF45DFF294613F200D96CC4 /* CardSkeletonView.swift */; };
+		ABF45E05294679DC00D96CC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABF45E04294679DC00D96CC4 /* GoogleService-Info.plist */; };
 		F64694F92921A4BB0094CB68 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64694F82921A4BB0094CB68 /* FirebaseStorageManager.swift */; };
 		F65517512920C89D00B09405 /* NSTextAttachment+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65517502920C89D00B09405 /* NSTextAttachment+.swift */; };
 		F663324B292033F300A7310A /* SetNickNameWhileLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324A292033F300A7310A /* SetNickNameWhileLoginViewController.swift */; };
@@ -187,6 +188,7 @@
 		ABF45DFB2945816800D96CC4 /* CardSwiperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSwiperCell.swift; sourceTree = "<group>"; };
 		ABF45DFD2945C81A00D96CC4 /* ResetIngroupNicknameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetIngroupNicknameViewController.swift; sourceTree = "<group>"; };
 		ABF45DFF294613F200D96CC4 /* CardSkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSkeletonView.swift; sourceTree = "<group>"; };
+		ABF45E04294679DC00D96CC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F64694F82921A4BB0094CB68 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseStorageManager.swift; path = API/FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		F65517502920C89D00B09405 /* NSTextAttachment+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextAttachment+.swift"; sourceTree = "<group>"; };
 		F663324A292033F300A7310A /* SetNickNameWhileLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetNickNameWhileLoginViewController.swift; sourceTree = "<group>"; };

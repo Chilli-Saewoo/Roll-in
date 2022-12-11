@@ -62,7 +62,7 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
     lazy var imageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
-        image.image = UIImage(named: "cat")
+        image.image = nil
         image.layer.cornerRadius = 4
         image.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         image.clipsToBounds = true
@@ -103,6 +103,13 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
 }
 
 extension PostRollingPaperCollectionViewCell {
+    func setupView() {
+        containerView.removeFromSuperview()
+        messageLabel.removeFromSuperview()
+        fromLabel.removeFromSuperview()
+        imageView.removeFromSuperview()
+    }
+        
     func setupPrivatePostViewLayout() {
         setupContainerViewLayout()
         setupPrivateMessageLayout()
@@ -171,6 +178,16 @@ extension PostRollingPaperCollectionViewCell {
         fromLabel.translatesAutoresizingMaskIntoConstraints = false
         fromLabel.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 10).isActive = true
         fromLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10).isActive = true
+        
+        if imageView.image != nil {
+            containerView.addSubview(imageView)
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.topAnchor.constraint(equalTo: fromLabel.bottomAnchor, constant: 10).isActive = true
+            imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
+            imageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
+            imageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
+            imageView.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 50)/2).isActive = true
+        }
     }
     
     func setupImageViewLayout() {

@@ -108,17 +108,24 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
         
         let postDocuments = try snapshot.documents.map { document -> PostData? in
             let data = try document.data(as: PostCodableData.self)
-            
-            // TODO: - type은 이후에 Firebase에서 받아와서 들어와져야 합니다. 현재는 한 종류이기 때문에 상수로 들어가게 됩니다.
-            // switch로 type을 받아온 후, type에 따라서 return 형식이 달라져야 합니다.
-            guard let image = data.image, let message = data.message, let postTheme = data.postTheme  else { return nil }
-            return PostWithImageAndMessage(type: .imageAndMessage,
-                                           id: document.documentID, // TODO: - DB에 POST 아이디가 필요
-                                           timestamp: data.timeStamp,
-                                           from: data.from, isPublic: data.isPublic,
-                                           imageURL: image,
-                                           message: message,
-                                           postTheme: postTheme)
+            if let image = data.image, let message = data.message, let postTheme = data.postTheme {
+                return PostWithImageAndMessage(type: .imageAndMessage,
+                                               id: document.documentID, // TODO: - DB에 POST 아이디가 필요
+                                               timestamp: data.timeStamp,
+                                               from: data.from, isPublic: data.isPublic,
+                                               imageURL: image,
+                                               message: message,
+                                               postTheme: postTheme)
+            } else if let message = data.message, let postTheme = data.postTheme {
+                return PostWithImageAndMessage(type: .imageAndMessage,
+                                               id: document.documentID, // TODO: - DB에 POST 아이디가 필요
+                                               timestamp: data.timeStamp,
+                                               from: data.from, isPublic: data.isPublic,
+                                               imageURL: nil,
+                                               message: message,
+                                               postTheme: postTheme)
+            }
+            return nil
         }
         
         var newPosts: [PostData] = []
@@ -136,11 +143,12 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
             switch post.type {
             case .imageAndMessage:
                 let postWithType = post as? PostWithImageAndMessage
-                guard let imageURL = postWithType?.imageURL else { return }
-                FirebaseStorageManager.downloadImage(urlString: imageURL) { fetchedImage in
-                    guard let fetchedImage = fetchedImage else { return }
-                    if self.images[post.id] == nil {
-                        self.images[post.id] = fetchedImage
+                if let imageURL = postWithType?.imageURL {
+                    FirebaseStorageManager.downloadImage(urlString: imageURL) { fetchedImage in
+                        guard let fetchedImage = fetchedImage else { return }
+                        if self.images[post.id] == nil {
+                            self.images[post.id] = fetchedImage
+                        }
                     }
                 }
             case .image:
@@ -242,9 +250,14 @@ private extension PostViewController {
 extension PostViewController: PostRollingPaperLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, heightForImageAtIndexPath indexPath: IndexPath) -> CGFloat {
         guard let post = posts?[indexPath.item] as? PostWithImageAndMessage else { return 0 }
-        let imageHeight = (UIScreen.main.bounds.width - 10)/2
+        var imageHeight = (UIScreen.main.bounds.width - 10)/2
+        var padding: CGFloat = 35
+        if post.imageURL == nil {
+            imageHeight = 0
+            padding = 42
+        }
         let labelHeight = post.message.heightWithConstrainedWidth(width: UIScreen.main.bounds.width / 2 - 50, font: UIFont.systemFont(ofSize: 12, weight: .medium))
-        return imageHeight + labelHeight + 35
+        return imageHeight + labelHeight + padding
     }
 }
 
@@ -277,12 +290,23 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.containerView.backgroundColor = hexStringToUIColor(hex: post.postTheme)
             cell.imageView.image = image
             cell.isUserInteractionEnabled = true
+            cell.setupView()
+        } else if (posts?[indexPath.item] as! PostWithImageAndMessage).imageURL == nil {
+            cell.messageLabel.text = post.message
+            cell.messageLabel.textColor = textColor
+            cell.fromLabel.text = "From. \(post.from)"
+            cell.fromLabel.textColor = textColor
+            cell.containerView.backgroundColor = hexStringToUIColor(hex: post.postTheme)
+            cell.imageView.image = nil
+            cell.isUserInteractionEnabled = true
+            cell.setupView()
         } else {
             cell.messageLabel.text = ""
             cell.fromLabel.text = ""
             cell.containerView.backgroundColor = hexStringToUIColor(hex: "F1F1F1")
             cell.imageView.image = UIImage(named: "skeleton")
             cell.isUserInteractionEnabled = false
+            cell.setupView()
         }
         if post.isPublic {
             cell.setupPublicPostViewLayout()
