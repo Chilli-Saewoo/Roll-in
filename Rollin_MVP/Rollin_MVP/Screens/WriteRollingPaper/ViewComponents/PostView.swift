@@ -41,7 +41,7 @@ final class PostView: UIView {
     var isTextEdited: Bool = false
     var isPublic: Bool = true
     
-//    weak var delegate: WriteRollingPaperViewControllerDelegate?
+    weak var delegate: WriteRollingPaperViewDelegate?
     
     let privateButton: UIButton = {
         let button = UIButton()
@@ -232,7 +232,8 @@ extension PostView: UICollectionViewDataSource {
 //            cell.message.textColor = textColor
 //            cell.detailPostView.backgroundColor = hexStringToUIColor(hex: post.postTheme)
             self.postTextCollectionViewCell.fromLabel.text = "From. \(writerNickname)"
-            self.postTextCollectionViewCell.delegate = self
+            self.postTextCollectionViewCell.postViewDelegate = self
+            self.postTextCollectionViewCell.writeRollingPaperViewDelegate = delegate
 //            cell.from.textColor = textColor
             return self.postTextCollectionViewCell
         } else {

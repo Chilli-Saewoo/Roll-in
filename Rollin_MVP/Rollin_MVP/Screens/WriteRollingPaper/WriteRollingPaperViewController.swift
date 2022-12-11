@@ -13,6 +13,12 @@ import FirebaseFirestore
 import FirebaseStorage
 import Firebase
 
+protocol WriteRollingPaperViewDelegate: AnyObject {
+    func activeConfirmButton()
+
+    func inactiveConfirmButton()
+}
+
 final class WriteRollingPaperViewController: UIViewController {
     
     private let postThemePicerkView = PostThemePickerView()
@@ -23,7 +29,25 @@ final class WriteRollingPaperViewController: UIViewController {
     
 //    private lazy var authorizationOfCameraAlert: () = makeAlert(title: "알림", message: "카메라 접근이 허용되어 있지 않습니다.")
 //    private lazy var authorizationOfPhotoLibraryAlert: () = makeAlert(title: "알림", message: "라이브러리 접근이 허용되어 있지 않습니다.")
-//    private var isBeingSaved: Bool = false
+    private let dismissButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(" 취소", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.setImage(UIImage(systemName: "xmark"), for: .normal)
+        button.tintColor = .black
+        return button
+    }()
+    
+    private let completeButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("완료", for: .normal)
+        button.setTitleColor(.inactiveTextGray, for: .normal)
+        button.layer.cornerRadius = 15
+        button.backgroundColor = .inactiveBgGray
+        return button
+    }()
+    
+    private var isBeingSaved: Bool = false
 //    private var postImage: UIImage = UIImage()
     var writerNickname: String = ""
     var groupId: String = ""
@@ -103,6 +127,7 @@ final class WriteRollingPaperViewController: UIViewController {
     
     private func configureDelegate() {
         postThemePicerkView.postViewDelegate = postView
+        postView.delegate = self
 //        imagePickerViewController.delegate = self
 //        imagePickerViewController.allowsEditing = true
 //        postView.delegate = self
@@ -153,10 +178,17 @@ final class WriteRollingPaperViewController: UIViewController {
     private func setupButtonAction() {
         templateButton.addTarget(self, action: #selector(touchUpInsideToSetTemplateView), for: .touchUpInside)
         photoButton.addTarget(self, action: #selector(touchUpInsideToSetPhotoView), for: .touchUpInside)
+        completeButton.addTarget(self, action: #selector(touchUpInsideToConfirmPost), for: .touchUpInside)
+        dismissButton.addTarget(self, action: #selector(touchUpInsideToDismiss), for: .touchUpInside)
 //        postView.emptyImageButton.addTarget(self, action: #selector(touchUpInsideToSetPhoto), for: .touchUpInside)
 //        postView.addedImageButton.addTarget(self, action: #selector(touchUpInsideToSetPhoto), for: .touchUpInside)
 //        confirmButton.addTarget(self, action: #selector(touchUpInsideToConfirmPost), for: .touchUpInside)
 //        confirmButton.isEnabled = false
+    }
+    
+    @objc
+    private func touchUpInsideToDismiss() {
+        self.dismiss(animated: true)
     }
     
     @objc
@@ -189,31 +221,55 @@ final class WriteRollingPaperViewController: UIViewController {
 //                        actions: [choosePhotoFromAlbumAction, takePhotoAction, nil])
 //    }
 //
-//    @objc
-//    private func touchUpInsideToConfirmPost() {
-//        Task {
-//            if !isBeingSaved {
-//                isBeingSaved = true
+    @objc
+    private func touchUpInsideToConfirmPost() {
+        Task {
+            if !isBeingSaved {
+                isBeingSaved = true
 //                setupActivityIndicatorLayout()
 //                FirebaseStorageManager.uploadImage(image: postImage, pathRoot: receiverUserId) { url in
 //                    guard let url = url else { return }
 //                    let absoluteUrl = url.absoluteString
-//                    let rollingPaperPostData = PostWithImageAndMessage(type: .imageAndMessage, id: "", timestamp: Date(), from: self.writerNickname, isPublic: self.postView.privateSwitch.isOn, imageURL: absoluteUrl, message: self.postView.textView.text, postTheme: self.postThemePicerkView.selectedThemeHex)
-//
-//                    let rollingPaperPostAPI = RollingPaperPostAPI()
-//                    rollingPaperPostAPI.writePost(document: rollingPaperPostData,
-//                                                  imageUrl: absoluteUrl,
-//                                                  groupId: self.groupId,
-//                                                  receiver: self.receiverUserId)
-//                    self.isBeingSaved = false
+                let rollingPaperPostData = PostWithImageAndMessage(type: .imageAndMessage,
+                                                                   id: "", timestamp: Date(),
+                                                                   from: self.writerNickname,
+                                                                   isPublic: self.postView.isPublic,
+                                                                   imageURL: "",
+                                                                   message: self.postView.postTextCollectionViewCell.textView.text,
+                                                                   postTheme: self.postThemePicerkView.selectedThemeHex)
+
+                    let rollingPaperPostAPI = RollingPaperPostAPI()
+                    rollingPaperPostAPI.writePost(document: rollingPaperPostData,
+                                                  imageUrl: "",
+                                                  groupId: self.groupId,
+                                                  receiver: self.receiverUserId)
+                    self.isBeingSaved = false
 //                    self.activityIndicator.stopAnimating()
-//                    _ = self.navigationController?.popViewController(animated: true)
+                    _ = self.navigationController?.popViewController(animated: true)
 //                }
-//            }
-//        }
-//    }
+            }
+        }
+    }
     
     private func setupWholeLayout() {
+        view.addSubview(dismissButton)
+        dismissButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            dismissButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            dismissButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 17),
+            dismissButton.widthAnchor.constraint(equalToConstant: 60),
+            dismissButton.heightAnchor.constraint(equalToConstant: 24)
+        ])
+        
+        view.addSubview(completeButton)
+        completeButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            completeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            completeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            completeButton.widthAnchor.constraint(equalToConstant: 56),
+            completeButton.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
         setupPostLayout()
         
         view.addSubview(buttonStackView)
@@ -254,14 +310,6 @@ final class WriteRollingPaperViewController: UIViewController {
             postThemePicerkView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
         
-//        view.addSubview(confirmButton)
-//        confirmButton.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            confirmButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -34),
-//            confirmButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-//            confirmButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-//            confirmButton.heightAnchor.constraint(equalToConstant: 57)
-//        ])
     }
     
     private func setupPostLayout() {
@@ -269,7 +317,7 @@ final class WriteRollingPaperViewController: UIViewController {
         postView.writerNickname = writerNickname
         postView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            postView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            postView.topAnchor.constraint(equalTo: completeButton.bottomAnchor, constant: 20),
             postView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             postView.heightAnchor.constraint(equalToConstant: PostView.LayoutValue.postSize.width + 45),
@@ -340,7 +388,7 @@ final class WriteRollingPaperViewController: UIViewController {
 }
 
 
-extension WriteRollingPaperViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+//extension WriteRollingPaperViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 //    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
 //        if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
 //            if !postView.isPhotoAdded {
@@ -367,19 +415,19 @@ extension WriteRollingPaperViewController: UIImagePickerControllerDelegate, UINa
 //    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
 //        picker.dismiss(animated: true, completion: nil)
 //    }
-}
-
-//extension WriteRollingPaperViewController: WriteRollingPaperViewControllerDelegate {
-//    func activeConfirmButton() {
-//        confirmButton.backgroundColor = .systemBlack
-//        confirmButton.setTitleColor(.white, for: .normal)
-//        confirmButton.isEnabled = true
-//    }
-//
-//    func inactiveConfirmButton() {
-//        confirmButton.backgroundColor = .inactiveBgGray
-//        confirmButton.setTitleColor(.inactiveTextGray, for: .normal)
-//        confirmButton.isEnabled = false
-//    }
 //}
+
+extension WriteRollingPaperViewController: WriteRollingPaperViewDelegate {
+    func activeConfirmButton() {
+        completeButton.backgroundColor = .systemBlack
+        completeButton.setTitleColor(.white, for: .normal)
+        completeButton.isEnabled = true
+    }
+
+    func inactiveConfirmButton() {
+        completeButton.backgroundColor = .inactiveBgGray
+        completeButton.setTitleColor(.inactiveTextGray, for: .normal)
+        completeButton.isEnabled = false
+    }
+}
 

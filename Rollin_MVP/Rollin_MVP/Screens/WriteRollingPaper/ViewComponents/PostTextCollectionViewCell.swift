@@ -32,7 +32,9 @@ final class PostTextCollectionViewCell: UICollectionViewCell {
     
     var isTextEdited: Bool = false
     
-    weak var delegate: PostViewDelegate?
+    weak var postViewDelegate: PostViewDelegate?
+    
+    weak var writeRollingPaperViewDelegate: WriteRollingPaperViewDelegate?
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -87,12 +89,12 @@ extension PostTextCollectionViewCell: UITextViewDelegate {
     }
     
     func textViewDidChange(_ textView: UITextView) {
-//        if isTextEdited && isPhotoAdded {
-//            delegate?.activeConfirmButton()
-//        } else {
-//            delegate?.inactiveConfirmButton()
-//        }
-        delegate?.setTextCount(textCount: textView.text.count)
+        if isTextEdited {
+            writeRollingPaperViewDelegate?.activeConfirmButton()
+        } else {
+            writeRollingPaperViewDelegate?.inactiveConfirmButton()
+        }
+        postViewDelegate?.setTextCount(textCount: textView.text.count)
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -106,9 +108,9 @@ extension PostTextCollectionViewCell: UITextViewDelegate {
         let textWithoutWhiteSpace = textView.text.trimmingCharacters(in: .whitespaces)
         if isTextEdited && textWithoutWhiteSpace == "" {
             textView.text = "전달할 말을 입력해주세요"
-            delegate?.setTextCount(textCount: 0)
+            postViewDelegate?.setTextCount(textCount: 0)
             isTextEdited = false
-//            delegate?.inactiveConfirmButton()
+            writeRollingPaperViewDelegate?.inactiveConfirmButton()
         }
     }
 }
