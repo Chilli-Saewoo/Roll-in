@@ -154,7 +154,7 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
 
     
     @objc private func didTapButton() {
-        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "WriteRollingPaperViewController") as? WriteRollingPaperViewController ?? UIViewController()
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: WriteRollingPaperViewController.className) as? WriteRollingPaperViewController ?? UIViewController()
         let vc = viewController as? WriteRollingPaperViewController
         guard let groupId = groupId else {return}
         guard let receiverUserId = receiverUserId else {return}
@@ -162,7 +162,8 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
         vc?.groupId = groupId
         vc?.receiverUserId = receiverUserId
         vc?.writerNickname = myGroupNickname
-        self.navigationController?.pushViewController(viewController, animated: true)
+        vc?.modalPresentationStyle = .fullScreen
+        self.present(vc ?? WriteRollingPaperViewController(), animated: true)
     }
     
     private func setResetIngroupNicknameButton() {

@@ -32,6 +32,8 @@
 		7980D12E291C3F3F00915C72 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7980D12D291C3F3F00915C72 /* UIColor+.swift */; };
 		79A9100D291B84B700A0672F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A9100C291B84B700A0672F /* PostView.swift */; };
 		79A91011291C091B00A0672F /* Alert+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A91010291C091B00A0672F /* Alert+.swift */; };
+		79AFF0152945CE9D00F5C15E /* PostTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AFF0142945CE9D00F5C15E /* PostTextCollectionViewCell.swift */; };
+		79AFF0172945CEAA00F5C15E /* PostImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AFF0162945CEAA00F5C15E /* PostImageCollectionViewCell.swift */; };
 		79B38A832922E62100F084E3 /* DetailPostImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B38A822922E62100F084E3 /* DetailPostImageCollectionViewCell.swift */; };
 		79BAA9A2291AE53100C5636E /* WriteRollingPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BAA9A1291AE53000C5636E /* WriteRollingPaperViewController.swift */; };
 		79BAA9A5291AE8D400C5636E /* PostThemePickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79BAA9A4291AE8D400C5636E /* PostThemePickerViewCell.swift */; };
@@ -134,6 +136,8 @@
 		7980D12D291C3F3F00915C72 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		79A9100C291B84B700A0672F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		79A91010291C091B00A0672F /* Alert+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+.swift"; sourceTree = "<group>"; };
+		79AFF0142945CE9D00F5C15E /* PostTextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTextCollectionViewCell.swift; sourceTree = "<group>"; };
+		79AFF0162945CEAA00F5C15E /* PostImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		79B38A822922E62100F084E3 /* DetailPostImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		79BAA9A1291AE53000C5636E /* WriteRollingPaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteRollingPaperViewController.swift; sourceTree = "<group>"; };
 		79BAA9A4291AE8D400C5636E /* PostThemePickerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostThemePickerViewCell.swift; sourceTree = "<group>"; };
@@ -312,6 +316,8 @@
 				79BAA9A4291AE8D400C5636E /* PostThemePickerViewCell.swift */,
 				79BAA9AE291B732F00C5636E /* PostThemePickerView.swift */,
 				79A9100C291B84B700A0672F /* PostView.swift */,
+				79AFF0142945CE9D00F5C15E /* PostTextCollectionViewCell.swift */,
+				79AFF0162945CEAA00F5C15E /* PostImageCollectionViewCell.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -706,6 +712,7 @@
 			files = (
 				79675CAB29333CAB0049533E /* SettingViewController.swift in Sources */,
 				AB437581291A5B7900C3688D /* SetGroupNameWhileCreatingGroupViewController.swift in Sources */,
+				79AFF0152945CE9D00F5C15E /* PostTextCollectionViewCell.swift in Sources */,
 				79B38A832922E62100F084E3 /* DetailPostImageCollectionViewCell.swift in Sources */,
 				AB032AA9291E875900B22C13 /* SelectBackgroundColorCell.swift in Sources */,
 				79340B33292171AD0097D111 /* AddGroupButtonBackgroundView.swift in Sources */,
@@ -734,6 +741,7 @@
 				79340B35292171BD0097D111 /* MainGroupCardViewCell.swift in Sources */,
 				ABF45DFC2945816800D96CC4 /* CardSwiperCell.swift in Sources */,
 				ABB96EC0291C244E003C5B1D /* SetThemeViewController.swift in Sources */,
+				79AFF0172945CEAA00F5C15E /* PostImageCollectionViewCell.swift in Sources */,
 				ABB96EAB291AB381003C5B1D /* SetNicknameWhileCreatingGroupViewController.swift in Sources */,
 				2A49A1382933C9E800897379 /* AppInfoWebViewController.swift in Sources */,
 				79340B3C292172760097D111 /* SearchGroupWithCodeViewController.swift in Sources */,
