@@ -7,10 +7,6 @@
 
 import UIKit
 
-protocol PostViewDelegate: AnyObject {
-    func changePostColor(selectedTextColor: UIColor, selectedBgColor: UIColor)
-}
-
 final class PostThemePickerView: UIView {
 
     struct theme {
