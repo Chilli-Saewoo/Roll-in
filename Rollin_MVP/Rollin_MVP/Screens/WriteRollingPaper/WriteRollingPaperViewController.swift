@@ -17,6 +17,10 @@ protocol WriteRollingPaperViewDelegate: AnyObject {
     func activeConfirmButton()
 
     func inactiveConfirmButton()
+    
+    func presentImagePickerViewController(imageViewController: UIImagePickerController)
+    
+    func presentAlert(alertViewController: UIAlertController)
 }
 
 final class WriteRollingPaperViewController: UIViewController {
@@ -24,10 +28,10 @@ final class WriteRollingPaperViewController: UIViewController {
     private let postThemePicerkView = PostThemePickerView()
     private let postPhotoPickerView = PostPhotoPickerView()
     private let postView = PostView()
-//    private let imagePickerViewController = UIImagePickerController()
 //    private let rollingPaperPostAPI = RollingPaperPostAPI()
 //    private let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5
     
+    //    private let imagePickerViewController = UIImagePickerController()
 //    private lazy var authorizationOfCameraAlert: () = makeAlert(title: "알림", message: "카메라 접근이 허용되어 있지 않습니다.")
 //    private lazy var authorizationOfPhotoLibraryAlert: () = makeAlert(title: "알림", message: "라이브러리 접근이 허용되어 있지 않습니다.")
     private let dismissButton: UIButton = {
@@ -128,6 +132,7 @@ final class WriteRollingPaperViewController: UIViewController {
     
     private func configureDelegate() {
         postThemePicerkView.postViewDelegate = postView
+        postPhotoPickerView.delegate = self
         postView.delegate = self
 //        imagePickerViewController.delegate = self
 //        imagePickerViewController.allowsEditing = true
@@ -424,6 +429,14 @@ final class WriteRollingPaperViewController: UIViewController {
 //}
 
 extension WriteRollingPaperViewController: WriteRollingPaperViewDelegate {
+    func presentImagePickerViewController(imageViewController: UIImagePickerController) {
+        present(imageViewController, animated: true, completion: nil)
+    }
+    
+    func presentAlert(alertViewController: UIAlertController) {
+        present(alertViewController, animated: true, completion: nil)
+    }
+    
     func activeConfirmButton() {
         completeButton.backgroundColor = .systemBlack
         completeButton.setTitleColor(.white, for: .normal)

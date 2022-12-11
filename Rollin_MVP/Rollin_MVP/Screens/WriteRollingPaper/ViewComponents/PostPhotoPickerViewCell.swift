@@ -51,8 +51,13 @@ final class PostPhotoPickerViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             button.centerXAnchor.constraint(equalTo: centerXAnchor),
             button.centerYAnchor.constraint(equalTo: centerYAnchor),
+<<<<<<< Updated upstream
             button.widthAnchor.constraint(equalToConstant: 80),
             button.heightAnchor.constraint(equalToConstant: 80),
+=======
+            button.widthAnchor.constraint(equalToConstant: 40),
+            button.heightAnchor.constraint(equalToConstant: 40),
+>>>>>>> Stashed changes
         ])
     }
 }
