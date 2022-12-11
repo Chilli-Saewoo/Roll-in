@@ -8,6 +8,8 @@
 import UIKit
 
 protocol PostViewDelegate: AnyObject {
+    func resetPhoto()
+    
     func changePostColor(selectedTextColor: UIColor, selectedBgColor: UIColor)
     
     func changePostTheme(theme: String)
@@ -31,7 +33,7 @@ final class PostView: UIView {
         static var collectionViewContentInset = UIEdgeInsets(top: 5, left: insetX, bottom: 0, right: insetX)
     }
     
-    private let collectionView: UICollectionView = {
+    let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = LayoutValue.postSize
@@ -70,28 +72,6 @@ final class PostView: UIView {
         label.text = "0/200"
         return label
     }()
-    
-//    let emptyImageButton: UIButton = {
-//        let button = UIButton()
-//        button.setTitle("사진 추가하기", for: .normal)
-//        button.setTitleColor(.systemBlack, for: .normal)
-//        button.setImage(UIImage(systemName: "plus"), for: .normal)
-//        button.tintColor = .systemBlack
-//        button.backgroundColor = .white
-//        button.layer.borderColor = CGColor(red: 0, green: 0, blue: 0, alpha: 1)
-//        button.layer.borderWidth = 1
-//        button.layer.cornerRadius = 4
-//        button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-//        return button
-//    }()
-//
-//    let addedImageButton: UIButton = {
-//        let button = UIButton()
-//        button.contentMode = .scaleAspectFit
-//        button.layer.cornerRadius = 4
-//        button.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-//        return button
-//    }()
     
     var postTextCollectionViewCell: PostTextCollectionViewCell = PostTextCollectionViewCell(frame: CGRect())
     
@@ -207,18 +187,6 @@ final class PostView: UIView {
         ])
     }
     
-//    func setupAddedImageButtonLayout() {
-//        addSubview(addedImageButton)
-//        addedImageButton.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            addedImageButton.topAnchor.constraint(equalTo: textView.bottomAnchor),
-//            addedImageButton.leadingAnchor.constraint(equalTo: leadingAnchor),
-//            addedImageButton.trailingAnchor.constraint(equalTo: trailingAnchor),
-//            addedImageButton.bottomAnchor.constraint(equalTo: bottomAnchor),
-//            addedImageButton.heightAnchor.constraint(equalToConstant: 200)
-//        ])
-//    }
-    
     private func checkTextLimit(existingText: String?,
                            newText: String,
                            limit: Int) -> Bool {
@@ -257,20 +225,28 @@ extension PostView: UICollectionViewDelegate {
         let index = round(scrolledOffsetX / cellWidth)
         targetContentOffset.pointee = CGPoint(x: index * cellWidth - scrollView.contentInset.left, y: scrollView.contentInset.top)
         if index == 0.0 {
-            pageControllerFirstDotView.backgroundColor = .black
-            pageControllerSecondDotView.backgroundColor = .lightGray
-            pageControllerFirstDotView.removeFromSuperview()
-            pageControllerSecondDotView.removeFromSuperview()
-            pageControllerStackView.addArrangedSubview(pageControllerFirstDotView)
-            pageControllerStackView.addArrangedSubview(pageControllerSecondDotView)
+            setFirstDotLayout()
         } else if index == 1.0 {
-            pageControllerFirstDotView.backgroundColor = .lightGray
-            pageControllerSecondDotView.backgroundColor = .black
-            pageControllerFirstDotView.removeFromSuperview()
-            pageControllerSecondDotView.removeFromSuperview()
-            pageControllerStackView.addArrangedSubview(pageControllerFirstDotView)
-            pageControllerStackView.addArrangedSubview(pageControllerSecondDotView)
+            setSecondDotLayout()
         }
+    }
+    
+    func setFirstDotLayout() {
+        pageControllerFirstDotView.backgroundColor = .black
+        pageControllerSecondDotView.backgroundColor = .lightGray
+        pageControllerFirstDotView.removeFromSuperview()
+        pageControllerSecondDotView.removeFromSuperview()
+        pageControllerStackView.addArrangedSubview(pageControllerFirstDotView)
+        pageControllerStackView.addArrangedSubview(pageControllerSecondDotView)
+    }
+    
+    func setSecondDotLayout() {
+        pageControllerFirstDotView.backgroundColor = .lightGray
+        pageControllerSecondDotView.backgroundColor = .black
+        pageControllerFirstDotView.removeFromSuperview()
+        pageControllerSecondDotView.removeFromSuperview()
+        pageControllerStackView.addArrangedSubview(pageControllerFirstDotView)
+        pageControllerStackView.addArrangedSubview(pageControllerSecondDotView)
     }
 }
 
@@ -315,13 +291,15 @@ extension PostView {
 }
 
 extension PostView: PostViewDelegate {
+    func resetPhoto() {
+        self.postImageCollectionViewCell.setImage(image: UIImage())
+        self.postImageCollectionViewCell.photoLabel.text = "사진을 추가해주세요"
+        self.postImageCollectionViewCell.imageView.backgroundColor = .bgGray
+    }
+    
     func changePhoto(image: UIImage) {
-        print("change")
-//        self.postImageCollectionViewCell.imageView.backgroundColor = .clear
         self.postImageCollectionViewCell.setImage(image: image)
         self.postImageCollectionViewCell.photoLabel.text = ""
-        self.postImageCollectionViewCell.photoLabel.textColor = .white
-        self.collectionView.reloadData()
     }
     
     func changePostColor(selectedTextColor: UIColor, selectedBgColor: UIColor) {
