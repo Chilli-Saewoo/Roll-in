@@ -162,7 +162,7 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
 
     
     @objc private func didTapButton() {
-        let viewController = self.storyboard?.instantiateViewController(withIdentifier: "WriteRollingPaperViewController") as? WriteRollingPaperViewController ?? UIViewController()
+        let viewController = self.storyboard?.instantiateViewController(withIdentifier: WriteRollingPaperViewController.className) as? WriteRollingPaperViewController ?? UIViewController()
         let vc = viewController as? WriteRollingPaperViewController
         guard let groupId = groupId else {return}
         guard let receiverUserId = receiverUserId else {return}
@@ -170,7 +170,8 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
         vc?.groupId = groupId
         vc?.receiverUserId = receiverUserId
         vc?.writerNickname = myGroupNickname
-        self.navigationController?.pushViewController(viewController, animated: true)
+        vc?.modalPresentationStyle = .fullScreen
+        self.present(vc ?? WriteRollingPaperViewController(), animated: true)
     }
     
     private func setResetIngroupNicknameButton() {
@@ -270,12 +271,15 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let post = posts?[indexPath.item] as? PostWithImageAndMessage else { return UICollectionViewCell() }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostRollingPaperCollectionViewCell.id, for: indexPath) as? PostRollingPaperCollectionViewCell ?? PostRollingPaperCollectionViewCell()
         cell.receiverUserId = receiverUserId ?? ""
-        if post.isPublic || receiverUserId == UserDefaults.standard.string(forKey: "uid") {
+        if post.isPublic {
             cell.blurView.layer.opacity = 0.0
-            cell.lockImage.layer.opacity = 0.0
+            cell.blurLockImage.layer.opacity = 0.0
+        } else if receiverUserId == UserDefaults.standard.string(forKey: "uid") || post.from == writerNickname {
+            cell.blurView.layer.opacity = 0.0
+            cell.blurLockImage.layer.opacity = 0.0
         } else {
             cell.blurView.layer.opacity = 1.0
-            cell.lockImage.layer.opacity = 1.0
+            cell.blurLockImage.layer.opacity = 1.0
         }
         let textColor = getTextColor(textColorString: post.postTheme)
         if let image = images[post.id] {
@@ -304,6 +308,12 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.isUserInteractionEnabled = false
             cell.setupView()
         }
+        if post.isPublic {
+            cell.setupPublicPostViewLayout()
+        } else if !post.isPublic {
+            cell.setupPrivatePostViewLayout()
+        }
+        cell.setPrivacyViewLayout()
         return cell
     }
     
