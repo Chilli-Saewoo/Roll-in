@@ -28,9 +28,9 @@ final class GroupDetailViewController: UIViewController {
             if $1.key == UserDefaults.standard.string(forKey: "uid")  {
                 return true
             }
-            if isStartWithKorean(str: $0.value.lowercased()) && isStartWithEnglish(str: $1.value.lowercased()) {
+            if isStartedWithKorean(str: $0.value.lowercased()) && isStartedWithEnglish(str: $1.value.lowercased()) {
                 return false
-            } else if isStartWithEnglish(str: $0.value.lowercased()) && isStartWithKorean(str: $1.value.lowercased()) {
+            } else if isStartedWithEnglish(str: $0.value.lowercased()) && isStartedWithKorean(str: $1.value.lowercased()) {
                 return true
             }
             return $0.value.lowercased() > $1.value.lowercased()
@@ -38,14 +38,14 @@ final class GroupDetailViewController: UIViewController {
         return list
     }
     
-    private func isStartWithKorean(str: String) -> Bool {
+    private func isStartedWithKorean(str: String) -> Bool {
         if str >= "가" && str <= "힣" {
             return true
         }
         return false
     }
     
-    private func isStartWithEnglish(str: String) -> Bool {
+    private func isStartedWithEnglish(str: String) -> Bool {
         if (str >= "a" && str <= "z") || (str >= "A" && str <= "Z") {
             return true
         }

@@ -10,7 +10,7 @@ import VerticalCardSwiper
 
 final class CardSwiperCell: CardCell {
     private let nameLabel = UILabel()
-    private let bookMarkLabel = UIImageView()
+    private let bookmarkLabel = UIImageView()
     
     public func setCell(index: Int, name: String, userId: String) {
         let colors: [UIColor] = [.cardBlue, .cardPink, .cardGreen, .cardPurple, .cardYellow]
@@ -21,7 +21,7 @@ final class CardSwiperCell: CardCell {
         if userId == UserDefaults.standard.string(forKey: "uid") {
             setBookMarkLabel()
         } else {
-            bookMarkLabel.removeFromSuperview()
+            bookmarkLabel.removeFromSuperview()
         }
     }
     
@@ -53,13 +53,13 @@ final class CardSwiperCell: CardCell {
     }
     
     private func setBookMarkLabel() {
-        self.addSubview(bookMarkLabel)
-        bookMarkLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(bookmarkLabel)
+        bookmarkLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            bookMarkLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -6),
-            bookMarkLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
+            bookmarkLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -6),
+            bookmarkLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 0),
         ])
-        bookMarkLabel.image = UIImage(named: "bookmark")
+        bookmarkLabel.image = UIImage(named: "bookmark")
     }
 }
 
