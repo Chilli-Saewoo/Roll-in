@@ -180,13 +180,9 @@ extension PostRollingPaperCollectionViewCell {
         fromLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10).isActive = true
         
         if imageView.image != nil {
-            containerView.addSubview(imageView)
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.topAnchor.constraint(equalTo: fromLabel.bottomAnchor, constant: 10).isActive = true
-            imageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true
-            imageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor).isActive = true
-            imageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor).isActive = true
-            imageView.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 50)/2).isActive = true
+            setupImageViewLayout()
+        } else {
+            fromLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10).isActive = true
         }
     }
     
