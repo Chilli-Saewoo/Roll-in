@@ -5,6 +5,7 @@
 //  Created by Noah Park on 2022/11/14.
 //
 
+import FirebaseFirestore
 import UIKit
 import VerticalCardSwiper
 
@@ -18,6 +19,11 @@ final class GroupDetailViewController: UIViewController {
     private let ingroupCodeCopyButton = UIButton()
     private let codeCopyToastView = UILabel()
     private var isFirstLoading = true
+    private var countOfPostByUsers: [String: Int?] = [:] {
+        didSet {
+            cardSwiper.reloadData()
+        }
+    }
     
     var userList: [(String, String)] {
         guard let group = group else { return [] }
@@ -52,6 +58,24 @@ final class GroupDetailViewController: UIViewController {
         return false
     }
     
+    private func initCountOfPostByUsers() {
+        for list in userList {
+            countOfPostByUsers[list.0] = nil
+        }
+    }
+    
+    private func fetchCountOfPostByUSers() {
+        for index in 0..<userList.count {
+            let receiverUserId = userList[index].0
+            let groupId = group?.groupId
+            
+            let db = FirebaseFirestore.Firestore.firestore()
+            db.collection("groupUsers").document(groupId ?? "").collection("participants").document(receiverUserId).collection("posts").order(by: "timeStamp", descending: true).getDocuments { snapshot, error in
+                print(snapshot?.count ?? 0)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setGroupMessageLabel()
@@ -65,6 +89,7 @@ final class GroupDetailViewController: UIViewController {
         cardSwiper.delegate = self
         cardSwiper.register(CardSwiperCell.self, forCellWithReuseIdentifier: "CardCell")
         cardSwiper.layer.opacity = 0.0
+        initCountOfPostByUsers()
     }
     
     
@@ -74,6 +99,7 @@ final class GroupDetailViewController: UIViewController {
             cardSwiper.layer.opacity = 1.0
             isFirstLoading = false
         }
+        fetchCountOfPostByUSers()
     }
     
     private func setIngroupCopyButtonAction() {
@@ -102,7 +128,10 @@ extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardS
     
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: index) as? CardSwiperCell {
-            cardCell.setCell(index: index, name: userList[index].1, userId: userList[index].0)
+            
+            
+            
+            cardCell.setCell(index: index, name: userList[index].1, userId: userList[index].0, postCount: 4)
             return cardCell
         }
         return CardCell()

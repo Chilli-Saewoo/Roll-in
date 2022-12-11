@@ -12,7 +12,7 @@ final class CardSwiperCell: CardCell {
     private let nameLabel = UILabel()
     private let bookmarkLabel = UIImageView()
     
-    public func setCell(index: Int, name: String, userId: String) {
+    public func setCell(index: Int, name: String, userId: String, postCount: Int) {
         let colors: [UIColor] = [.cardBlue, .cardPink, .cardGreen, .cardPurple, .cardYellow]
         self.backgroundColor = colors[index % colors.count]
         self.layer.cornerRadius = 4.0
