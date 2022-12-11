@@ -20,7 +20,7 @@ final class Group: Codable, Comparable {
     let timestamp: Date
     var groupId: String?
     var groupNickname: String?
-    var participants: [(String, String)] = []
+    var participants: [String: String] = [:]
     
     
     enum CodingKeys: String, CodingKey {
