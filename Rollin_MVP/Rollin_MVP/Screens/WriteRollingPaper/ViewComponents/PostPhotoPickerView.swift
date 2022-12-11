@@ -40,6 +40,8 @@ final class PostPhotoPickerView: UIView {
     
     weak var delegate: WriteRollingPaperViewDelegate?
     
+    weak var postViewDelegate: PostViewDelegate?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
@@ -131,7 +133,6 @@ final class PostPhotoPickerView: UIView {
                 }
             } else {
                 DispatchQueue.main.async {
-//                    self.authorizationOfCameraAlert
                     self.delegate?.presentAlert(alertViewController: self.authorizationOfCameraAlert)
                 }
             }
@@ -199,8 +200,7 @@ final class PostPhotoPickerView: UIView {
 extension PostPhotoPickerView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
-            
-            
+            postViewDelegate?.changePhoto(image: image)
         }
 
         picker.dismiss(animated: true, completion: nil)

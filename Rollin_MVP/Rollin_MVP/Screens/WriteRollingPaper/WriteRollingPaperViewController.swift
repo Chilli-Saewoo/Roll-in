@@ -132,6 +132,7 @@ final class WriteRollingPaperViewController: UIViewController {
     
     private func configureDelegate() {
         postThemePicerkView.postViewDelegate = postView
+        postPhotoPickerView.postViewDelegate = postView
         postPhotoPickerView.delegate = self
         postView.delegate = self
 //        imagePickerViewController.delegate = self

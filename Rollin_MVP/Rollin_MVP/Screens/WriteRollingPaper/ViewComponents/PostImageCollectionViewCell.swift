@@ -48,5 +48,9 @@ final class PostImageCollectionViewCell: UICollectionViewCell {
             photoLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
     }
+    
+    func setImage(image: UIImage) {
+        imageView.image = image
+    }
 }
 

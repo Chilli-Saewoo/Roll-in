@@ -15,6 +15,8 @@ protocol PostViewDelegate: AnyObject {
     func changePostTextInset(isPictureTheme: Bool)
     
     func setTextCount(textCount: Int)
+    
+    func changePhoto(image: UIImage)
 }
 
 final class PostView: UIView {
@@ -84,6 +86,8 @@ final class PostView: UIView {
 //    }()
     
     var postTextCollectionViewCell: PostTextCollectionViewCell = PostTextCollectionViewCell(frame: CGRect())
+    
+    var postImageCollectionViewCell: PostImageCollectionViewCell = PostImageCollectionViewCell(frame: CGRect())
     
     private let pageControllerStackView: UIStackView = {
         let stackView = UIStackView()
@@ -229,9 +233,8 @@ extension PostView: UICollectionViewDataSource {
             self.postTextCollectionViewCell.writeRollingPaperViewDelegate = delegate
             return self.postTextCollectionViewCell
         } else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostImageCollectionViewCell.className, for: indexPath) as! PostImageCollectionViewCell
-//            cell.imageView.image = image ?? UIImage()
-            return cell
+            self.postImageCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: PostImageCollectionViewCell.className, for: indexPath) as! PostImageCollectionViewCell
+            return self.postImageCollectionViewCell
         }
     }
 }
@@ -312,6 +315,15 @@ extension PostView {
 }
 
 extension PostView: PostViewDelegate {
+    func changePhoto(image: UIImage) {
+        print("change")
+//        self.postImageCollectionViewCell.imageView.backgroundColor = .clear
+        self.postImageCollectionViewCell.setImage(image: image)
+        self.postImageCollectionViewCell.photoLabel.text = ""
+        self.postImageCollectionViewCell.photoLabel.textColor = .white
+        self.collectionView.reloadData()
+    }
+    
     func changePostColor(selectedTextColor: UIColor, selectedBgColor: UIColor) {
         self.postTextCollectionViewCell.textView.textColor = selectedTextColor
         self.postTextCollectionViewCell.textView.tintColor = selectedTextColor
