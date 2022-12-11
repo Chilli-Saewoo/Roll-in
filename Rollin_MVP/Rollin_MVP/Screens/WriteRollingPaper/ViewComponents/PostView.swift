@@ -21,7 +21,7 @@ protocol PostViewDelegate: AnyObject {
 
 final class PostView: UIView {
     
-    private enum LayoutValue {
+    enum LayoutValue {
         static let postSize = CGSize(width: UIScreen.main.bounds.width - 76, height: (UIScreen.main.bounds.height / 2) - 114)
         static let postSpacing = 38.0
         

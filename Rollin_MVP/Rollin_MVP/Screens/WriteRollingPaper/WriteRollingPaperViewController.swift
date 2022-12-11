@@ -29,21 +29,26 @@ final class WriteRollingPaperViewController: UIViewController {
     var groupId: String = ""
     var receiverUserId: String = ""
     
-//    private let buttonStackView: UIStackView = {
-//
-//    }()
-//
-//    private let templateButton: UIButton = {
-//        let button = UIButton()
-//        button.setTitle("템플릿", for: .normal)
-//        return button
-//    }()
-//
-//    private let photoButton: UIButton = {
-//        let button = UIButton()
-//        button.setTitle("사진", for: .normal)
-//        return button
-//    }()
+    private let buttonStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .equalSpacing
+        return stackView
+    }()
+    
+    private let templateButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("템플릿", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        return button
+    }()
+    
+    private let photoButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("사진", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        return button
+    }()
     
 //    private let confirmButton: UIButton = {
 //        let button = UIButton()
@@ -182,14 +187,32 @@ final class WriteRollingPaperViewController: UIViewController {
     private func setupWholeLayout() {
         setupPostLayout()
         
-//        view.addSubview(buttonStackView)
-//        
-//        view.addSubview(templateButton)
-//        templateButton.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint =
-//        
-//        view.addSubview(photoButton)
-//        photoButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(buttonStackView)
+        buttonStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            buttonStackView.topAnchor.constraint(equalTo: postView.bottomAnchor, constant: 14),
+            buttonStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            buttonStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            buttonStackView.heightAnchor.constraint(equalToConstant: 32)
+        ])
+        
+        buttonStackView.addArrangedSubview(templateButton)
+        templateButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            templateButton.topAnchor.constraint(equalTo: buttonStackView.topAnchor),
+            templateButton.leadingAnchor.constraint(equalTo: buttonStackView.leadingAnchor),
+            templateButton.bottomAnchor.constraint(equalTo: buttonStackView.bottomAnchor),
+            templateButton.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 32) / 2)
+        ])
+        
+        buttonStackView.addArrangedSubview(photoButton)
+        photoButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            photoButton.topAnchor.constraint(equalTo: buttonStackView.topAnchor),
+            photoButton.trailingAnchor.constraint(equalTo: buttonStackView.trailingAnchor),
+            photoButton.bottomAnchor.constraint(equalTo: buttonStackView.bottomAnchor),
+            photoButton.widthAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 32) / 2)
+        ])
 //                view.addSubview(postThemePicerkView)
 //                postThemePicerkView.translatesAutoresizingMaskIntoConstraints = false
 //                NSLayoutConstraint.activate([
@@ -217,7 +240,7 @@ final class WriteRollingPaperViewController: UIViewController {
             postView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
             postView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
-            postView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            postView.heightAnchor.constraint(equalToConstant: PostView.LayoutValue.postSize.width + 45),
         ])
 //        if postView.isPhotoAdded {
 //            NSLayoutConstraint.activate([
