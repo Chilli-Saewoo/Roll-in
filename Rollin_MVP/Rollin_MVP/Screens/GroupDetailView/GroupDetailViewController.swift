@@ -19,7 +19,7 @@ final class GroupDetailViewController: UIViewController {
     private let codeCopyToastView = UILabel()
     private var isFirstLoading = true
     
-    var usersList: [(String, String)] {
+    var userList: [(String, String)] {
         guard let group = group else { return [] }
         let list = group.participants.sorted {
             if $0.key == UserDefaults.standard.string(forKey: "uid")  {
@@ -93,8 +93,8 @@ extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardS
     func didTapCard(verticalCardSwiperView: VerticalCardSwiperView, index: Int) {
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "PostViewController") as? PostViewController ?? UIViewController()
         let vc = secondViewController as? PostViewController
-        vc?.receiverNickname = usersList[index].1
-        vc?.receiverUserId = usersList[index].0
+        vc?.receiverNickname = userList[index].1
+        vc?.receiverUserId = userList[index].0
         vc?.groupId = group?.groupId
         
         self.navigationController?.pushViewController(secondViewController, animated: true)
@@ -102,7 +102,7 @@ extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardS
     
     func cardForItemAt(verticalCardSwiperView: VerticalCardSwiperView, cardForItemAt index: Int) -> CardCell {
         if let cardCell = verticalCardSwiperView.dequeueReusableCell(withReuseIdentifier: "CardCell", for: index) as? CardSwiperCell {
-            cardCell.setCell(index: index, name: usersList[index].1, userId: usersList[index].0)
+            cardCell.setCell(index: index, name: userList[index].1, userId: userList[index].0)
             return cardCell
         }
         return CardCell()
