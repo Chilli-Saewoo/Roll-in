@@ -9,6 +9,13 @@ import UIKit
 
 final class PostTextCollectionViewCell: UICollectionViewCell {
     
+    let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.layer.cornerRadius = 8
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    
     let textView: UITextView = {
         let textView = UITextView()
         textView.backgroundColor = .bgRed
@@ -47,6 +54,15 @@ final class PostTextCollectionViewCell: UICollectionViewCell {
     }
     
     private func setDetailPostLayout() {
+        contentView.addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
+        
         contentView.addSubview(textView)
         textView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

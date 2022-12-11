@@ -317,7 +317,7 @@ final class WriteRollingPaperViewController: UIViewController {
         postView.writerNickname = writerNickname
         postView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            postView.topAnchor.constraint(equalTo: completeButton.bottomAnchor, constant: 20),
+            postView.topAnchor.constraint(equalTo: completeButton.bottomAnchor, constant: 10),
             postView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
             postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             postView.heightAnchor.constraint(equalToConstant: PostView.LayoutValue.postSize.width + 45),

@@ -7,14 +7,10 @@
 
 import UIKit
 
-//protocol WriteRollingPaperViewControllerDelegate: AnyObject {
-//    func activeConfirmButton()
-//    
-//    func inactiveConfirmButton()
-//}
-
 protocol PostViewDelegate: AnyObject {
     func changePostColor(selectedTextColor: UIColor, selectedBgColor: UIColor)
+    
+    func changePostTheme(theme: String)
     
     func setTextCount(textCount: Int)
 }
@@ -294,11 +290,41 @@ extension PostView {
         collectionView.contentInset = LayoutValue.collectionViewContentInset
         collectionView.decelerationRate = .fast
     }
+    
+    func stringToImage(imageString: String) -> UIImage {
+        switch imageString {
+        case "mistletoe" :
+            return UIImage(named: "mistletoe") ?? UIImage()
+        case "light" :
+            return UIImage(named: "light") ?? UIImage()
+        case "orangeStripe" :
+            return UIImage(named: "orangeStripe") ?? UIImage()
+        case "redStripe" :
+            return UIImage(named: "redStripe") ?? UIImage()
+        case "deer" :
+            return UIImage(named: "deer") ?? UIImage()
+        case "snowman" :
+            return UIImage(named: "snowman") ?? UIImage()
+        case "gingerBread" :
+            return UIImage(named: "gingerBread") ?? UIImage()
+        case "santa" :
+            return UIImage(named: "santa") ?? UIImage()
+        default:
+            return UIImage()
+        }
+    }
 }
 
 extension PostView: PostViewDelegate {
     func changePostColor(selectedTextColor: UIColor, selectedBgColor: UIColor) {
         self.postTextCollectionViewCell.textView.textColor = selectedTextColor
+        self.postTextCollectionViewCell.fromLabel.textColor = selectedTextColor
+        self.postTextCollectionViewCell.textView.backgroundColor = selectedBgColor
+    }
+    
+    func changePostTheme(theme: String) {
+        let image = stringToImage(imageString: theme)
+        self.postTextCollectionViewCell.imageView.image = image
     }
     
     func setTextCount(textCount: Int) {

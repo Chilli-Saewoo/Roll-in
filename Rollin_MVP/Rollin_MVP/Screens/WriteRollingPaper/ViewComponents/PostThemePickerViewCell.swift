@@ -9,6 +9,13 @@ import UIKit
 
 final class PostThemePickerViewCell: UICollectionViewCell {
     
+    let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.layer.cornerRadius = 8
+        imageView.clipsToBounds = true
+        return imageView
+    }()
+    
     var themeLabel: UILabel = {
         let label = UILabel()
         label.backgroundColor = .red
@@ -31,6 +38,15 @@ final class PostThemePickerViewCell: UICollectionViewCell {
     }
     
     private func setupLayout() {
+        addSubview(imageView)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            imageView.bottomAnchor.constraint(equalTo: bottomAnchor)
+        ])
+        
         addSubview(themeLabel)
         themeLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
