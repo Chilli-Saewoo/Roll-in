@@ -79,7 +79,11 @@ final class DetailRollingPaperViewController: UIViewController {
 
 extension DetailRollingPaperViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        2
+        if post?.imageURL == nil {
+            return 1
+        } else {
+            return 2
+        }
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let post = post else { return UICollectionViewCell() }
@@ -237,25 +241,27 @@ private extension DetailRollingPaperViewController {
             pageControllerStackView.widthAnchor.constraint(equalToConstant: 25),
         ])
         
-        pageControllerStackView.addArrangedSubview(pageControllerFirstDotView)
-        pageControllerFirstDotView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            pageControllerFirstDotView.topAnchor.constraint(equalTo: self.pageControllerStackView.topAnchor),
-            pageControllerFirstDotView.leadingAnchor.constraint(equalTo: self.pageControllerStackView.leadingAnchor),
-            pageControllerFirstDotView.bottomAnchor.constraint(equalTo: self.pageControllerStackView.bottomAnchor),
-            pageControllerFirstDotView.heightAnchor.constraint(equalToConstant: 8),
-            pageControllerFirstDotView.widthAnchor.constraint(equalToConstant: 8),
-        ])
-        
-        pageControllerStackView.addArrangedSubview(pageControllerSecondDotView)
-        pageControllerSecondDotView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            pageControllerSecondDotView.topAnchor.constraint(equalTo: self.pageControllerStackView.topAnchor),
-            pageControllerSecondDotView.trailingAnchor.constraint(equalTo: self.pageControllerStackView.trailingAnchor),
-            pageControllerSecondDotView.bottomAnchor.constraint(equalTo: self.pageControllerStackView.bottomAnchor),
-            pageControllerSecondDotView.heightAnchor.constraint(equalToConstant: 8),
-            pageControllerSecondDotView.widthAnchor.constraint(equalToConstant: 8)
-        ])
+        if post?.imageURL != nil {
+            pageControllerStackView.addArrangedSubview(pageControllerFirstDotView)
+            pageControllerFirstDotView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                pageControllerFirstDotView.topAnchor.constraint(equalTo: self.pageControllerStackView.topAnchor),
+                pageControllerFirstDotView.leadingAnchor.constraint(equalTo: self.pageControllerStackView.leadingAnchor),
+                pageControllerFirstDotView.bottomAnchor.constraint(equalTo: self.pageControllerStackView.bottomAnchor),
+                pageControllerFirstDotView.heightAnchor.constraint(equalToConstant: 8),
+                pageControllerFirstDotView.widthAnchor.constraint(equalToConstant: 8),
+            ])
+            
+            pageControllerStackView.addArrangedSubview(pageControllerSecondDotView)
+            pageControllerSecondDotView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                pageControllerSecondDotView.topAnchor.constraint(equalTo: self.pageControllerStackView.topAnchor),
+                pageControllerSecondDotView.trailingAnchor.constraint(equalTo: self.pageControllerStackView.trailingAnchor),
+                pageControllerSecondDotView.bottomAnchor.constraint(equalTo: self.pageControllerStackView.bottomAnchor),
+                pageControllerSecondDotView.heightAnchor.constraint(equalToConstant: 8),
+                pageControllerSecondDotView.widthAnchor.constraint(equalToConstant: 8)
+            ])
+        }
     }
     
     func setButton() {
