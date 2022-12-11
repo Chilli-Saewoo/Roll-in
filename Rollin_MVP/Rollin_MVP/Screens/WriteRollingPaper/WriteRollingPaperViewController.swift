@@ -360,9 +360,9 @@ final class WriteRollingPaperViewController: UIViewController {
         postPhotoPickerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             postPhotoPickerView.topAnchor.constraint(equalTo: underbarUIView.bottomAnchor, constant: 16),
-            postPhotoPickerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            postPhotoPickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-            postPhotoPickerView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            postPhotoPickerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            postPhotoPickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            postPhotoPickerView.heightAnchor.constraint(equalToConstant: (UIScreen.main.bounds.width - 20 * 2 - 8) / 2)
         ])
     }
     

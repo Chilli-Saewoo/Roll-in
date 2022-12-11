@@ -33,7 +33,6 @@
 		79A91011291C091B00A0672F /* Alert+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79A91010291C091B00A0672F /* Alert+.swift */; };
 		79AFF0152945CE9D00F5C15E /* PostTextCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AFF0142945CE9D00F5C15E /* PostTextCollectionViewCell.swift */; };
 		79AFF0172945CEAA00F5C15E /* PostImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AFF0162945CEAA00F5C15E /* PostImageCollectionViewCell.swift */; };
-		79AFF01B2946601E00F5C15E /* PostPhotoPickerViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AFF01A2946601E00F5C15E /* PostPhotoPickerViewCell.swift */; };
 		79AFF01D2946605900F5C15E /* PostPhotoPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79AFF01C2946605900F5C15E /* PostPhotoPickerView.swift */; };
 		79AFF01F2946630900F5C15E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79AFF01E2946630900F5C15E /* GoogleService-Info.plist */; };
 		79B38A832922E62100F084E3 /* DetailPostImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79B38A822922E62100F084E3 /* DetailPostImageCollectionViewCell.swift */; };
@@ -77,7 +76,6 @@
 		ABF45DFC2945816800D96CC4 /* CardSwiperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF45DFB2945816800D96CC4 /* CardSwiperCell.swift */; };
 		ABF45DFE2945C81A00D96CC4 /* ResetIngroupNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF45DFD2945C81A00D96CC4 /* ResetIngroupNicknameViewController.swift */; };
 		ABF45E00294613F200D96CC4 /* CardSkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF45DFF294613F200D96CC4 /* CardSkeletonView.swift */; };
-		ABF45E05294679DC00D96CC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABF45E04294679DC00D96CC4 /* GoogleService-Info.plist */; };
 		F64694F92921A4BB0094CB68 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64694F82921A4BB0094CB68 /* FirebaseStorageManager.swift */; };
 		F65517512920C89D00B09405 /* NSTextAttachment+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65517502920C89D00B09405 /* NSTextAttachment+.swift */; };
 		F663324B292033F300A7310A /* SetNickNameWhileLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324A292033F300A7310A /* SetNickNameWhileLoginViewController.swift */; };
@@ -140,7 +138,6 @@
 		79A91010291C091B00A0672F /* Alert+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+.swift"; sourceTree = "<group>"; };
 		79AFF0142945CE9D00F5C15E /* PostTextCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTextCollectionViewCell.swift; sourceTree = "<group>"; };
 		79AFF0162945CEAA00F5C15E /* PostImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageCollectionViewCell.swift; sourceTree = "<group>"; };
-		79AFF01A2946601E00F5C15E /* PostPhotoPickerViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPhotoPickerViewCell.swift; sourceTree = "<group>"; };
 		79AFF01C2946605900F5C15E /* PostPhotoPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPhotoPickerView.swift; sourceTree = "<group>"; };
 		79AFF01E2946630900F5C15E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../Documents/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		79B38A822922E62100F084E3 /* DetailPostImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostImageCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -188,7 +185,6 @@
 		ABF45DFB2945816800D96CC4 /* CardSwiperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSwiperCell.swift; sourceTree = "<group>"; };
 		ABF45DFD2945C81A00D96CC4 /* ResetIngroupNicknameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetIngroupNicknameViewController.swift; sourceTree = "<group>"; };
 		ABF45DFF294613F200D96CC4 /* CardSkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSkeletonView.swift; sourceTree = "<group>"; };
-		ABF45E04294679DC00D96CC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F64694F82921A4BB0094CB68 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseStorageManager.swift; path = API/FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		F65517502920C89D00B09405 /* NSTextAttachment+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextAttachment+.swift"; sourceTree = "<group>"; };
 		F663324A292033F300A7310A /* SetNickNameWhileLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetNickNameWhileLoginViewController.swift; sourceTree = "<group>"; };
@@ -322,7 +318,6 @@
 				79BAA9A4291AE8D400C5636E /* PostThemePickerViewCell.swift */,
 				79BAA9AE291B732F00C5636E /* PostThemePickerView.swift */,
 				79AFF01C2946605900F5C15E /* PostPhotoPickerView.swift */,
-				79AFF01A2946601E00F5C15E /* PostPhotoPickerViewCell.swift */,
 				79A9100C291B84B700A0672F /* PostView.swift */,
 				79AFF0142945CE9D00F5C15E /* PostTextCollectionViewCell.swift */,
 				79AFF0162945CEAA00F5C15E /* PostImageCollectionViewCell.swift */,
@@ -727,7 +722,6 @@
 				ABCFC8392920158A006DB26B /* PostViewController.swift in Sources */,
 				AB04EA6729332AA300A9CDF0 /* PostData.swift in Sources */,
 				79675CAE29333E330049533E /* SettingTableViewCell.swift in Sources */,
-				79AFF01B2946601E00F5C15E /* PostPhotoPickerViewCell.swift in Sources */,
 				F663324F2920398200A7310A /* UITextField+.swift in Sources */,
 				2AF46852291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift in Sources */,
 				ABB96EB9291B69FA003C5B1D /* Date+.swift in Sources */,

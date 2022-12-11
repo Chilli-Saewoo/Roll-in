@@ -9,24 +9,27 @@ import UIKit
 
 final class PostPhotoPickerView: UIView {
     
-    let postPhotoPickerItemWidth = (UIScreen.main.bounds.width - (7 * 3) - (16 * 2))/4
+    private lazy var deletePhotoButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "xmark"), for: .normal)
+        button.backgroundColor = .bgGray
+        button.tintColor = .systemBlack
+        button.layer.cornerRadius = 4
+        return button
+    }()
     
-    private lazy var photoCollectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 7
-        layout.itemSize = CGSize(width: postPhotoPickerItemWidth, height: postPhotoPickerItemWidth)
-       
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .clear
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return collectionView
+    private lazy var addPhotoButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "photo"), for: .normal)
+        button.backgroundColor = .bgGray
+        button.tintColor = .systemBlack
+        button.layer.cornerRadius = 4
+        return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
-        setupCollectionView()
     }
     
     required init?(coder: NSCoder) {
@@ -34,52 +37,24 @@ final class PostPhotoPickerView: UIView {
     }
     
     func setupLayout(){
-        addSubview(photoCollectionView)
-        photoCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(deletePhotoButton)
+        deletePhotoButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            photoCollectionView.topAnchor.constraint(equalTo: topAnchor),
-            photoCollectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            photoCollectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            photoCollectionView.bottomAnchor.constraint(equalTo: bottomAnchor)
+            deletePhotoButton.topAnchor.constraint(equalTo: topAnchor),
+            deletePhotoButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+            deletePhotoButton.bottomAnchor.constraint(equalTo: bottomAnchor),
+            deletePhotoButton.trailingAnchor.constraint(equalTo: centerXAnchor, constant: -4)
+        ])
+        
+        addSubview(addPhotoButton)
+        addPhotoButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            addPhotoButton.topAnchor.constraint(equalTo: topAnchor),
+            addPhotoButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+            addPhotoButton.bottomAnchor.constraint(equalTo: bottomAnchor),
+            addPhotoButton.leadingAnchor.constraint(equalTo: centerXAnchor, constant: 4)
         ])
     }
     
-    func setupCollectionView() {
-        photoCollectionView.dataSource = self
-        photoCollectionView.delegate = self
-        photoCollectionView.register(PostPhotoPickerViewCell.self, forCellWithReuseIdentifier: PostPhotoPickerViewCell.className)
-    }
-    
-    
 }
 
-extension PostPhotoPickerView: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        12
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostPhotoPickerViewCell.className, for: indexPath) as? PostPhotoPickerViewCell else { return UICollectionViewCell() }
-        if indexPath.row == 0 {
-            cell.imageView.removeFromSuperview()
-            cell.setupButtonLayout()
-            cell.button.setImage(UIImage(systemName: "xmark"), for: .normal)
-            cell.imageView.backgroundColor = .bgGray
-        } else if indexPath.row == 1 {
-            cell.imageView.removeFromSuperview()
-            cell.setupButtonLayout()
-            cell.button.setImage(UIImage(systemName: "photo"), for: .normal)
-            cell.imageView.backgroundColor = .bgGray
-        } else {
-            cell.imageView.backgroundColor = .bgGray
-        }
-        
-        return cell
-    }
-    
-    
-}
-
-extension PostPhotoPickerView: UICollectionViewDelegate {
-    
-}
