@@ -28,12 +28,6 @@ final class WriteRollingPaperViewController: UIViewController {
     private let postThemePicerkView = PostThemePickerView()
     private let postPhotoPickerView = PostPhotoPickerView()
     private let postView = PostView()
-//    private let rollingPaperPostAPI = RollingPaperPostAPI()
-//    private let postThemePickerItemWidth = (UIScreen.main.bounds.width - (7 * 4) - (21 * 2))/5
-    
-    //    private let imagePickerViewController = UIImagePickerController()
-//    private lazy var authorizationOfCameraAlert: () = makeAlert(title: "알림", message: "카메라 접근이 허용되어 있지 않습니다.")
-//    private lazy var authorizationOfPhotoLibraryAlert: () = makeAlert(title: "알림", message: "라이브러리 접근이 허용되어 있지 않습니다.")
     private let dismissButton: UIButton = {
         let button = UIButton()
         button.setTitle(" 취소", for: .normal)
@@ -53,7 +47,6 @@ final class WriteRollingPaperViewController: UIViewController {
     }()
     
     private var isBeingSaved: Bool = false
-//    private var postImage: UIImage = UIImage()
     var writerNickname: String = ""
     var groupId: String = ""
     var receiverUserId: String = ""
@@ -86,16 +79,6 @@ final class WriteRollingPaperViewController: UIViewController {
     }()
     
     private var isTemplateView: Bool = true
-    
-//    private let confirmButton: UIButton = {
-//        let button = UIButton()
-//        button.setTitle("올리기", for: .normal)
-//        button.backgroundColor = .inactiveBgGray
-//        button.setTitleColor(.inactiveTextGray, for: .normal)
-//        button.titleLabel?.font = .systemFont(ofSize: 16, weight: .bold)
-//        button.layer.cornerRadius = 4
-//        return button
-//    }()
     
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
@@ -135,62 +118,13 @@ final class WriteRollingPaperViewController: UIViewController {
         postPhotoPickerView.postViewDelegate = postView
         postPhotoPickerView.delegate = self
         postView.delegate = self
-//        imagePickerViewController.delegate = self
-//        imagePickerViewController.allowsEditing = true
-//        postView.delegate = self
     }
-    
-//    private func setImagePickerToPhotoLibrary() {
-//        imagePickerViewController.sourceType = .photoLibrary
-//        present(imagePickerViewController, animated: true)
-//    }
-//
-//    private func setImagePickerToCamera() {
-//        imagePickerViewController.sourceType = .camera
-//        present(imagePickerViewController, animated: true)
-//    }
-//
-//    private func checkCameraPermission() {
-//        AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
-//            if granted {
-//                DispatchQueue.main.async {
-//                    self.setImagePickerToCamera()
-//                }
-//            } else {
-//                DispatchQueue.main.async {
-//                    self.authorizationOfCameraAlert
-//                }
-//            }
-//        })
-//    }
-//
-//    private func checkAlbumPermission() {
-//        PHPhotoLibrary.requestAuthorization({ [weak self] status in
-//            guard let self = self else { return }
-//            switch status {
-//            case .authorized:
-//                DispatchQueue.main.async {
-//                    self.setImagePickerToPhotoLibrary()
-//                }
-//            case .denied:
-//                DispatchQueue.main.async {
-//                    self.authorizationOfPhotoLibraryAlert
-//                }
-//            default:
-//                break
-//            }
-//        })
-//    }
     
     private func setupButtonAction() {
         templateButton.addTarget(self, action: #selector(touchUpInsideToSetTemplateView), for: .touchUpInside)
         photoButton.addTarget(self, action: #selector(touchUpInsideToSetPhotoView), for: .touchUpInside)
         completeButton.addTarget(self, action: #selector(touchUpInsideToConfirmPost), for: .touchUpInside)
         dismissButton.addTarget(self, action: #selector(touchUpInsideToDismiss), for: .touchUpInside)
-//        postView.emptyImageButton.addTarget(self, action: #selector(touchUpInsideToSetPhoto), for: .touchUpInside)
-//        postView.addedImageButton.addTarget(self, action: #selector(touchUpInsideToSetPhoto), for: .touchUpInside)
-//        confirmButton.addTarget(self, action: #selector(touchUpInsideToConfirmPost), for: .touchUpInside)
-//        confirmButton.isEnabled = false
     }
     
     @objc
@@ -206,6 +140,8 @@ final class WriteRollingPaperViewController: UIViewController {
             setupUnderbarViewLayout()
             postPhotoPickerView.removeFromSuperview()
             setupPostThemePickerViewLayout()
+            postView.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .left, animated: true)
+            postView.setFirstDotLayout()
         }
     }
     
@@ -217,19 +153,11 @@ final class WriteRollingPaperViewController: UIViewController {
             setupUnderbarViewLayout()
             postThemePicerkView.removeFromSuperview()
             setupPostPhotoPickerViewLayout()
+            postView.collectionView.scrollToItem(at: IndexPath(row: 1, section: 0), at: .left, animated: true)
+            postView.setSecondDotLayout()
         }
     }
-//    @objc
-//    private func touchUpInsideToSetPhoto() {
-//        let choosePhotoFromAlbumAction: ((UIAlertAction) -> ()) = { [weak self] _ in
-//            self?.checkAlbumPermission()}
-//        let takePhotoAction: ((UIAlertAction) -> ()) = { [weak self] _ in
-//            self?.checkCameraPermission()}
-//        makeActionSheet(actionTitles: ["라이브러리에서 선택하기", "사진 촬영하기", "취소"],
-//                        actionStyle: [.default, .default, .cancel],
-//                        actions: [choosePhotoFromAlbumAction, takePhotoAction, nil])
-//    }
-//
+
     @objc
     private func touchUpInsideToConfirmPost() {
         Task {
@@ -343,11 +271,6 @@ final class WriteRollingPaperViewController: UIViewController {
             postView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
             postView.heightAnchor.constraint(equalToConstant: PostView.LayoutValue.postSize.width + 45),
         ])
-//        if postView.isPhotoAdded {
-//            NSLayoutConstraint.activate([
-//                postView.heightAnchor.constraint(equalToConstant: 164 + UIScreen.main.bounds.width - 40),
-//            ])
-//        }
     }
     
     func setupUnderbarViewLayout() {
@@ -418,36 +341,6 @@ final class WriteRollingPaperViewController: UIViewController {
 
     }
 }
-
-
-//extension WriteRollingPaperViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
-//        if let image = info[UIImagePickerController.InfoKey(rawValue: "UIImagePickerControllerEditedImage")] as? UIImage {
-//            if !postView.isPhotoAdded {
-//                postView.emptyImageButton.removeFromSuperview()
-//                postView.setupAddedImageButtonLayout()
-//                postView.removeFromSuperview()
-//                postView.isPhotoAdded = true
-//                setupPostLayout()
-//            }
-//            postView.addedImageButton.setBackgroundImage(image, for: .normal)
-//            postView.addedImageButton.layer.cornerRadius = 4
-//            postView.addedImageButton.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-//            postView.addedImageButton.clipsToBounds = true
-//            postImage = image
-//        }
-//
-//        if postView.isTextEdited && postView.isPhotoAdded {
-//            activeConfirmButton()
-//        }
-//
-//        picker.dismiss(animated: true, completion: nil)
-//    }
-//
-//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-//        picker.dismiss(animated: true, completion: nil)
-//    }
-//}
 
 extension WriteRollingPaperViewController: WriteRollingPaperViewDelegate {
     func presentImagePickerViewController(imageViewController: UIImagePickerController) {
