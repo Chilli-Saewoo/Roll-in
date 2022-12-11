@@ -8,6 +8,8 @@
 import UIKit
 
 protocol PostViewDelegate: AnyObject {
+    func resetPhoto()
+    
     func changePostColor(selectedTextColor: UIColor, selectedBgColor: UIColor)
     
     func changePostTheme(theme: String)
@@ -289,13 +291,15 @@ extension PostView {
 }
 
 extension PostView: PostViewDelegate {
+    func resetPhoto() {
+        self.postImageCollectionViewCell.setImage(image: UIImage())
+        self.postImageCollectionViewCell.photoLabel.text = "사진을 추가해주세요"
+        self.postImageCollectionViewCell.imageView.backgroundColor = .bgGray
+    }
+    
     func changePhoto(image: UIImage) {
-        print("change")
-//        self.postImageCollectionViewCell.imageView.backgroundColor = .clear
         self.postImageCollectionViewCell.setImage(image: image)
         self.postImageCollectionViewCell.photoLabel.text = ""
-        self.postImageCollectionViewCell.photoLabel.textColor = .white
-        self.collectionView.reloadData()
     }
     
     func changePostColor(selectedTextColor: UIColor, selectedBgColor: UIColor) {

@@ -62,6 +62,7 @@ final class PostPhotoPickerView: UIView {
     @objc
     func touchUpInsideToDeletePhoto() {
         print("delete")
+        postViewDelegate?.resetPhoto()
     }
     
     @objc
@@ -157,45 +158,6 @@ final class PostPhotoPickerView: UIView {
         })
     }
 }
-
-//extension PostPhotoPickerView: UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        12
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostPhotoPickerViewCell.className, for: indexPath) as? PostPhotoPickerViewCell else { return UICollectionViewCell() }
-//        if indexPath.row == 0 {
-//            cell.imageView.removeFromSuperview()
-//            cell.setupButtonLayout()
-//            cell.button.setImage(UIImage(systemName: "xmark"), for: .normal)
-//            cell.imageView.backgroundColor = .bgGray
-//        } else if indexPath.row == 1 {
-//            cell.imageView.removeFromSuperview()
-//            cell.setupButtonLayout()
-//            cell.button.setImage(UIImage(systemName: "photo"), for: .normal)
-//            cell.imageView.backgroundColor = .bgGray
-//        } else {
-//            cell.imageView.backgroundColor = .bgGray
-//        }
-//
-//        return cell
-//    }
-//
-//
-//}
-    
-
-//extension PostPhotoPickerView: UICollectionViewDelegate {
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let cell = collectionView.cellForItem(at: indexPath) as? PostPhotoPickerViewCell else { return }
-//        if indexPath.row == 1 {
-//            cell.button.addTarget(self, action: #selector(touchUpInsideToSetPhoto), for: .touchUpInside)
-//        } else {
-//            print("hihihi")
-//        }
-//    }
-//}
 
 extension PostPhotoPickerView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
