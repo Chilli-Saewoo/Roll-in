@@ -22,6 +22,12 @@ final class GroupDetailViewController: UIViewController {
     var usersList: [(String, String)] {
         guard let group = group else { return [] }
         let list = group.participants.sorted {
+            if $0.key == UserDefaults.standard.string(forKey: "uid")  {
+                return false
+            }
+            if $1.key == UserDefaults.standard.string(forKey: "uid")  {
+                return true
+            }
             if isStartWithKorean(str: $0.value.lowercased()) && isStartWithEnglish(str: $1.value.lowercased()) {
                 return false
             } else if isStartWithEnglish(str: $0.value.lowercased()) && isStartWithKorean(str: $1.value.lowercased()) {
