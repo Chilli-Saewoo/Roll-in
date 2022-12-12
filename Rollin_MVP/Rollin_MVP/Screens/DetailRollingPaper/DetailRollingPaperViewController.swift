@@ -12,6 +12,7 @@ import MessageUI
 final class DetailRollingPaperViewController: UIViewController {
     
     var post: PostWithImageAndMessage?
+    var senderNickname: String?
     var image: UIImage?
     
     private enum LayoutValue {
@@ -94,7 +95,7 @@ extension DetailRollingPaperViewController: UICollectionViewDataSource {
             cell.message.textColor = textColor
             cell.detailPostView.backgroundColor = hexStringToUIColor(hex: post.postTheme)
             cell.detailPostThemeView.image = stringToImage(imageString: post.postTheme)
-            cell.from.text = "From. \(post.from)"
+            cell.from.text = "From. \(senderNickname ?? "")"
             cell.from.textColor = textColor
             return cell
         } else {

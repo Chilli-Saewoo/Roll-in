@@ -166,12 +166,12 @@ final class WriteRollingPaperViewController: UIViewController {
                 setupActivityIndicatorLayout()
                 guard let image = postView.postImageCollectionViewCell.imageView.image else {
                     let rollingPaperPostData = PostWithImageAndMessage(type: .imageAndMessage,
-                                                                   id: "", timestamp: Date(),
-                                                                   from: self.writerNickname,
-                                                                   isPublic: self.postView.isPublic,
-                                                                   imageURL: nil,
-                                                                   message: self.postView.postTextCollectionViewCell.textView.text,
-                                                                   postTheme: self.postThemePicerkView.selectedThemeHex)
+                                                                       id: "", timestamp: Date(),
+                                                                       from: UserDefaults.standard.string(forKey: "uid") ?? "",
+                                                                       isPublic: self.postView.isPublic,
+                                                                       imageURL: nil,
+                                                                       message: self.postView.postTextCollectionViewCell.textView.text,
+                                                                       postTheme: self.postThemePicerkView.selectedThemeHex)
 
                     let rollingPaperPostAPI = RollingPaperPostAPI()
                     rollingPaperPostAPI.writePost(document: rollingPaperPostData,
@@ -189,7 +189,7 @@ final class WriteRollingPaperViewController: UIViewController {
                     let absoluteUrl = url.absoluteString
                     let rollingPaperPostData = PostWithImageAndMessage(type: .imageAndMessage,
                                                                    id: "", timestamp: Date(),
-                                                                   from: self.writerNickname,
+                                                                   from: UserDefaults.standard.string(forKey: "uid") ?? "",
                                                                    isPublic: self.postView.isPublic,
                                                                    imageURL: absoluteUrl,
                                                                    message: self.postView.postTextCollectionViewCell.textView.text,

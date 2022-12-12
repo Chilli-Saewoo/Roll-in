@@ -57,10 +57,7 @@ protocol PostRollingPaperLayoutDelegate: AnyObject {
         for item in 0..<collectionView.numberOfItems(inSection: 0) {
             let indexPath = IndexPath(item: item, section: 0)
             
-            let cell = collectionView.cellForItem(at: indexPath) as? PostRollingPaperCollectionViewCell
-            
-            
-            var imageHeight: CGFloat = delegate?.collectionView(collectionView, heightForImageAtIndexPath: indexPath) ?? 0
+            let imageHeight: CGFloat = delegate?.collectionView(collectionView, heightForImageAtIndexPath: indexPath) ?? 0
             let height = cellPadding * 2 + imageHeight
             let frame = CGRect(x: xOffset[column], y: yOffset[column], width: columnWidth, height: height)
             let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
