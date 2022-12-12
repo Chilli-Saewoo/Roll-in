@@ -27,6 +27,12 @@ final class GroupDetailViewController: UIViewController {
         return tableView
     }()
     lazy var indexBarBackground = UIView()
+    private var groupBackground: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFill
+        image.image = UIImage(named: "groupBackgroundTheme")
+        return image
+    }()
     let koreanAlphabet = ["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"]
     var userInitialDic = [String : Int]()
     var userInitialKeys = [String]()
@@ -97,6 +103,7 @@ final class GroupDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setBackground()
         getUserInitial()
         setGroupMessageLabel()
         setIngroupCodeCopyButton()
@@ -218,6 +225,17 @@ private extension GroupDetailViewController {
         ])
         groupMessageLabel.font = .systemFont(ofSize: 26, weight: .medium)
         groupMessageLabel.text = "\(group?.groupName ?? "")"
+    }
+    
+    func setBackground() {
+        view.addSubview(groupBackground)
+        groupBackground.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            groupBackground.topAnchor.constraint(equalTo: view.topAnchor),
+            groupBackground.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            groupBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            groupBackground.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
     func setNavigationBarBackButton() {
