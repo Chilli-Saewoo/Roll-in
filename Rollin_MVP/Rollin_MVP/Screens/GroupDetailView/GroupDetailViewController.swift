@@ -204,7 +204,7 @@ extension GroupDetailViewController: VerticalCardSwiperDatasource, VerticalCardS
 
 private extension GroupDetailViewController {
     func setCardSwiper() {
-        cardSwiper = VerticalCardSwiper(frame: CGRect(x: 0.0, y: screenHeight * 0.2, width: screenWidth, height: screenHeight * 0.8))
+        cardSwiper = VerticalCardSwiper(frame: CGRect(x: 0.0, y: screenHeight * 0.2, width: screenWidth - 8, height: screenHeight * 0.8))
         cardSwiper.isSideSwipingEnabled = false
         cardSwiper.topInset = 54
         cardSwiper.stackedCardsCount = 4
@@ -372,7 +372,7 @@ private extension GroupDetailViewController {
             indexBarBackground.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5),
             indexBarBackground.topAnchor.constraint(equalTo: cardSwiper.topAnchor, constant: 10),
             indexBarBackground.heightAnchor.constraint(equalToConstant: CGFloat(20.2 * Double(userInitialKeys.count))),
-            indexBarBackground.widthAnchor.constraint(equalToConstant: 11)
+            indexBarBackground.widthAnchor.constraint(equalToConstant: 15)
         ])
         indexBarBackground.backgroundColor = .black.withAlphaComponent(0.25)
         indexBarBackground.layer.cornerRadius = 5

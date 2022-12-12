@@ -10,7 +10,7 @@ import UIKit
 class IndexBarTableViewCell: UITableViewCell {
     private let alphabetIndexLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 8)
+        label.font = .systemFont(ofSize: 10)
         return label
     }()
     
