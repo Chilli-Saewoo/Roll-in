@@ -25,6 +25,14 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
     var receiverNickname: String?
     var receiverUserId: String?
     var posts: [PostData]?
+    var senderNicknames: [String : String] = [:] {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+    
     var images: [String : UIImage] = [:] {
         didSet {
             DispatchQueue.main.async {
@@ -91,6 +99,15 @@ final class PostViewController: UIViewController, UISheetPresentationControllerD
                 isEmptyTextLabel.layer.opacity = 1.0
             } else {
                 isEmptyTextLabel.layer.opacity = 0.0
+            }
+            if let posts = posts {
+                for post in posts {
+                    let db = FirebaseFirestore.Firestore.firestore()
+                    let snapshot = try await db.collection("groupUsers").document(groupId ?? "").collection("participants").document(post.from).getDocument().data()
+                    guard let senderNickname = snapshot else { return }
+                    let nickname = String(describing: senderNickname["groupNickname"] ?? "")
+                    senderNicknames[post.from] = nickname
+                }
             }
         }
     }
@@ -256,10 +273,7 @@ extension PostViewController: PostRollingPaperLayoutDelegate {
             imageHeight = 0
             padding = 60
         }
-        var labelHeight = post.message.heightWithConstrainedWidth(width: UIScreen.main.bounds.width / 2 - 50, font: UIFont.systemFont(ofSize: 12, weight: .medium))
-//        if checkIsPictureTheme(imageString: post.postTheme) {
-//            labelHeight += contentWidth - labelHeight - padding
-//        }
+        let labelHeight = post.message.heightWithConstrainedWidth(width: UIScreen.main.bounds.width / 2 - 50, font: UIFont.systemFont(ofSize: 12, weight: .medium))
         return imageHeight + labelHeight + padding
     }
 }
@@ -277,7 +291,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if post.isPublic {
             cell.blurView.layer.opacity = 0.0
             cell.blurLockImage.layer.opacity = 0.0
-        } else if receiverUserId == UserDefaults.standard.string(forKey: "uid") || post.from == writerNickname {
+        } else if receiverUserId == UserDefaults.standard.string(forKey: "uid") || post.from == UserDefaults.standard.string(forKey: "uid") {
             cell.blurView.layer.opacity = 0.0
             cell.blurLockImage.layer.opacity = 0.0
         } else {
@@ -288,7 +302,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if let image = images[post.id] {
             cell.messageLabel.text = post.message
             cell.messageLabel.textColor = textColor
-            cell.fromLabel.text = "From. \(post.from)"
+            cell.fromLabel.text = "From. \(senderNicknames[post.from] ?? "")"
             cell.fromLabel.textColor = textColor
             if !checkIsPictureTheme(imageString: post.postTheme) {
                 cell.containerView.backgroundColor = hexStringToUIColor(hex: post.postTheme)
@@ -301,7 +315,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
         } else if (posts?[indexPath.item] as! PostWithImageAndMessage).imageURL == nil {
             cell.messageLabel.text = post.message
             cell.messageLabel.textColor = textColor
-            cell.fromLabel.text = "From. \(post.from)"
+            cell.fromLabel.text = "From. \(senderNicknames[post.from] ?? "")"
             cell.fromLabel.textColor = textColor
             if !checkIsPictureTheme(imageString: post.postTheme) {
                 cell.containerView.backgroundColor = hexStringToUIColor(hex: post.postTheme)

@@ -12,7 +12,6 @@
 		2A49A1382933C9E800897379 /* AppInfoWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A49A1372933C9E800897379 /* AppInfoWebViewController.swift */; };
 		2A49A13D293489E500897379 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A49A13C293489E500897379 /* Reachability.swift */; };
 		2A834294294654E400149433 /* IndexBarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A834293294654E400149433 /* IndexBarTableViewCell.swift */; };
-		2A83429A2946A8E700149433 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2A8342992946A8E700149433 /* GoogleService-Info.plist */; };
 		2AF46852291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */; };
 		2AF46854291E20E300AB2DE4 /* DetailPostLabelCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF46853291E20E300AB2DE4 /* DetailPostLabelCollectionViewCell.swift */; };
 		790FF814291E5733004BDA20 /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790FF813291E5733004BDA20 /* UIViewController+.swift */; };
@@ -76,6 +75,7 @@
 		ABF45DFC2945816800D96CC4 /* CardSwiperCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF45DFB2945816800D96CC4 /* CardSwiperCell.swift */; };
 		ABF45DFE2945C81A00D96CC4 /* ResetIngroupNicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF45DFD2945C81A00D96CC4 /* ResetIngroupNicknameViewController.swift */; };
 		ABF45E00294613F200D96CC4 /* CardSkeletonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF45DFF294613F200D96CC4 /* CardSkeletonView.swift */; };
+		ABF45E0B2946F5C300D96CC4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = ABF45E0A2946F5C300D96CC4 /* GoogleService-Info.plist */; };
 		F64694F92921A4BB0094CB68 /* FirebaseStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64694F82921A4BB0094CB68 /* FirebaseStorageManager.swift */; };
 		F65517512920C89D00B09405 /* NSTextAttachment+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65517502920C89D00B09405 /* NSTextAttachment+.swift */; };
 		F663324B292033F300A7310A /* SetNickNameWhileLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F663324A292033F300A7310A /* SetNickNameWhileLoginViewController.swift */; };
@@ -115,7 +115,6 @@
 		2A49A1372933C9E800897379 /* AppInfoWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoWebViewController.swift; sourceTree = "<group>"; };
 		2A49A13C293489E500897379 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		2A834293294654E400149433 /* IndexBarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndexBarTableViewCell.swift; sourceTree = "<group>"; };
-		2A8342992946A8E700149433 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../../AppleDeveloperAcademy/MacC_ChilliSaewoo/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2AF46851291E1F6200AB2DE4 /* DetailRollingPaperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRollingPaperViewController.swift; sourceTree = "<group>"; };
 		2AF46853291E20E300AB2DE4 /* DetailPostLabelCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostLabelCollectionViewCell.swift; sourceTree = "<group>"; };
 		790FF813291E5733004BDA20 /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
@@ -185,6 +184,7 @@
 		ABF45DFB2945816800D96CC4 /* CardSwiperCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSwiperCell.swift; sourceTree = "<group>"; };
 		ABF45DFD2945C81A00D96CC4 /* ResetIngroupNicknameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResetIngroupNicknameViewController.swift; sourceTree = "<group>"; };
 		ABF45DFF294613F200D96CC4 /* CardSkeletonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSkeletonView.swift; sourceTree = "<group>"; };
+		ABF45E0A2946F5C300D96CC4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F64694F82921A4BB0094CB68 /* FirebaseStorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseStorageManager.swift; path = API/FirebaseStorageManager.swift; sourceTree = "<group>"; };
 		F65517502920C89D00B09405 /* NSTextAttachment+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextAttachment+.swift"; sourceTree = "<group>"; };
 		F663324A292033F300A7310A /* SetNickNameWhileLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetNickNameWhileLoginViewController.swift; sourceTree = "<group>"; };
@@ -560,7 +560,7 @@
 			children = (
 				F6667F2F29219FD000CD480F /* RollingPaperPostAPI.swift */,
 				F64694F82921A4BB0094CB68 /* FirebaseStorageManager.swift */,
-				2A8342992946A8E700149433 /* GoogleService-Info.plist */,
+				ABF45E0A2946F5C300D96CC4 /* GoogleService-Info.plist */,
 				ABA034442921BB0100A50471 /* API */,
 			);
 			path = Firebase;
@@ -686,7 +686,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABDBD2CA291A3F99008FB3A6 /* LaunchScreen.storyboard in Resources */,
-				2A83429A2946A8E700149433 /* GoogleService-Info.plist in Resources */,
+				ABF45E0B2946F5C300D96CC4 /* GoogleService-Info.plist in Resources */,
 				ABDBD2C7291A3F99008FB3A6 /* Assets.xcassets in Resources */,
 				ABDBD2C5291A3F97008FB3A6 /* Main.storyboard in Resources */,
 			);
@@ -886,7 +886,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -940,7 +940,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -976,7 +976,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chillijo.RollinMVP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1014,7 +1014,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.chillijo.RollinMVP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
