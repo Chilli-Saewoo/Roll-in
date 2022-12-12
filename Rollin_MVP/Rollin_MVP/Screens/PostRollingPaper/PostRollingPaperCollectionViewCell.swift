@@ -44,6 +44,15 @@ class PostRollingPaperCollectionViewCell: UICollectionViewCell {
         view.layer.cornerRadius = 4
         return view
     }()
+    
+    lazy var themeImageView: UIImageView = {
+        let image = UIImageView()
+        image.contentMode = .scaleAspectFill
+        image.image = nil
+        image.layer.cornerRadius = 4
+        image.clipsToBounds = true
+        return image
+    }()
 
     lazy var messageLabel: UILabel = {
         let label = UILabel()
@@ -112,6 +121,7 @@ extension PostRollingPaperCollectionViewCell {
         
     func setupPrivatePostViewLayout() {
         setupContainerViewLayout()
+        setupThemeImageViewLayout()
         setupPrivateMessageLayout()
         setupFromLabelLayout()
         setupImageViewLayout()
@@ -119,6 +129,7 @@ extension PostRollingPaperCollectionViewCell {
     
     func setupPublicPostViewLayout() {
         setupContainerViewLayout()
+        setupThemeImageViewLayout()
         setupPublicMessageLayout()
         setupFromLabelLayout()
         setupImageViewLayout()
@@ -131,6 +142,15 @@ extension PostRollingPaperCollectionViewCell {
         containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+    }
+    
+    func setupThemeImageViewLayout() {
+        containerView.addSubview(themeImageView)
+        themeImageView.translatesAutoresizingMaskIntoConstraints = false
+        themeImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        themeImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        themeImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        themeImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
     }
     
     func setupPrivateMessageLayout() {

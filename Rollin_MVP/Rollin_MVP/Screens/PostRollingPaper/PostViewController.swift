@@ -256,7 +256,10 @@ extension PostViewController: PostRollingPaperLayoutDelegate {
             imageHeight = 0
             padding = 60
         }
-        let labelHeight = post.message.heightWithConstrainedWidth(width: UIScreen.main.bounds.width / 2 - 50, font: UIFont.systemFont(ofSize: 12, weight: .medium))
+        var labelHeight = post.message.heightWithConstrainedWidth(width: UIScreen.main.bounds.width / 2 - 50, font: UIFont.systemFont(ofSize: 12, weight: .medium))
+//        if checkIsPictureTheme(imageString: post.postTheme) {
+//            labelHeight += contentWidth - labelHeight - padding
+//        }
         return imageHeight + labelHeight + padding
     }
 }
@@ -287,7 +290,11 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.messageLabel.textColor = textColor
             cell.fromLabel.text = "From. \(post.from)"
             cell.fromLabel.textColor = textColor
-            cell.containerView.backgroundColor = hexStringToUIColor(hex: post.postTheme)
+            if !checkIsPictureTheme(imageString: post.postTheme) {
+                cell.containerView.backgroundColor = hexStringToUIColor(hex: post.postTheme)
+            }
+            else { cell.containerView.backgroundColor = .clear }
+            cell.themeImageView.image = stringToImage(imageString: post.postTheme)
             cell.imageView.image = image
             cell.isUserInteractionEnabled = true
             cell.setupView()
@@ -296,7 +303,13 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
             cell.messageLabel.textColor = textColor
             cell.fromLabel.text = "From. \(post.from)"
             cell.fromLabel.textColor = textColor
-            cell.containerView.backgroundColor = hexStringToUIColor(hex: post.postTheme)
+            if !checkIsPictureTheme(imageString: post.postTheme) {
+                cell.containerView.backgroundColor = hexStringToUIColor(hex: post.postTheme)
+            }
+            else {
+                cell.containerView.backgroundColor = .clear
+            }
+            cell.themeImageView.image = stringToImage(imageString: post.postTheme)
             cell.imageView.image = nil
             cell.isUserInteractionEnabled = true
             cell.setupView()
@@ -350,10 +363,53 @@ private extension PostViewController {
             return hexStringToUIColor(hex: "4069CE")
         case "C8F6D5":
             return hexStringToUIColor(hex: "15843B")
+        case "mistletoe":
+            return .textGold
+        case "light":
+            return .textBrown
+        case "orangeStripe":
+            return .textBrown
+        case "redStripe":
+            return .textRed
+        case "deer":
+            return .textGold
+        case "snowman", "gingerBread", "santa":
+            return .white
         default:
             return hexStringToUIColor(hex: "9E6003")
         }
     }
+    
+    func stringToImage(imageString: String) -> UIImage {
+        switch imageString {
+        case "mistletoe" :
+            return UIImage(named: "mistletoe") ?? UIImage()
+        case "light" :
+            return UIImage(named: "light") ?? UIImage()
+        case "orangeStripe" :
+            return UIImage(named: "orangeStripe") ?? UIImage()
+        case "redStripe" :
+            return UIImage(named: "redStripe") ?? UIImage()
+        case "deer" :
+            return UIImage(named: "deer") ?? UIImage()
+        case "snowman" :
+            return UIImage(named: "snowman") ?? UIImage()
+        case "gingerBread" :
+            return UIImage(named: "gingerBread") ?? UIImage()
+        case "santa" :
+            return UIImage(named: "santa") ?? UIImage()
+        default:
+            return UIImage()
+        }
+    }
+    func checkIsPictureTheme(imageString: String) -> Bool {
+            switch imageString {
+            case "mistletoe", "light", "orangeStripe", "redStripe" :
+                return true
+            default:
+                return false
+            }
+        }
 }
 
 extension PostViewController {

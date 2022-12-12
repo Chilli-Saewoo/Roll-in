@@ -93,6 +93,7 @@ extension DetailRollingPaperViewController: UICollectionViewDataSource {
             cell.message.text = post.message
             cell.message.textColor = textColor
             cell.detailPostView.backgroundColor = hexStringToUIColor(hex: post.postTheme)
+            cell.detailPostThemeView.image = stringToImage(imageString: post.postTheme)
             cell.from.text = "From. \(post.from)"
             cell.from.textColor = textColor
             return cell
@@ -115,6 +116,18 @@ extension DetailRollingPaperViewController: UICollectionViewDataSource {
             return hexStringToUIColor(hex: "4069CE")
         case "C8F6D5":
             return hexStringToUIColor(hex: "15843B")
+        case "mistletoe":
+            return .textGold
+        case "light":
+            return .textBrown
+        case "orangeStripe":
+            return .textBrown
+        case "redStripe":
+            return .textRed
+        case "deer":
+            return .textGold
+        case "snowman", "gingerBread", "santa":
+            return .white
         default:
             return hexStringToUIColor(hex: "9E6003")
         }
@@ -343,4 +356,37 @@ extension DetailRollingPaperViewController: MFMailComposeViewControllerDelegate 
                                didFinishWith result: MFMailComposeResult, error: Error?) {
         dismiss(animated: true, completion: nil)
     }
+}
+
+extension DetailRollingPaperViewController {
+    func stringToImage(imageString: String) -> UIImage {
+        switch imageString {
+        case "mistletoe" :
+            return UIImage(named: "mistletoe") ?? UIImage()
+        case "light" :
+            return UIImage(named: "light") ?? UIImage()
+        case "orangeStripe" :
+            return UIImage(named: "orangeStripe") ?? UIImage()
+        case "redStripe" :
+            return UIImage(named: "redStripe") ?? UIImage()
+        case "deer" :
+            return UIImage(named: "deer") ?? UIImage()
+        case "snowman" :
+            return UIImage(named: "snowman") ?? UIImage()
+        case "gingerBread" :
+            return UIImage(named: "gingerBread") ?? UIImage()
+        case "santa" :
+            return UIImage(named: "santa") ?? UIImage()
+        default:
+            return UIImage()
+        }
+    }
+    func checkIsPictureTheme(imageString: String) -> Bool {
+            switch imageString {
+            case "mistletoe", "light", "orangeStripe", "redStripe" :
+                return true
+            default:
+                return false
+            }
+        }
 }
