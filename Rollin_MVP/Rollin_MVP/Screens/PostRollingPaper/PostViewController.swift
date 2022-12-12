@@ -348,6 +348,7 @@ extension PostViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let post = posts?[indexPath.item] as? PostWithImageAndMessage else { return }
         let rollingPaperDetailViewController = DetailRollingPaperViewController()
         rollingPaperDetailViewController.post = post
+        rollingPaperDetailViewController.senderNickname = senderNicknames[post.from]
         rollingPaperDetailViewController.image = images[post.id]
         rollingPaperDetailViewController.view.backgroundColor = .white
         rollingPaperDetailViewController.modalPresentationStyle = .pageSheet
