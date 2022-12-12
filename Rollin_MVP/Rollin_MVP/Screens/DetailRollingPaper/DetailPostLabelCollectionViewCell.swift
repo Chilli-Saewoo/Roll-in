@@ -27,7 +27,7 @@ final class DetailPostLabelCollectionViewCell: UICollectionViewCell {
     var message: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
-        label.font = .systemFont(ofSize: 18, weight: .regular)
+        label.font = .systemFont(ofSize: 14, weight: .regular)
         label.lineBreakMode = .byCharWrapping
         return label
     }()
@@ -70,15 +70,16 @@ final class DetailPostLabelCollectionViewCell: UICollectionViewCell {
         message.translatesAutoresizingMaskIntoConstraints = false
         message.numberOfLines = 0
         NSLayoutConstraint.activate([
-            message.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 22),
-            message.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 24),
-            message.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+            message.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+            message.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 48),
+            message.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -48),
+            message.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -36),
         ])
         
         self.contentView.addSubview(from)
         from.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            from.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -14),
+            from.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20),
             from.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -14),
         ])
     }
